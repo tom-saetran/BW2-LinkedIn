@@ -3,6 +3,7 @@ import React from "react"
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom/"
 import HTTP501 from "./components/HTTP501"
 import HTTP404 from "./components/HTTP404"
+import MainSection from "./components/MainSection"
 
 class App extends React.Component {
     state = {
@@ -56,12 +57,15 @@ class App extends React.Component {
 
     render() {
         return (
+            <>
+            <MainSection/>
             <Router>
                 <Switch>
                     <Route render={routeProps => <HTTP501 {...routeProps} />} exact path="/" />
                     <Route render={routeProps => <HTTP404 {...routeProps} />} />
                 </Switch>
             </Router>
+            </>
         )
     }
 }
