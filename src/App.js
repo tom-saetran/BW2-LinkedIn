@@ -3,7 +3,7 @@ import React from "react"
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom/"
 import HTTP501 from "./components/HTTP501"
 import HTTP404 from "./components/HTTP404"
-import MainSection from "./components/MainSection"
+import Profile from "./components/Profile"
 import NavBar from "./components/NavBar"
 import Footer from "./components/Footer"
 
@@ -59,17 +59,17 @@ class App extends React.Component {
 
     render() {
         return (
-            <>
-                <MainSection />
+            
                 <Router>
-                    <Route render={routeProps => <NavBar {...routeProps} />} />
+                    <Route render={routeProps => <Profile {...routeProps} />} />
+                    {/* <Route render={routeProps => <NavBar {...routeProps} />} /> */}
                     <Switch>
-                        <Route render={routeProps => <HTTP501 {...routeProps} />} exact path="/" />
-                        <Route render={routeProps => <HTTP404 {...routeProps} />} />
+                        {/* <Route render={routeProps => <HTTP501 {...routeProps} />} exact path="/" />
+                        <Route render={routeProps => <HTTP404 {...routeProps} />} /> */}
                     </Switch>
-                    <Route render={routeProps => <Footer {...routeProps} />} />
+                    {/* <Route render={routeProps => <Footer {...routeProps} />} /> */}
                 </Router>
-            </>
+        
         )
     }
 }

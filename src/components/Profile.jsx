@@ -1,14 +1,22 @@
 import React from "react"
+import { Container, Row, Col} from "react-bootstrap"
+import ProfileJumbotron from "./ProfileJumbotron"
+
 
 class Profile extends React.Component {
+
     render() {
         return (
-            <div className="container">
-                <div className="row">
-                    <div className="col-md-8">{/* Left Column */}</div>
-                    <div className="col-md-4">{/* Right Column */}</div>
-                </div>
-            </div>
+            <Container>
+                <Row>
+                    <Col md={8}>
+                        <ProfileJumbotron/>
+                    </Col>
+                    <Col md={4}>
+                        {/* */}
+                    </Col>
+                </Row>
+            </Container>
         )
     }
 }
