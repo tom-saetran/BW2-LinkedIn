@@ -8,3 +8,48 @@ body {
 code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
+
+#SideLoaderOneGroup{
+    
+    border: 4px rgba(128, 128, 128, 0.585) solid;
+    border-radius: 1%;
+    display: flex;
+    
+    justify-content: flex-start;
+    position: relative;
+    
+
+}
+
+#SideLoaderOneItem{
+    border: none;
+}
+
+#SideLoaderOneHeader{
+    color: blue;
+    
+    
+}
+
+#dropdown-item-button-one{
+    
+}
+
+#card-button{ 
+    background-color: white;
+    border: 1px solid black;
+    color: grey;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 20%/50%;
+}
+
+#card-description{
+    color: grey;
+    
+}
+
+#side-card{
+
+}
