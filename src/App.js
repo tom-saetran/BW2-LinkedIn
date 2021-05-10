@@ -5,7 +5,8 @@ import HTTP501 from "./components/HTTP501"
 import HTTP404 from "./components/HTTP404"
 import Profile from "./components/Profile"
 import NavBar from "./components/NavBar"
-import Footer from "./components/Footer"
+
+
 
 class App extends React.Component {
     state = {
@@ -61,8 +62,8 @@ class App extends React.Component {
         return (
             
                 <Router>
-                    <Route render={routeProps => <Profile {...routeProps} />} />
-                    {/* <Route render={routeProps => <NavBar {...routeProps} />} /> */}
+                    {/* <Route render={routeProps => <Profile {...routeProps} />} /> */}
+                    <Route render={routeProps => <NavBar {...routeProps} />} />
                     <Switch>
                         {/* <Route render={routeProps => <HTTP501 {...routeProps} />} exact path="/" />
                         <Route render={routeProps => <HTTP404 {...routeProps} />} /> */}
