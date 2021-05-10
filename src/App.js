@@ -1,4 +1,4 @@
-import "./App.css"
+import "bootstrap/dist/css/bootstrap.min.css"
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom/"
 import HTTP501 from "./components/HTTP501"
 import HTTP404 from "./components/HTTP404"
