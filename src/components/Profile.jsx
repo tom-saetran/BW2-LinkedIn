@@ -1,6 +1,10 @@
 import React from "react"
-import { Container, Row, Col } from "react-bootstrap"
+import { Container, Row, Col} from "react-bootstrap"
+import Dashboard from "./Dashboard"
 import ProfileJumbotron from "./ProfileJumbotron"
+import Activity from "./Activity"
+import ExperienceEducation from "./ExperienceEducation"
+import Interests from "./Interests"
 
 class Profile extends React.Component {
     state = {
@@ -16,9 +20,16 @@ class Profile extends React.Component {
     render() {
         return (
             <Container>
-                <Row>
+                <Row className="no-gutters">
                     <Col md={8}>
-                        <ProfileJumbotron me={this.state.me} />
+                        <ProfileJumbotron me={this.state.me}/>
+                        <Dashboard/>
+                        <Activity/>
+                        <ExperienceEducation/>
+                        <Interests/>
+                    </Col>
+                    <Col md={4}>
+                        {/* */}
                     </Col>
                     <Col md={4}>{/* */}</Col>
                 </Row>
