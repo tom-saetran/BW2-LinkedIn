@@ -39,7 +39,11 @@ export default class NavBar extends Component {
                                 <path d="m20 2h-3v3.2l3 1.9z"></path>
                             </svg>Home
                             </Nav.Link>
-                            <Nav.Link href="#link">My Network</Nav.Link>
+                            <Nav.Link href="#link">
+                            <svg class="global-nav__icon " xmlns="http://www.w3.org/2000/svg">
+                            <use href="#global-nav-icon--mercado__my-network" class="global-nav__icon-path"></use>
+                            </svg>My Network
+                            </Nav.Link>
                              <Nav.Link href="#link">Jobs</Nav.Link>
                               <Nav.Link href="#link">Messaging</Nav.Link>
                                <Nav.Link href="#link">Notifications</Nav.Link>
