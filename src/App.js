@@ -5,7 +5,8 @@ import HTTP501 from "./components/HTTP501"
 import HTTP404 from "./components/HTTP404"
 import Profile from "./components/Profile"
 import NavBar from "./components/NavBar"
-import Footer from "./components/Footer"
+
+
 
 class App extends React.Component {
     state = {
