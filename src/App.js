@@ -163,10 +163,9 @@ class App extends React.Component {
             <Router>
                 <Route render={routeProps => <NavBar {...routeProps} crud={this.crud_user} me={this.state.me} all={this.state.allprofiles} />} />
                 <Switch>
-                    <Route render={routeProps => <Profile {...routeProps} crud={this.crud_experience} crudUser={this.crud_user} exp={this.state.experience} me={this.state.me} all={this.state.allprofiles} />} exact path="/profile/:id" />
-                    <Route render={routeProps => <Profile {...routeProps} crud={this.crud_experience} crudUser={this.crud_user} exp={this.state.experience} me={this.state.me} all={this.state.allprofiles} />} exact path="/profile" />
-                    {/* <Route render={routeProps => <SideLoaderOne {...routeProps} me={this.state.me} all={this.state.allprofiles} />} /> */}
-                    {/* <Route render={routeProps => <HTTP501 {...routeProps} />} exact path="/" /> */}
+                    <Route render={routeProps => <Profile {...routeProps} crud={this.crud_experience} exp={this.state.experience} me={this.state.me} all={this.state.allprofiles} />} exact path="/profile/:id" />
+                    <Route render={routeProps => <Profile {...routeProps} crud={this.crud_experience} exp={this.state.experience} me={this.state.me} all={this.state.allprofiles} />} exact path="/profile" />
+                    <Route render={routeProps => <HTTP501 {...routeProps} />} exact path="/" />
                     {/* <Route render={routeProps => <HTTP404 {...routeProps} />} /> */}
                 </Switch>
 
