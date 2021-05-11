@@ -14,9 +14,10 @@ class Profile extends React.Component {
         all: null
     }
 
-    componentDidUpdate = (_previousProps, _previousState) => {
+    componentDidUpdate = async (_previousProps, _previousState) => {
         if (this.props.me !== this.state.me) this.setState({ me: this.props.me })
         if (this.props.all !== this.state.all) this.setState({ all: this.props.all })
+        if (this.state.data === null) this.setState({ data: await this.props.crud.get("6098ebe0619e5d00151f8f7b") })
     }
 
     render() {
@@ -31,7 +32,7 @@ class Profile extends React.Component {
                         <Interests />
                     </Col>
                     <Col md={4}>
-                        <SideLoaderOne me={this.state.me} all={this.state.all}/>
+                        <SideLoaderOne me={this.state.me} all={this.state.all} />
                     </Col>
                     <Col md={4}>{/* */}</Col>
                     <Col md={4}>{/* */}</Col>

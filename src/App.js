@@ -13,6 +13,7 @@ class App extends React.Component {
         allprofiles: {},
         me: {},
         withID: {},
+        exp: null,
         endpoint: "https://striveschool-api.herokuapp.com/api/profile/",
         authtoken: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDk4ZWJlMDYxOWU1ZDAwMTUxZjhmN2IiLCJpYXQiOjE2MjA2MzQ1OTMsImV4cCI6MTYyMTg0NDE5M30.m8Z_6EwSxdhgdmOtupcNuhyf9wv2VNmMt9PuzYmgTV8"
     }
@@ -21,6 +22,91 @@ class App extends React.Component {
         this.setState({ allprofiles: await this.getProfileData() })
         this.setState({ me: await this.getProfileData("me") })
         this.setState({ withID: await this.getProfileData("5fc4ae95b708c200175de88d") })
+    }
+
+    componentDidUpdate = async (_previousProps, _previousState) => {
+        if (this.state.me._id !== undefined && this.state.exp === null) this.setState({ exp: await this.getExperiences(this.state.me._id) })
+    }
+
+    getExperiences = async id => {
+        console.log(id)
+        let results
+        try {
+            if (id === "" || id === undefined || id === null) throw new Error("id must be present")
+            results = await fetch(this.state.endpoint + id + "/experiences", {
+                headers: {
+                    Authorization: this.state.authtoken
+                }
+            })
+            results = await results.json()
+        } catch (error) {
+            console.error(error)
+            return null
+        }
+        return await results
+    }
+
+    postExperienceData = async (userID, data) => {
+        let results
+        try {
+            if (userID === "" || userID === undefined || userID === null) throw new Error("user id must be present")
+            if (typeof data !== "object") throw new Error("data must be an object")
+            results = await fetch(this.state.endpoint + userID + "/experiences/", {
+                method: "POST",
+                headers: {
+                    Authorization: this.state.authtoken,
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data)
+            })
+            results = await results.json()
+        } catch (error) {
+            console.error(error)
+            return null
+        }
+        return await results
+    }
+
+    putExperienceData = async (userID, data, expID) => {
+        let results
+        try {
+            if (userID === "" || userID === undefined || userID === null) throw new Error("user id must be present")
+            if (expID === "" || expID === undefined || expID === null) throw new Error("experience id must be present")
+            if (typeof data !== "object") throw new Error("data must be an object")
+            results = await fetch(this.state.endpoint + userID + "/experiences/" + expID, {
+                method: "PUT",
+                headers: {
+                    Authorization: this.state.authtoken,
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data)
+            })
+            results = await results.json()
+        } catch (error) {
+            console.error(error)
+            return null
+        }
+        return await results
+    }
+
+    deleteExperienceData = async (userID, expID) => {
+        let results
+        try {
+            if (userID === "" || userID === undefined || userID === null) throw new Error("user id must be present")
+            if (expID === "" || expID === undefined || expID === null) throw new Error("experience id must be present")
+            results = await fetch(this.state.endpoint + userID + "/experiences/" + expID, {
+                method: "DELETE",
+                headers: {
+                    Authorization: this.state.authtoken,
+                    "Content-Type": "application/json"
+                }
+            })
+            results = await results.json()
+        } catch (error) {
+            console.error(error)
+            return null
+        }
+        return await results
     }
 
     getProfileData = async id => {
@@ -58,12 +144,20 @@ class App extends React.Component {
         return await results
     }
 
+    crud = {
+        get: id => this.getExperiences(id),
+        post: (userID, data) => this.postExperienceData(userID, data),
+        put: (userID, data, expID) => this.putExperienceData(userID, data, expID),
+        delete: (userID, expID) => this.deleteExperienceData(userID, expID)
+    }
+
     render() {
         return (
             <Router>
                 <Route render={routeProps => <NavBar {...routeProps} me={this.state.me} />} />
                 <Switch>
-                    <Route render={routeProps => <Profile {...routeProps} me={this.state.me} all={this.state.allprofiles} />} />
+                    <Route render={routeProps => <Profile {...routeProps} crud={this.crud} exp={this.state.experience} me={this.state.me} all={this.state.allprofiles} />} exact path="/profile" />
+                    <Route render={routeProps => <Profile {...routeProps} crud={this.crud} exp={this.state.experience} me={this.state.me} all={this.state.allprofiles} />} exact path="/profile/:id" />
                     {/* <Route render={routeProps => <SideLoaderOne {...routeProps} me={this.state.me} all={this.state.allprofiles} />} /> */}
                     {/* <Route render={routeProps => <HTTP501 {...routeProps} />} exact path="/" /> */}
                     {/* <Route render={routeProps => <HTTP404 {...routeProps} />} /> */}
