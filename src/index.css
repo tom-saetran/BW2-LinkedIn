@@ -163,7 +163,7 @@ html {
 #side-card-title {
     justify-content: left;
     border-bottom: none !important;
-    background: red;
+    background: transparent;
 }
 #generated-card > div > div.col-4 {
     padding-right: 0;
