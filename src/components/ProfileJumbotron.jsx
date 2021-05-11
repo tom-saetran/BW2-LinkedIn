@@ -5,7 +5,7 @@ class ProfileJumbotron extends React.Component {
     render() {
         return (
             <>
-                <Col className="section-outer px-0">
+                <Col className="mt-4 section-outer px-0">
                     <Col md={12} className="banner-parent">
                         <img className="img-fluid" src="https://thingscareerrelated.files.wordpress.com/2018/03/lake2b.jpg" alt="banner"></img>
                         <img className="img-overlay img-fluid rounded-circle" src="https://i.pinimg.com/originals/3d/99/a7/3d99a7e6cb285c7f7cf5e87131e45c92.jpg" alt="profilePic"></img>

@@ -1,16 +1,26 @@
 import React from "react"
 import { Row, Col, Modal, Button, Form } from "react-bootstrap"
+import {withRouter} from "react-router-dom"
+
+// kai token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDlhOGQxZGRmY2NjNTAwMTVhNmJiY2QiLCJpYXQiOjE2MjA3NDE0MDYsImV4cCI6MTYyMTk1MTAwNn0.QNqO9fHDHOKv1VoPJfJInf1UQF10jMz6AZtfBnSi8Os
+// 609a8d1ddfccc50015a6bbcd
 
 class ExperienceEducation extends React.Component {
 
     state = {
-        modalShow: false
-
+        modalShow: false,
+        user: null,
     }
 
     handleShow = () => {
         console.log("hellow")
         this.setState({ modalShow: !this.state.modalShow })
+
+    }
+
+    componentDidMount = async () => {
+
+        this.setState({user: await this.props.crud.get(this.props.match.params.id)})
 
     }
 
@@ -30,8 +40,8 @@ class ExperienceEducation extends React.Component {
                         <div className="d-flex justify-content-between">
                             <img className="medium-logo" src="https://media-exp1.licdn.com/dms/image/C4D0BAQHMzEZdUDzWLw/company-logo_100_100/0/1607610827235?e=1628726400&v=beta&t=2DyogaeKHlEJ4FJcFv2DpjEkXpRJ325JlCvt6KMJI_E"></img>
                             <div className="ms-3">
-                                <h6>Finance Manager</h6>
-                                <p>Ministry of Housing, Communities and Local Government</p>
+                                <h6>{(this.state.user) ? this.state.user[0].role : "Finance Manager"  }</h6>
+                                <p>{this.state.user ? this.state.user[0].company : "Ministry of Housing, Communities and Local Government"}</p>
                                 <span>Jan 2020 – Present . 1 yr 5 mos</span>
 
                             </div>
@@ -127,4 +137,4 @@ class UpdateExperienceModal extends React.Component {
     }
 }
 
-export default ExperienceEducation
+export default withRouter(ExperienceEducation)
