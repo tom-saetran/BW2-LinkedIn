@@ -81,7 +81,7 @@ class ProfileJumbotron extends React.Component {
                         </Row>
                         <Row>
                             <Col md={6}>
-                                <div style={{ position: "relative", borderRadius: "10px", padding: "12px 20px 12px 12px", border: "2px dashed rgb(220,230,241)" }} className=" my-2">
+                                <div style={{ position: "relative", borderRadius: "10px", padding: "12px 30px 12px 12px", border: "2px dashed rgb(220,230,241)" }} className=" my-2">
                                     <a href="www.google.com">Show recruiters you are open to work - you control who sees this.</a>
                                     <h6>Get Started</h6>
                                     <svg style={{ position: "absolute", top: "10%", right: "2%" }} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" data-supported-dps="16x16" fill="currentColor" class="mercado-match" width="16" height="16" focusable="false">
@@ -91,7 +91,7 @@ class ProfileJumbotron extends React.Component {
 
                             </Col>
                             <Col md={6}>
-                                <div style={{ position: "relative", borderRadius: "10px", padding: "12px 20px 12px 12px", border: "2px dashed rgb(220,230,241)" }} className="my-2">
+                                <div style={{ position: "relative", borderRadius: "10px", padding: "12px 30px 12px 12px", border: "2px dashed rgb(220,230,241)" }} className="my-2">
                                     <a href="www.google.com">Show recruiters you are open to work - you control who sees this.</a>
                                     <h6>Get Started</h6>
                                     <svg style={{ position: "absolute", top: "10%", right: "2%" }} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" data-supported-dps="16x16" fill="currentColor" class="mercado-match" width="16" height="16" focusable="false">

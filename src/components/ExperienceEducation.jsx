@@ -1,6 +1,6 @@
 import React from "react"
 import { Row, Col, Modal, Button, Form } from "react-bootstrap"
-import {withRouter} from "react-router-dom"
+import { withRouter } from "react-router-dom"
 
 // kai token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDlhOGQxZGRmY2NjNTAwMTVhNmJiY2QiLCJpYXQiOjE2MjA3NDE0MDYsImV4cCI6MTYyMTk1MTAwNn0.QNqO9fHDHOKv1VoPJfJInf1UQF10jMz6AZtfBnSi8Os
 // 609a8d1ddfccc50015a6bbcd
@@ -8,25 +8,28 @@ import {withRouter} from "react-router-dom"
 class ExperienceEducation extends React.Component {
 
     state = {
-        modalShow: false,
+        addModalShow: false,
+        updateModalshow: false,
         user: null,
     }
 
     handleShow = () => {
         console.log("hellow")
-        this.setState({ modalShow: !this.state.modalShow })
+        this.setState({ addModalShow: !this.state.addModalShow })
 
     }
 
     componentDidMount = async () => {
 
-        this.setState({user: await this.props.crud.get(this.props.match.params.id)})
+        this.setState({ user: await this.props.crud.get(this.props.match.params.id) })
 
     }
 
 
-    render() {
+    render() {  
 
+        console.log(this.state.user)
+      
         return (
             <>
                 <Col className="mt-4 mb-4 section-outer section-inner">
@@ -40,7 +43,7 @@ class ExperienceEducation extends React.Component {
                         <div className="d-flex justify-content-between">
                             <img className="medium-logo" src="https://media-exp1.licdn.com/dms/image/C4D0BAQHMzEZdUDzWLw/company-logo_100_100/0/1607610827235?e=1628726400&v=beta&t=2DyogaeKHlEJ4FJcFv2DpjEkXpRJ325JlCvt6KMJI_E"></img>
                             <div className="ms-3">
-                                <h6>{(this.state.user) ? this.state.user[0].role : "Finance Manager"  }</h6>
+                                <h6>{(this.state.user) ? this.state.user[0].role : "Finance Manager"}</h6>
                                 <p>{this.state.user ? this.state.user[0].company : "Ministry of Housing, Communities and Local Government"}</p>
                                 <span>Jan 2020 – Present . 1 yr 5 mos</span>
 
@@ -80,7 +83,7 @@ class ExperienceEducation extends React.Component {
 
                 </Col>
 
-                {this.state.modalShow && <UpdateExperienceModal show={this.state.modalShow} hide={() => { this.setState({ modalShow: false }) }} />}
+                {this.state.addModalShow && <AddExperienceModal show={this.state.addModalShow} post={this.props.crud.post} id={this.state.user[0]._id} hide={() => { this.setState({ addModalShow: false }) }} />}
 
 
             </>
@@ -88,10 +91,19 @@ class ExperienceEducation extends React.Component {
     }
 }
 
-class UpdateExperienceModal extends React.Component {
+class AddExperienceModal extends React.Component {
 
+    state = {
+            role: "CTO",
+            company: "Strive School",
+            startDate: "2019-06-16",
+            endDate: "2019-06-16", //could be null
+            description: "Doing stuff here and there",
+            area: "Berlin"
+    }
 
     render() {
+        
         return (
             <Modal
                 show={this.props.show}
@@ -106,35 +118,103 @@ class UpdateExperienceModal extends React.Component {
                     <Form>
                         <Form.Group controlId="formBasicTitle">
                             <Form.Label>Title *</Form.Label>
-                            <Form.Control type="text" placeholder="Ex: Retail Sales Manager"/>
+                            <Form.Control value={this.state.role} onChange={(e) => this.setState({role: e.target.value })} type="text" placeholder="Ex: Retail Sales Manager" />
                         </Form.Group>
                         <Form.Group controlId="formBasicCompany">
                             <Form.Label>Company *</Form.Label>
-                            <Form.Control type="text" placeholder="Ex: Microsoft" />
+                            <Form.Control value={this.state.company} onChange={(e) => this.setState({company: e.target.value })} type="text" placeholder="Ex: Microsoft" />
                         </Form.Group>
                         <Form.Group controlId="formBasicLocation">
                             <Form.Label>Location</Form.Label>
-                            <Form.Control type="text" placeholder="Ex: London, United Kingdom" />
+                            <Form.Control value={this.state.area} onChange={(e) => this.setState({area: e.target.value })} type="text" placeholder="Ex: London, United Kingdom" />
                         </Form.Group>
                         <Form.Group controlId="formBasicDescription">
                             <Form.Label>Description</Form.Label>
-                            <Form.Control type="text-area"/>
+                            <Form.Control value={this.state.description} onChange={(e) => this.setState({description: e.target.value })} type="text-area" />
                         </Form.Group>
-                        <Form.Group controlId="formBasicDescription">
-                            <Form.Label>Description</Form.Label>
-                            <Form.Control type="month"/>
+                        <Form.Group controlId="formBasicDate">
+                            <Form.Label>Start Date</Form.Label>
+                            <Form.Control type="date" />
                         </Form.Group>
-                        
+                        <Form.Group controlId="formBasicDate">
+                            <Form.Label>End Date</Form.Label>
+                            <Form.Control type="date" />
+                            <Form.Text>If you still work here leave date fucking blank</Form.Text>
+                        </Form.Group>
+
                     </Form>
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={this.props.hide} >
                         Close
                      </Button>
-                    <Button variant="primary">Save</Button>
+                    <Button variant="primary" onClick={async () => this.props.post(await this.props.id, await this.state)}>Save</Button>
                 </Modal.Footer>
             </Modal>)
     }
 }
+
+// class UpdateExperienceModal extends React.Component {
+
+//     state = {
+//             role: "CTO",
+//             company: "Strive School",
+//             startDate: "2019-06-16",
+//             endDate: "2019-06-16", //could be null
+//             description: "Doing stuff here and there",
+//             area: "Berlin"
+//     }
+
+//     render() {
+        
+//         return (
+//             <Modal
+//                 show={this.props.show}
+//                 onHide={this.props.hide}
+//                 backdrop="static"
+//                 keyboard={false}
+//             >
+//                 <Modal.Header closeButton>
+//                     <Modal.Title>Add experience</Modal.Title>
+//                 </Modal.Header>
+//                 <Modal.Body>
+//                     <Form>
+//                         <Form.Group controlId="formBasicTitle">
+//                             <Form.Label>Title *</Form.Label>
+//                             <Form.Control value={this.state.role} onChange={(e) => this.setState({role: e.target.value })} type="text" placeholder="Ex: Retail Sales Manager" />
+//                         </Form.Group>
+//                         <Form.Group controlId="formBasicCompany">
+//                             <Form.Label>Company *</Form.Label>
+//                             <Form.Control value={this.state.company} onChange={(e) => this.setState({company: e.target.value })} type="text" placeholder="Ex: Microsoft" />
+//                         </Form.Group>
+//                         <Form.Group controlId="formBasicLocation">
+//                             <Form.Label>Location</Form.Label>
+//                             <Form.Control value={this.state.area} onChange={(e) => this.setState({area: e.target.value })} type="text" placeholder="Ex: London, United Kingdom" />
+//                         </Form.Group>
+//                         <Form.Group controlId="formBasicDescription">
+//                             <Form.Label>Description</Form.Label>
+//                             <Form.Control value={this.state.description} onChange={(e) => this.setState({description: e.target.value })} type="text-area" />
+//                         </Form.Group>
+//                         <Form.Group controlId="formBasicDate">
+//                             <Form.Label>Start Date</Form.Label>
+//                             <Form.Control type="date" />
+//                         </Form.Group>
+//                         <Form.Group controlId="formBasicDate">
+//                             <Form.Label>End Date</Form.Label>
+//                             <Form.Control type="date" />
+//                             <Form.Text>If you still work here leave date fucking blank</Form.Text>
+//                         </Form.Group>
+
+//                     </Form>
+//                 </Modal.Body>
+//                 <Modal.Footer>
+//                     <Button variant="secondary" onClick={this.props.hide} >
+//                         Close
+//                      </Button>
+//                     <Button variant="primary" onClick={async () => this.props.post(await this.props.id, await this.state)}>Save</Button>
+//                 </Modal.Footer>
+//             </Modal>)
+//     }
+// }
 
 export default withRouter(ExperienceEducation)

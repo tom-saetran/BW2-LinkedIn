@@ -29,7 +29,7 @@ class App extends React.Component {
     }
 
     getExperiences = async id => {
-        console.log(id)
+        
         let results
         try {
             if (id === "" || id === undefined || id === null) throw new Error("id must be present")
@@ -59,12 +59,17 @@ class App extends React.Component {
                 },
                 body: JSON.stringify(data)
             })
-            results = await results.json()
+            data = await results.json()
+            console.log(results)
+            if(results.ok) {
+
+                alert("posted")
+            }
         } catch (error) {
             console.error(error)
             return null
         }
-        return await results
+        return await data
     }
 
     putExperienceData = async (userID, data, expID) => {
