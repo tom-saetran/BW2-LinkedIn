@@ -7,7 +7,7 @@ class ProfileJumbotron extends React.Component {
             <>
                 <Col className="mt-4 section-outer px-0">
                     <Col md={12} className="banner-parent">
-                        <img className="img-fluid" src="https://thingscareerrelated.files.wordpress.com/2018/03/lake2b.jpg" alt="banner"></img>
+                        <img    className="img-fluid" src="https://thingscareerrelated.files.wordpress.com/2018/03/lake2b.jpg" alt="banner"></img>
                         <img className="img-overlay img-fluid rounded-circle" src="https://i.pinimg.com/originals/3d/99/a7/3d99a7e6cb285c7f7cf5e87131e45c92.jpg" alt="profilePic"></img>
                         <div className="d-flex justify-content-center align-items-center img-overlay2 overlay-2-bg">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" data-supported-dps="16x16" fill="currentColor" class="mercado-match" width="16" height="16" focusable="false">
