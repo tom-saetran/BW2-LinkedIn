@@ -1,16 +1,28 @@
 import React from "react"
-import { Row, Col } from "react-bootstrap"
+import { Row, Col, Modal, Button, Form } from "react-bootstrap"
 
 class ExperienceEducation extends React.Component {
+
+    state = {
+        modalShow: false
+
+    }
+
+    handleShow = () => {
+        console.log("hellow")
+        this.setState({ modalShow: !this.state.modalShow })
+
+    }
+
 
     render() {
 
         return (
             <>
-                <Col  className="mt-4 mb-4 section-outer section-inner">
+                <Col className="mt-4 mb-4 section-outer section-inner">
                     <div className="d-flex mb-2 justify-content-between">
                         <h6>Experience</h6>
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" data-supported-dps="24x24" fill="currentColor" class="mercado-match" width="24" height="24" focusable="false">
+                        <svg onClick={this.handleShow} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" data-supported-dps="24x24" fill="currentColor" class="mercado-match" width="24" height="24" focusable="false">
                             <path d="M21 13h-8v8h-2v-8H3v-2h8V3h2v8h8z"></path>
                         </svg>
                     </div>
@@ -57,8 +69,61 @@ class ExperienceEducation extends React.Component {
                     </div>
 
                 </Col>
+
+                {this.state.modalShow && <UpdateExperienceModal show={this.state.modalShow} hide={() => { this.setState({ modalShow: false }) }} />}
+
+
             </>
         )
+    }
+}
+
+class UpdateExperienceModal extends React.Component {
+
+
+    render() {
+        return (
+            <Modal
+                show={this.props.show}
+                onHide={this.props.hide}
+                backdrop="static"
+                keyboard={false}
+            >
+                <Modal.Header closeButton>
+                    <Modal.Title>Add experience</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <Form>
+                        <Form.Group controlId="formBasicTitle">
+                            <Form.Label>Title *</Form.Label>
+                            <Form.Control type="text" placeholder="Ex: Retail Sales Manager"/>
+                        </Form.Group>
+                        <Form.Group controlId="formBasicCompany">
+                            <Form.Label>Company *</Form.Label>
+                            <Form.Control type="text" placeholder="Ex: Microsoft" />
+                        </Form.Group>
+                        <Form.Group controlId="formBasicLocation">
+                            <Form.Label>Location</Form.Label>
+                            <Form.Control type="text" placeholder="Ex: London, United Kingdom" />
+                        </Form.Group>
+                        <Form.Group controlId="formBasicDescription">
+                            <Form.Label>Description</Form.Label>
+                            <Form.Control type="text-area"/>
+                        </Form.Group>
+                        <Form.Group controlId="formBasicDescription">
+                            <Form.Label>Description</Form.Label>
+                            <Form.Control type="month"/>
+                        </Form.Group>
+                        
+                    </Form>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={this.props.hide} >
+                        Close
+                     </Button>
+                    <Button variant="primary">Save</Button>
+                </Modal.Footer>
+            </Modal>)
     }
 }
 

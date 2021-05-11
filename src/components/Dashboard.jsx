@@ -8,7 +8,7 @@ class Dashboard extends React.Component {
 
         return (
             <>
-                <Col className="section-inner dashboard">
+                <Col className="section-inner mt-4 dashboard">
                     <Row>
 
                         <h5>Your Dashboard</h5>

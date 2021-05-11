@@ -26,6 +26,11 @@
 
 .button-border button {
     border-radius: 25px;
+    padding: 4px 16px
+}
+
+.btn-1 button {
+    background-color: #0a66c2;
 }
 
 .small-logo{
@@ -40,7 +45,7 @@
 }
 
 .dashboard {
-   background-color: rgb(220,230,241); border-radius: 15px; margin-top: 20px;
+   background-color: rgb(220,230,241); border-radius: 15px;
    border: 1px rgb(206, 206, 206) solid
 }
 
