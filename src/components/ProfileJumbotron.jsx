@@ -1,5 +1,5 @@
 import React from "react"
-import { Container, Button, Row, Col, DropdownButton, Dropdown, ButtonGroup } from "react-bootstrap"
+import {Button, Row, Col, DropdownButton, Dropdown, ButtonGroup } from "react-bootstrap"
 
 class ProfileJumbotron extends React.Component {
     render() {
@@ -57,14 +57,22 @@ class ProfileJumbotron extends React.Component {
                                     {/* #0a66c2 background color from linnked in */}
                                 </div>
                             </Col>
-                            <Col md={4}>
-                                <div className="d-flex">
-                                    <img className="small-logo" src="https://media-exp1.licdn.com/dms/image/C4D0BAQHMzEZdUDzWLw/company-logo_100_100/0/1607610827235?e=1628726400&v=beta&t=2DyogaeKHlEJ4FJcFv2DpjEkXpRJ325JlCvt6KMJI_E"></img>
-                                    <span className="ms-2 text-truncate">Ministry of Housing Communities and local government</span>
+                            <Col  md={4}>
+                                <div className="d-flex" >
+
+                                    <img className="small-logo" src="https://media-exp1.licdn.com/dms/image/C4D0BAQHMzEZdUDzWLw/company-logo_100_100/0/1607610827235?e=1628726400&v=beta&t=2DyogaeKHlEJ4FJcFv2DpjEkXpRJ325JlCvt6KMJI_E" alt="company-logo">
+                                    </img>
+                                    <span className="ms-2 text-truncate">
+                                        Ministry of Housing Communities and local government
+                            </span>
                                 </div>
-                                <div className="mt-2 d-flex">
-                                    <img className="small-logo" src="https://media-exp1.licdn.com/dms/image/C4E0BAQF5t62bcL0e9g/company-logo_100_100/0/1519855919126?e=1628726400&v=beta&t=MJ7aXvNHbhY_WijBVVZztYsa9YUDftiM3CU5ObSMYtk"></img>
-                                    <p className="ms-2 text-truncate">Harvard University</p>
+                                <div className="mt-2 d-flex" >
+
+                                    <img className="small-logo" src="https://media-exp1.licdn.com/dms/image/C4E0BAQF5t62bcL0e9g/company-logo_100_100/0/1519855919126?e=1628726400&v=beta&t=MJ7aXvNHbhY_WijBVVZztYsa9YUDftiM3CU5ObSMYtk" alt="">
+                                    </img>
+                                    <p className="ms-2 text-truncate" >
+                                        Harvard University
+                            </p >
                                 </div>
                             </Col>
                         </Row>
@@ -72,9 +80,12 @@ class ProfileJumbotron extends React.Component {
                     <Col className="show-recruiters">
                         <Row>
                             <Col md={6}>
-                                <div style={{ borderRadius: "10px", padding: "8px", border: "2px dashed rgb(220,230,241)" }} className="my-2 mx-2 ">
-                                    <a href="www.google.com">Show recruiters you are open to work - you control who sees this.</a>
+                                <div style={{ position: "relative", borderRadius: "10px", padding: "8px", border: "2px dashed rgb(220,230,241)" }} className="my-2 mx-2 "><a href="www.google.com">Show recruiters you are open to work - you control who sees this.</a> 
+                                <svg style={{position: "absolute", top: "0px", right: "0px"}} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" data-supported-dps="16x16" fill="currentColor" class="mercado-match" width="16" height="16" focusable="false">
+                                <path d="M14 3.41L9.41 8 14 12.59 12.59 14 8 9.41 3.41 14 2 12.59 6.59 8 2 3.41 3.41 2 8 6.59 12.59 2z"></path>
+                                </svg>
                                 </div>
+
                             </Col>
                             <Col md={6}>
                                 <div style={{ borderRadius: "10px", padding: "8px", border: "2px dashed rgb(220,230,241)" }} className="my-2 mx-2 ">
