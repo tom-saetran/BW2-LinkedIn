@@ -6,16 +6,17 @@ import Activity from "./Activity"
 import ExperienceEducation from "./ExperienceEducation"
 import Interests from "./Interests"
 import "../assets/kai.css"
+import SideLoaderOne from "./SideLoaderOne"
 
 class Profile extends React.Component {
     state = {
-        me: {},
-        all: {}
+        me: null,
+        all: null
     }
 
     componentDidUpdate = (_previousProps, _previousState) => {
-        if (_previousState.me !== this.state.me) this.setState({ me: this.props.me })
-        if (_previousState.all !== this.state.all) this.setState({ all: this.props.all })
+        if (this.props.me !== this.state.me) this.setState({ me: this.props.me })
+        if (this.props.all !== this.state.all) this.setState({ all: this.props.all })
     }
 
     render() {
@@ -30,8 +31,7 @@ class Profile extends React.Component {
                         <Interests />
                     </Col>
                     <Col md={4}>
-                        {/* */}
-                        <div>Hellow world lorem 500</div>
+                        <SideLoaderOne me={this.state.me} all={this.state.all}/>
                     </Col>
                     <Col md={4}>{/* */}</Col>
                     <Col md={4}>{/* */}</Col>
