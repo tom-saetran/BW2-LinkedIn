@@ -16,6 +16,10 @@ code {
     object-fit: cover;
 }
 
+#drop-down-button {
+    width: 100%;
+}
+
 #card-img:hover {
     opacity: 1;
     transition: 0.3s;
@@ -27,7 +31,7 @@ code {
     opacity: 1;
     transition: 0.3s;
     cursor: pointer;
-    background-color:rgb(206, 206, 206);
+    background-color: rgb(206, 206, 206);
     color: black;
 }
 
@@ -45,8 +49,18 @@ code {
     color: rgba(145, 145, 145, 0.87);
 }
 
-#divider{
+#divider {
     border-bottom: 1px rgb(206, 206, 206) solid;
+}
+
+#top-two {
+    display: block;
+    justify-content: center;
+    align-items: center;
+}
+
+#divider {
+    border-bottom: 1px solid red;
 }
 
 #div-drop-one {
@@ -59,29 +73,38 @@ code {
     align-items: center;
 }
 
-#drop-down-button{
+#drop-down-button {
     width: 100%;
 }
 
-.dropdown-menu{
+.dropdown-menu {
     width: 100%;
-    margin: auto
+    margin: auto;
 }
 
-#footer-title{
+#footer-title {
     letter-spacing: 2px;
     font-weight: bold;
 }
 
-#footer-title-icon{
+#footer-title-icon {
     color: blue;
 }
 
-#generated-card > div > div.col-8{
+#id-image {
+    height: 50;
+    width: 50;
+}
+
+#side-card-title > h2 {
+    font-size: 1.2rem;
+}
+
+#generated-card > div > div.col-8 {
     padding-left: 0;
 }
 
-#generated-card > div > div.col-4{
+#generated-card > div > div.col-4 {
     padding-right: 0;
 }
 
@@ -96,9 +119,33 @@ html {
     overflow-x: hidden;
 }
 
-#id-image{
+#id-image {
     height: 50;
     width: 50;
+}
+
+#side-loader-youtube {
+    border: 1px rgba(128, 128, 128, 0.585) solid;
+    border-radius: 25;
+    display: flex;
+    justify-content: flex-start;
+    position: relative;
+}
+
+#youtube-card {
+    padding-left: 0;
+    border: none;
+}
+
+#youtube-text {
+    padding-right: 0;
+}
+#dropdown-item-button-one {
+}
+
+#youtube-image {
+    padding-left: 5;
+    padding-right: 0;
 }
 
 #pickme {
@@ -107,41 +154,50 @@ html {
     height: 75px;
     width: 100px;
     background-image: "https://i1.wp.com/thedatascientist.com/wp-content/uploads/2019/06/what-is-data-science.jpg?fit=1920%2C1080&ssl=1";
-    
-    
 }
 
 #person-title {
     color: grey;
 }
 
-#side-card-title{
+#side-card-title {
     justify-content: left;
     border-bottom: none !important;
+    background: red;
+}
+#generated-card > div > div.col-4 {
+    padding-right: 0;
+}
+
+#card-img {
+    border-radius: 50%;
+    height: 75px;
+    width: 75px;
+    object-fit: cover;
 }
 
 #side-card {
     border: none;
 }
 
-#side-card-title > h2{
-    color:grey
-    
-   
+#side-card-title > h2 {
+    color: grey;
 }
 
 #sl-one-drop {
     width: 100%;
     border: none;
+    padding-left: 0;
+    padding-right: 0;
+    background: transparent;
 }
 
 #SideLoaderOneGroup {
     border: 1px rgb(206, 206, 206) solid;
-    
+
     display: flex;
     justify-content: flex-start;
     position: relative;
-
 }
 
 #SideLoaderOneContainer {
@@ -149,30 +205,30 @@ html {
     padding-bottom: 10;
 }
 
-#side-loader-youtube{
+#side-loader-youtube {
     border: 1px rgb(206, 206, 206) solid;
-        border-radius: 25;
-        display: flex;
-        justify-content: flex-start;
-        position: relative;
+    border-radius: 25;
+    display: flex;
+    justify-content: flex-start;
+    position: relative;
 }
 
-#top-two-text{
+#top-two-text {
     color: grey;
     padding-top: 10px;
-    padding-bottom: 10px
+    padding-bottom: 10px;
 }
 
-#youtube-card{
+#youtube-card {
     padding-left: 0;
     border: none;
 }
 
-#youtube-text{
+#youtube-text {
     padding-right: 0;
 }
 
-#youtube-image{
+#youtube-image {
     padding-left: 5;
     padding-right: 0;
 }
@@ -182,6 +238,13 @@ html {
     background: transparent; /* Optional: just make scrollbar invisible */
 }
 
+#divider {
+    border: 1px rgba(128, 128, 128, 0.479) solid;
+    border-radius: 25;
+    padding-top: 10;
+    padding-bottom: 10;
+}
 
-
-
+.no-shadow {
+    box-shadow: none !important;
+}
