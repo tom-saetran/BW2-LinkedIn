@@ -23,8 +23,9 @@ class Profile extends React.Component {
     render() {
         return (
             <Container>
-                <Row className="no-gutters">
+                <Row>
                     <Col className="px-0" md={8}>
+                    
                         <ProfileJumbotron me={this.state.me} />
                         <Dashboard />
                         <Activity />
