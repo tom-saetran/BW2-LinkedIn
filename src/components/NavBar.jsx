@@ -10,6 +10,7 @@ export default class NavBar extends Component {
     }
 
     // hi carl! do you copy?
+    // another one!
     render() {
         return this.state.isMe ? (
             /* <= if you are at the users profile */
