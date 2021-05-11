@@ -9,116 +9,15 @@ code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
-#drop-down-button{
-    width: 100%;
-}
-
-#SideLoaderOneGroup {
-    border: 1px rgba(128, 128, 128, 0.585) solid;
-    border-radius: 25;
-    display: flex;
-    justify-content: flex-start;
-    position: relative;
-}
-
-#top-two {
-    display: block;
-    justify-content: center;
-    align-items: center;
-    
-}
-
-#divider{
-    border-bottom: 1px solid red;
-}
-
-#top-two-text{
-}
-
-#div-drop-one {
-    border-top: rgba(182, 158, 122, 0.61) 1px solid;
-    border-radius: 0;
-    display: flex;
-    display: block;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
-}
-
-#sl-one-drop {
-    width: 100%;
-    border: none;
-}
-
-#SideLoaderOneContainer {
-    
-    padding-bottom: 25px;
-}
-
-#side-card {
-    border: none;
-}
-
-#id-image{
-    height: 50;
-    width: 50;
-}
-
-#side-card-title > h2{
-    font-size: 1.2rem;
-   
-}
-
-#generated-card > div > div.col-8{
-    padding-left: 0;
-}
-
-#side-loader-youtube{
-        border: 1px rgba(128, 128, 128, 0.585) solid;
-        border-radius: 25;
-        display: flex;
-        justify-content: flex-start;
-        position: relative;
-}
-
-#youtube-card{
-    padding-left: 0;
-    border: none;
-    
-}
-
-#youtube-text{
-    padding-right: 0;
-    
-}
-
-#youtube-image{
-    padding-left: 5;
-    padding-right: 0;
-
-
-}
-
-#pickme {
-    margin-left: 0;
-    padding-left: 0;
-    height: 75px;
-    width: 100px;
-    background: red;
-    
-    
-}
-#generated-card > div > div.col-4{
-    padding-right: 0;
-}
-
 #card-img {
     border-radius: 50%;
     height: 75px;
     width: 75px;
     object-fit: cover;
-    
+}
 
+#drop-down-button {
+    width: 100%;
 }
 
 #card-img:hover {
@@ -132,20 +31,8 @@ code {
     opacity: 1;
     transition: 0.3s;
     cursor: pointer;
-    background-color: grey;
-    color: white;
-}
-
-#side-card-title {
-    border: none;
-    padding-left: 0;
-    padding-right: 0;
-}
-
-#generated-card {
-    border: none;
-    padding-left: 0;
-    padding-right: 0;
+    background-color: rgb(206, 206, 206);
+    color: black;
 }
 
 #card-button {
@@ -162,21 +49,202 @@ code {
     color: rgba(145, 145, 145, 0.87);
 }
 
-#person-title {
-    color: grey;
+#divider {
+    border-bottom: 1px rgb(206, 206, 206) solid;
+}
+
+#top-two {
+    display: block;
+    justify-content: center;
+    align-items: center;
+}
+
+#divider {
+    border-bottom: 1px solid red;
+}
+
+#div-drop-one {
+    border-top: rgba(182, 158, 122, 0.61) 1px solid;
+    border-radius: 0;
+    display: flex;
+    display: block;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+#drop-down-button {
+    width: 100%;
+}
+
+.dropdown-menu {
+    width: 100%;
+    margin: auto;
+}
+
+#footer-title {
+    letter-spacing: 2px;
+    font-weight: bold;
+}
+
+#footer-title-icon {
+    color: blue;
+}
+
+#id-image {
+    height: 50;
+    width: 50;
+}
+
+#side-card-title > h2 {
+    font-size: 1.2rem;
+}
+
+#generated-card > div > div.col-8 {
+    padding-left: 0;
+}
+
+#generated-card > div > div.col-4 {
+    padding-right: 0;
+}
+
+#generated-card {
+    border: none;
+    padding-left: 0;
+    padding-right: 0;
 }
 
 html {
     overflow: scroll;
     overflow-x: hidden;
 }
+
+#id-image {
+    height: 50;
+    width: 50;
+}
+
+#side-loader-youtube {
+    border: 1px rgba(128, 128, 128, 0.585) solid;
+    border-radius: 25;
+    display: flex;
+    justify-content: flex-start;
+    position: relative;
+}
+
+#youtube-card {
+    padding-left: 0;
+    border: none;
+}
+
+#youtube-text {
+    padding-right: 0;
+}
+#dropdown-item-button-one {
+}
+
+#youtube-image {
+    padding-left: 5;
+    padding-right: 0;
+}
+
+#pickme {
+    margin-left: 0;
+    padding-left: 0;
+    height: 75px;
+    width: 100px;
+    background-image: "https://i1.wp.com/thedatascientist.com/wp-content/uploads/2019/06/what-is-data-science.jpg?fit=1920%2C1080&ssl=1";
+}
+
+#person-title {
+    color: grey;
+}
+
+#side-card-title {
+    justify-content: left;
+    border-bottom: none !important;
+    background: transparent;
+}
+#generated-card > div > div.col-4 {
+    padding-right: 0;
+}
+
+#card-img {
+    border-radius: 50%;
+    height: 75px;
+    width: 75px;
+    object-fit: cover;
+}
+
+#side-card {
+    border: none;
+}
+
+#side-card-title > h2 {
+    color: grey;
+}
+
+#sl-one-drop {
+    width: 100%;
+    border: none;
+    padding-left: 0;
+    padding-right: 0;
+    background: transparent;
+}
+
+#SideLoaderOneGroup {
+    border: 1px rgb(206, 206, 206) solid;
+
+    display: flex;
+    justify-content: flex-start;
+    position: relative;
+}
+
+#SideLoaderOneContainer {
+    padding-top: 10;
+    padding-bottom: 10;
+}
+
+#side-loader-youtube {
+    border: 1px rgb(206, 206, 206) solid;
+    border-radius: 25;
+    display: flex;
+    justify-content: flex-start;
+    position: relative;
+}
+
+#top-two-text {
+    color: grey;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+#youtube-card {
+    padding-left: 0;
+    border: none;
+}
+
+#youtube-text {
+    padding-right: 0;
+}
+
+#youtube-image {
+    padding-left: 5;
+    padding-right: 0;
+}
+
 ::-webkit-scrollbar {
     width: 0; /* Remove scrollbar space */
     background: transparent; /* Optional: just make scrollbar invisible */
 }
-#divider{
+
+#divider {
     border: 1px rgba(128, 128, 128, 0.479) solid;
     border-radius: 25;
     padding-top: 10;
     padding-bottom: 10;
+}
+
+.no-shadow {
+    box-shadow: none !important;
 }
