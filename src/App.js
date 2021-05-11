@@ -144,20 +144,27 @@ class App extends React.Component {
         return await results
     }
 
-    crud = {
+    crud_experience = {
         get: id => this.getExperiences(id),
         post: (userID, data) => this.postExperienceData(userID, data),
         put: (userID, data, expID) => this.putExperienceData(userID, data, expID),
         delete: (userID, expID) => this.deleteExperienceData(userID, expID)
     }
 
+    crud_user = {
+        get: id => this.getProfileData(id),
+        post: false,
+        put: data => this.putProfileData(data),
+        delete: false
+    }
+
     render() {
         return (
             <Router>
-                <Route render={routeProps => <NavBar {...routeProps} me={this.state.me} />} />
+                <Route render={routeProps => <NavBar {...routeProps} crud={this.crud_user} me={this.state.me} all={this.state.allprofiles} />} />
                 <Switch>
-                    <Route render={routeProps => <Profile {...routeProps} crud={this.crud} exp={this.state.experience} me={this.state.me} all={this.state.allprofiles} />} exact path="/profile" />
-                    <Route render={routeProps => <Profile {...routeProps} crud={this.crud} exp={this.state.experience} me={this.state.me} all={this.state.allprofiles} />} exact path="/profile/:id" />
+                    <Route render={routeProps => <Profile {...routeProps} crud={this.crud_experience} exp={this.state.experience} me={this.state.me} all={this.state.allprofiles} />} exact path="/profile/:id" />
+                    <Route render={routeProps => <Profile {...routeProps} crud={this.crud_experience} exp={this.state.experience} me={this.state.me} all={this.state.allprofiles} />} exact path="/profile" />
                     {/* <Route render={routeProps => <SideLoaderOne {...routeProps} me={this.state.me} all={this.state.allprofiles} />} /> */}
                     {/* <Route render={routeProps => <HTTP501 {...routeProps} />} exact path="/" /> */}
                     {/* <Route render={routeProps => <HTTP404 {...routeProps} />} /> */}
