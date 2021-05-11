@@ -1,0 +1,60 @@
+.section-outer {
+    background-color: white;
+     border-radius: 15px;
+     border: 1px rgb(206, 206, 206) solid
+}
+
+.img-overlay{
+    position: absolute; max-width: 150px; width: 25%; bottom: -50px; left: 35px;
+}
+.img-overlay2{
+    position: absolute; top: 10%; right: 4%; 
+    height: 32px;
+    width: 32px;
+}
+.overlay-2-bg {
+    background-color: white;
+    border-radius: 50%;
+}
+.section-inner{
+    padding: 25px 30px;
+}
+
+.banner-parent {
+    position: relative;
+}
+
+.button-border button {
+    border-radius: 25px;
+}
+
+.small-logo{
+    width: 32px;
+    height: 32px
+}
+
+.medium-logo{
+    width: 56px;
+    height: 56px
+    
+}
+
+.dashboard {
+   background-color: rgb(220,230,241); border-radius: 15px; margin-top: 20px;
+   border: 1px rgb(206, 206, 206) solid
+}
+
+.show-recruiters {
+    padding: 0px 20px 10px 20px
+}
+
+.dash-stats{
+    font-size: 40px;
+    text-decoration: none;
+    font-weight: lighter;
+}
+
+.mid-dash {
+   border-left: 1px rgb(206, 206, 206) solid;
+   border-right: 1px rgb(206, 206, 206) solid;
+}
