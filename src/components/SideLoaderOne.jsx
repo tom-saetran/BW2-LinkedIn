@@ -35,7 +35,7 @@ class SideLoaderOne extends React.Component {
         return (
 
             <> {
-                this.state.me !== null &&
+                this.state.me !== undefined &&
                 <Container>
                     <Row>
                         <Col>
