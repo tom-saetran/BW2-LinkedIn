@@ -1,168 +1,215 @@
 import { Badge, Button, Card, Col, Container, Dropdown, DropdownButton, Form, FormControl, Nav, Navbar, Jumbotron, ListGroup, Row } from 'react-bootstrap'
+import React from 'react'
 
-const SideLoaderOne = () => (
-    <Container>
-        <Navbar bg="dark" variant="dark">
-            <Navbar.Brand href="#home">
-                Navbar
-            </Navbar.Brand>
-            <Nav className="mr-auto">
-                <Nav.Link href="#home">
-                    Home
-                </Nav.Link>
-                <Nav.Link href="#features">
-                    Features
-                </Nav.Link>
-                <Nav.Link href="#pricing">
-                    Pricing
-                </Nav.Link>
-            </Nav>
-            <Form inline>
-                <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-                <Button variant="outline-info">
-                    Search
-                </Button>
-            </Form>
-        </Navbar>
+class SideLoaderOne extends React.Component {
+    state = {
+        me: null,
+        all: null,
+        some: null
+    }
 
-        <Row>
-            <Col>
-                <Container >
-                    <Jumbotron>
-                        <h1>Hello, world!</h1>
-                        <p>
-                            This is a simple hero unit, a simple jumbotron-style component for calling
-                            extra attention to featured content or information.
-                        </p>
-                        <p>
-                            <Button variant="primary">Learn more</Button>
-                        </p>
-                        <Container>
-                            <Card id="side-card" style={{ width: '10rem' }}>
-                                <Card.Body>
-                                    <Row><Col>
-                                        <Card.Img xs="4" variant="top" src="https://www.pngrepo.com/png/93140/180/profile-user.png" /></Col>
-                                        <Col xs="8"><Card.Title>
-                                            Kevin Menses
-                                    </Card.Title>
-                                            <Card.Text>
+    componentDidUpdate = (_previousProps, _previousState) => {
+        if (this.props.me !== this.state.me) this.setState({ me: this.props.me })
+        if (this.props.all !== this.state.all) this.setState({ all: this.props.all })
+        if (this.state.some === null && this.state.all !== null) this.setState({ some: this.some() })
+    }
 
-                                                <p id="card-description">student at university of rochester</p>
-                                            </Card.Text>
-                                            <Button id="card-button">
-                                                Connect
-                                    </Button></Col></Row>
-                                </Card.Body>
-                            </Card>
-                        </Container>
-                    </Jumbotron>
-                </Container>
-            </Col>
-            <Col xs="4">
+
+    //  const noInfo = []
+    // if (this.state.some !== undefined){
+    //    continue
+    //} else{
+    //    noInfo.push(this.state.some)
+    // }
+    //
+
+
+    some = () => this.state.all.map(a => [a, Math.random()])
+        .sort((a, b) => { return a[1] < b[1] ? -1 : 1; })
+        .slice(0, 5)
+        .map(a => a[0]);
+
+
+    render() {
+
+        return (
+
+            <> {
+                this.state.me !== null &&
                 <Container>
-                    <h6>
-                        Edit <Badge variant="secondary">New</Badge>
-                    </h6>
-                    <h6>
-                        Example heading <Badge variant="secondary">New</Badge>
-                    </h6>
-                </Container>
-                <Container id="SideLoaderTwo" >
-                    <div id="SideLoaderOneContainer">
-                        <div id="SideLoaderTwoImage">
-                            <ListGroup>
-                                <ListGroup.Item id="SideLoaderTwoItem">
-                                    <Card id="side-card">
-                                        <Card.Header id="side-card-title">
-                                            <h2>People also viewed</h2>
-                                        </Card.Header>
-                                        <Card.Body>
-                                            <Row class="flex-row">
-                                                <Col xs={4} className="">
-                                                    <Card.Img variant="top" src="https://www.pngrepo.com/png/93140/180/profile-user.png" />
+                    <Row>
+                        <Col>
+
+                        </Col>
+                        <Col xs="4">
+                            <Container id="top-two">
+                                <h6>
+                                    Edit public profile + URL <sup><Badge className="text-secondary" variant="secondary">?</Badge></sup>
+                                </h6>
+                                <h6>
+                                    Add profile in another language <Badge className="text-secondary" variant="secondary">?</Badge>
+                                </h6>
+
+                            </Container>
+
+                            <Container id="SideLoaderOneContainer" >
+                                <div id="SideLoaderOne">
+                                    <div id="SideLoaderOneImage">
+                                        <ListGroup id="SideLoaderOneGroup">
+                                            <ListGroup.Item id="SideLoaderOneItem">
+                                                <Card id="side-card">
+                                                    <Card.Header id="side-card-title">
+                                                        <h2>People also viewed</h2>
+                                                    </Card.Header>
+                                                    {this.state.some !== null && this.state.some.map(person => {
+                                                        return (
+                                                            <Card.Body id="generated-card" key={person._id}>
+                                                                <Row className="flex-row">
+                                                                    <Col xs={4} className="">
+                                                                        <Card.Img id="card-img" src={person.image} />
+                                                                    </Col>
+                                                                    <Col xs={8}>
+                                                                        <Card.Title>
+                                                                            {console.log(person)}
+                                                                            {person.name}<span id="person-title"> : {person.title}</span>
+                                                                        </Card.Title>
+                                                                        <Card.Text>
+
+                                                                            <div id="card-description">{person.area}</div>
+                                                                        </Card.Text>
+                                                                        <Button id="card-button">
+                                                                            Connect
+                                                                </Button>
+                                                                    </Col>
+                                                                </Row>
+                                                            </Card.Body>)
+                                                    })}
+                                                </Card>
+
+
+
+                                            </ListGroup.Item>
+                                            <div id="div-drop-one">
+                                                <DropdownButton variant="outline-secondary" id="sl-one-drop" title="Show more">
+                                                    <Dropdown.ItemText>Dropdown item text</Dropdown.ItemText>
+                                                    <Dropdown.Item as="button">Action</Dropdown.Item>
+                                                    <Dropdown.Item as="button">Another action</Dropdown.Item>
+                                                    <Dropdown.Item as="button">Something else</Dropdown.Item>
+                                                </DropdownButton>
+                                            </div>
+                                        </ListGroup>
+                                    </div>
+                                </div>
+                            </Container>
+
+                            <Container id="SideLoaderOne" >
+                                <div id="SideLoaderOneContainer">
+                                    <div id="SideLoaderOneImage">
+                                        <ListGroup id="SideLoaderOneGroup">
+                                            <ListGroup.Item id="SideLoaderOneItem">
+                                                <Card id="side-card">
+                                                    <Card.Header id="side-card-title">
+                                                        <h2>People you may know</h2>
+                                                    </Card.Header>
+                                                    {this.state.some !== null && this.state.some.map(person => {
+                                                        return (
+                                                            <Card.Body id="generated-card" key={person._id}>
+                                                                <Row className="flex-row">
+                                                                    <Col xs={4} className="">
+                                                                        <Card.Img id="card-img" src={person.image} />
+                                                                    </Col>
+                                                                    <Col xs={8}>
+                                                                        <Card.Title>
+                                                                            {console.log(person)}
+                                                                            {person.name}
+                                                                        </Card.Title>
+                                                                        <Card.Text>
+                                                                            <span>{person.title}</span>
+                                                                            <div id="card-description">{person.area}</div>
+                                                                        </Card.Text>
+                                                                        <Button id="card-button">
+                                                                            Connect
+                                                                </Button>
+                                                                    </Col>
+                                                                </Row>
+                                                            </Card.Body>)
+                                                    })}
+                                                </Card>
+
+
+
+                                            </ListGroup.Item>
+                                            <div id="div-drop-one">
+                                                <DropdownButton variant="outline-secondary" id="sl-one-drop" title="Show more">
+                                                    <Dropdown.ItemText>Dropdown item text</Dropdown.ItemText>
+                                                    <Dropdown.Item as="button">Action</Dropdown.Item>
+                                                    <Dropdown.Item as="button">Another action</Dropdown.Item>
+                                                    <Dropdown.Item as="button">Something else</Dropdown.Item>
+                                                </DropdownButton>
+                                            </div>
+                                        </ListGroup>
+                                    </div>
+                                </div>
+                            </Container>
+                            <Container>
+                                <ListGroup>
+                                    <ListGroup.Item><Badge className="text-secondary" variant="primary">IN</Badge>LEARNING</ListGroup.Item>
+                                    <ListGroup.Item>Add new skills with these courses</ListGroup.Item>
+                                    <ListGroup.Item>
+                                        <Container>
+                                            <Row>
+                                                <Col xs="4">
+                                                    <img id="pickme"></img>
                                                 </Col>
-                                                <Col xs={8}>
-                                                    <Card.Title>
-                                                        Kevin Menses
-                                                    </Card.Title>
-                                                    <Card.Text>
-                                                        <p id="card-description">student at university of rochester</p>
-                                                    </Card.Text>
-                                                    <Button id="card-button">
-                                                        Connect
-                                                    </Button>
+                                                <Col xs="8">
+                                                    <h2>Cybersecurity for Executives</h2>
+                                                    <span>22, 331 views</span>
                                                 </Col>
                                             </Row>
-                                        </Card.Body>
-                                        <Card.Footer>
+                                        </Container>
+                                    </ListGroup.Item>
+                                    <ListGroup.Item>
+                                        <Container>
+                                            <Row>
+                                                <Col xs="4">
+                                                    <img id="pickme"></img>
+                                                </Col>
+                                                <Col xs="8">
+                                                    <h2>Cybersecurity for Executives</h2>
+                                                    <span>22, 331 views</span>
+                                                </Col>
+                                            </Row>
+                                        </Container>
+                                    </ListGroup.Item>
+                                    <ListGroup.Item>
+                                        <Container>
+                                            <Row>
+                                                <Col xs="4">
+                                                    <img id="pickme"></img>
+                                                </Col>
+                                                <Col xs="8">
+                                                    <h2>Cybersecurity for Executives</h2>
+                                                    <span>22, 331 views</span>
+                                                </Col>
+                                            </Row>
+                                        </Container>
+                                    </ListGroup.Item>
+                                    <ListGroup.Item>Add new skills with these courses</ListGroup.Item>
 
-                                        </Card.Footer>
-                                    </Card>
-                                </ListGroup.Item>
-                                <div>
-                                    <DropdownButton id="dropdown-item-button" title="Dropdown button">
-                                        <Dropdown.ItemText>Dropdown item text</Dropdown.ItemText>
-                                        <Dropdown.Item as="button">Action</Dropdown.Item>
-                                        <Dropdown.Item as="button">Another action</Dropdown.Item>
-                                        <Dropdown.Item as="button">Something else</Dropdown.Item>
-                                    </DropdownButton>
-                                </div>
-                            </ListGroup>
-                        </div>
-                    </div>
+                                </ListGroup>
+                            </Container>
+                        </Col>
+                    </Row>
+
                 </Container>
-                <Container id="SideLoaderOne" >
-                    <div id="SideLoaderOneContainer">
-                        <ListGroup id="SideLoaderOneGroup">
-                            <ListGroup.Item id="SideLoaderOneItem">
-                                <p id="SideLoaderOneHeader">
-                                    People also viewed
-                                </p>
-                            </ListGroup.Item>
-                            <ListGroup.Item id="SideLoaderOneItem">
-                                <image src="https://www.pngrepo.com/png/93140/180/profile-user.png" alt="Girl in a jacket" width="50" height="60"></image>
-                                    Cras justo odio
-                                <Button id="SideLoaderButton" variant="outline-secondary">Secondary</Button>
-                            </ListGroup.Item>
-                            <ListGroup.Item id="SideLoaderOneItem">
-                                Cras justo odio
-                                <Button id="SideLoaderButton" variant="outline-secondary">Secondary</Button>
-                            </ListGroup.Item>
-                            <ListGroup.Item id="SideLoaderOneItem">
-                                Cras justo odio
-                                <Button id="SideLoaderButton" variant="outline-secondary">Secondary</Button>
-                            </ListGroup.Item>
-                            <ListGroup.Item id="SideLoaderOneItem">
-                                Cras justo odio
-                                <Button id="SideLoaderButton" variant="outline-secondary">Secondary</Button>
-                            </ListGroup.Item>
-                            <ListGroup.Item id="SideLoaderOneItem">
-                                Cras justo odio
-                                <Button id="SideLoaderButton" variant="outline-secondary">Secondary</Button>
-                            </ListGroup.Item>
-                            <DropdownButton id="dropdown-item-button-one" title="Dropdown button">
-                                <Dropdown.ItemText>Dropdown item text</Dropdown.ItemText>
-                                <Dropdown.Item as="button">Action</Dropdown.Item>
-                                <Dropdown.Item as="button">Another action</Dropdown.Item>
-                                <Dropdown.Item as="button">Something else</Dropdown.Item>
-                            </DropdownButton>
-                        </ListGroup>
-                    </div>
-                </Container>
-                <Container>
-                    <ListGroup>
-                        <ListGroup.Item>Cras justo odio</ListGroup.Item>
-                        <ListGroup.Item>Dapibus ac facilisis in</ListGroup.Item>
-                        <ListGroup.Item>Morbi leo risus</ListGroup.Item>
-                        <ListGroup.Item>Porta ac consectetur ac</ListGroup.Item>
-                        <ListGroup.Item>Vestibulum at eros</ListGroup.Item>
-                    </ListGroup>
-                </Container>
-            </Col>
-        </Row>
-
-    </Container>
-)
+            }</>
 
 
+        )
+
+    }
+}
 export default SideLoaderOne
+
+
+

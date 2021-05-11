@@ -11,33 +11,93 @@ code {
 
 #SideLoaderOneGroup{
     
-    border: 4px rgba(128, 128, 128, 0.585) solid;
-    border-radius: 1%;
+    border: 1px rgba(128, 128, 128, 0.585) solid;
+    border-radius: 25;
     display: flex;
-    
     justify-content: flex-start;
     position: relative;
     
 
 }
 
-#SideLoaderOneItem{
+#top-two{
+    display: block;
+    justify-content: center;
+    align-items: center;
+    margin-left: 5px;
+}
+
+#div-drop-one{
+    border-top: rgba(182, 158, 122, 0.61) 1px solid;
+    border-radius: 0;
+    display: flex;
+    display: block;
+    width: 100%;
+    justify-content: center;
+    align-items: center;  
+}
+
+#sl-one-drop{
+    width: 100%;
     border: none;
 }
 
-#SideLoaderOneHeader{
-    color: blue;
-    
-    
+#SideLoaderOneContainer{
+    padding-top: 12px;
+    padding-bottom: 12px;
 }
 
-#dropdown-item-button-one{
+#side-card{
+    border: none;    
+}
+
+#pickme{
+    margin-left: 0;
+    padding-left: 0;
+    height: 75px;
+    width: 100px;
+    background: red;
+}
+
+#card-img{
+    border-radius: 50%;
+    max-height: 75px;
+    max-width: 75px;
     
+    
+
+}
+
+#card-img:hover{
+
+    opacity: 1;
+    transition: 0.3s;
+    cursor: pointer;
+    transform: scale(1.15);
+}
+
+#card-button:hover{
+    opacity: 1;
+    transition: 0.3s;
+    cursor: pointer;
+    background-color: grey;
+    color: white;
+}
+
+#side-card-title{
+    border: none;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+#generated-card{
+    border: none;
+    padding-left: 0;
+    padding-right: 0;
 }
 
 #card-button{ 
     background-color: white;
-    border: 1px solid black;
     color: grey;
     font-weight: bold;
     text-align: center;
@@ -46,10 +106,10 @@ code {
 }
 
 #card-description{
-    color: grey;
+    color: rgba(145, 145, 145, 0.87);
     
 }
 
-#side-card{
-
+#person-title{
+    color: grey
 }
