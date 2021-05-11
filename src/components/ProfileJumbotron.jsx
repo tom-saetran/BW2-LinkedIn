@@ -1,5 +1,5 @@
 import React from "react"
-import {Button, Row, Col, DropdownButton, Dropdown, ButtonGroup } from "react-bootstrap"
+import { Button, Row, Col, DropdownButton, Dropdown, ButtonGroup } from "react-bootstrap"
 
 class ProfileJumbotron extends React.Component {
     render() {
@@ -42,22 +42,25 @@ class ProfileJumbotron extends React.Component {
                                     </span>
                                 </div>
 
-                                <div className="d-flex mt-2">
-                                    <DropdownButton className="button-border" size="sm" variant="primary" as={ButtonGroup} title="Open to" id="bg-nested-dropdown">
+
+
+                                <div className="">
+                                    <DropdownButton className="my-2 btn-1 button-border" size="sm" variant="primary" as={ButtonGroup} title="Open to" id="bg-nested-dropdown">
+                                        <Dropdown.Item eventKey="1">Finding a new job</Dropdown.Item>
+                                        <Dropdown.Item eventKey="2">Hiring</Dropdown.Item>
+                                    </DropdownButton>
+                                    <DropdownButton className="my-2 ms-2 button-border" size="sm" as={ButtonGroup} variant="outline-dark" title="Add profile section" id="bg-nested-dropdown">
                                         <Dropdown.Item eventKey="1">Dropdown link</Dropdown.Item>
                                         <Dropdown.Item eventKey="2">Dropdown link</Dropdown.Item>
                                     </DropdownButton>
-                                    <DropdownButton className="ms-2 button-border" as={ButtonGroup} variant="outline-dark" title="Add profile section" id="bg-nested-dropdown">
-                                        <Dropdown.Item eventKey="1">Dropdown link</Dropdown.Item>
-                                        <Dropdown.Item eventKey="2">Dropdown link</Dropdown.Item>
-                                    </DropdownButton>
-                                    <Button style={{ borderRadius: "25px" }} className="ms-2" variant="outline-dark">
+                                    <Button style={{ borderRadius: "25px", padding: "4px 16px" }} size="sm" className="ms-2 my-2" variant="outline-dark">
                                         More ...
                                     </Button>
                                     {/* #0a66c2 background color from linnked in */}
                                 </div>
+
                             </Col>
-                            <Col  md={4}>
+                            <Col md={4}>
                                 <div className="d-flex" >
 
                                     <img className="small-logo" src="https://media-exp1.licdn.com/dms/image/C4D0BAQHMzEZdUDzWLw/company-logo_100_100/0/1607610827235?e=1628726400&v=beta&t=2DyogaeKHlEJ4FJcFv2DpjEkXpRJ325JlCvt6KMJI_E" alt="company-logo">
@@ -76,20 +79,24 @@ class ProfileJumbotron extends React.Component {
                                 </div>
                             </Col>
                         </Row>
-                    </Col>
-                    <Col className="show-recruiters">
                         <Row>
                             <Col md={6}>
-                                <div style={{ position: "relative", borderRadius: "10px", padding: "8px", border: "2px dashed rgb(220,230,241)" }} className="my-2 mx-2 "><a href="www.google.com">Show recruiters you are open to work - you control who sees this.</a> 
-                                <svg style={{position: "absolute", top: "0px", right: "0px"}} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" data-supported-dps="16x16" fill="currentColor" class="mercado-match" width="16" height="16" focusable="false">
-                                <path d="M14 3.41L9.41 8 14 12.59 12.59 14 8 9.41 3.41 14 2 12.59 6.59 8 2 3.41 3.41 2 8 6.59 12.59 2z"></path>
-                                </svg>
+                                <div style={{ position: "relative", borderRadius: "10px", padding: "12px 20px 12px 12px", border: "2px dashed rgb(220,230,241)" }} className=" my-2">
+                                    <a href="www.google.com">Show recruiters you are open to work - you control who sees this.</a>
+                                    <h6>Get Started</h6>
+                                    <svg style={{ position: "absolute", top: "10%", right: "2%" }} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" data-supported-dps="16x16" fill="currentColor" class="mercado-match" width="16" height="16" focusable="false">
+                                        <path d="M14 3.41L9.41 8 14 12.59 12.59 14 8 9.41 3.41 14 2 12.59 6.59 8 2 3.41 3.41 2 8 6.59 12.59 2z"></path>
+                                    </svg>
                                 </div>
 
                             </Col>
                             <Col md={6}>
-                                <div style={{ borderRadius: "10px", padding: "8px", border: "2px dashed rgb(220,230,241)" }} className="my-2 mx-2 ">
+                                <div style={{ position: "relative", borderRadius: "10px", padding: "12px 20px 12px 12px", border: "2px dashed rgb(220,230,241)" }} className="my-2">
                                     <a href="www.google.com">Show recruiters you are open to work - you control who sees this.</a>
+                                    <h6>Get Started</h6>
+                                    <svg style={{ position: "absolute", top: "10%", right: "2%" }} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" data-supported-dps="16x16" fill="currentColor" class="mercado-match" width="16" height="16" focusable="false">
+                                        <path d="M14 3.41L9.41 8 14 12.59 12.59 14 8 9.41 3.41 14 2 12.59 6.59 8 2 3.41 3.41 2 8 6.59 12.59 2z"></path>
+                                    </svg>
                                 </div>
                             </Col>
                         </Row>
