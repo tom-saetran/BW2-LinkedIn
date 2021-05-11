@@ -24,7 +24,7 @@ class Profile extends React.Component {
 
     render() {
         return (
-            <Container>
+            <Container className="pt-5">
                 <Row>
                     <Col className="px-0" md={8}>
                         <ProfileJumbotron crud={this.props.crud} me={this.state.me} />
