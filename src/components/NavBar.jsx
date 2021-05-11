@@ -9,6 +9,7 @@ export default class NavBar extends Component {
         if (this.props.match.params.id === undefined && this.state.isMe === false) this.setState({ isMe: true })
     }
 
+    // hi carl! do you copy?
     render() {
         return this.state.isMe ? (
             /* <= if you are at the users profile */
