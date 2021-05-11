@@ -32,10 +32,8 @@ class Profile extends React.Component {
                         <Interests />
                     </Col>
                     <Col md={4}>
-                        <SideLoaderOne me={this.state.me} all={this.state.all} />
+                        <SideLoaderOne crud={this.props.crud} me={this.state.me} all={this.state.all} />
                     </Col>
-                    <Col md={4}>{/* */}</Col>
-                    <Col md={4}>{/* */}</Col>
                 </Row>
             </Container>
         )
