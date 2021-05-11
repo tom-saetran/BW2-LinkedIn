@@ -9,49 +9,46 @@ code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
-#SideLoaderOneGroup{
-    
+#SideLoaderOneGroup {
     border: 1px rgba(128, 128, 128, 0.585) solid;
     border-radius: 25;
     display: flex;
     justify-content: flex-start;
     position: relative;
-    
-
 }
 
-#top-two{
+#top-two {
     display: block;
     justify-content: center;
     align-items: center;
     margin-left: 5px;
 }
 
-#div-drop-one{
+#div-drop-one {
     border-top: rgba(182, 158, 122, 0.61) 1px solid;
     border-radius: 0;
     display: flex;
     display: block;
     width: 100%;
     justify-content: center;
-    align-items: center;  
+    align-items: center;
 }
 
-#sl-one-drop{
+#sl-one-drop {
     width: 100%;
     border: none;
 }
 
-#SideLoaderOneContainer{
+#SideLoaderOneContainer {
     padding-top: 12px;
     padding-bottom: 12px;
 }
 
-#side-card{
-    border: none;    
+#side-card {
+    border: none;
 }
 
-#pickme{
+#pickme {
     margin-left: 0;
     padding-left: 0;
     height: 75px;
@@ -59,24 +56,20 @@ code {
     background: red;
 }
 
-#card-img{
+#card-img {
     border-radius: 50%;
     max-height: 75px;
     max-width: 75px;
-    
-    
-
 }
 
-#card-img:hover{
-
+#card-img:hover {
     opacity: 1;
     transition: 0.3s;
     cursor: pointer;
     transform: scale(1.15);
 }
 
-#card-button:hover{
+#card-button:hover {
     opacity: 1;
     transition: 0.3s;
     cursor: pointer;
@@ -84,19 +77,19 @@ code {
     color: white;
 }
 
-#side-card-title{
+#side-card-title {
     border: none;
     padding-left: 0;
     padding-right: 0;
 }
 
-#generated-card{
+#generated-card {
     border: none;
     padding-left: 0;
     padding-right: 0;
 }
 
-#card-button{ 
+#card-button {
     background-color: white;
     color: grey;
     font-weight: bold;
@@ -105,11 +98,10 @@ code {
     border-radius: 20%/50%;
 }
 
-#card-description{
+#card-description {
     color: rgba(145, 145, 145, 0.87);
-    
 }
 
-#person-title{
-    color: grey
+#person-title {
+    color: grey;
 }
