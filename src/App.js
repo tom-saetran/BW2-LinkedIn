@@ -61,7 +61,7 @@ class App extends React.Component {
     render() {
         return (
             <Router>
-                {/* <Route render={routeProps => <NavBar {...routeProps} me={this.state.me} />} /> */}
+                <Route render={routeProps => <NavBar {...routeProps} me={this.state.me} />} />
                 <Switch>
                     <Route render={routeProps => <Profile {...routeProps} me={this.state.me} all={this.state.allprofiles} />} />
                     {/* <Route render={routeProps => <HTTP501 {...routeProps} />} exact path="/" /> */}
