@@ -30,7 +30,7 @@ class Profile extends React.Component {
                         <ProfileJumbotron crud={this.props.crud} me={this.state.me} />
                         <Dashboard />
                         <Activity />
-                        <ExperienceEducation />
+                        <ExperienceEducation crud={this.props.crud} exp={this.props.exp} me={this.state.me} />
                         <Interests />
                     </Col>
                     <Col md={4}>

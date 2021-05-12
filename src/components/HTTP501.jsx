@@ -1,6 +1,8 @@
 import React from "react"
 import { Link } from "react-router-dom"
 import "../assets/toms-bootstrap-extensions.css"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faHome } from "@fortawesome/free-solid-svg-icons"
 
 class HTTP501 extends React.Component {
     render() {
@@ -10,7 +12,8 @@ class HTTP501 extends React.Component {
                     <h1>501 - Not Implemented</h1>
                     <Link className="no-underline" to="/profile">
                         <h3 className="link-dim">
-                            Go to <code className="text-success">/profile</code>
+                            Go to <FontAwesomeIcon icon={faHome} />
+                            <code className="text-success">/profile</code>
                         </h3>
                     </Link>
                 </div>
