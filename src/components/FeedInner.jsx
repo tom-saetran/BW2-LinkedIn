@@ -1,15 +1,15 @@
-import React from "react"
+// import React from "react"
 
 
-class FeedInner extends React.Component {
+// class FeedInner extends React.Component {
 
 
-    render() {
+//     render() {
 
-        return (
+//         return (
 
-        )
-    }
-}
+//         )
+//     }
+// }
 
-export default FeedInner
+// export default FeedInner

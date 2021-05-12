@@ -38,20 +38,88 @@ class SideLoaderOne extends React.Component {
             .map(a => a[0])
 
     render() {
+        //console.log(this.state.all)
         return (
+
             this.state.me !== null && (
                 <Col xs="12">
                     <div id="top-two">
                         <h6 id="top-two-text" className="top-two-text-divider">
-                            Edit public profile &amp; URL <sup><FontAwesomeIcon icon="question-circle" /></sup>
+                            <div className="d-flex" id="side-banner">
+                                <div>Edit public profile &amp; URL </div>
+                                <div id="question-mark-div">
+                                    <FontAwesomeIcon id="question-mark-icon" icon="question-circle" />
+                                </div>
+                            </div>
                         </h6>
                     </div>
                     <div id="divider"></div>
                     <div id="top-two">
-                        <h6 id="top-two-text">
-                            Add profile in another language <sup><FontAwesomeIcon icon="question-circle" /></sup>
+                        <h6 id="top-two-text" className="top-two-text-divider d-flex">
+                            <div className="d-flex" id="side-banner">
+                                <div>Add profile in another language</div>
+                                <div id="question-mark-div">
+                                    <FontAwesomeIcon id="question-mark-icon" icon="question-circle" />
+                                </div>
+                            </div>
                         </h6>
+                    </div>
 
+
+
+
+
+
+
+
+
+
+                    <div id="SideLoaderOneContainer">
+                        <div id="SideLoaderOne">
+                            <div id="SideLoaderOneImage">
+                                <ListGroup id="SideLoaderOneGroup">
+                                    <ListGroup.Item id="SideLoaderOneItem">
+                                        <Card id="side-card">
+                                            <Card.Header id="side-card-title">
+                                                <div >People also viewed</div>
+                                            </Card.Header>
+                                            {this.state.some !== null && this.state.some.map(person => {
+                                                return (
+                                                    <Card.Body id="generated-card" key={person._id}>
+                                                        <Row className="flex-row">
+                                                            <Col xs={4} id="card-img-column">
+                                                                <Card.Img id="card-img" src={person.image} />
+                                                            </Col>
+                                                            <Col xs={8} id="card-column">
+                                                                <Card.Title id="card-name" className="d-flex">
+                                                                    <div id="card-description-title">{person.name}</div>
+                                                                    <div id="third">3rd+</div>
+
+                                                                </Card.Title>
+                                                                <Card.Text id="card-description-container">
+                                                                    <p id="card-description">{person.title}</p>
+
+                                                                </Card.Text>
+                                                                <Button id="card-button">
+                                                                    Connect
+                                                                </Button>
+                                                            </Col>
+                                                        </Row>
+                                                    </Card.Body>)
+                                            })}
+                                        </Card>
+                                    </ListGroup.Item>
+                                    <div id="div-drop-one">
+                                        <DropdownButton className="no-shadow" variant="secondary-outline" id="sl-one-drop" title="Show more">
+                                            <Dropdown.ItemText>Dropdown item text</Dropdown.ItemText>
+                                            <Dropdown.Item as="button">Action</Dropdown.Item>
+                                            <Dropdown.Item as="button">Another action</Dropdown.Item>
+                                            <Dropdown.Item as="button">Something else</Dropdown.Item>
+                                        </DropdownButton>
+                                    </div>
+                                </ListGroup>
+                            </div>
+                        </div>
                     </div>
 
                     <div id="SideLoaderOneContainer">
@@ -61,7 +129,7 @@ class SideLoaderOne extends React.Component {
                                     <ListGroup.Item id="SideLoaderOneItem">
                                         <Card id="side-card">
                                             <Card.Header id="side-card-title">
-                                                <h2  >People also viewed</h2>
+                                                <div >People you may know</div>
                                             </Card.Header>
                                             {this.state.some !== null && this.state.some.map(person => {
                                                 return (
@@ -72,12 +140,11 @@ class SideLoaderOne extends React.Component {
                                                             </Col>
                                                             <Col xs={8} id="card-column">
                                                                 <Card.Title id="card-name">
-
-                                                                    {person.name}<span id="person-title"> : {person.title}</span>
+                                                                    <p id="card-description-title">{person.name}</p>
                                                                 </Card.Title>
-                                                                <Card.Text>
+                                                                <Card.Text id="card-description-container">
+                                                                    <p id="card-description">{person.title}</p>
 
-                                                                    <div id="card-description">{person.area}</div>
                                                                 </Card.Text>
                                                                 <Button id="card-button">
                                                                     Connect
@@ -102,98 +169,56 @@ class SideLoaderOne extends React.Component {
                     </div>
 
 
-                    <div id="SideLoaderOneContainer" >
-                        <div id="SideLoaderOne">
-                            <div id="SideLoaderOneImage">
-                                <ListGroup id="SideLoaderOneGroup">
-                                    <ListGroup.Item id="SideLoaderOneItem">
-                                        <Card id="side-card">
-                                            <Card.Header id="side-card-title">
-                                                <h2>People you may know</h2>
-                                            </Card.Header>
-                                            {this.state.some !== null && this.state.some.map(person => {
-                                                return (
-                                                    <Card.Body id="generated-card" key={person._id}>
-                                                        <Row className="flex-row">
-                                                            <Col xs={4} id="card-img-column">
-                                                                <Card.Img id="card-img" src={person.image} />
-                                                            </Col>
-                                                            <Col xs={8} id="card-column">
-                                                                <Card.Title>
 
-                                                                    {person.name}<span id="person-title"> : {person.title}</span>
-                                                                </Card.Title>
-                                                                <Card.Text>
-
-                                                                    <div id="card-description">{person.area}</div>
-                                                                </Card.Text>
-                                                                <Button id="card-button">
-                                                                    Connect
-                                                                </Button>
-                                                            </Col>
-                                                        </Row>
-                                                    </Card.Body>)
-                                            })}
-                                        </Card>
-                                    </ListGroup.Item>
-                                    <div id="div-drop-one">
-                                        <DropdownButton variant="outline-secondary" style={{ boxShadow: "none !important" }} id="sl-one-drop" title="Show more">
-                                            <Dropdown.ItemText>Dropdown item text</Dropdown.ItemText>
-                                            <Dropdown.Item as="button">Action</Dropdown.Item>
-                                            <Dropdown.Item as="button">Another action</Dropdown.Item>
-                                            <Dropdown.Item as="button">Something else</Dropdown.Item>
-                                        </DropdownButton>
-                                    </div>
-                                </ListGroup>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div >
+                    <div id="SLYT">
                         <ListGroup id="side-loader-youtube">
-                            <ListGroup.Item id="footer-title"><FontAwesomeIcon size="2x" id="footer-title-icon" icon={["fab", "linkedin"]} />LEARNING</ListGroup.Item>
+                            <ListGroup.Item id="footer-title">
+                                <FontAwesomeIcon size="2x" id="footer-title-icon" icon={["fab", "linkedin"]} />
+                                <span>LEARNING</span>
+                            </ListGroup.Item>
                             <ListGroup.Item id="footer-sub-title">Add new skills with these courses</ListGroup.Item>
-                            <ListGroup.Item>
+                            <ListGroup.Item id="youtube-card">
                                 <Container id="youtube-card">
                                     <Row>
                                         <Col xs="4" id="youtube-image">
-                                            <img id="pickme"></img>
+                                            <img id="pickme" src="/img/cfe.jpg"></img>
                                         </Col>
                                         <Col xs="8" id="youtube-text">
-                                            <h2>Cybersecurity for Executives</h2>
-                                            <span>22, 331 views</span>
+                                            <h6 id="yt-text-title">Cybersecurity for Executives</h6>
+                                            <span id="yt-view-count">22,331 views</span>
                                         </Col>
                                     </Row>
                                 </Container>
                             </ListGroup.Item>
-                            <ListGroup.Item>
-                                <Container>
+                            <ListGroup.Item id="youtube-card">
+                                <Container id="youtube-card">
+                                    <Row className="flex">
+                                        <Col xs="4" id="youtube-image">
+                                            <img id="pickme" src="/img/cacsi.jpg"></img>
+                                        </Col>
+                                        <Col xs="8" id="youtube-text">
+                                            <h6 id="yt-text-title">Communicating Culturally Sesitive Issues</h6>
+                                            <span id="yt-view-count">247,691 views</span>
+                                        </Col>
+                                    </Row>
+                                </Container>
+                            </ListGroup.Item>
+                            <ListGroup.Item id="youtube-card">
+                                <Container id="youtube-card">
                                     <Row>
-                                        <Col xs="4">
-                                            <img id="pickme"></img>
+                                        <Col xs="4" id="youtube-image">
+                                            <img id="pickme" src="/img/eet.jpg"></img>
                                         </Col>
-                                        <Col xs="8">
-                                            <h2>Cybersecurity for Executives</h2>
-                                            <span>22, 331 views</span>
-                                        </Col>
-                                    </Row>
-                                </Container>
-                            </ListGroup.Item>
-                            <ListGroup.Item>
-                                <Container>
-                                    <Row>
-                                        <Col xs="4">
-                                            <img id="pickme"></img>
-                                        </Col>
-                                        <Col xs="8">
-                                            <h2>Cybersecurity for Executives</h2>
-                                            <span>22, 331 views</span>
+                                        <Col xs="8" id="youtube-text">
+                                            <h6 id="yt-text-title">Excel Essential Training (Office 365/Microsoft 365)</h6>
+                                            <span id="yt-view-count">745,856 views</span>
                                         </Col>
                                     </Row>
                                 </Container>
+                            </ListGroup.Item >
+                            <ListGroup.Item id="side-loader-footer">
+                                <span href="">Show more on LinkedIn Learning</span>
                             </ListGroup.Item>
-                            <ListGroup.Item id="side-loader-footer">Show more on LinkedIn Learning</ListGroup.Item>
                         </ListGroup>
                     </div>
                 </Col>
