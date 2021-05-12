@@ -14,7 +14,7 @@ class ExperienceEducation extends React.Component {
 
     componentDidUpdate = async () => {
         const id = this.props.match.params.id || (this.props.me && this.props.me._id)
-        if (id && this.state.experiences === null) this.setState({ experiences: await this.props.crud.get(id) })
+        if (id && this.state.experiences === null) this.setState({ experiences: await this.props.crud.user.get(id) })
     }
 
     handleShow = () => {
