@@ -26,7 +26,7 @@ class Profile extends React.Component {
         return (
             <Container className="pt-5">
                 <Row>
-                    <Col className="px-0" md={{ span: 7, offset: 1 }}>
+                    <Col md={{ span: 7, offset: 1 }}>
                         <ProfileJumbotron crud={this.props.crud} me={this.state.me} />
                         <Dashboard />
                         <Activity />
