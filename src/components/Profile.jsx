@@ -24,17 +24,20 @@ class Profile extends React.Component {
 
     render() {
         return (
-            <Container>
+            <Container className="pt-5">
                 <Row>
-                    <Col className="px-0" md={8}>
+                    <Col md={{ span: 7, offset: 1 }}>
                         <ProfileJumbotron crud={this.props.crud} me={this.state.me} />
                         <Dashboard />
                         <Activity />
-                        <ExperienceEducation />
+                        <ExperienceEducation crud={this.props.crud} exp={this.props.exp} me={this.state.me} />
                         <Interests />
                     </Col>
-                    <Col md={4}>
+                    <Col md={3}>
                         <SideLoaderOne crud={this.props.crud} me={this.state.me} all={this.state.all} />
+                    </Col>
+                    <Col md={1}>
+
                     </Col>
                 </Row>
             </Container>

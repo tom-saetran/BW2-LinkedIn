@@ -5,7 +5,7 @@ import HTTP501 from "./components/HTTP501"
 import HTTP404 from "./components/HTTP404"
 import Profile from "./components/Profile"
 import NavBar from "./components/NavBar"
-import Footer from "./components/Footer"
+import Feed from "./components/Feed"
 import SideLoaderOne from "./components/SideLoaderOne"
 
 class App extends React.Component {
@@ -15,6 +15,7 @@ class App extends React.Component {
         withID: {},
         exp: null,
         endpoint: "https://striveschool-api.herokuapp.com/api/profile/",
+        post_endpoint: "https://striveschool-api.herokuapp.com/api/posts/",
         authtoken: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDk4ZWJlMDYxOWU1ZDAwMTUxZjhmN2IiLCJpYXQiOjE2MjA2MzQ1OTMsImV4cCI6MTYyMTg0NDE5M30.m8Z_6EwSxdhgdmOtupcNuhyf9wv2VNmMt9PuzYmgTV8"
     }
 
@@ -29,7 +30,6 @@ class App extends React.Component {
     }
 
     getExperiences = async id => {
-        console.log(id)
         let results
         try {
             if (id === "" || id === undefined || id === null) throw new Error("id must be present")
@@ -59,12 +59,16 @@ class App extends React.Component {
                 },
                 body: JSON.stringify(data)
             })
-            results = await results.json()
+            data = await results.json()
+            console.log(results)
+            if (results.ok) {
+                alert("posted")
+            }
         } catch (error) {
             console.error(error)
             return null
         }
-        return await results
+        return await data
     }
 
     putExperienceData = async (userID, data, expID) => {
@@ -144,6 +148,88 @@ class App extends React.Component {
         return await results
     }
 
+    getAllPosts = async () => {
+        let results
+        try {
+            results = await fetch(this.state.post_endpoint, {
+                headers: {
+                    Authorization: this.state.authtoken
+                }
+            })
+            results = await results.json()
+        } catch (error) {
+            console.error(error)
+            return null
+        }
+        return await results
+    }
+
+    getSpecificPost = async postID => {
+        let results
+        try {
+            results = await fetch(this.state.post_endpoint + postID, {
+                headers: {
+                    Authorization: this.state.authtoken
+                }
+            })
+            results = await results.json()
+        } catch (error) {
+            console.error(error)
+            return null
+        }
+        return await results
+    }
+
+    postPost = async data => {
+        let results
+        try {
+            results = await fetch(this.state.post_endpoint, {
+                headers: {
+                    Authorization: this.state.authtoken
+                },
+                body: JSON.stringify(data)
+            })
+            results = await results.json()
+        } catch (error) {
+            console.error(error)
+            return null
+        }
+        return await results
+    }
+
+    putPost = async (postID, data) => {
+        let results
+        try {
+            results = await fetch(this.state.post_endpoint + postID, {
+                headers: {
+                    Authorization: this.state.authtoken
+                },
+                body: JSON.stringify(data)
+            })
+            results = await results.json()
+        } catch (error) {
+            console.error(error)
+            return null
+        }
+        return await results
+    }
+
+    deletePost = async postID => {
+        let results
+        try {
+            results = await fetch(this.state.post_endpoint + postID, {
+                headers: {
+                    Authorization: this.state.authtoken
+                }
+            })
+            results = await results.json()
+        } catch (error) {
+            console.error(error)
+            return null
+        }
+        return await results
+    }
+
     crud_experience = {
         get: id => this.getExperiences(id),
         post: (userID, data) => this.postExperienceData(userID, data),
@@ -158,6 +244,20 @@ class App extends React.Component {
         delete: false
     }
 
+    crud_post = {
+        get: postID => this.getSpecificPost(postID),
+        getAll: () => this.getAllPosts(),
+        post: postID => this.postPost(postID),
+        put: (postID, data) => this.putPost(postID, data),
+        delete: postID => this.deletePost(postID)
+    }
+
+    full_crud = {
+        crud_user: this.crud_user,
+        crud_experience: this.crud_experience,
+        crud_post: this.crud_post
+    }
+
     render() {
         return (
             <Router>
@@ -165,8 +265,9 @@ class App extends React.Component {
                 <Switch>
                     <Route render={routeProps => <Profile {...routeProps} crud={this.crud_experience} exp={this.state.experience} me={this.state.me} all={this.state.allprofiles} />} exact path="/profile/:id" />
                     <Route render={routeProps => <Profile {...routeProps} crud={this.crud_experience} exp={this.state.experience} me={this.state.me} all={this.state.allprofiles} />} exact path="/profile" />
+                    <Route render={routeProps => <Feed {...routeProps} crud={this.full_crud} />} exact path="/feed" />
                     <Route render={routeProps => <HTTP501 {...routeProps} />} exact path="/" />
-                    {/* <Route render={routeProps => <HTTP404 {...routeProps} />} /> */}
+                    <Route render={routeProps => <HTTP404 {...routeProps} />} />
                 </Switch>
 
                 {/* <Route render={routeProps => <Footer {...routeProps} />} /> */}

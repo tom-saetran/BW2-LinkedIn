@@ -5,9 +5,9 @@ class ProfileJumbotron extends React.Component {
     render() {
         return (
             <>
-                <Col className="section-outer px-0">
+                <Col className="mt-4 section-outer px-0">
                     <Col md={12} className="banner-parent">
-                        <img className="img-fluid" src="https://thingscareerrelated.files.wordpress.com/2018/03/lake2b.jpg" alt="banner"></img>
+                        <img    className="img-fluid" src="https://thingscareerrelated.files.wordpress.com/2018/03/lake2b.jpg" alt="banner"></img>
                         <img className="img-overlay img-fluid rounded-circle" src="https://i.pinimg.com/originals/3d/99/a7/3d99a7e6cb285c7f7cf5e87131e45c92.jpg" alt="profilePic"></img>
                         <div className="d-flex justify-content-center align-items-center img-overlay2 overlay-2-bg">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" data-supported-dps="16x16" fill="currentColor" class="mercado-match" width="16" height="16" focusable="false">
@@ -15,11 +15,7 @@ class ProfileJumbotron extends React.Component {
                             </svg>
                         </div>
                     </Col>
-                    {/* <Row style={{position: "relative", top: "-45px"}}>
-               <Col md={{span: 2, offset: 1}}>
-     
-               </Col>
-               </Row> */}
+               
 
                     <Col className=" section-inner">
                         <Row>
@@ -36,7 +32,7 @@ class ProfileJumbotron extends React.Component {
 
                                 <div className="d-flex">
                                     <span>London, England, United Kingdom</span>
-                                    <span className="ms-2">.</span>
+                                    <span className="ms-2">·</span>
                                     <span className="ms-2">
                                         <a href="www.google.com">Contact info</a>
                                     </span>
@@ -81,7 +77,7 @@ class ProfileJumbotron extends React.Component {
                         </Row>
                         <Row>
                             <Col md={6}>
-                                <div style={{ position: "relative", borderRadius: "10px", padding: "12px 20px 12px 12px", border: "2px dashed rgb(220,230,241)" }} className=" my-2">
+                                <div style={{ position: "relative", borderRadius: "10px", padding: "12px 30px 12px 12px", border: "2px dashed rgb(220,230,241)" }} className=" my-2">
                                     <a href="www.google.com">Show recruiters you are open to work - you control who sees this.</a>
                                     <h6>Get Started</h6>
                                     <svg style={{ position: "absolute", top: "10%", right: "2%" }} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" data-supported-dps="16x16" fill="currentColor" class="mercado-match" width="16" height="16" focusable="false">
@@ -91,7 +87,7 @@ class ProfileJumbotron extends React.Component {
 
                             </Col>
                             <Col md={6}>
-                                <div style={{ position: "relative", borderRadius: "10px", padding: "12px 20px 12px 12px", border: "2px dashed rgb(220,230,241)" }} className="my-2">
+                                <div style={{ position: "relative", borderRadius: "10px", padding: "12px 30px 12px 12px", border: "2px dashed rgb(220,230,241)" }} className="my-2">
                                     <a href="www.google.com">Show recruiters you are open to work - you control who sees this.</a>
                                     <h6>Get Started</h6>
                                     <svg style={{ position: "absolute", top: "10%", right: "2%" }} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" data-supported-dps="16x16" fill="currentColor" class="mercado-match" width="16" height="16" focusable="false">
