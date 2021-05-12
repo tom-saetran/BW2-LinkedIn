@@ -71,7 +71,7 @@ class App extends React.Component {
             post: false,
             delete: false
         },
-        experience: {
+        experiences: {
             get: async id => {
                 let results
                 try {
