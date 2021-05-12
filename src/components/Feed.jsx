@@ -1,5 +1,8 @@
 import React from "react"
-import FeedInner from "./FeedInner"
+import { Container, Row, Col } from "react-bootstrap"
+import AddPost from "./AddPost"
+import FeedItem from "./FeedItem"
+
 
 class Feed extends React.Component {
 
@@ -8,24 +11,39 @@ class Feed extends React.Component {
 
         return (
             <Container className="pt-5">
-            <Row>
-            <Col md={1}></Col>
-                <Col className="px-0" md={2}>
-                    
-                </Col>
-                <Col md={5}>
-                   <FeedInner/>
-                </Col>
-                <Col md={3}>
+                <Row>
 
-                </Col>
-                <Col md={1}></Col>
-            </Row>
-        </Container>   
+                    <Col className="px-0" md={3}>
+
+                    </Col>
+                    <Col md={6}>
+                        <Row>
+                            <AddPost />
+
+
+
+                            <Col className="px-0 my-1" xs={12}>
+                                <div className="d-flex alig">
+                                    <hr className="flex-grow-1 me-2" style={{ color: "grey" }}></hr>
+                                    <div>
+                                        <span>Sort by:</span> <strong>Top</strong>
+                                    </div>
+                                </div>
+                            </Col>
+                            <FeedItem/>
+                            <FeedItem/>
+                        </Row>
+                    </Col>
+                    <Col md={3}>
+
+                    </Col>
+
+                </Row>
+            </Container>
 
 
         )
     }
 }
 
-export default Feed 
+export default Feed
