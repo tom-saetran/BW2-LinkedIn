@@ -8,7 +8,7 @@ class HTTP404 extends React.Component {
     render() {
         return (
             <>
-                <div className="text-dim text-center">
+                <div className="pt-5 text-dim text-center">
                     <h1>404 - Not Found</h1>
                     <Link className="no-underline" to="/profile">
                         <h3 className="link-dim">

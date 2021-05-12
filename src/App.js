@@ -5,7 +5,7 @@ import HTTP501 from "./components/HTTP501"
 import HTTP404 from "./components/HTTP404"
 import Profile from "./components/Profile"
 import NavBar from "./components/NavBar"
-import Footer from "./components/Footer"
+import Feed from "./components/Feed"
 import SideLoaderOne from "./components/SideLoaderOne"
 
 class App extends React.Component {
@@ -148,21 +148,6 @@ class App extends React.Component {
         return await results
     }
 
-    /*
-
-    - GET https://striveschool-api.herokuapp.com/api/posts/ 
-    Retrieve posts
-    - POST https://striveschool-api.herokuapp.com/api/posts/
-    Creates a new post
-    - GET https://striveschool-api.herokuapp.com/api/posts/{postId}
-    Retrieves the specified post
-    - PUT https://striveschool-api.herokuapp.com/api/posts/{postId}
-    Edit a given post (note: you can only edit your posts)
-    - DELETE https://striveschool-api.herokuapp.com/api/posts/{postId}
-    Removes a post
-    
-    */
-
     getAllPosts = async () => {
         let results
         try {
@@ -280,9 +265,9 @@ class App extends React.Component {
                 <Switch>
                     <Route render={routeProps => <Profile {...routeProps} crud={this.crud_experience} exp={this.state.experience} me={this.state.me} all={this.state.allprofiles} />} exact path="/profile/:id" />
                     <Route render={routeProps => <Profile {...routeProps} crud={this.crud_experience} exp={this.state.experience} me={this.state.me} all={this.state.allprofiles} />} exact path="/profile" />
-                    <Route render={routeProps => <HTTP501 {...routeProps} crud={this.full_crud} />} exact path="/feed" />
+                    <Route render={routeProps => <Feed {...routeProps} crud={this.full_crud} />} exact path="/feed" />
                     <Route render={routeProps => <HTTP501 {...routeProps} />} exact path="/" />
-                    {/* <Route render={routeProps => <HTTP404 {...routeProps} />} /> */}
+                    <Route render={routeProps => <HTTP404 {...routeProps} />} />
                 </Switch>
 
                 {/* <Route render={routeProps => <Footer {...routeProps} />} /> */}
