@@ -76,7 +76,7 @@ class App extends React.Component {
                 let results
                 try {
                     if (id === "" || id === undefined || id === null) throw new Error("id must be present")
-                    results = await fetch(this.state.endpoint + id + "/experiences", {
+                    results = await fetch(this.state.endpoint + id, {
                         headers: {
                             Authorization: this.state.authtoken
                         }
