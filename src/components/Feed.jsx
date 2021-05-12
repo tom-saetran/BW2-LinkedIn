@@ -4,10 +4,6 @@ import AddPost from "./AddPost"
 import FeedItem from "./FeedItem"
 
 class Feed extends React.Component {
-    state = {
-        crud: this.props.crud
-    }
-
     render() {
         return (
             <Container className="pt-5">
@@ -15,7 +11,7 @@ class Feed extends React.Component {
                     <Col className="px-0" md={3}></Col>
                     <Col md={6}>
                         <Row>
-                            <AddPost />
+                            <AddPost crud={this.props.crud} />
 
                             <Col className="px-0 my-1" xs={12}>
                                 <div className="d-flex alig">
@@ -25,7 +21,7 @@ class Feed extends React.Component {
                                     </div>
                                 </div>
                             </Col>
-                            <FeedItem />
+                            <FeedItem crud={this.props.crud} />
                             <FeedItem />
                         </Row>
                     </Col>
