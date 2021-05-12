@@ -13,11 +13,6 @@ class ExperienceEducation extends React.Component {
         user: null,
     }
 
-    handleShow = () => {
-        console.log("hellow")
-        this.setState({ addModalShow: !this.state.addModalShow })
-
-    }
 
     componentDidMount = async () => {
 
@@ -25,6 +20,16 @@ class ExperienceEducation extends React.Component {
 
     }
 
+    handleShow = () => {
+        
+        this.setState({ addModalShow: !this.state.addModalShow })
+
+    }
+    handleUpdateShow = () => {
+        
+        this.setState({ updateModalShow: !this.state.updateModalShow })
+
+    }
 
     render() {  
 
@@ -50,7 +55,7 @@ class ExperienceEducation extends React.Component {
                             </div>
                         </div>
                         <div>
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" data-supported-dps="24x24" fill="currentColor" class="mercado-match" width="24" height="24" focusable="false">
+                            <svg onClick={this.handleUpdateShow} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" data-supported-dps="24x24" fill="currentColor" class="mercado-match" width="24" height="24" focusable="false">
                                 <path d="M21.13 2.86a3 3 0 00-4.17 0l-13 13L2 22l6.19-2L21.13 7a3 3 0 000-4.16zM6.77 18.57l-1.35-1.34L16.64 6 18 7.35z"></path>
                             </svg>
                         </div>
@@ -84,7 +89,7 @@ class ExperienceEducation extends React.Component {
                 </Col>
 
                 {this.state.addModalShow && <AddExperienceModal show={this.state.addModalShow} post={this.props.crud.post} id={this.state.user[0]._id} hide={() => { this.setState({ addModalShow: false }) }} />}
-
+                {this.state.updateModalShow && <UpdateExperienceModal show={this.state.updateModalShow} put={this.props.crud.put} id={this.state.user[0]._id} hide={() => { this.setState({ updateModalShow: false }) }} />}
 
             </>
         )
@@ -139,7 +144,7 @@ class AddExperienceModal extends React.Component {
                         <Form.Group controlId="formBasicDate">
                             <Form.Label>End Date</Form.Label>
                             <Form.Control type="date" />
-                            <Form.Text>If you still work here leave date fucking blank</Form.Text>
+                            <Form.Text>If you still work here leave date blank</Form.Text>
                         </Form.Group>
 
                     </Form>
@@ -154,67 +159,67 @@ class AddExperienceModal extends React.Component {
     }
 }
 
-// class UpdateExperienceModal extends React.Component {
+class UpdateExperienceModal extends React.Component {
 
-//     state = {
-//             role: "CTO",
-//             company: "Strive School",
-//             startDate: "2019-06-16",
-//             endDate: "2019-06-16", //could be null
-//             description: "Doing stuff here and there",
-//             area: "Berlin"
-//     }
+    state = {
+            role: "CTO",
+            company: "Strive School",
+            startDate: "2019-06-16",
+            endDate: "2019-06-16", //could be null
+            description: "Doing stuff here and there",
+            area: "Berlin"
+    }
 
-//     render() {
+    render() {
         
-//         return (
-//             <Modal
-//                 show={this.props.show}
-//                 onHide={this.props.hide}
-//                 backdrop="static"
-//                 keyboard={false}
-//             >
-//                 <Modal.Header closeButton>
-//                     <Modal.Title>Add experience</Modal.Title>
-//                 </Modal.Header>
-//                 <Modal.Body>
-//                     <Form>
-//                         <Form.Group controlId="formBasicTitle">
-//                             <Form.Label>Title *</Form.Label>
-//                             <Form.Control value={this.state.role} onChange={(e) => this.setState({role: e.target.value })} type="text" placeholder="Ex: Retail Sales Manager" />
-//                         </Form.Group>
-//                         <Form.Group controlId="formBasicCompany">
-//                             <Form.Label>Company *</Form.Label>
-//                             <Form.Control value={this.state.company} onChange={(e) => this.setState({company: e.target.value })} type="text" placeholder="Ex: Microsoft" />
-//                         </Form.Group>
-//                         <Form.Group controlId="formBasicLocation">
-//                             <Form.Label>Location</Form.Label>
-//                             <Form.Control value={this.state.area} onChange={(e) => this.setState({area: e.target.value })} type="text" placeholder="Ex: London, United Kingdom" />
-//                         </Form.Group>
-//                         <Form.Group controlId="formBasicDescription">
-//                             <Form.Label>Description</Form.Label>
-//                             <Form.Control value={this.state.description} onChange={(e) => this.setState({description: e.target.value })} type="text-area" />
-//                         </Form.Group>
-//                         <Form.Group controlId="formBasicDate">
-//                             <Form.Label>Start Date</Form.Label>
-//                             <Form.Control type="date" />
-//                         </Form.Group>
-//                         <Form.Group controlId="formBasicDate">
-//                             <Form.Label>End Date</Form.Label>
-//                             <Form.Control type="date" />
-//                             <Form.Text>If you still work here leave date fucking blank</Form.Text>
-//                         </Form.Group>
+        return (
+            <Modal
+                show={this.props.show}
+                onHide={this.props.hide}
+                backdrop="static"
+                keyboard={false}
+            >
+                <Modal.Header closeButton>
+                    <Modal.Title>Update experience</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <Form>
+                        <Form.Group controlId="formBasicTitle">
+                            <Form.Label>Title *</Form.Label>
+                            <Form.Control value={this.state.role} onChange={(e) => this.setState({role: e.target.value })} type="text" placeholder="Ex: Retail Sales Manager" />
+                        </Form.Group>
+                        <Form.Group controlId="formBasicCompany">
+                            <Form.Label>Company *</Form.Label>
+                            <Form.Control value={this.state.company} onChange={(e) => this.setState({company: e.target.value })} type="text" placeholder="Ex: Microsoft" />
+                        </Form.Group>
+                        <Form.Group controlId="formBasicLocation">
+                            <Form.Label>Location</Form.Label>
+                            <Form.Control value={this.state.area} onChange={(e) => this.setState({area: e.target.value })} type="text" placeholder="Ex: London, United Kingdom" />
+                        </Form.Group>
+                        <Form.Group controlId="formBasicDescription">
+                            <Form.Label>Description</Form.Label>
+                            <Form.Control value={this.state.description} onChange={(e) => this.setState({description: e.target.value })} type="text-area" />
+                        </Form.Group>
+                        <Form.Group controlId="formBasicDate">
+                            <Form.Label>Start Date</Form.Label>
+                            <Form.Control type="date" />
+                        </Form.Group>
+                        <Form.Group controlId="formBasicDate">
+                            <Form.Label>End Date</Form.Label>
+                            <Form.Control type="date" />
+                            <Form.Text>If you still work here leave date blank</Form.Text>
+                        </Form.Group>
 
-//                     </Form>
-//                 </Modal.Body>
-//                 <Modal.Footer>
-//                     <Button variant="secondary" onClick={this.props.hide} >
-//                         Close
-//                      </Button>
-//                     <Button variant="primary" onClick={async () => this.props.post(await this.props.id, await this.state)}>Save</Button>
-//                 </Modal.Footer>
-//             </Modal>)
-//     }
-// }
+                    </Form>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={this.props.hide} >
+                        Close
+                     </Button>
+                    <Button variant="primary" onClick={async () => this.props.put(await this.props.id, await this.state)}>Save</Button>
+                </Modal.Footer>
+            </Modal>)
+    }
+}
 
 export default withRouter(ExperienceEducation)
