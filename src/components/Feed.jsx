@@ -11,7 +11,7 @@ class Feed extends React.Component {
                 <Row>
 
                     <Col md={3}>
-                    <FeedLeft/>
+                        <FeedLeft />
                     </Col>
                     <Col md={6}>
                         <Row className="g-0">
@@ -23,7 +23,7 @@ class Feed extends React.Component {
                                     <div className="d-flex align-items-center">
                                         <span>Sort by: </span> <strong className="ps-2"> Top</strong>
                                         <a className="dropdown-arrow dropdown-toggle nav-link" role="button" aria-haspopup="true" aria-expanded="false" id="basic-nav-dropdown" href="#"></a>
- 
+
                                     </div>
                                 </div>
                             </Col>
