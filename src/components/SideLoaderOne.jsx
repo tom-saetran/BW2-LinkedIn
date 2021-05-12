@@ -2,10 +2,10 @@ import { Badge, Button, Card, Col, Container, Dropdown, DropdownButton, Form, Fo
 import React from 'react'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { library } from "@fortawesome/fontawesome-svg-core"
-import { faHome, faQuestionCircle } from "@fortawesome/free-solid-svg-icons"
+import { faHome, faPlayCircle, faQuestionCircle } from "@fortawesome/free-solid-svg-icons"
 import { faLinkedin } from "@fortawesome/free-brands-svg-icons"
 
-library.add(faHome, faQuestionCircle, faLinkedin)
+library.add(faHome, faQuestionCircle, faLinkedin, faPlayCircle)
 
 class SideLoaderOne extends React.Component {
     state = {
@@ -42,12 +42,13 @@ class SideLoaderOne extends React.Component {
         return (
 
             this.state.me !== null && (
+
                 <Col xs="12">
                     <div id="top-two">
                         <h6 id="top-two-text" className="top-two-text-divider">
                             <div className="d-flex" id="side-banner">
                                 <div>Edit public profile &amp; URL </div>
-                                <div id="question-mark-div">
+                                <div id="question-mark-div" className="d-flex">
                                     <FontAwesomeIcon id="question-mark-icon" icon="question-circle" />
                                 </div>
                             </div>
@@ -55,7 +56,7 @@ class SideLoaderOne extends React.Component {
                     </div>
                     <div id="divider"></div>
                     <div id="top-two">
-                        <h6 id="top-two-text" className="top-two-text-divider d-flex">
+                        <h6 id="top-two-text" className="top-two-text-divider">
                             <div className="d-flex" id="side-banner">
                                 <div>Add profile in another language</div>
                                 <div id="question-mark-div">
@@ -92,7 +93,7 @@ class SideLoaderOne extends React.Component {
                                                             </Col>
                                                             <Col xs={8} id="card-column">
                                                                 <Card.Title id="card-name" className="d-flex">
-                                                                    <div id="card-description-title">{person.name}</div>
+                                                                    <div id="card-description-title-one">{person.name}</div>
                                                                     <div id="third">3rd+</div>
 
                                                                 </Card.Title>
@@ -178,8 +179,8 @@ class SideLoaderOne extends React.Component {
                             </ListGroup.Item>
                             <ListGroup.Item id="footer-sub-title">Add new skills with these courses</ListGroup.Item>
                             <ListGroup.Item id="youtube-card">
-                                <Container id="youtube-card">
-                                    <Row>
+                                <Container id="youtube-card" className="d-flex">
+                                    <Row xs="12" className="flex-row">
                                         <Col xs="4" id="youtube-image">
                                             <img id="pickme" src="/img/cfe.jpg"></img>
                                         </Col>
@@ -193,10 +194,11 @@ class SideLoaderOne extends React.Component {
                             <ListGroup.Item id="youtube-card">
                                 <Container id="youtube-card">
                                     <Row className="flex">
-                                        <Col xs="4" id="youtube-image">
-                                            <img id="pickme" src="/img/cacsi.jpg"></img>
+                                        <Col xs="4" id="youtube-image" className="d-flex">
+                                            <img id="pickme" src="/img/cacsi.jpg" /><FontAwesomeIcon size="2x" id="youtube-icon" icon={"play-circle"} />
+
                                         </Col>
-                                        <Col xs="8" id="youtube-text">
+                                        <Col xs="8" id="youtube-text" className="d-flex">
                                             <h6 id="yt-text-title">Communicating Culturally Sesitive Issues</h6>
                                             <span id="yt-view-count">247,691 views</span>
                                         </Col>

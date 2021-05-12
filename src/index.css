@@ -37,7 +37,7 @@ font-size: 12px;
     margin: 0;
     font-size: 13px;
 }
-#card-description-title::after{
+#card-description-title-one::after{
     content: "·";
     margin: 0ch 0.75ch;
 }
@@ -144,7 +144,8 @@ html {
     color:black;border-radius: red 2px solid;
 }
 #question-mark-div{
-    margin-right: auto;
+    align-items: center;
+    margin-left: auto;
 }
 #side-banner{
     display: flex;
@@ -220,6 +221,9 @@ html {
 #youtube-card {
     padding-left: 8px;
     border: none;
+}
+#youtube-icon{
+    color: red
 }
 #youtube-image {
     padding-left: 5;
