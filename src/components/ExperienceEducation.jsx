@@ -38,8 +38,9 @@ class ExperienceEducation extends React.Component {
                         <div className="d-flex justify-content-between">
                             <img className="medium-logo" src="https://media-exp1.licdn.com/dms/image/C4D0BAQHMzEZdUDzWLw/company-logo_100_100/0/1607610827235?e=1628726400&v=beta&t=2DyogaeKHlEJ4FJcFv2DpjEkXpRJ325JlCvt6KMJI_E" alt="" />
                             <div className="ms-3">
-                                <h6>{this.state.experiences ? this.state.experiences[0].role : "Finance Manager"}</h6>
-                                <p>{this.state.experiences ? this.state.experiences[0].company : "Ministry of Housing, Communities and Local Government"}</p>
+                                <h6>{this.state.experiences && this.state.experiences.length > 0 ? this.state.experiences[0].role : "No Experiences"}</h6>
+                                <p>{this.state.experiences && this.state.experiences.length > 0 ? this.state.experiences[0].company : "Add some experiences!"}</p>
+                                {}
                                 <span>Jan 2020 – Present . 1 yr 5 mos</span>
                             </div>
                         </div>
