@@ -15,11 +15,7 @@ class ProfileJumbotron extends React.Component {
                             </svg>
                         </div>
                     </Col>
-                    {/* <Row style={{position: "relative", top: "-45px"}}>
-               <Col md={{span: 2, offset: 1}}>
-     
-               </Col>
-               </Row> */}
+               
 
                     <Col className=" section-inner">
                         <Row>
@@ -36,7 +32,7 @@ class ProfileJumbotron extends React.Component {
 
                                 <div className="d-flex">
                                     <span>London, England, United Kingdom</span>
-                                    <span className="ms-2">.</span>
+                                    <span className="ms-2">·</span>
                                     <span className="ms-2">
                                         <a href="www.google.com">Contact info</a>
                                     </span>
