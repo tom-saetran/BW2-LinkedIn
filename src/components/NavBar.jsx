@@ -36,7 +36,7 @@ export default class NavBar extends Component {
                                     <FormControl  type="text" size="100" placeholder="Search" className="mr-sm-2" style={{backgroundColor:"#eef3f8",border:0}} />
                                 </Form>
                         </div>
-
+        
                         <Navbar.Toggle aria-controls="basic-navbar-nav" />
 
                         <Navbar.Collapse id="basic-navbar-nav" class="ml-auto me-md-5">
@@ -73,36 +73,37 @@ export default class NavBar extends Component {
                                     Notifications
                                 </Nav.Link>
 
-                                <div className="d-flex flex-column">
-                                  <img className="ml-auto " style={{borderRadius:"15px"}}width="24" src="https://media-exp1.licdn.com/dms/image/C4D03AQEmFglnfuuwIA/profile-displayphoto-shrink_100_100/0/1611490819975?e=1626307200&amp;v=beta&amp;t=w9AyTKktD9nM_YOIbxdofqnBn-EkVTEd3wNs4z7JxRU" height="24" alt="Carl Dawkins" id="ember34" class="global-nav__me-photo ember-view"/>
-                             
-                                
-                                <NavDropdown style={{width:"100%"}} id="Me"title="Me" id="basic-nav-dropdown" className="pl-md-0 pr-md-0 pb-md-0 " >
-                                <NavDropdown.Item href="#action/3.1">
-                                    <div className="d-flex flex-row">
-                                        <div className="col-3 "> <img className="ml-auto " style={{borderRadius:"15px"}}width="24" src="https://media-exp1.licdn.com/dms/image/C4D03AQEmFglnfuuwIA/profile-displayphoto-shrink_100_100/0/1611490819975?e=1626307200&amp;v=beta&amp;t=w9AyTKktD9nM_YOIbxdofqnBn-EkVTEd3wNs4z7JxRU" height="40px" width="40px" alt="Carl Dawkins" id="ember34" class="global-nav__me-photo ember-view"/></div>
-                                        <div className="col-9  "><div><h6 className="mb-0">Carl Dawkins</h6><p>Web Developer</p></div></div>
+                                <div className="d-flex flex-md-column align-items-center">
+                                  <img className="mx-auto " style={{borderRadius:"50%"}}width="24" src="https://media-exp1.licdn.com/dms/image/C4D03AQEmFglnfuuwIA/profile-displayphoto-shrink_100_100/0/1611490819975?e=1626307200&amp;v=beta&amp;t=w9AyTKktD9nM_YOIbxdofqnBn-EkVTEd3wNs4z7JxRU" height="24" alt="Carl Dawkins" id="ember34" class="global-nav__me-photo ember-view"/>
+                                <NavDropdown  id="Me"title="Me" id="basic-nav-dropdown" className="" >
+                                <NavDropdown.Item >
+                                    <div className="d-flex flex-row w-100">
+                                        <div className="col-3 "> <img className="ms-auto" style={{borderRadius:"50%"}}width="24" src="https://media-exp1.licdn.com/dms/image/C4D03AQEmFglnfuuwIA/profile-displayphoto-shrink_100_100/0/1611490819975?e=1626307200&amp;v=beta&amp;t=w9AyTKktD9nM_YOIbxdofqnBn-EkVTEd3wNs4z7JxRU" height="40px" width="40px" alt="Carl Dawkins" id="ember34" class="global-nav__me-photo ember-view"/></div>
+                                        <div className="col-9 "><div><h6 className="mb-0">Carl Dawkins</h6><p>Web Developer</p></div></div>
                                     </div>
+                                    <a class="col-12 btn bg-white"  href="/profile" style="border:solid 3px #0a66c2">View Profile</a>
                                 </NavDropdown.Item>
                                      <NavDropdown.Divider />
-                                    <NavDropdown.Item href="#action/3.1"><h6><strong>Account</strong></h6></NavDropdown.Item>
-                                    <NavDropdown.Item href="#action/3.1"><p>Settings & Privacy</p></NavDropdown.Item>
-                                    <NavDropdown.Item href="#action/3.2"><p>Help</p></NavDropdown.Item>
-                                    <NavDropdown.Item href="#action/3.2"><p>Language</p></NavDropdown.Item>
+                                    <NavDropdown.Item ><h6><strong>Account</strong></h6></NavDropdown.Item>
+                                    <NavDropdown.Item ><p>Settings & Privacy</p></NavDropdown.Item>
+                                    <NavDropdown.Item ><p>Help</p></NavDropdown.Item>
+                                    <NavDropdown.Item ><p>Language</p></NavDropdown.Item>
                                     <NavDropdown.Divider />
-                                    <NavDropdown.Item href="#action/3.4"><p>Sign Out </p></NavDropdown.Item>
+                                    <NavDropdown.Item ><p>Sign Out </p></NavDropdown.Item>
                                 </NavDropdown>
                                 </div>
-                                <div className="d-flex flex-column">
+
+
+                                <div className="d-flex flex-column align-items-center">
                                     <svg className="justify-content-right" id="global-nav-icon--classic__work" height="24" width="24" className="p-0">
                                         <path d="M10 10h4v4h-4v-4zm0 11h4v-4h-4v4zm-7-7h4v-4H3v4zm0 7h4v-4H3v4zM3 7h4V3H3v4zm14 7h4v-4h-4v4zm0-11v4h4V3h-4zm-7 4h4V3h-4v4zm7 14h4v-4h-4v4z"></path>
                                     </svg>
                                 <NavDropdown title="Work" id="basic-nav-dropdown" placeholder="Work"  >
-                                    <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                                    <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-                                    <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+                                    <NavDropdown.Item >Action</NavDropdown.Item>
+                                    <NavDropdown.Item >Another action</NavDropdown.Item>
+                                    <NavDropdown.Item>Something</NavDropdown.Item>
                                     <NavDropdown.Divider />
-                                    <NavDropdown.Item href="#action/3.4">Sign Out</NavDropdown.Item>
+                                    <NavDropdown.Item >Sign Out</NavDropdown.Item>
                                 </NavDropdown>
                                 </div>
                             </Nav>
