@@ -11,15 +11,13 @@ import SideLoaderOne from "./SideLoaderOne"
 class Profile extends React.Component {
     state = {
         me: null,
-        all: null,
-        isMe: false
+        all: null
     }
 
     componentDidUpdate = async (_previousProps, _previousState) => {
         if (this.props.me !== this.state.me) this.setState({ me: this.props.me })
         if (this.props.all !== this.state.all) this.setState({ all: this.props.all })
-        if (this.state.data === null) this.setState({ data: await this.props.crud.get("6098ebe0619e5d00151f8f7b") })
-        if (this.props.match.params.id === undefined && this.state.isMe === false) this.setState({ isMe: true })
+        if (this.state.data === null) this.setState({ data: await this.props.crud.user.get("6098ebe0619e5d00151f8f7b") })
     }
 
     render() {
@@ -36,9 +34,7 @@ class Profile extends React.Component {
                     <Col md={3}>
                         <SideLoaderOne crud={this.props.crud} me={this.state.me} all={this.state.all} />
                     </Col>
-                    <Col md={1}>
-
-                    </Col>
+                    <Col md={1}></Col>
                 </Row>
             </Container>
         )
