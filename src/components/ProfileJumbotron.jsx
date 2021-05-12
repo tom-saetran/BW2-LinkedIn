@@ -2,6 +2,13 @@ import React from "react"
 import { Button, Row, Col, DropdownButton, Dropdown, ButtonGroup } from "react-bootstrap"
 
 class ProfileJumbotron extends React.Component {
+
+
+    componentDidMount = async () => {
+        
+        let response = await this.props.crud.user.get()
+        console.log(response)
+    }
     render() {
         return (
             <>
