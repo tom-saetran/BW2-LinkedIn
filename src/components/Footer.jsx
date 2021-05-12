@@ -1,48 +1,42 @@
-import React, { Component } from 'react'
-    import {Container} from 'react-bootstrap'
+import React from "react"
+import {Container, Row, Col} from "react-bootstrap"
 
-export default class Footer extends Component {
+
+class Footer extends React.Component {
+
+
     render() {
+
         return (
-            <>
-                <Footer className="d-flex">
-                    <Container>
-                    <ul className="col-lg-2">
-                        <li>Yes</li>
-                        <li>Brav</li>
-                        <li>Lets</li>
-                        <li>get</li>
-                        <li>it </li>
-                        <li>Going</li>
+            <Container>
+                <Row>
+                    <Col xs={2}>
+                    <ul className="d-flex flex-column flex-start">
+                    <li>Carl</li>
+                    <li>Carl</li>
+                    <li>Carl</li>
+
+                    
+
                     </ul>
 
-                    <ul className="col-lg-2">
-                        <li>Noice </li>
-                        <li>one </li>
-                        <li>brother</li>
-                        <li>....</li>
-                    </ul>
-
-                    <ul  className="col-lg-2">
-                        <li>I</li>
-                        <li>saidd</li>
-                        <li>Nice</li>
-                        <li>One</li>
-                    </ul>
-
-                    <ul className="col-lg-2">
-                        <li>Brav</li>
-                        <li>ahahahaha</li>
-                    </ul>
-
-                     <ul className="col-lg-2">
-                        <li>hahahahahhaa</li>
-                        <li>hehhehhehe</li>
-                    </ul>
-
-                    </Container>
-                </Footer>
-            </>
+                    </Col>
+                    <Col xs={2}>
+                        
+                    </Col>
+                    <Col xs={2}>
+                        
+                    </Col>
+                    <Col xs={3}>
+                        
+                    </Col>
+                    <Col xs={3}>
+                        
+                    </Col>
+                </Row>
+            </Container>
         )
     }
 }
+
+export default Footer 

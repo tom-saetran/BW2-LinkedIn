@@ -6,6 +6,7 @@ import HTTP404 from "./components/HTTP404"
 import Profile from "./components/Profile"
 import NavBar from "./components/NavBar"
 import Feed from "./components/Feed"
+import Footer from "./components/Footer"
 import SideLoaderOne from "./components/SideLoaderOne"
 
 class App extends React.Component {
@@ -260,7 +261,7 @@ class App extends React.Component {
                     <Route render={routeProps => <HTTP501 {...routeProps} />} exact path="/" />
                     <Route render={routeProps => <HTTP404 {...routeProps} />} />
                 </Switch>
-                {/* <Route render={routeProps => <Footer {...routeProps} />} /> */}
+                <Route render={routeProps => <Footer {...routeProps} />} />
             </Router>
         )
     }
