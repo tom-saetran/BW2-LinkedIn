@@ -14,12 +14,7 @@ class ExperienceEducation extends React.Component {
 
     componentDidUpdate = async () => {
         const id = this.props.match.params.id || (this.props.me && this.props.me._id)
-
         if (id && this.state.experiences === null) this.setState({ experiences: await this.props.crud.get(id) })
-        // this one runs fine
-
-        //if (this.props.match.params.id === undefined && this.state.experiences === null && this.props.me !== null) this.setState({ experiences: await this.props.crud.get(this.props.me._id) })
-        // i dont get why this crashes with me._id=null when the if condition should avoid that...
     }
 
     handleShow = () => {
