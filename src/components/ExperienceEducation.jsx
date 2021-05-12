@@ -6,35 +6,30 @@ import { withRouter } from "react-router-dom"
 // 609a8d1ddfccc50015a6bbcd
 
 class ExperienceEducation extends React.Component {
-
     state = {
         addModalShow: false,
         updateModalshow: false,
-        user: null,
+        experiences: null
     }
 
+    componentDidUpdate = async () => {
+        const id = this.props.match.params.id || (this.props.me && this.props.me._id)
 
-    componentDidMount = async () => {
+        if (id && this.state.experiences === null) this.setState({ experiences: await this.props.crud.get(id) })
+        // this one runs fine
 
-        this.setState({ user: await this.props.crud.get(this.props.match.params.id) })
-
+        //if (this.props.match.params.id === undefined && this.state.experiences === null && this.props.me !== null) this.setState({ experiences: await this.props.crud.get(this.props.me._id) })
+        // i dont get why this crashes with me._id=null when the if condition should avoid that...
     }
 
     handleShow = () => {
-        
         this.setState({ addModalShow: !this.state.addModalShow })
-
     }
     handleUpdateShow = () => {
-        
         this.setState({ updateModalShow: !this.state.updateModalShow })
-
     }
 
-    render() {  
-
-        console.log(this.state.user)
-      
+    render() {
         return (
             <>
                 <Col className="mt-4 mb-4 section-outer section-inner">
@@ -46,12 +41,11 @@ class ExperienceEducation extends React.Component {
                     </div>
                     <div className="d-flex mb-3 justify-content-between">
                         <div className="d-flex justify-content-between">
-                            <img className="medium-logo" src="https://media-exp1.licdn.com/dms/image/C4D0BAQHMzEZdUDzWLw/company-logo_100_100/0/1607610827235?e=1628726400&v=beta&t=2DyogaeKHlEJ4FJcFv2DpjEkXpRJ325JlCvt6KMJI_E"></img>
+                            <img className="medium-logo" src="https://media-exp1.licdn.com/dms/image/C4D0BAQHMzEZdUDzWLw/company-logo_100_100/0/1607610827235?e=1628726400&v=beta&t=2DyogaeKHlEJ4FJcFv2DpjEkXpRJ325JlCvt6KMJI_E" alt="" />
                             <div className="ms-3">
-                                <h6>{(this.state.user) ? this.state.user[0].role : "Finance Manager"}</h6>
-                                <p>{this.state.user ? this.state.user[0].company : "Ministry of Housing, Communities and Local Government"}</p>
+                                <h6>{this.state.experiences ? this.state.experiences[0].role : "Finance Manager"}</h6>
+                                <p>{this.state.experiences ? this.state.experiences[0].company : "Ministry of Housing, Communities and Local Government"}</p>
                                 <span>Jan 2020 – Present . 1 yr 5 mos</span>
-
                             </div>
                         </div>
                         <div>
@@ -71,12 +65,11 @@ class ExperienceEducation extends React.Component {
                     </div>
                     <div className="d-flex justify-content-between">
                         <div className="d-flex">
-                            <img className="medium-logo" src="https://media-exp1.licdn.com/dms/image/C4E0BAQF5t62bcL0e9g/company-logo_100_100/0/1519855919126?e=1628726400&v=beta&t=MJ7aXvNHbhY_WijBVVZztYsa9YUDftiM3CU5ObSMYtk"></img>
+                            <img className="medium-logo" src="https://media-exp1.licdn.com/dms/image/C4E0BAQF5t62bcL0e9g/company-logo_100_100/0/1519855919126?e=1628726400&v=beta&t=MJ7aXvNHbhY_WijBVVZztYsa9YUDftiM3CU5ObSMYtk" alt="" />
                             <div className="ms-3">
                                 <h6>Harvard University</h6>
                                 <p>CS50: Introduction to Computer Science, Computer Science</p>
                                 <span>2021 - 2021 </span>
-
                             </div>
                         </div>
                         <div>
@@ -85,37 +78,50 @@ class ExperienceEducation extends React.Component {
                             </svg>
                         </div>
                     </div>
-
                 </Col>
 
-                {this.state.addModalShow && <AddExperienceModal show={this.state.addModalShow} post={this.props.crud.post} id={this.state.user[0]._id} hide={() => { this.setState({ addModalShow: false }) }} />}
-                {this.state.updateModalShow && <UpdateExperienceModal show={this.state.updateModalShow} put={this.props.crud.put} id={this.state.user[0]._id} hide={() => { this.setState({ updateModalShow: false }) }} />}
-
+                {this.state.addModalShow && (
+                    <AddExperienceModal
+                        show={this.state.addModalShow}
+                        post={this.props.crud.post}
+                        id={async () => {
+                            if (this.state.experiences !== null) await this.state.experiences[0]._id
+                        }}
+                        hide={() => {
+                            this.setState({ addModalShow: false })
+                        }}
+                    />
+                )}
+                {this.state.updateModalShow && (
+                    <UpdateExperienceModal
+                        show={this.state.updateModalShow}
+                        put={this.props.crud.put}
+                        id={async () => {
+                            if (this.state.experiences !== null) await this.state.experiences[0]._id
+                        }}
+                        hide={() => {
+                            this.setState({ updateModalShow: false })
+                        }}
+                    />
+                )}
             </>
         )
     }
 }
 
 class AddExperienceModal extends React.Component {
-
     state = {
-            role: "CTO",
-            company: "Strive School",
-            startDate: "2019-06-16",
-            endDate: "2019-06-16", //could be null
-            description: "Doing stuff here and there",
-            area: "Berlin"
+        role: "CTO",
+        company: "Strive School",
+        startDate: "2019-06-16",
+        endDate: "2019-06-16", //could be null
+        description: "Doing stuff here and there",
+        area: "Berlin"
     }
 
     render() {
-        
         return (
-            <Modal
-                show={this.props.show}
-                onHide={this.props.hide}
-                backdrop="static"
-                keyboard={false}
-            >
+            <Modal show={this.props.show} onHide={this.props.hide} backdrop="static" keyboard={false}>
                 <Modal.Header closeButton>
                     <Modal.Title>Add experience</Modal.Title>
                 </Modal.Header>
@@ -123,19 +129,19 @@ class AddExperienceModal extends React.Component {
                     <Form>
                         <Form.Group controlId="formBasicTitle">
                             <Form.Label>Title *</Form.Label>
-                            <Form.Control value={this.state.role} onChange={(e) => this.setState({role: e.target.value })} type="text" placeholder="Ex: Retail Sales Manager" />
+                            <Form.Control value={this.state.role} onChange={e => this.setState({ role: e.target.value })} type="text" placeholder="Ex: Retail Sales Manager" />
                         </Form.Group>
                         <Form.Group controlId="formBasicCompany">
                             <Form.Label>Company *</Form.Label>
-                            <Form.Control value={this.state.company} onChange={(e) => this.setState({company: e.target.value })} type="text" placeholder="Ex: Microsoft" />
+                            <Form.Control value={this.state.company} onChange={e => this.setState({ company: e.target.value })} type="text" placeholder="Ex: Microsoft" />
                         </Form.Group>
                         <Form.Group controlId="formBasicLocation">
                             <Form.Label>Location</Form.Label>
-                            <Form.Control value={this.state.area} onChange={(e) => this.setState({area: e.target.value })} type="text" placeholder="Ex: London, United Kingdom" />
+                            <Form.Control value={this.state.area} onChange={e => this.setState({ area: e.target.value })} type="text" placeholder="Ex: London, United Kingdom" />
                         </Form.Group>
                         <Form.Group controlId="formBasicDescription">
                             <Form.Label>Description</Form.Label>
-                            <Form.Control value={this.state.description} onChange={(e) => this.setState({description: e.target.value })} type="text-area" />
+                            <Form.Control value={this.state.description} onChange={e => this.setState({ description: e.target.value })} type="text-area" />
                         </Form.Group>
                         <Form.Group controlId="formBasicDate">
                             <Form.Label>Start Date</Form.Label>
@@ -146,39 +152,34 @@ class AddExperienceModal extends React.Component {
                             <Form.Control type="date" />
                             <Form.Text>If you still work here leave date blank</Form.Text>
                         </Form.Group>
-
                     </Form>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="secondary" onClick={this.props.hide} >
+                    <Button variant="secondary" onClick={this.props.hide}>
                         Close
-                     </Button>
-                    <Button variant="primary" onClick={async () => this.props.post(await this.props.id, await this.state)}>Save</Button>
+                    </Button>
+                    <Button variant="primary" onClick={async () => this.props.post(await this.props.id, await this.state)}>
+                        Save
+                    </Button>
                 </Modal.Footer>
-            </Modal>)
+            </Modal>
+        )
     }
 }
 
 class UpdateExperienceModal extends React.Component {
-
     state = {
-            role: "CTO",
-            company: "Strive School",
-            startDate: "2019-06-16",
-            endDate: "2019-06-16", //could be null
-            description: "Doing stuff here and there",
-            area: "Berlin"
+        role: "CTO",
+        company: "Strive School",
+        startDate: "2019-06-16",
+        endDate: "2019-06-16", //could be null
+        description: "Doing stuff here and there",
+        area: "Berlin"
     }
 
     render() {
-        
         return (
-            <Modal
-                show={this.props.show}
-                onHide={this.props.hide}
-                backdrop="static"
-                keyboard={false}
-            >
+            <Modal show={this.props.show} onHide={this.props.hide} backdrop="static" keyboard={false}>
                 <Modal.Header closeButton>
                     <Modal.Title>Update experience</Modal.Title>
                 </Modal.Header>
@@ -186,19 +187,19 @@ class UpdateExperienceModal extends React.Component {
                     <Form>
                         <Form.Group controlId="formBasicTitle">
                             <Form.Label>Title *</Form.Label>
-                            <Form.Control value={this.state.role} onChange={(e) => this.setState({role: e.target.value })} type="text" placeholder="Ex: Retail Sales Manager" />
+                            <Form.Control value={this.state.role} onChange={e => this.setState({ role: e.target.value })} type="text" placeholder="Ex: Retail Sales Manager" />
                         </Form.Group>
                         <Form.Group controlId="formBasicCompany">
                             <Form.Label>Company *</Form.Label>
-                            <Form.Control value={this.state.company} onChange={(e) => this.setState({company: e.target.value })} type="text" placeholder="Ex: Microsoft" />
+                            <Form.Control value={this.state.company} onChange={e => this.setState({ company: e.target.value })} type="text" placeholder="Ex: Microsoft" />
                         </Form.Group>
                         <Form.Group controlId="formBasicLocation">
                             <Form.Label>Location</Form.Label>
-                            <Form.Control value={this.state.area} onChange={(e) => this.setState({area: e.target.value })} type="text" placeholder="Ex: London, United Kingdom" />
+                            <Form.Control value={this.state.area} onChange={e => this.setState({ area: e.target.value })} type="text" placeholder="Ex: London, United Kingdom" />
                         </Form.Group>
                         <Form.Group controlId="formBasicDescription">
                             <Form.Label>Description</Form.Label>
-                            <Form.Control value={this.state.description} onChange={(e) => this.setState({description: e.target.value })} type="text-area" />
+                            <Form.Control value={this.state.description} onChange={e => this.setState({ description: e.target.value })} type="text-area" />
                         </Form.Group>
                         <Form.Group controlId="formBasicDate">
                             <Form.Label>Start Date</Form.Label>
@@ -209,16 +210,18 @@ class UpdateExperienceModal extends React.Component {
                             <Form.Control type="date" />
                             <Form.Text>If you still work here leave date blank</Form.Text>
                         </Form.Group>
-
                     </Form>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="secondary" onClick={this.props.hide} >
+                    <Button variant="secondary" onClick={this.props.hide}>
                         Close
-                     </Button>
-                    <Button variant="primary" onClick={async () => this.props.put(await this.props.id, await this.state)}>Save</Button>
+                    </Button>
+                    <Button variant="primary" onClick={async () => this.props.put(await this.props.id, await this.state)}>
+                        Save
+                    </Button>
                 </Modal.Footer>
-            </Modal>)
+            </Modal>
+        )
     }
 }
 
