@@ -7,7 +7,7 @@ class FeedItem extends React.Component {
     render() {
 
         return (
-            <Col xs={12} className="p-0 section-outer" >
+            <Col xs={12} className="p-0 mb-4 section-outer" >
 
                 <div style={{ padding: "12px 12px 0px 12px" }} className="d-flex">
 
