@@ -84,7 +84,8 @@ code {
 }
 
 #divider {
-    border-bottom: 1px rgb(206, 206, 206) solid;
+    border-top: 1px rgb(206, 206, 206) solid;
+    padding-bottom: 10px;
 }
 
 #div-drop-one {
@@ -101,8 +102,42 @@ code {
     width: 100%;
 }
 
-#feed-table-right {
-    border: red 10px solid;
+#feed-table-right-two{
+    border: 1px rgb(206, 206, 206) solid;
+    border-radius: 15px;
+}
+
+#feed-table-right-title-item{
+    display: flex;
+    border: none; 
+    padding-bottom: 0;
+}
+
+
+
+#feed-table-right-two-item{
+    border: none;
+    display: block;
+    padding-top: 2;
+    padding-bottom: 2;
+
+}
+
+#feed-table-right-sub-string{
+    padding-left: 22px;
+}
+
+#feed-table-right-sub-title{
+    font-weight:600;
+    margin: 0;
+}
+
+#feed-table-right-title{
+    font-weight: bold;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+ 
 }
 
 .dropdown-menu {
@@ -169,7 +204,7 @@ html {
 
 #question-mark-icon {
     color: black;
-    border-radius: red 2px solid;
+    
 }
 
 #question-mark-div {
@@ -180,6 +215,13 @@ html {
 #side-banner {
     display: flex;
     align-items: center;
+}
+
+#top-two-text-divider-two {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none
 }
 
 #side-card {
@@ -241,6 +283,51 @@ html {
     background: transparent;
     color: rgb(153, 153, 153);
     font-weight: bold;
+}
+
+#side-nav-a{
+
+}
+
+#side-nav-a:hover {
+    color: rgb(77, 77, 77);
+}
+#side-nav-a {
+    text-decoration: none;
+    color: rgb(153, 153, 153);
+}
+#side-nav-footer{
+    text-align: center;
+    padding-top: 10px;
+}
+
+#side-nav-item{
+    padding: 5px;
+    color: rgb(153, 153, 153);
+    font-weight: bold;
+    border: none;
+    background: none;
+}
+
+#side-nav-main{
+    border: 1px rgb(206, 206, 206) solid;
+    border-radius: 15px;
+}
+
+#side-nav-container{
+    display: flex;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+}
+
+#snc{
+
+    padding-bottom: 20px;
 }
 
 #top-two {
