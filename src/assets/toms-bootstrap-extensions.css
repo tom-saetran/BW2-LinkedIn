@@ -29,10 +29,7 @@
     text-decoration: none !important;
 }
 
-.no-shadow {
-    box-shadow: none !important;
-}
-
+.no-shadow,
 .no-shadow .btn-check:focus + .btn,
 .btn:focus {
     box-shadow: none !important;
