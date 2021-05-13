@@ -20,7 +20,7 @@ class ProfileJumbotron extends React.Component {
                         <img className="img-fluid" src="https://thingscareerrelated.files.wordpress.com/2018/03/lake2b.jpg" alt="banner"></img>
                         <img className="img-overlay img-fluid rounded-circle" src="https://i.pinimg.com/originals/3d/99/a7/3d99a7e6cb285c7f7cf5e87131e45c92.jpg" alt="profilePic"></img>
                         <div className="d-flex justify-content-center align-items-center img-overlay2 overlay-2-bg">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" data-supported-dps="16x16" fill="currentColor" class="mercado-match" width="16" height="16" focusable="false">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" data-supported-dps="16x16" fill="currentColor" className="mercado-match" width="16" height="16" focusable="false">
                                 <path d="M10 9a2 2 0 11-2-2 2 2 0 012 2zm5-2.5V14H1V6.5A2.5 2.5 0 013.5 4h.75L5 2h6l.75 2h.75A2.5 2.5 0 0115 6.5zM11 9a3 3 0 10-3 3 3 3 0 003-3z"></path>
                             </svg>
                         </div>
@@ -28,7 +28,7 @@ class ProfileJumbotron extends React.Component {
                     <Col className=" section-inner">
                         <Row>
                             <Col className="d-flex mb-3 justify-content-end">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" data-supported-dps="24x24" fill="currentColor" class="mercado-match" width="24" height="24" focusable="false">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" data-supported-dps="24x24" fill="currentColor" className="mercado-match" width="24" height="24" focusable="false">
                                     <path d="M21.13 2.86a3 3 0 00-4.17 0l-13 13L2 22l6.19-2L21.13 7a3 3 0 000-4.16zM6.77 18.57l-1.35-1.34L16.64 6 18 7.35z"></path>
                                 </svg>
                             </Col>
@@ -82,7 +82,7 @@ class ProfileJumbotron extends React.Component {
                                 <div style={{ position: "relative", borderRadius: "10px", padding: "12px 30px 12px 12px", border: "2px dashed rgb(220,230,241)" }} className=" my-2">
                                     <a href="www.google.com">Show recruiters you are open to work - you control who sees this.</a>
                                     <h6>Get Started</h6>
-                                    <svg style={{ position: "absolute", top: "10%", right: "2%" }} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" data-supported-dps="16x16" fill="currentColor" class="mercado-match" width="16" height="16" focusable="false">
+                                    <svg style={{ position: "absolute", top: "10%", right: "2%" }} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" data-supported-dps="16x16" fill="currentColor" className="mercado-match" width="16" height="16" focusable="false">
                                         <path d="M14 3.41L9.41 8 14 12.59 12.59 14 8 9.41 3.41 14 2 12.59 6.59 8 2 3.41 3.41 2 8 6.59 12.59 2z"></path>
                                     </svg>
                                 </div>
@@ -91,7 +91,7 @@ class ProfileJumbotron extends React.Component {
                                 <div style={{ position: "relative", borderRadius: "10px", padding: "12px 30px 12px 12px", border: "2px dashed rgb(220,230,241)" }} className="my-2">
                                     <a href="www.google.com">Show recruiters you are open to work - you control who sees this.</a>
                                     <h6>Get Started</h6>
-                                    <svg style={{ position: "absolute", top: "10%", right: "2%" }} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" data-supported-dps="16x16" fill="currentColor" class="mercado-match" width="16" height="16" focusable="false">
+                                    <svg style={{ position: "absolute", top: "10%", right: "2%" }} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" data-supported-dps="16x16" fill="currentColor" className="mercado-match" width="16" height="16" focusable="false">
                                         <path d="M14 3.41L9.41 8 14 12.59 12.59 14 8 9.41 3.41 14 2 12.59 6.59 8 2 3.41 3.41 2 8 6.59 12.59 2z"></path>
                                     </svg>
                                 </div>
