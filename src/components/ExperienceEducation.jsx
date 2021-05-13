@@ -43,10 +43,11 @@ class ExperienceEducation extends React.Component {
                                     <div className="d-flex justify-content-between">
                                         <img className="medium-logo" src="https://media-exp1.licdn.com/dms/image/C4D0BAQHMzEZdUDzWLw/company-logo_100_100/0/1607610827235?e=1628726400&v=beta&t=2DyogaeKHlEJ4FJcFv2DpjEkXpRJ325JlCvt6KMJI_E" alt="" />
                                         <div className="ms-3">
-                                            <h6>{experience.role}</h6>
-                                            <p>{experience.company}</p>
+                                            <h6>
+                                                {experience.role} {experience.company}
+                                            </h6>
                                             <p>{experience.description}</p>
-                                            <span>{experience.startDate}</span>
+                                            <span>{experience.startDate.year}</span>
                                         </div>
                                     </div>
                                     <div>
