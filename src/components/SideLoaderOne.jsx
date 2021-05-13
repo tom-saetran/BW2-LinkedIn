@@ -87,7 +87,7 @@ class SideLoaderOne extends React.Component {
                                                                         <div id="third">3rd+</div>
                                                                     </Card.Title>
                                                                     <Card.Text id="card-description-container">
-                                                                        <p id="card-description">{person.title}</p>
+                                                                        <span id="card-description">{person.title}</span>
                                                                     </Card.Text>
                                                                     <Button id="card-button">Connect</Button>
                                                                 </Col>

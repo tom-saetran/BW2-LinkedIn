@@ -452,7 +452,6 @@ class App extends React.Component {
                             Authorization: this.state.authtoken
                         }
                     })
-                    console.log(this.httpCodes[results.status])
                     if (!results.ok) throw new Error("got data in return but the ok flag is not true! response: " + results)
                     results = await results.json()
                 } catch (error) {
