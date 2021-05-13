@@ -74,7 +74,7 @@ class SideLoaderOne extends React.Component {
                                                 <div>People also viewed</div>
                                             </Card.Header>
                                             {this.state.some !== null &&
-                                                this.state.some.map(person => {
+                                                this.state.all.map(person => {
                                                     return (
                                                         <Card.Body id="generated-card" key={person._id}>
                                                             <Row className="flex-row">

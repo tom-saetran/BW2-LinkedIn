@@ -6,8 +6,6 @@
 
 .img-overlay {
     position: absolute;
-    max-width: 150px;
-    width: 25%;
     bottom: -50px;
     left: 35px;
 }

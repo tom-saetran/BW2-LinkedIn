@@ -1,4 +1,5 @@
 import "bootstrap/dist/css/bootstrap.min.css"
+import "../src/assets/toms-bootstrap-extensions.css"
 import React from "react"
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom/"
 import HTTP501 from "./components/HTTP501"

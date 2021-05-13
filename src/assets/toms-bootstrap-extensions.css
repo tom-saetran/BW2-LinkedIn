@@ -34,3 +34,9 @@
 .btn:focus {
     box-shadow: none !important;
 }
+
+.center-profile-image {
+    height: 120px;
+    width: 120px;
+    object-fit: cover;
+}
