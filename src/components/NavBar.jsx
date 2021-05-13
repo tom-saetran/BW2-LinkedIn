@@ -75,14 +75,14 @@ export default class NavBar extends Component {
                                 </Nav.Link>
 
                                 <div className="d-flex flex-column">
-                                    <img className="ml-auto " style={{ borderRadius: "15px" }} width="24" src="https://media-exp1.licdn.com/dms/image/C4D03AQEmFglnfuuwIA/profile-displayphoto-shrink_100_100/0/1611490819975?e=1626307200&amp;v=beta&amp;t=w9AyTKktD9nM_YOIbxdofqnBn-EkVTEd3wNs4z7JxRU" height="24" alt="Carl Dawkins" id="ember34" className="global-nav__me-photo ember-view" />
+                                    <img style={{ borderRadius: "15px" }} width="24" src="https://media-exp1.licdn.com/dms/image/C4D03AQEmFglnfuuwIA/profile-displayphoto-shrink_100_100/0/1611490819975?e=1626307200&amp;v=beta&amp;t=w9AyTKktD9nM_YOIbxdofqnBn-EkVTEd3wNs4z7JxRU" height="24" alt="Carl Dawkins" id="ember34" className="global-nav__me-photo ember-view ml-auto" />
 
                                     <NavDropdown style={{ width: "100%" }} id="Me" title="Me" className="pl-md-0 pr-md-0 pb-md-0 ">
                                         <NavDropdown.Item href="#action/3.1">
                                             <div className="d-flex flex-row">
                                                 <div className="col-3 ">
                                                     {" "}
-                                                    <img className="ml-auto " style={{ borderRadius: "15px" }} src="https://media-exp1.licdn.com/dms/image/C4D03AQEmFglnfuuwIA/profile-displayphoto-shrink_100_100/0/1611490819975?e=1626307200&amp;v=beta&amp;t=w9AyTKktD9nM_YOIbxdofqnBn-EkVTEd3wNs4z7JxRU" height="40px" width="40px" alt="Carl Dawkins" id="ember34" className="global-nav__me-photo ember-view" />
+                                                    <img style={{ borderRadius: "15px" }} src="https://media-exp1.licdn.com/dms/image/C4D03AQEmFglnfuuwIA/profile-displayphoto-shrink_100_100/0/1611490819975?e=1626307200&amp;v=beta&amp;t=w9AyTKktD9nM_YOIbxdofqnBn-EkVTEd3wNs4z7JxRU" height="40px" width="40px" alt="Carl Dawkins" id="ember34" className="global-nav__me-photo ember-view ml-auto" />
                                                 </div>
                                                 <div className="col-9  ">
                                                     <div>
