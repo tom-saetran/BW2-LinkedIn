@@ -3,19 +3,33 @@ import { Button, Row, Col, DropdownButton, Dropdown, ButtonGroup } from "react-b
 import { withRouter } from "react-router"
 
 class ProfileJumbotron extends React.Component {
+   
+
     state = {
-        data: null
+        user: ""
+    }
+    
+    componentDidMount = async () => {
+        console.log(this.props.me)
+        let response = await this.props.crud.user.get()
+        console.log(response[0])
+        this.setState({user: response[0]})
     }
 
-    componentDidUpdate = async (_previousProps, _previousState) => {
-        const id = this.props.match.params.id || (this.props.me && this.props.me._id)
-        if (id && !this.state.data) this.setState({ data: await this.props.crud.user.get(id) })
+    componentDidUpdate = (_previousProps, _previousState) => {
+
+        if(this.props.me != _previousProps.me) {
+            console.log(this.props.me)
+            this.setState({user: this.props.me})
+        }
+         
+        
     }
 
     render() {
         return (
             <>
-                <Col className="mt-4 section-outer px-0">
+                <Col style={{overflow: "hidden"}} className="mt-4 section-outer px-0">
                     <Col md={12} className="banner-parent">
                         <img className="img-fluid" src="https://thingscareerrelated.files.wordpress.com/2018/03/lake2b.jpg" alt="banner"></img>
                         <img className="img-overlay img-fluid rounded-circle" src="https://i.pinimg.com/originals/3d/99/a7/3d99a7e6cb285c7f7cf5e87131e45c92.jpg" alt="profilePic"></img>
@@ -36,8 +50,8 @@ class ProfileJumbotron extends React.Component {
                         </Row>
                         <Row>
                             <Col className="pl-5" md={8}>
-                                <h5>Kaiwan Kadir</h5>
-                                <p>Finance Manager at Ministry of Housing, Communities and Local Government</p>
+                                <h5>{this.state.user.name} {this.state.user.surname}</h5>
+                                <p>{this.state.user.title}</p>
 
                                 <div className="d-flex">
                                     <span>London, England, United Kingdom</span>

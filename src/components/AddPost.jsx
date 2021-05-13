@@ -1,8 +1,16 @@
 import React from "react"
-import { Row, Col, Form, FormControl } from "react-bootstrap"
-
+import { Row, Col, Modal, Button, Form, FormControl } from "react-bootstrap"
 
 class AddPost extends React.Component {
+
+    state = {
+        postShow: false,
+
+    }
+
+    handleShow = () => {
+        this.setState({postShow: true})
+    }
 
 
     render() {
@@ -13,7 +21,7 @@ class AddPost extends React.Component {
                 <div className="d-flex align-items-center">
                     <img className="me-2" style={{borderRadius: "50%", width: "48px", height: "48px"}} src="https://www.dailymoss.com/wp-content/uploads/2019/08/funny-profile-pic59.jpg"></img>
                     <Form className="flex-grow-1"  inline>
-                        <FormControl style={{width: "100%", height: "48px", borderRadius: "35px"}} type="text" placeholder="Start a post" className="flex-grow-1 mr-sm-2" />
+                        <FormControl style={{width: "100%", height: "48px", borderRadius: "35px"}} type="text" onClick={this.handleShow} placeholder="Start a post" className="flex-grow-1 mr-sm-2" />
                         
                     </Form>
                 </div>
@@ -56,3 +64,61 @@ class AddPost extends React.Component {
 }
 
 export default AddPost
+
+class AddExperienceModal extends React.Component {
+    state = {
+        role: "CTO",
+        company: "Strive School",
+        startDate: "2019-06-16",
+        endDate: "2019-06-16", //could be null
+        description: "Doing stuff here and there",
+        area: "Berlin"
+    }
+
+    render() {
+        return (
+            <Modal show={this.props.show} onHide={this.props.hide} backdrop="static" keyboard={false}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Add experience</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <Form>
+                        <Form.Group controlId="formBasicTitle">
+                            <Form.Label>Title *</Form.Label>
+                            <Form.Control value={this.state.role} onChange={e => this.setState({ role: e.target.value })} type="text" placeholder="Ex: Retail Sales Manager" />
+                        </Form.Group>
+                        <Form.Group controlId="formBasicCompany">
+                            <Form.Label>Company *</Form.Label>
+                            <Form.Control value={this.state.company} onChange={e => this.setState({ company: e.target.value })} type="text" placeholder="Ex: Microsoft" />
+                        </Form.Group>
+                        <Form.Group controlId="formBasicLocation">
+                            <Form.Label>Location</Form.Label>
+                            <Form.Control value={this.state.area} onChange={e => this.setState({ area: e.target.value })} type="text" placeholder="Ex: London, United Kingdom" />
+                        </Form.Group>
+                        <Form.Group controlId="formBasicDescription">
+                            <Form.Label>Description</Form.Label>
+                            <Form.Control value={this.state.description} onChange={e => this.setState({ description: e.target.value })} type="text-area" />
+                        </Form.Group>
+                        <Form.Group controlId="formBasicDate">
+                            <Form.Label>Start Date</Form.Label>
+                            <Form.Control type="date" />
+                        </Form.Group>
+                        <Form.Group controlId="formBasicDate">
+                            <Form.Label>End Date</Form.Label>
+                            <Form.Control type="date" />
+                            <Form.Text>If you still work here leave date blank</Form.Text>
+                        </Form.Group>
+                    </Form>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={this.props.hide}>
+                        Close
+                    </Button>
+                    <Button variant="primary" onClick={async () => this.props.post(await this.props.id, await this.state)}>
+                        Save
+                    </Button>
+                </Modal.Footer>
+            </Modal>
+        )
+    }
+}
