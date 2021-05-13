@@ -38,8 +38,6 @@ class ExperienceEducation extends React.Component {
                     {this.state.experiences !== null &&
                         this.state.experiences.length > 0 &&
                         this.state.experiences.map(experience => {
-                            console.log(this.state.experiences)
-
                             return (
                                 <div className="d-flex mb-3 justify-content-between">
                                     <div className="d-flex justify-content-between">
