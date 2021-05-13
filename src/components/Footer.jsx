@@ -41,8 +41,7 @@ class Footer extends React.Component {
                     <Col xs={3}>
                         <ul className="d-flex flex-column flex-start footer-list">
                             <li className="d-flex">
-                                <li>Questions?</li>
-                                <li></li>
+                                <p>Questions?</p>
                             </li>
 
                             <li>Marketing Solutions</li>

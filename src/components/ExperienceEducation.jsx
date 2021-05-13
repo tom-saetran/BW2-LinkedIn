@@ -37,9 +37,9 @@ class ExperienceEducation extends React.Component {
 
                     {this.state.experiences !== null &&
                         this.state.experiences.length > 0 &&
-                        this.state.experiences.map(experience => {
+                        this.state.experiences.map((experience, index) => {
                             return (
-                                <div className="d-flex mb-3 justify-content-between">
+                                <div key={"experience" + index} className="d-flex mb-3 justify-content-between">
                                     <div className="d-flex justify-content-between">
                                         <img className="medium-logo" src="https://media-exp1.licdn.com/dms/image/C4D0BAQHMzEZdUDzWLw/company-logo_100_100/0/1607610827235?e=1628726400&v=beta&t=2DyogaeKHlEJ4FJcFv2DpjEkXpRJ325JlCvt6KMJI_E" alt="" />
                                         <div className="ms-3">
