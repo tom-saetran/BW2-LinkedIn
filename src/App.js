@@ -507,7 +507,7 @@ class App extends React.Component {
                 try {
                     if (userID === "" || userID === undefined || userID === null) throw new Error("user id must be present")
                     if (!this.crud.validators.id(userID)) throw new Error("user id is incorrect")
-                    results = await fetch(this.state.endpoint + userID, {
+                    results = await fetch(this.state.endpoint + userID + "/experiences", {
                         headers: {
                             Authorization: this.state.authtoken
                         }
