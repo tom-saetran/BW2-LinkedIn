@@ -48,7 +48,7 @@ export default class NavBar extends Component {
                                     </svg>
                                     Home
                                 </Nav.Link>
-                                <Nav.Link href="#link" className="NavLink sd-md-flex flex-md-column ">
+                                <Nav.Link href="#link" className="NavLink d-md-flex flex-md-column ">
                                     <svg className="mx-auto" id="global-nav-icon--mercado__my-network--active" height="24" width="24">
                                         <path d="m16.5 11c-2.485 0-4.5-2.015-4.5-4.5s2.015-4.5 4.5-4.5 4.5 2.015 4.5 4.5-2.015 4.5-4.5 4.5z"></path>
                                         <path d="m21 16c0-1.657-1.343-3-3-3h-3c-1.657 0-3 1.343-3 3v6h9z"></path>
