@@ -42,28 +42,28 @@ class FeedRight extends React.Component {
                                             <Card.Header id="side-card-title">
                                                 <div>Add to your feed</div>
                                             </Card.Header>
-                                            {this.state.some !== null &&
-                                                this.state.some.map(person => {
-                                                    return (
-                                                        <Card.Body id="generated-card" key={person._id}>
-                                                            <Row className="flex-row">
-                                                                <Col xs={4} id="card-img-column">
-                                                                    <Card.Img id="card-img" src={person.image} />
-                                                                </Col>
-                                                                <Col xs={8} id="card-column">
-                                                                    <Card.Title id="card-name" className="d-flex">
-                                                                        <div id="card-description-title-one">{person.name}</div>
-                                                                        <div id="third">3rd+</div>
-                                                                    </Card.Title>
-                                                                    <Card.Text id="card-description-container">
-                                                                        <p id="card-description">{person.title}</p>
-                                                                    </Card.Text>
-                                                                    <Button id="card-button">+ Follow</Button>
-                                                                </Col>
-                                                            </Row>
-                                                        </Card.Body>
-                                                    )
-                                                })}
+                                            {this.state.some !== null && this.state.some.map(person => {
+                                                return (
+                                                    <Card.Body id="generated-card" key={person._id}>
+                                                        <Row className="flex-row">
+                                                            <Col xs={4} id="card-img-column">
+                                                                <Card.Img id="card-img" src={person.image} />
+                                                            </Col>
+                                                            <Col xs={8} id="card-column">
+                                                                <Card.Title id="card-name" className="d-flex">
+                                                                    <div id="card-description-title-one">{person.name}</div>
+                                                                    <div id="third">3rd+</div>
+                                                                </Card.Title>
+                                                                <Card.Text id="card-description-container">
+                                                                    <span id="card-description">{person.title}</span>
+                                                                </Card.Text>
+                                                                <Button id="card-button">
+                                                                    + Follow
+                                                                </Button>
+                                                            </Col>
+                                                        </Row>
+                                                    </Card.Body>)
+                                            })}
                                         </Card>
                                     </ListGroup.Item>
                                     <div id="div-drop-one">
@@ -78,24 +78,28 @@ class FeedRight extends React.Component {
                             </div>
                         </div>
                     </div>
-                    <div id="feed-table-right">
-                        <div id="feed-table-right-title">title</div>
+                    <div id="feed-table-right" className="d-flex-block">
+                        <h4 id="feed-table-right-title">Today's most viewed courses</h4>
+                        <div> i</div>
                         <div>
-                            <div id="feed-table-right-sub-title">title</div>
-                            <div id="feed-table-right-sub-string">substring</div>
+                            <h5 id="feed-table-right-sub-title">1. Six Morning Habits of High Performers</h5>
+                            <div id="feed-table-right-sub-string">Pete Mockaitis | How to Be Awesome at Your Job</div>
                         </div>
                         <div>
-                            <div id="feed-table-right-sub-title">title</div>
-                            <div id="feed-table-right-sub-string">substring</div>
+                            <h5 id="feed-table-right-sub-title">2. Executive Influence</h5>
+                            <div id="feed-table-right-sub-string">John Ullmen</div>
                         </div>
                         <div>
-                            <div id="feed-table-right-sub-title">title</div>
-                            <div id="feed-table-right-sub-string">substring</div>
+                            <h5 id="feed-table-right-sub-title">3. Unconscious Bias</h5>
+                            <div id="feed-table-right-sub-string">Stacey Gordon</div>
                         </div>
-                        <div>hello i wil be button</div>
+                        <div>
+                            <button>
+                                hello i wil be button</button>
+                        </div>
                     </div>
 
-                    <div classname="d-flex">
+                    <div className="d-flex">
                         <Navbar bg="light" expand="lg">
                             <Navbar.Toggle aria-controls="basic-navbar-nav" />
                             <Navbar.Collapse id="basic-navbar-nav">
