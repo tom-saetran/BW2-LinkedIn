@@ -4,14 +4,17 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
+
 code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
-#third{
-color:rgb(51, 51, 51);
-font-weight: 300;
-font-size: 12px;
+
+#third {
+    color: rgb(51, 51, 51);
+    font-weight: 300;
+    font-size: 12px;
 }
+
 #card-button {
     background-color: white;
     color: rgb(153, 153, 153);
@@ -23,6 +26,7 @@ font-size: 12px;
     padding-top: 2px;
     padding-bottom: 4px;
 }
+
 #card-button:hover {
     opacity: 1;
     transition: 0.3s;
@@ -30,6 +34,7 @@ font-size: 12px;
     background-color: rgb(206, 206, 206);
     color: black;
 }
+
 #card-description {
     color: rgba(145, 145, 145, 0.945);
     padding-top: 5px;
@@ -37,45 +42,51 @@ font-size: 12px;
     margin: 0;
     font-size: 13px;
 }
-#card-description-title-one::after{
+
+#card-description-title-one::after {
     content: "·";
     margin: 0ch 0.75ch;
 }
-#card-description-container{
+
+#card-description-container {
     margin-bottom: 2px;
 }
+
 #card-description-title {
-    
     padding-top: 0;
     padding-bottom: 0;
     margin: 0;
 }
+
 #card-img {
-    
     border-radius: 50%;
     height: 50px;
     width: 50px;
     object-fit: cover;
 }
-#card-img-column{
+
+#card-img-column {
     padding-left: 18px;
 }
+
 #card-img:hover {
     opacity: 1;
     transition: 0.3s;
     cursor: pointer;
     transform: scale(1.15);
 }
-#card-name{
+
+#card-name {
     margin: 0;
     font-weight: 600;
     color: rgba(36, 36, 36, 0.678);
-    font-size: 100%
-    
+    font-size: 100%;
 }
+
 #divider {
     border-bottom: 1px rgb(206, 206, 206) solid;
 }
+
 #div-drop-one {
     border-top: rgba(161, 126, 74, 0.35) 1px solid;
     border-radius: 0;
@@ -84,55 +95,70 @@ font-size: 12px;
     width: 100%;
     justify-content: center;
     align-items: center;
-    
 }
+
 #drop-down-button {
     width: 100%;
-    
 }
+
+#feed-table-right {
+    border: red 10px solid;
+}
+
 .dropdown-menu {
     width: 100%;
     margin: auto;
 }
-#footer-sub-title{
+
+#footer-sub-title {
     border: none;
     padding-top: 0;
 }
+
 #footer-title {
     letter-spacing: 2px;
     border: none;
     display: flex;
-    align-items: center;    
+    align-items: center;
 }
+
 #footer-title-icon {
     color: blue;
     margin-right: 10px;
 }
+
 #generated-card {
     border: none;
     padding-left: 0;
     padding-right: 0;
 }
+
 #generated-card > div > div.col-8 {
     padding-left: 0;
 }
+
 #generated-card > div > div.col-4 {
     padding-right: 0;
 }
+
 html {
     overflow: scroll;
     overflow-x: hidden;
 }
+
 #id-image {
     height: 50;
     width: 50;
 }
+
 .no-shadow {
     box-shadow: none !important;
 }
+
 #person-title {
     color: grey;
 }
+
 #pickme {
     margin-left: 0;
     padding-left: 0;
@@ -140,33 +166,40 @@ html {
     width: 75px;
     background: blue;
 }
-#question-mark-icon{
-    color:black;border-radius: red 2px solid;
+
+#question-mark-icon {
+    color: black;
+    border-radius: red 2px solid;
 }
-#question-mark-div{
+
+#question-mark-div {
     align-items: center;
     margin-left: auto;
 }
-#side-banner{
+
+#side-banner {
     display: flex;
     align-items: center;
 }
+
 #side-card {
     border: none;
-    
 }
+
 #side-card-title {
     justify-content: left;
     padding: 0;
     border-bottom: none !important;
-    background: transparent;    
+    background: transparent;
 }
+
 #side-card-title > div {
     font-weight: 600;
     color: rgba(36, 36, 36, 0.678);
     padding: 0;
 }
-#side-loader-footer{
+
+#side-loader-footer {
     margin: auto;
     border: none;
     font-weight: 600;
@@ -178,10 +211,12 @@ html {
     padding-left: 10px;
     padding-right: 10px;
 }
+
 #SideLoaderOneContainer {
     padding-top: 0px;
-    padding-bottom: 25px;  
+    padding-bottom: 25px;
 }
+
 #SideLoaderOneGroup {
     border: 1px rgb(206, 206, 206) solid;
     display: flex;
@@ -189,14 +224,15 @@ html {
     position: relative;
     border-radius: 15px;
 }
+
 #side-loader-youtube {
-    
     border: 1px rgb(206, 206, 206) solid;
     border-radius: 15px;
     display: flex;
     justify-content: flex-start;
     position: relative;
 }
+
 #sl-one-drop {
     width: 100%;
     border: none;
@@ -206,45 +242,52 @@ html {
     color: rgb(153, 153, 153);
     font-weight: bold;
 }
+
 #top-two {
     display: block;
     justify-content: center;
     align-items: center;
-    padding-top: 10px;
     padding-bottom: 10px;
 }
+
 #top-two-text {
-    color: rgba(128, 128, 128, 0.966); 
+    color: rgba(128, 128, 128, 0.966);
     font-weight: 600;
     font-size: 14px;
 }
+
 #youtube-card {
     padding-left: 8px;
     border: none;
 }
-#youtube-icon{
-    color: red
+
+#youtube-icon {
+    color: red;
 }
+
 #youtube-image {
     padding-left: 5;
     padding-right: 0;
 }
+
 #youtube-text {
     padding: 0;
-    
 }
-#yt-view-count{
+
+#yt-view-count {
     color: grey;
 }
-#yt-text-title{
+
+#yt-text-title {
     font-weight: 600;
-    color: rgb(36, 36, 36)
+    color: rgb(36, 36, 36);
 }
+
 ::-webkit-scrollbar {
     width: 0; /* Remove scrollbar space */
     background: transparent; /* Optional: just make scrollbar invisible */
 }
 
-.footer-list li{
-    list-style:none;
+.footer-list li {
+    list-style: none;
 }

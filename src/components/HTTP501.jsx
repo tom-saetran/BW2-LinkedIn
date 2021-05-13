@@ -8,7 +8,7 @@ class HTTP501 extends React.Component {
     render() {
         return (
             <>
-                <div className="text-dim text-center">
+                <div className="pt-5 text-dim text-center">
                     <h1>501 - Not Implemented</h1>
                     <Link className="no-underline" to="/profile">
                         <h3 className="link-dim">

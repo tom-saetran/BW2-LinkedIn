@@ -1,5 +1,5 @@
-import { Badge, Button, Card, Col, Container, Dropdown, DropdownButton, Form, FormControl, Nav, Navbar, Jumbotron, ListGroup, Row } from 'react-bootstrap'
-import React from 'react'
+import { Button, Card, Col, Container, Dropdown, DropdownButton, ListGroup, Row } from "react-bootstrap"
+import React from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { library } from "@fortawesome/fontawesome-svg-core"
 import { faHome, faPlayCircle, faQuestionCircle } from "@fortawesome/free-solid-svg-icons"
@@ -40,9 +40,7 @@ class SideLoaderOne extends React.Component {
     render() {
         //console.log(this.state.all)
         return (
-
             this.state.me !== null && (
-
                 <Col xs="12">
                     <div id="top-two">
                         <h6 id="top-two-text" className="top-two-text-divider">
@@ -66,15 +64,6 @@ class SideLoaderOne extends React.Component {
                         </h6>
                     </div>
 
-
-
-
-
-
-
-
-
-
                     <div id="SideLoaderOneContainer">
                         <div id="SideLoaderOne">
                             <div id="SideLoaderOneImage">
@@ -82,32 +71,30 @@ class SideLoaderOne extends React.Component {
                                     <ListGroup.Item id="SideLoaderOneItem">
                                         <Card id="side-card">
                                             <Card.Header id="side-card-title">
-                                                <div >People also viewed</div>
+                                                <div>People also viewed</div>
                                             </Card.Header>
-                                            {this.state.some !== null && this.state.some.map(person => {
-                                                return (
-                                                    <Card.Body id="generated-card" key={person._id}>
-                                                        <Row className="flex-row">
-                                                            <Col xs={4} id="card-img-column">
-                                                                <Card.Img id="card-img" src={person.image} />
-                                                            </Col>
-                                                            <Col xs={8} id="card-column">
-                                                                <Card.Title id="card-name" className="d-flex">
-                                                                    <div id="card-description-title-one">{person.name}</div>
-                                                                    <div id="third">3rd+</div>
-
-                                                                </Card.Title>
-                                                                <Card.Text id="card-description-container">
-                                                                    <p id="card-description">{person.title}</p>
-
-                                                                </Card.Text>
-                                                                <Button id="card-button">
-                                                                    Connect
-                                                                </Button>
-                                                            </Col>
-                                                        </Row>
-                                                    </Card.Body>)
-                                            })}
+                                            {this.state.some !== null &&
+                                                this.state.some.map(person => {
+                                                    return (
+                                                        <Card.Body id="generated-card" key={person._id}>
+                                                            <Row className="flex-row">
+                                                                <Col xs={4} id="card-img-column">
+                                                                    <Card.Img id="card-img" src={person.image} />
+                                                                </Col>
+                                                                <Col xs={8} id="card-column">
+                                                                    <Card.Title id="card-name" className="d-flex">
+                                                                        <div id="card-description-title-one">{person.name}</div>
+                                                                        <div id="third">3rd+</div>
+                                                                    </Card.Title>
+                                                                    <Card.Text id="card-description-container">
+                                                                        <p id="card-description">{person.title}</p>
+                                                                    </Card.Text>
+                                                                    <Button id="card-button">Connect</Button>
+                                                                </Col>
+                                                            </Row>
+                                                        </Card.Body>
+                                                    )
+                                                })}
                                         </Card>
                                     </ListGroup.Item>
                                     <div id="div-drop-one">
@@ -130,30 +117,29 @@ class SideLoaderOne extends React.Component {
                                     <ListGroup.Item id="SideLoaderOneItem">
                                         <Card id="side-card">
                                             <Card.Header id="side-card-title">
-                                                <div >People you may know</div>
+                                                <div>People you may know</div>
                                             </Card.Header>
-                                            {this.state.some !== null && this.state.some.map(person => {
-                                                return (
-                                                    <Card.Body id="generated-card" key={person._id}>
-                                                        <Row className="flex-row">
-                                                            <Col xs={4} id="card-img-column">
-                                                                <Card.Img id="card-img" src={person.image} />
-                                                            </Col>
-                                                            <Col xs={8} id="card-column">
-                                                                <Card.Title id="card-name">
-                                                                    <p id="card-description-title">{person.name}</p>
-                                                                </Card.Title>
-                                                                <Card.Text id="card-description-container">
-                                                                    <p id="card-description">{person.title}</p>
-
-                                                                </Card.Text>
-                                                                <Button id="card-button">
-                                                                    Connect
-                                                                </Button>
-                                                            </Col>
-                                                        </Row>
-                                                    </Card.Body>)
-                                            })}
+                                            {this.state.some !== null &&
+                                                this.state.some.map(person => {
+                                                    return (
+                                                        <Card.Body id="generated-card" key={person._id}>
+                                                            <Row className="flex-row">
+                                                                <Col xs={4} id="card-img-column">
+                                                                    <Card.Img id="card-img" src={person.image} />
+                                                                </Col>
+                                                                <Col xs={8} id="card-column">
+                                                                    <Card.Title id="card-name">
+                                                                        <span id="card-description-title">{person.name}</span>
+                                                                    </Card.Title>
+                                                                    <Card.Text id="card-description-container">
+                                                                        <span id="card-description">{person.title}</span>
+                                                                    </Card.Text>
+                                                                    <Button id="card-button">Connect</Button>
+                                                                </Col>
+                                                            </Row>
+                                                        </Card.Body>
+                                                    )
+                                                })}
                                         </Card>
                                     </ListGroup.Item>
                                     <div id="div-drop-one">
@@ -168,8 +154,6 @@ class SideLoaderOne extends React.Component {
                             </div>
                         </div>
                     </div>
-
-
 
                     <div id="SLYT">
                         <ListGroup id="side-loader-youtube">
@@ -182,7 +166,7 @@ class SideLoaderOne extends React.Component {
                                 <Container id="youtube-card" className="d-flex">
                                     <Row xs="12" className="flex-row">
                                         <Col xs="4" id="youtube-image">
-                                            <img id="pickme" src="/img/cfe.jpg"></img>
+                                            <img alt="" id="pickme" src="/img/cfe.jpg"></img>
                                         </Col>
                                         <Col xs="8" id="youtube-text">
                                             <h6 id="yt-text-title">Cybersecurity for Executives</h6>
@@ -195,8 +179,8 @@ class SideLoaderOne extends React.Component {
                                 <Container id="youtube-card">
                                     <Row className="flex">
                                         <Col xs="4" id="youtube-image" className="d-flex">
-                                            <img id="pickme" src="/img/cacsi.jpg" /><FontAwesomeIcon size="2x" id="youtube-icon" icon={"play-circle"} />
-
+                                            <img alt="" id="pickme" src="/img/cacsi.jpg" />
+                                            <FontAwesomeIcon size="2x" id="youtube-icon" icon={"play-circle"} />
                                         </Col>
                                         <Col xs="8" id="youtube-text" className="d-flex">
                                             <h6 id="yt-text-title">Communicating Culturally Sesitive Issues</h6>
@@ -209,7 +193,7 @@ class SideLoaderOne extends React.Component {
                                 <Container id="youtube-card">
                                     <Row>
                                         <Col xs="4" id="youtube-image">
-                                            <img id="pickme" src="/img/eet.jpg"></img>
+                                            <img alt="" id="pickme" src="/img/eet.jpg"></img>
                                         </Col>
                                         <Col xs="8" id="youtube-text">
                                             <h6 id="yt-text-title">Excel Essential Training (Office 365/Microsoft 365)</h6>
@@ -217,14 +201,13 @@ class SideLoaderOne extends React.Component {
                                         </Col>
                                     </Row>
                                 </Container>
-                            </ListGroup.Item >
+                            </ListGroup.Item>
                             <ListGroup.Item id="side-loader-footer">
                                 <span href="">Show more on LinkedIn Learning</span>
                             </ListGroup.Item>
                         </ListGroup>
                     </div>
                 </Col>
-
             )
         )
     }

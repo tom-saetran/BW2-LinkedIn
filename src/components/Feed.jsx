@@ -3,13 +3,13 @@ import { Container, Row, Col } from "react-bootstrap"
 import AddPost from "./AddPost"
 import FeedItem from "./FeedItem"
 import FeedLeft from "./FeedLeft"
+import FeedRight from "./FeedRight"
 
 class Feed extends React.Component {
     render() {
         return (
             <Container className="pt-5">
                 <Row>
-
                     <Col md={3}>
                         <FeedLeft />
                     </Col>
@@ -22,8 +22,7 @@ class Feed extends React.Component {
                                     <hr className="flex-grow-1 m-auto me-2" style={{ color: "grey" }}></hr>
                                     <div className="d-flex align-items-center">
                                         <span>Sort by: </span> <strong className="ps-2"> Top</strong>
-                                        <a className="dropdown-arrow dropdown-toggle nav-link" role="button" aria-haspopup="true" aria-expanded="false" id="basic-nav-dropdown" href="#"></a>
-
+                                        <span className="dropdown-arrow dropdown-toggle nav-link" role="button" aria-haspopup="true" aria-expanded="false" id="basic-nav-dropdown" href="/"></span>
                                     </div>
                                 </div>
                             </Col>
@@ -31,7 +30,9 @@ class Feed extends React.Component {
                             <FeedItem />
                         </Row>
                     </Col>
-                    <Col md={3}></Col>
+                    <Col md={3}>
+                        <FeedRight me={this.props.me} all={this.props.all} crud={this.props.crud} />
+                    </Col>
                 </Row>
             </Container>
         )

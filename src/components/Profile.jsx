@@ -7,32 +7,22 @@ import ExperienceEducation from "./ExperienceEducation"
 import Interests from "./Interests"
 import "../assets/kai.css"
 import SideLoaderOne from "./SideLoaderOne"
+import { withRouter } from "react-router"
 
 class Profile extends React.Component {
-    state = {
-        me: null,
-        all: null
-    }
-
-    componentDidUpdate = async (_previousProps, _previousState) => {
-        if (this.props.me !== this.state.me) this.setState({ me: this.props.me })
-        if (this.props.all !== this.state.all) this.setState({ all: this.props.all })
-        if (this.state.data === null) this.setState({ data: await this.props.crud.user.get("6098ebe0619e5d00151f8f7b") })
-    }
-
     render() {
         return (
             <Container className="pt-5">
                 <Row>
                     <Col md={{ span: 7, offset: 1 }}>
-                        <ProfileJumbotron crud={this.props.crud} me={this.state.me} />
+                        <ProfileJumbotron crud={this.props.crud} me={this.props.me} />
                         <Dashboard />
                         <Activity />
-                        <ExperienceEducation crud={this.props.crud} exp={this.props.exp} me={this.state.me} />
+                        <ExperienceEducation crud={this.props.crud} exp={this.props.exp} me={this.props.me} />
                         <Interests />
                     </Col>
                     <Col md={3}>
-                        <SideLoaderOne crud={this.props.crud} me={this.state.me} all={this.state.all} />
+                        <SideLoaderOne crud={this.props.crud} me={this.props.me} all={this.props.all} />
                     </Col>
                     <Col md={1}></Col>
                 </Row>
@@ -41,4 +31,4 @@ class Profile extends React.Component {
     }
 }
 
-export default Profile
+export default withRouter(Profile)
