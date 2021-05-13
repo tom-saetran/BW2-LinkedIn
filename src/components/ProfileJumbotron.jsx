@@ -25,7 +25,6 @@ class ProfileJumbotron extends React.Component {
                             </svg>
                         </div>
                     </Col>
-
                     <Col className=" section-inner">
                         <Row>
                             <Col className="d-flex mb-3 justify-content-end">
@@ -38,7 +37,6 @@ class ProfileJumbotron extends React.Component {
                             <Col className="pl-5" md={8}>
                                 <h5>Kaiwan Kadir</h5>
                                 <p>Finance Manager at Ministry of Housing, Communities and Local Government</p>
-
                                 <div className="d-flex">
                                     <span>London, England, United Kingdom</span>
                                     <span className="ms-2">·</span>
