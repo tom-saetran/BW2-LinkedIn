@@ -79,9 +79,9 @@ class ExperienceEducation extends React.Component {
                 {this.state.addModalShow && (
                     <AddExperienceModal
                         show={this.state.addModalShow}
-                        post={this.props.crud.post}
+                        post={this.props.crud.experiences.post}
                         id={async () => {
-                            if (this.state.experiences !== null) await this.state.experiences[0]._id
+                            await this.state.experiences[0]._id
                         }}
                         hide={() => {
                             this.setState({ addModalShow: false })
@@ -91,9 +91,9 @@ class ExperienceEducation extends React.Component {
                 {this.state.updateModalShow && (
                     <UpdateExperienceModal
                         show={this.state.updateModalShow}
-                        put={this.props.crud.put}
+                        put={this.props.crud.experiences.put}
                         id={async () => {
-                            if (this.state.experiences !== null) await this.state.experiences[0]._id
+                            await this.state.experiences[0]._id
                         }}
                         hide={() => {
                             this.setState({ updateModalShow: false })
@@ -154,7 +154,7 @@ class AddExperienceModal extends React.Component {
                     <Button variant="secondary" onClick={this.props.hide}>
                         Close
                     </Button>
-                    <Button variant="primary" onClick={async () => this.props.post(await this.props.id, await this.state)}>
+                    <Button variant="primary" onClick={async () => this.props.post(await this.props.id, this.state)}>
                         Save
                     </Button>
                 </Modal.Footer>
