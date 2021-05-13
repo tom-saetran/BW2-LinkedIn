@@ -3,6 +3,7 @@ import { Container, Row, Col } from "react-bootstrap"
 import AddPost from "./AddPost"
 import FeedItem from "./FeedItem"
 import FeedLeft from "./FeedLeft"
+import FeedRight from "./FeedRight"
 
 class Feed extends React.Component {
     render() {
@@ -31,7 +32,10 @@ class Feed extends React.Component {
                             <FeedItem />
                         </Row>
                     </Col>
-                    <Col md={3}></Col>
+                    <Col md={3}>
+                        <FeedRight me={this.props.me} all={this.props.all} crud={this.props.crud} />
+
+                    </Col>
                 </Row>
             </Container>
         )

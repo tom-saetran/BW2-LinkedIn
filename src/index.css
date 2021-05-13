@@ -90,6 +90,9 @@ font-size: 12px;
     width: 100%;
     
 }
+#feed-table-right{
+    border: red 10px solid
+}
 .dropdown-menu {
     width: 100%;
     margin: auto;
