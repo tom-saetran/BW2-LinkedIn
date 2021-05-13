@@ -9,7 +9,7 @@ class AddPost extends React.Component {
     }
 
     handleShow = () => {
-        this.setState({postShow: true})
+        this.setState({postShow: !this.state.postShow})
     }
 
 
@@ -56,8 +56,9 @@ class AddPost extends React.Component {
                 </div>
                 
                 </div>
-
+                {this.state.postShow && <AddExperienceModal show={this.state.postShow} hide={() => this.setState({postShow: false})}/>}
             </Col>
+
 
         )
     }
@@ -79,7 +80,7 @@ class AddExperienceModal extends React.Component {
         return (
             <Modal show={this.props.show} onHide={this.props.hide} backdrop="static" keyboard={false}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Add experience</Modal.Title>
+                    <Modal.Title>Create a post</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <Form>

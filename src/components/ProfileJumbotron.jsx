@@ -35,8 +35,12 @@ class ProfileJumbotron extends React.Component {
                         </Row>
                         <Row>
                             <Col className="pl-5" md={8}>
-                                <h5>{this.state.data && this.state.data.name} {this.state.data && this.state.data.surname}</h5>
-                                <p>{this.state.data && this.state.data.title}</p>
+                            {                                                       
+                                this.state.data  &&
+                                (
+                                    <>
+                                    <h5>{this.state.data.name} {this.state.data.surname}</h5>
+                                <p>{this.state.data.title}</p>
                                 <div className="d-flex">
                                     <span>London, England, United Kingdom</span>
                                     <span className="ms-2">·</span>
@@ -44,6 +48,8 @@ class ProfileJumbotron extends React.Component {
                                         <a href="www.google.com">Contact info</a>
                                     </span>
                                 </div>
+                                </>)
+                            }
 
                                 <div className="">
                                     <DropdownButton className="my-2 btn-1 button-border" size="sm" variant="primary" as={ButtonGroup} title="Open to" id="bg-nested-dropdown">

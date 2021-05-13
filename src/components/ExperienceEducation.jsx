@@ -49,7 +49,7 @@ class ExperienceEducation extends React.Component {
                                 <h6>{experience.role}</h6>
                                     <p>{experience.company}</p>
                                     <p>{experience.description}</p>
-                                <span>Jan 2020 – Present . 1 yr 5 mos</span>
+                                <span>{experience.startDate}</span>
                             </div>
                         </div>
                         <div>
