@@ -18,7 +18,7 @@ export default class NavBar extends Component {
                     <Container>
                         <div className="d-flex">
                             <Navbar.Brand href="#home">
-                                <svg fill="currentColor" style={{ color: "#0a66c2" }} xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 34 34" class="global-nav__logo">
+                                <svg fill="currentColor" style={{ color: "#0a66c2" }} xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 34 34" className="global-nav__logo">
                                     <title>LinkedIn</title>
                                     <g>
                                         <path d="M34,2.5v29A2.5,2.5,0,0,1,31.5,34H2.5A2.5,2.5,0,0,1,0,31.5V2.5A2.5,2.5,0,0,1,2.5,0h29A2.5,2.5,0,0,1,34,2.5ZM10,13H5V29h5Zm.45-5.5A2.88,2.88,0,0,0,7.59,4.6H7.5a2.9,2.9,0,0,0,0,5.8h0a2.88,2.88,0,0,0,2.95-2.81ZM29,19.28c0-4.81-3.06-6.68-6.1-6.68a5.7,5.7,0,0,0-5.06,2.58H17.7V13H13V29h5V20.49a3.32,3.32,0,0,1,3-3.58h.19c1.59,0,2.77,1,2.77,3.52V29h5Z" fill="currentColor"></path>
@@ -27,7 +27,7 @@ export default class NavBar extends Component {
                             </Navbar.Brand>
                             <Form inline className="d-flex h-50 my-auto" style={{ backgroundColor: "#eef3f8" }}>
                                 <Button type="submit" className="border-white me-auto input-group-append" variant="outline-none">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" data-supported-dps="16x16" fill="background-color:#0a66c2" class="mercado-match" width="16" height="16" focusable="false">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" data-supported-dps="16x16" fill="background-color:#0a66c2" className="mercado-match" width="16" height="16" focusable="false">
                                         <path d="M14.56 12.44L11.3 9.18a5.51 5.51 0 10-2.12 2.12l3.26 3.26a1.5 1.5 0 102.12-2.12zM3 6.5A3.5 3.5 0 116.5 10 3.5 3.5 0 013 6.5z"></path>
                                     </svg>
                                 </Button>
@@ -37,7 +37,7 @@ export default class NavBar extends Component {
 
                         <Navbar.Toggle aria-controls="basic-navbar-nav" />
 
-                        <Navbar.Collapse id="basic-navbar-nav" class="ml-auto me-md-5">
+                        <Navbar.Collapse id="basic-navbar-nav" className="ml-auto me-md-5">
                             <Nav>
                                 <Nav.Link href="#home" className="d-md-flex flex-md-column ">
                                     <svg className="mx-auto" id="global-nav-icon--mercado__home--active" height="24" width="24">
@@ -75,14 +75,14 @@ export default class NavBar extends Component {
                                 </Nav.Link>
 
                                 <div className="d-flex flex-column">
-                                    <img className="ml-auto " style={{ borderRadius: "15px" }} width="24" src="https://media-exp1.licdn.com/dms/image/C4D03AQEmFglnfuuwIA/profile-displayphoto-shrink_100_100/0/1611490819975?e=1626307200&amp;v=beta&amp;t=w9AyTKktD9nM_YOIbxdofqnBn-EkVTEd3wNs4z7JxRU" height="24" alt="Carl Dawkins" id="ember34" class="global-nav__me-photo ember-view" />
+                                    <img className="ml-auto " style={{ borderRadius: "15px" }} width="24" src="https://media-exp1.licdn.com/dms/image/C4D03AQEmFglnfuuwIA/profile-displayphoto-shrink_100_100/0/1611490819975?e=1626307200&amp;v=beta&amp;t=w9AyTKktD9nM_YOIbxdofqnBn-EkVTEd3wNs4z7JxRU" height="24" alt="Carl Dawkins" id="ember34" className="global-nav__me-photo ember-view" />
 
                                     <NavDropdown style={{ width: "100%" }} id="Me" title="Me" className="pl-md-0 pr-md-0 pb-md-0 ">
                                         <NavDropdown.Item href="#action/3.1">
                                             <div className="d-flex flex-row">
                                                 <div className="col-3 ">
                                                     {" "}
-                                                    <img className="ml-auto " style={{ borderRadius: "15px" }} src="https://media-exp1.licdn.com/dms/image/C4D03AQEmFglnfuuwIA/profile-displayphoto-shrink_100_100/0/1611490819975?e=1626307200&amp;v=beta&amp;t=w9AyTKktD9nM_YOIbxdofqnBn-EkVTEd3wNs4z7JxRU" height="40px" width="40px" alt="Carl Dawkins" id="ember34" class="global-nav__me-photo ember-view" />
+                                                    <img className="ml-auto " style={{ borderRadius: "15px" }} src="https://media-exp1.licdn.com/dms/image/C4D03AQEmFglnfuuwIA/profile-displayphoto-shrink_100_100/0/1611490819975?e=1626307200&amp;v=beta&amp;t=w9AyTKktD9nM_YOIbxdofqnBn-EkVTEd3wNs4z7JxRU" height="40px" width="40px" alt="Carl Dawkins" id="ember34" className="global-nav__me-photo ember-view" />
                                                 </div>
                                                 <div className="col-9  ">
                                                     <div>
