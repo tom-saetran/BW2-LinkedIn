@@ -2,19 +2,18 @@
     text-align: center;
 }
 
-
-#SideLoaderOne{
-    border-style: dotted
+#SideLoaderOne {
+    border-style: dotted;
 }
 
-#SideLoaderOneItem{
+#SideLoaderOneItem {
     color: blue;
 }
 
-#SearchBar{
-   background-color:#ffffff;
-}
-#Logo{
-    background-color:#0a66c2;
+#SearchBar {
+    background-color: #ffffff;
 }
 
+#Logo {
+    background-color: #0a66c2;
+}

@@ -15,7 +15,7 @@ class ProfileJumbotron extends React.Component {
     render() {
         return (
             <>
-                <Col className="mt-4 section-outer px-0">
+                <Col style={{ overflow: "hidden" }} className="mt-4 section-outer px-0">
                     <Col md={12} className="banner-parent">
                         <img className="img-fluid" src="https://thingscareerrelated.files.wordpress.com/2018/03/lake2b.jpg" alt="banner"></img>
                         <img className="img-overlay img-fluid rounded-circle" src="https://i.pinimg.com/originals/3d/99/a7/3d99a7e6cb285c7f7cf5e87131e45c92.jpg" alt="profilePic"></img>
@@ -35,21 +35,21 @@ class ProfileJumbotron extends React.Component {
                         </Row>
                         <Row>
                             <Col className="pl-5" md={8}>
-                            {                                                       
-                                this.state.data  &&
-                                (
+                                {this.state.data && (
                                     <>
-                                    <h5>{this.state.data.name} {this.state.data.surname}</h5>
-                                <p>{this.state.data.title}</p>
-                                <div className="d-flex">
-                                    <span>London, England, United Kingdom</span>
-                                    <span className="ms-2">·</span>
-                                    <span className="ms-2">
-                                        <a href="www.google.com">Contact info</a>
-                                    </span>
-                                </div>
-                                </>)
-                            }
+                                        <h5>
+                                            {this.state.data.name} {this.state.data.surname}
+                                        </h5>
+                                        <p>{this.state.data.title}</p>
+                                        <div className="d-flex">
+                                            <span>London, England, United Kingdom</span>
+                                            <span className="ms-2">·</span>
+                                            <span className="ms-2">
+                                                <a href="www.google.com">Contact info</a>
+                                            </span>
+                                        </div>
+                                    </>
+                                )}
 
                                 <div className="">
                                     <DropdownButton className="my-2 btn-1 button-border" size="sm" variant="primary" as={ButtonGroup} title="Open to" id="bg-nested-dropdown">

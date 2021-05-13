@@ -1,5 +1,5 @@
 import React from "react"
-import { Row, Col, Modal, Button, Form } from "react-bootstrap"
+import { Col, Modal, Button, Form } from "react-bootstrap"
 import { withRouter } from "react-router-dom"
 
 // kai token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDlhOGQxZGRmY2NjNTAwMTVhNmJiY2QiLCJpYXQiOjE2MjA3NDE0MDYsImV4cCI6MTYyMTk1MTAwNn0.QNqO9fHDHOKv1VoPJfJInf1UQF10jMz6AZtfBnSi8Os
@@ -25,7 +25,6 @@ class ExperienceEducation extends React.Component {
     }
 
     render() {
-       
         return (
             <>
                 <Col className="mt-4 mb-4 section-outer section-inner">
@@ -36,32 +35,30 @@ class ExperienceEducation extends React.Component {
                         </svg>
                     </div>
 
-                    {this.state.experiences !== null && this.state.experiences.length > 0  && this.state.experiences.map( experience => {
+                    {this.state.experiences !== null &&
+                        this.state.experiences.length > 0 &&
+                        this.state.experiences.map(experience => {
+                            console.log(this.state.experiences)
 
-                    
-
-                        console.log(this.state.experiences)
-                        
-                        return (<div className="d-flex mb-3 justify-content-between">
-                        <div className="d-flex justify-content-between">
-                            <img className="medium-logo" src="https://media-exp1.licdn.com/dms/image/C4D0BAQHMzEZdUDzWLw/company-logo_100_100/0/1607610827235?e=1628726400&v=beta&t=2DyogaeKHlEJ4FJcFv2DpjEkXpRJ325JlCvt6KMJI_E" alt="" />
-                            <div className="ms-3">
-                                <h6>{experience.role}</h6>
-                                    <p>{experience.company}</p>
-                                    <p>{experience.description}</p>
-                                <span>{experience.startDate}</span>
-                            </div>
-                        </div>
-                        <div>
-                            <svg onClick={this.handleUpdateShow} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" data-supported-dps="24x24" fill="currentColor" class="mercado-match" width="24" height="24" focusable="false">
-                                <path d="M21.13 2.86a3 3 0 00-4.17 0l-13 13L2 22l6.19-2L21.13 7a3 3 0 000-4.16zM6.77 18.57l-1.35-1.34L16.64 6 18 7.35z"></path>
-                            </svg>
-                        </div>
-                    </div>)
-
-                    })}
-
-                    
+                            return (
+                                <div className="d-flex mb-3 justify-content-between">
+                                    <div className="d-flex justify-content-between">
+                                        <img className="medium-logo" src="https://media-exp1.licdn.com/dms/image/C4D0BAQHMzEZdUDzWLw/company-logo_100_100/0/1607610827235?e=1628726400&v=beta&t=2DyogaeKHlEJ4FJcFv2DpjEkXpRJ325JlCvt6KMJI_E" alt="" />
+                                        <div className="ms-3">
+                                            <h6>{experience.role}</h6>
+                                            <p>{experience.company}</p>
+                                            <p>{experience.description}</p>
+                                            <span>{experience.startDate}</span>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <svg onClick={this.handleUpdateShow} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" data-supported-dps="24x24" fill="currentColor" class="mercado-match" width="24" height="24" focusable="false">
+                                            <path d="M21.13 2.86a3 3 0 00-4.17 0l-13 13L2 22l6.19-2L21.13 7a3 3 0 000-4.16zM6.77 18.57l-1.35-1.34L16.64 6 18 7.35z"></path>
+                                        </svg>
+                                    </div>
+                                </div>
+                            )
+                        })}
 
                     <hr></hr>
 

@@ -1,9 +1,7 @@
 import React from "react"
-import { Button, Col } from "react-bootstrap"
-
+import { Col } from "react-bootstrap"
 
 class Activity extends React.Component {
-
     render() {
         return (
             <>
@@ -16,7 +14,7 @@ class Activity extends React.Component {
                     </div>
                     <span className="text-muted">1 follower</span>
                     <div className="my-2">
-                        <p>Posts Kaiwan  created, shared, or commented on in the last 90 days are displayed here.</p>
+                        <p>Posts Kaiwan created, shared, or commented on in the last 90 days are displayed here.</p>
                     </div>
                     <div>
                         <hr></hr>

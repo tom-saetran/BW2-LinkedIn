@@ -7,7 +7,6 @@ import Profile from "./components/Profile"
 import NavBar from "./components/NavBar"
 import Feed from "./components/Feed"
 import Footer from "./components/Footer"
-import SideLoaderOne from "./components/SideLoaderOne"
 
 class App extends React.Component {
     state = {
@@ -546,7 +545,7 @@ class App extends React.Component {
                     if (userID === "" || userID === undefined || userID === null) throw new Error("user id must be present")
                     if (!this.crud.validators.id(userID)) throw new Error("user id is incorrect")
                     if (typeof data !== "object") throw new Error("data must be an object")
-                    results = await fetch(this.state.endpoint + userID + "/experiences/", {
+                    results = await fetch(this.state.endpoint + userID + "/experiences", {
                         method: "POST",
                         headers: {
                             Authorization: this.state.authtoken,
