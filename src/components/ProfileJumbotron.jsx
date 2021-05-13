@@ -35,8 +35,8 @@ class ProfileJumbotron extends React.Component {
                         </Row>
                         <Row>
                             <Col className="pl-5" md={8}>
-                                <h5>Kaiwan Kadir</h5>
-                                <p>Finance Manager at Ministry of Housing, Communities and Local Government</p>
+                                <h5>{this.state.data && this.state.data.name} {this.state.data && this.state.data.surname}</h5>
+                                <p>{this.state.data && this.state.data.title}</p>
                                 <div className="d-flex">
                                     <span>London, England, United Kingdom</span>
                                     <span className="ms-2">·</span>
