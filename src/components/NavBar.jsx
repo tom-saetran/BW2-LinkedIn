@@ -79,7 +79,7 @@ export default class NavBar extends Component {
                                 <div className="d-flex flex-md-column align-items-center">
                                     <img style={{ borderRadius: "50%" }} width="24" src="https://media-exp1.licdn.com/dms/image/C4D03AQEmFglnfuuwIA/profile-displayphoto-shrink_100_100/0/1611490819975?e=1626307200&amp;v=beta&amp;t=w9AyTKktD9nM_YOIbxdofqnBn-EkVTEd3wNs4z7JxRU" height="24" alt="Carl Dawkins" id="ember34" className="mx-auto global-nav__me-photo ember-view" />
                                     <NavDropdown id="Me" title="Me" className="">
-                                        <NavDropdown.Item>
+                                        <NavDropdown.Item as={"div"}>
                                             <div className="d-flex flex-row w-100">
                                                 <div className="col-3 ">
                                                     {" "}
