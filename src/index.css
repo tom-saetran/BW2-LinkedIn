@@ -84,7 +84,8 @@ code {
 }
 
 #divider {
-    border-bottom: 1px rgb(206, 206, 206) solid;
+    border-top: 1px rgb(206, 206, 206) solid;
+    padding-bottom: 10px;
 }
 
 #div-drop-one {
@@ -101,8 +102,63 @@ code {
     width: 100%;
 }
 
-#feed-table-right {
-    border: red 10px solid;
+#feed-foot-one{
+    color: blue;
+    font-weight: bold;
+}
+
+#feed-table-right-two{
+    border: 1px rgb(206, 206, 206) solid;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+
+}
+
+#feed-table-right-title-item{
+    display: flex;
+    border: none; 
+    padding-bottom: 0;
+}
+
+#feed-foot-two{
+    font-weight: 550;
+    color: rgb(65, 65, 65);
+    
+}
+
+#feed-table-right-two-item{
+    border: none;
+    display: block;
+    padding-top: 2;
+    padding-bottom: 2;
+
+}
+
+#feed-table-right-two-item:hover{
+    opacity: 1;
+    transition: 0.3s;
+    cursor: pointer;
+    background-color: rgb(206, 206, 206);
+    color: black;
+}
+
+#feed-table-right-sub-string{
+    padding-left: 22px;
+    font-size: 13px;
+}
+
+#feed-table-right-sub-title{
+    font-weight:600;
+    margin: 0;
+}
+
+#feed-table-right-title{
+    font-weight: bold;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+ 
 }
 
 .dropdown-menu {
@@ -125,6 +181,18 @@ code {
 #footer-title-icon {
     color: blue;
     margin-right: 10px;
+}
+
+#footer-title-icon-feed {
+    color: blue;
+    margin-right: 5px;
+}
+
+#footer-feed-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 10px;
 }
 
 #generated-card {
@@ -169,7 +237,7 @@ html {
 
 #question-mark-icon {
     color: black;
-    border-radius: red 2px solid;
+    
 }
 
 #question-mark-div {
@@ -182,6 +250,13 @@ html {
     align-items: center;
 }
 
+#top-two-text-divider-two {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none
+}
+
 #side-card {
     border: none;
 }
@@ -191,6 +266,10 @@ html {
     padding: 0;
     border-bottom: none !important;
     background: transparent;
+}
+
+#SideLoaderOneItem{
+    border: none;
 }
 
 #side-card-title > div {
@@ -243,6 +322,67 @@ html {
     font-weight: bold;
 }
 
+#side-nav-a{
+
+}
+
+#side-nav-a:hover {
+    color: rgb(77, 77, 77);
+}
+#side-nav-a {
+    text-decoration: none;
+    color: rgb(153, 153, 153);
+}
+#side-nav-footer{
+    text-align: center;
+    padding-top: 10px;
+}
+
+#side-nav-item{
+    padding: 5px;
+    color: rgb(153, 153, 153);
+    font-weight: bold;
+    border: none;
+    background: none;
+}
+
+#side-nav-main{
+    border: 1px rgb(206, 206, 206) solid;
+    border-radius: 15px;
+}
+
+#side-nav-container{
+    display: flex;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+}
+
+#snc{
+
+    padding-bottom: 20px;
+}
+#top-one {
+    display: block;
+    justify-content: center;
+    align-items: center;
+    padding-top: 10px;
+    border: none;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#top-one-text {
+    font-weight: 600;
+    color: rgba(36, 36, 36, 0.678);
+    padding: 0;
+    
+}
+
 #top-two {
     display: block;
     justify-content: center;
@@ -290,4 +430,10 @@ html {
 
 .footer-list li {
     list-style: none;
+}
+
+#youtube-card-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

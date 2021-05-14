@@ -177,10 +177,10 @@ class SideLoaderOne extends React.Component {
                             </ListGroup.Item>
                             <ListGroup.Item id="youtube-card">
                                 <Container id="youtube-card">
-                                    <Row className="flex">
+                                    <Row >
                                         <Col xs="4" id="youtube-image" className="d-flex">
                                             <img alt="" id="pickme" src="/img/cacsi.jpg" />
-                                            <FontAwesomeIcon size="2x" id="youtube-icon" icon={"play-circle"} />
+
                                         </Col>
                                         <Col xs="8" id="youtube-text" className="d-flex">
                                             <h6 id="yt-text-title">Communicating Culturally Sesitive Issues</h6>
@@ -207,7 +207,7 @@ class SideLoaderOne extends React.Component {
                             </ListGroup.Item>
                         </ListGroup>
                     </div>
-                </Col>
+                </Col >
             )
         )
     }
