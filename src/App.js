@@ -455,6 +455,8 @@ class App extends React.Component {
                     })
                     if (!results.ok) throw new Error("got data in return but the ok flag is not true! response: " + results)
                     results = await results.json()
+
+                    //if ((await results.image) !== undefined) return await this.crud.validators.image(results)
                 } catch (error) {
                     console.error(error)
                     return null
@@ -704,6 +706,17 @@ class App extends React.Component {
             id: id => {
                 let regex = /[0-9a-f]{24}/g
                 return regex.test(id.toLowerCase()) || id === "me"
+            },
+            image: async results => {
+                console.log(results)
+                let image = new Image()
+                let ok = false
+                image.onload = async () => (ok = (await this.width) > 0 ? true : false)
+                image.onerror = () => (ok = false)
+                image.src = results.image
+                if (await !ok) results.image = "https://via.placeholder.com/200x200?text=Profile+picture"
+                console.log(await image)
+                return await results
             }
         }
     }

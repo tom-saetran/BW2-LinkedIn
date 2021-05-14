@@ -1,4 +1,4 @@
-import { Button, Card, Col, Container, Dropdown, DropdownButton, ListGroup, ListGroupItem, Row } from "react-bootstrap"
+import { Button, Card, Col, Dropdown, DropdownButton, ListGroup, Row } from "react-bootstrap"
 import React from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { library } from "@fortawesome/fontawesome-svg-core"
@@ -11,13 +11,15 @@ class SideLoaderOne extends React.Component {
     state = {
         me: null,
         all: null,
-        some: null
+        mayKnow: null,
+        alsoViewed: null
     }
 
     componentDidUpdate = (_previousProps, _previousState) => {
         if (this.props.me !== this.state.me) this.setState({ me: this.props.me })
         if (this.props.all !== this.state.all) this.setState({ all: this.props.all })
-        if (this.state.some === null && this.state.all !== null) this.setState({ some: this.some() })
+        if (this.state.mayKnow === null && this.state.all !== null) this.setState({ mayKnow: this.some() })
+        if (this.state.alsoViewed === null && this.state.all !== null) this.setState({ alsoViewed: this.some() })
     }
 
     //  const noInfo = []
@@ -73,8 +75,8 @@ class SideLoaderOne extends React.Component {
                                             <Card.Header id="side-card-title">
                                                 <div>People also viewed</div>
                                             </Card.Header>
-                                            {this.state.some !== null &&
-                                                this.state.some.map(person => {
+                                            {this.state.alsoViewed !== null &&
+                                                this.state.alsoViewed.map(person => {
                                                     return (
                                                         <Card.Body id="generated-card" key={person._id}>
                                                             <Row className="flex-row">
@@ -119,8 +121,8 @@ class SideLoaderOne extends React.Component {
                                             <Card.Header id="side-card-title">
                                                 <div>People you may know</div>
                                             </Card.Header>
-                                            {this.state.some !== null &&
-                                                this.state.some.map(person => {
+                                            {this.state.mayKnow !== null &&
+                                                this.state.mayKnow.map(person => {
                                                     return (
                                                         <Card.Body id="generated-card" key={person._id}>
                                                             <Row className="flex-row">
@@ -165,7 +167,6 @@ class SideLoaderOne extends React.Component {
                                 <p id="sl-youtube-sub-title"> Add new skills with these courses</p>
                             </ListGroup.Item>
                             <ListGroup.Item id="youtube-card">
-
                                 <Row>
                                     <Col xs="4" id="youtube-image">
                                         <img alt="" id="pickme" src="/img/cfe.jpg"></img>
@@ -175,10 +176,8 @@ class SideLoaderOne extends React.Component {
                                         <span id="yt-view-count">22,331 views</span>
                                     </Col>
                                 </Row>
-
                             </ListGroup.Item>
                             <ListGroup.Item id="youtube-card">
-
                                 <Row>
                                     <Col xs="4" id="youtube-image">
                                         <img alt="" id="pickme" src="/img/cacsi.jpg"></img>
@@ -188,10 +187,8 @@ class SideLoaderOne extends React.Component {
                                         <span id="yt-view-count">247,691 views</span>
                                     </Col>
                                 </Row>
-
                             </ListGroup.Item>
                             <ListGroup.Item id="youtube-card">
-
                                 <Row>
                                     <Col xs="4" id="youtube-image">
                                         <img alt="" id="pickme" src="/img/eet.jpg"></img>
@@ -201,16 +198,14 @@ class SideLoaderOne extends React.Component {
                                         <span id="yt-view-count">745,856 views</span>
                                     </Col>
                                 </Row>
-
                             </ListGroup.Item>
-
 
                             <ListGroup.Item id="side-loader-footer">
                                 <span href="">Show more on LinkedIn Learning</span>
                             </ListGroup.Item>
                         </ListGroup>
                     </div>
-                </Col >
+                </Col>
             )
         )
     }
