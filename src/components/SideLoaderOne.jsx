@@ -1,4 +1,4 @@
-import { Button, Card, Col, Container, Dropdown, DropdownButton, ListGroup, Row } from "react-bootstrap"
+import { Button, Card, Col, Container, Dropdown, DropdownButton, ListGroup, ListGroupItem, Row } from "react-bootstrap"
 import React from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { library } from "@fortawesome/fontawesome-svg-core"
@@ -74,7 +74,7 @@ class SideLoaderOne extends React.Component {
                                                 <div>People also viewed</div>
                                             </Card.Header>
                                             {this.state.some !== null &&
-                                                this.state.all.map(person => {
+                                                this.state.some.map(person => {
                                                     return (
                                                         <Card.Body id="generated-card" key={person._id}>
                                                             <Row className="flex-row">
@@ -161,47 +161,50 @@ class SideLoaderOne extends React.Component {
                                 <FontAwesomeIcon size="2x" id="footer-title-icon" icon={["fab", "linkedin"]} />
                                 <span>LEARNING</span>
                             </ListGroup.Item>
-                            <ListGroup.Item id="footer-sub-title">Add new skills with these courses</ListGroup.Item>
-                            <ListGroup.Item id="youtube-card">
-                                <Container id="youtube-card" className="d-flex">
-                                    <Row xs="12" className="flex-row">
-                                        <Col xs="4" id="youtube-image">
-                                            <img alt="" id="pickme" src="/img/cfe.jpg"></img>
-                                        </Col>
-                                        <Col xs="8" id="youtube-text">
-                                            <h6 id="yt-text-title">Cybersecurity for Executives</h6>
-                                            <span id="yt-view-count">22,331 views</span>
-                                        </Col>
-                                    </Row>
-                                </Container>
+                            <ListGroup.Item id="sl-youtube-sub-title-container">
+                                <p id="sl-youtube-sub-title"> Add new skills with these courses</p>
                             </ListGroup.Item>
                             <ListGroup.Item id="youtube-card">
-                                <Container id="youtube-card">
-                                    <Row >
-                                        <Col xs="4" id="youtube-image" className="d-flex">
-                                            <img alt="" id="pickme" src="/img/cacsi.jpg" />
 
-                                        </Col>
-                                        <Col xs="8" id="youtube-text" className="d-flex">
-                                            <h6 id="yt-text-title">Communicating Culturally Sesitive Issues</h6>
-                                            <span id="yt-view-count">247,691 views</span>
-                                        </Col>
-                                    </Row>
-                                </Container>
+                                <Row>
+                                    <Col xs="4" id="youtube-image">
+                                        <img alt="" id="pickme" src="/img/cfe.jpg"></img>
+                                    </Col>
+                                    <Col xs="8" id="youtube-text">
+                                        <h6 id="yt-text-title">Cybersecurity for Executives</h6>
+                                        <span id="yt-view-count">22,331 views</span>
+                                    </Col>
+                                </Row>
+
                             </ListGroup.Item>
                             <ListGroup.Item id="youtube-card">
-                                <Container id="youtube-card">
-                                    <Row>
-                                        <Col xs="4" id="youtube-image">
-                                            <img alt="" id="pickme" src="/img/eet.jpg"></img>
-                                        </Col>
-                                        <Col xs="8" id="youtube-text">
-                                            <h6 id="yt-text-title">Excel Essential Training (Office 365/Microsoft 365)</h6>
-                                            <span id="yt-view-count">745,856 views</span>
-                                        </Col>
-                                    </Row>
-                                </Container>
+
+                                <Row>
+                                    <Col xs="4" id="youtube-image">
+                                        <img alt="" id="pickme" src="/img/cacsi.jpg"></img>
+                                    </Col>
+                                    <Col xs="8" id="youtube-text">
+                                        <h6 id="yt-text-title">Communicating about Culturally Sensitive Issues</h6>
+                                        <span id="yt-view-count">247,691 views</span>
+                                    </Col>
+                                </Row>
+
                             </ListGroup.Item>
+                            <ListGroup.Item id="youtube-card">
+
+                                <Row>
+                                    <Col xs="4" id="youtube-image">
+                                        <img alt="" id="pickme" src="/img/eet.jpg"></img>
+                                    </Col>
+                                    <Col xs="8" id="youtube-text">
+                                        <h6 id="yt-text-title">Excel Essential Training (Office 365/Microsoft 365)</h6>
+                                        <span id="yt-view-count">745,856 views</span>
+                                    </Col>
+                                </Row>
+
+                            </ListGroup.Item>
+
+
                             <ListGroup.Item id="side-loader-footer">
                                 <span href="">Show more on LinkedIn Learning</span>
                             </ListGroup.Item>
