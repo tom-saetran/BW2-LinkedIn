@@ -504,8 +504,11 @@ html {
     background: transparent; /* Optional: just make scrollbar invisible */
 }
 
-.footer-list li {
+.footer-list .list-item {
     list-style: none;
+    margin-bottom:1.2em;
+    font-size:.9rem;
+    width:100%;
 }
 
 #youtube-card-container{

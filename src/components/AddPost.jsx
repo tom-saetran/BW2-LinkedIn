@@ -48,7 +48,7 @@ class AddPost extends React.Component {
                         <span className="ms-1 text-muted">Write Article</span>
                     </div>
                 </div>
-                {this.state.postShow && <AddExperienceModal show={this.state.postShow} hide={() => this.setState({ postShow: false })} />}
+                {this.state.postShow && <AddExperienceModal post={this.props.crud.posts.post} show={this.state.postShow} hide={() => this.setState({ postShow: false })} />}
             </Col>
         )
     }
@@ -58,12 +58,8 @@ export default AddPost
 
 class AddExperienceModal extends React.Component {
     state = {
-        role: "CTO",
-        company: "Strive School",
-        startDate: "2019-06-16",
-        endDate: "2019-06-16", //could be null
-        description: "Doing stuff here and there",
-        area: "Berlin"
+       content: "",
+       picture: "",
     }
 
     render() {
@@ -74,30 +70,13 @@ class AddExperienceModal extends React.Component {
                 </Modal.Header>
                 <Modal.Body>
                     <Form>
-                        <Form.Group controlId="formBasicTitle">
-                            <Form.Label>Title *</Form.Label>
-                            <Form.Control value={this.state.role} onChange={e => this.setState({ role: e.target.value })} type="text" placeholder="Ex: Retail Sales Manager" />
-                        </Form.Group>
-                        <Form.Group controlId="formBasicCompany">
-                            <Form.Label>Company *</Form.Label>
-                            <Form.Control value={this.state.company} onChange={e => this.setState({ company: e.target.value })} type="text" placeholder="Ex: Microsoft" />
-                        </Form.Group>
-                        <Form.Group controlId="formBasicLocation">
-                            <Form.Label>Location</Form.Label>
-                            <Form.Control value={this.state.area} onChange={e => this.setState({ area: e.target.value })} type="text" placeholder="Ex: London, United Kingdom" />
-                        </Form.Group>
-                        <Form.Group controlId="formBasicDescription">
+                        <Form.Group controlId="formBasicContent">
                             <Form.Label>Description</Form.Label>
-                            <Form.Control value={this.state.description} onChange={e => this.setState({ description: e.target.value })} type="text-area" />
+                            <Form.Control value={this.state.content} as="textarea" rows={6}  placeholder="What do you want to talk about?" onChange={e => this.setState({ content: e.target.value })} />
                         </Form.Group>
-                        <Form.Group controlId="formBasicDate">
-                            <Form.Label>Start Date</Form.Label>
-                            <Form.Control type="date" />
-                        </Form.Group>
-                        <Form.Group controlId="formBasicDate">
-                            <Form.Label>End Date</Form.Label>
-                            <Form.Control type="date" />
-                            <Form.Text>If you still work here leave date blank</Form.Text>
+                        <Form.Group controlId="formBasicImage">
+                            <Form.Label>Upload image</Form.Label>
+                            <Form.Control styl={{height: "0px"}} onChange={e => this.setState({ picture: e.target.files[0] })} type="file" />
                         </Form.Group>
                     </Form>
                 </Modal.Body>
@@ -106,7 +85,7 @@ class AddExperienceModal extends React.Component {
                         Close
                     </Button>
                     <Button variant="primary" onClick={async () => this.props.post(await this.props.id, await this.state)}>
-                        Save
+                        Post
                     </Button>
                 </Modal.Footer>
             </Modal>
