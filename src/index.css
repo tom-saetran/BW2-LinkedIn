@@ -93,6 +93,11 @@ code {
     align-items: center;
 }
 
+#divider-two{
+   
+    border-bottom:rgba(161, 126, 74, 0.35) 1px solid;
+}
+
 #divider {
     border-top: 1px rgb(206, 206, 206) solid;
     padding-bottom: 10px;
@@ -122,7 +127,14 @@ code {
     border-radius: 15px;
     display: flex;
     justify-content: center;
+}
 
+#feed-table-right-sub-title:hover{
+    opacity: 1;
+    transition: 0.3s;
+    cursor: pointer;
+    transform: scale(1.05);
+    background: none
 }
 
 #feed-table-right-title-item{
@@ -130,10 +142,16 @@ code {
     border: none; 
     padding-bottom: 0;
 }
-
+.img-overlay2:hover{
+    opacity: 1;
+    transition: 0.3s;
+    cursor: pointer;
+    transform: scale(1.15);
+}
 #feed-foot-two{
     font-weight: 550;
-    color: rgb(65, 65, 65);
+    color: rgba(36, 36, 36, 0.678);;
+    font-weight: 600;
     
 }
 
@@ -145,22 +163,37 @@ code {
 
 }
 
-#feed-table-right-two-item:hover{
+#youtube-image:hover{
     opacity: 1;
     transition: 0.3s;
     cursor: pointer;
-    background-color: rgb(206, 206, 206);
-    color: black;
+    transform: scale(1.15);
+    
+}
+
+#yt-text-title:hover{
+    opacity: 1;
+    transition: 0.3s;
+    cursor: pointer;
+    transform: scale(1.15);
+}
+
+.navbar-nav {
+
+  
+    margin-left: auto;
+   
 }
 
 #feed-table-right-sub-string{
     padding-left: 22px;
-    font-size: 13px;
+    font-size: 11px;
+    color: grey
 }
 
 #feed-table-right-sub-title{
     font-weight:600;
-    color: rgba(36, 36, 36, 0.678);
+    color: rgba(36, 36, 36, 0.829);
     margin: 0;
 }
 
@@ -193,6 +226,7 @@ code {
     padding-top: 10px;
     padding-bottom: 2px;
     font-weight: 600;
+    
 }
 
 
@@ -257,7 +291,13 @@ html {
 
 #question-mark-icon {
     color: black;
-    
+}
+
+#question-mark-icon:hover {
+opacity: 1;
+    transition: 0.3s;
+    cursor: pointer;
+    transform: scale(1.15);
 }
 
 #question-mark-div {
@@ -337,8 +377,7 @@ html {
     display: flex;
     justify-content: flex-start;
     position: relative;
-    padding-left: 5px;
-    padding-right: 5px;
+    
 }
 
 #sl-one-drop {
@@ -351,8 +390,12 @@ html {
     font-weight: bold;
 }
 
-#side-nav-a{
+#side-nav-item-b:hover{
+    color: rgb(77, 77, 77);
+}
 
+.doggo:hover{
+    color: rgb(77, 77, 77);
 }
 
 #side-nav-a:hover {
@@ -388,7 +431,7 @@ html {
     
     padding-top: 8px;
     padding-bottom: 8px;
-    margin-right: auto;
+    margin-right: 0;
     font-size: 14px;
     margin-left: 0px;
     padding-left: 8px;
@@ -427,6 +470,7 @@ html {
     padding: 0;
     padding-left: 5px;
     padding-right: 5px;
+    margin-bottom: 0px;
     
 }
 
@@ -442,9 +486,16 @@ html {
     font-weight: 600;
     font-size: 14px;
 }
+#top-two-text:hover {
+opacity: 1;
+    transition: 0.3s;
+    cursor: pointer;
+    
+    color: black;}
 
 #youtube-card {
-    padding-left: 8px;
+    padding-left: 15px;
+    padding-right: 50px;
     border: none;
     display: inline;
     padding-bottom: 8px;

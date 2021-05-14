@@ -14,7 +14,7 @@ class AddPost extends React.Component {
         return (
             <Col xs={12} className="py-3 px-3 section-outer">
                 <div className="d-flex align-items-center">
-                    <img alt="" className="me-2" style={{ borderRadius: "50%", width: "48px", height: "48px" }} src="https://www.dailymoss.com/wp-content/uploads/2019/08/funny-profile-pic59.jpg"></img>
+                    <img alt="" className="me-2" style={{ borderRadius: "50%", width: "48px", height: "48px" }} src="https://media.giphy.com/media/TdMVH60kJvTMI/source.gif"></img>
                     <Form className="flex-grow-1" inline>
                         <FormControl style={{ width: "100%", height: "48px", borderRadius: "35px" }} type="text" onClick={this.handleShow} placeholder="Start a post" className="flex-grow-1 mr-sm-2" />
                     </Form>
@@ -48,7 +48,7 @@ class AddPost extends React.Component {
                         <span className="ms-1 text-muted">Write Article</span>
                     </div>
                 </div>
-                {this.state.postShow && <AddExperienceModal post={this.props.crud.posts.post} show={this.state.postShow} hide={() => this.setState({ postShow: false })} />}
+                {this.state.postShow && <AddPostModal post={this.props.crud.posts.post} show={this.state.postShow} hide={() => this.setState({ postShow: false })} />}
             </Col>
         )
     }
@@ -56,11 +56,12 @@ class AddPost extends React.Component {
 
 export default AddPost
 
-class AddExperienceModal extends React.Component {
+class AddPostModal extends React.Component {
     state = {
-       content: "",
-       picture: "",
+        text: "",
+        image: ""
     }
+
 
     render() {
         return (
@@ -72,11 +73,11 @@ class AddExperienceModal extends React.Component {
                     <Form>
                         <Form.Group controlId="formBasicContent">
                             <Form.Label>Description</Form.Label>
-                            <Form.Control value={this.state.content} as="textarea" rows={6}  placeholder="What do you want to talk about?" onChange={e => this.setState({ content: e.target.value })} />
+                            <Form.Control value={this.state.text} as="textarea" rows={6} placeholder="What do you want to talk about?" onChange={e => this.setState({ text: e.target.value })} />
                         </Form.Group>
                         <Form.Group controlId="formBasicImage">
                             <Form.Label>Upload image</Form.Label>
-                            <Form.Control styl={{height: "0px"}} onChange={e => this.setState({ picture: e.target.files[0] })} type="file" />
+                            <Form.Control styl={{ height: "0px" }} onChange={e => this.setState({ image: e.target.files[0] })} type="file" />
                         </Form.Group>
                     </Form>
                 </Modal.Body>
@@ -84,7 +85,7 @@ class AddExperienceModal extends React.Component {
                     <Button variant="secondary" onClick={this.props.hide}>
                         Close
                     </Button>
-                    <Button variant="primary" onClick={async () => this.props.post(await this.props.id, await this.state)}>
+                    <Button variant="primary" onClick={async () => await this.props.post(this.state.text, this.state.image)}>
                         Post
                     </Button>
                 </Modal.Footer>

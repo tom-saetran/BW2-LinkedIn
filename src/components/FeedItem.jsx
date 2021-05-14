@@ -6,13 +6,13 @@ class FeedItem extends React.Component {
         return (
             <Col xs={12} className="p-0 mb-4 section-outer">
                 <div style={{ padding: "12px 12px 0px 12px" }} className="d-flex">
-                    <img alt="" style={{ width: "48px", height: "48px" }} src="https://media-exp1.licdn.com/dms/image/C4D0BAQFIC5PZcWzBwA/company-logo_100_100/0/1615794008636?e=1628726400&v=beta&t=wq43NI8LWCXeqWC2cIn-ukqymMS6abAOjkd3HusLZOc"></img>
+                    <img alt="" style={{ width: "48px", height: "48px" }} src={(this.props.post.user && this.props.post.user.image) || "https://via.placeholder.com/200x200?text=Profile+picture"} />
 
                     <div className="ms-2 d-flex flex-column">
-                        <span>Boston Consulting Group (BCG)</span>
-                        <span className="text-muted">2,739,053 followers</span>
+                        <span>{this.props.post.user && this.props.post.user.name + " " + this.props.post.user.surname}</span>
+                        <span className="text-muted">0 followers</span>
                         <span className="text-muted">
-                            18h ·{" "}
+                            {this.props.post && new Date(this.props.post.createdAt).getHours() + ":" + new Date(this.props.post.createdAt).getMinutes() + " - " + new Date(this.props.post.createdAt).toDateString()} ·{" "}
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" data-supported-dps="16x16" fill="currentColor" className="mercado-match" width="16" height="16" focusable="false">
                                 <path d="M8 1a7 7 0 107 7 7 7 0 00-7-7zM3 8a5 5 0 011-3l.55.55A1.5 1.5 0 015 6.62v1.07a.75.75 0 00.22.53l.56.56a.75.75 0 00.53.22H7v.69a.75.75 0 00.22.53l.56.56a.75.75 0 01.22.53V13a5 5 0 01-5-5zm6.24 4.83l2-2.46a.75.75 0 00.09-.8l-.58-1.16A.76.76 0 0010 8H7v-.19a.51.51 0 01.28-.45l.38-.19a.74.74 0 01.68 0L9 7.5l.38-.7a1 1 0 00.12-.48v-.85a.78.78 0 01.21-.53l1.07-1.09a5 5 0 01-1.54 9z"></path>
                             </svg>
@@ -26,21 +26,13 @@ class FeedItem extends React.Component {
                     </div>
                 </div>
 
-                <div style={{ padding: "12px 12px 0px 12px" }}>
-                    Congratulations to the graduating{" "}
-                    <a href="https://www.linkedin.com/feed/hashtag/?keywords=classof2021&amp;highlightedUpdateUrns=urn%3Ali%3Aactivity%3A6798183460595896320" data-attribute-index="0">
-                        #classof2021
-                    </a>
-                    ! Paul Pierson, Thinker + Senior Branding and Design Expert at{" "}
-                    <a href="https://www.linkedin.com/company/brighthouse/" data-attribute-index="1" data-entity-hovercard-id="urn:li:fs_miniCompany:304053" data-entity-type="MINI_COMPANY">
-                        BCG BrightHouse
-                    </a>{" "}
-                    , shares his advice for you:
-                </div>
+                <div style={{ padding: "12px 12px 0px 12px" }}>{this.props.post.text || ""}</div>
 
-                <div style={{ objectFit: "contain" }}>
-                    <img alt="" style={{ objectFit: "contain" }} className="img-fluid pt-3" src="https://media-exp1.licdn.com/dms/image/C4D22AQF1RZ6jyP7b5A/feedshare-shrink_800/0/1620813241382?e=1623888000&v=beta&t=NxcRahEZ3UTfFwwrwRrzIHQVU_HXVDv_xr49ZxrRTAc"></img>
-                </div>
+                {this.props.post.image && (
+                    <div style={{ objectFit: "contain" }}>
+                        <img alt="" style={{ objectFit: "contain" }} className="img-fluid pt-3" src={this.props.post.image}></img>
+                    </div>
+                )}
 
                 <div style={{ padding: "12px 12px 0px 12px" }}>
                     <img src="https://static-exp1.licdn.com/sc/h/d310t2g24pvdy4pt1jkedo4yb" alt="LIKE"></img>
@@ -84,7 +76,7 @@ class FeedItem extends React.Component {
                 </div>
 
                 <div className="d-flex px-3 pb-3 align-items-center">
-                    <img alt="" className="me-2" style={{ borderRadius: "50%", width: "48px", height: "48px" }} src="https://www.dailymoss.com/wp-content/uploads/2019/08/funny-profile-pic59.jpg"></img>
+                    <img alt="" className="me-2" style={{ borderRadius: "50%", width: "48px", height: "48px" }} src={this.props.me.image || "https://via.placeholder.com/200x200?text=Profile+picture"}></img>
                     <Form className="flex-grow-1" inline>
                         <FormControl style={{ width: "100%", height: "48px", borderRadius: "35px" }} type="text" placeholder="Add a comment..." className="flex-grow-1 mr-sm-2" />
                     </Form>

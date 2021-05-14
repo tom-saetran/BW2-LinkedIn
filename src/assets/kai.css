@@ -17,12 +17,36 @@
     height: 32px;
     width: 32px;
 }
-.img-overlay3{
+.img-overlay3 {
+    height: 80px;
+    width: 80px;
+    object-fit: cover;
     border-radius: 50%;
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    bottom: -50%;
+    bottom: -32%;
+}
+#root > div.pt-5.container > div > div.col-md-7.offset-md-1 > div.section-outer.px-0.col > div.section-inner.col > div:nth-child(1) > div > svg:hover
+{
+    opacity: 1;
+    transition: 0.3s;
+    cursor: pointer;
+    transform: scale(1.15);
+}
+
+#root > div.pt-5.container > div > div.col-md-7.offset-md-1 > div.section-outer.px-0.col > div.section-inner.col > div:nth-child(3) > div:nth-child(2) > div > svg:hover{
+    opacity: 1;
+    transition: 0.3s;
+    cursor: pointer;
+    transform: scale(1.15);        
+}
+
+#root > div.pt-5.container > div > div.col-md-7.offset-md-1 > div.section-outer.px-0.col > div.section-inner.col > div:nth-child(3) > div:nth-child(1) > div > svg:hover{
+    opacity: 1;
+    transition: 0.3s;
+    cursor: pointer;
+    transform: scale(1.15);  
 }
 
 .overlay-2-bg {
@@ -49,7 +73,7 @@
 
 .xs-logo {
     height: 16px !important;
-    width: 16px !important
+    width: 16px !important;
 }
 .small-logo {
     width: 32px;
