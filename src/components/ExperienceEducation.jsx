@@ -12,11 +12,6 @@ class ExperienceEducation extends React.Component {
         experiences: null
     }
 
-    componentDidUpdate = async () => {
-        const id = this.props.match.params.id || (this.props.me && this.props.me._id)
-        if (id && this.state.experiences === null) this.setState({ experiences: await this.props.crud.experiences.get(id) })
-    }
-
     handleShow = () => {
         this.setState({ addModalShow: !this.state.addModalShow })
     }
@@ -35,19 +30,18 @@ class ExperienceEducation extends React.Component {
                         </svg>
                     </div>
 
-                    {this.state.experiences !== null &&
-                        this.state.experiences.length > 0 &&
-                        this.state.experiences.map((experience, index) => {
+                    {this.props.exp !== null &&
+                        this.props.exp.length > 0 &&
+                        this.props.exp.map((experience, index) => {
                             return (
                                 <div key={"experience" + index} className="d-flex mb-3 justify-content-between">
                                     <div className="d-flex justify-content-between">
-                                        <img className="medium-logo" src="https://media-exp1.licdn.com/dms/image/C4D0BAQHMzEZdUDzWLw/company-logo_100_100/0/1607610827235?e=1628726400&v=beta&t=2DyogaeKHlEJ4FJcFv2DpjEkXpRJ325JlCvt6KMJI_E" alt="" />
+                                        <img className="medium-logo" src={experience.image ? experience.image : "https://via.placeholder.com/200x200?text=Profile+Picture"} alt="" />
                                         <div className="ms-3">
-                                            <h6>
-                                                {experience.role} {experience.company}
-                                            </h6>
-                                            <p>{experience.description}</p>
-                                            <span>{experience.startDate.year}</span>
+                                            <h6>{experience.role + " at " + experience.company}</h6>
+                                            <p className="mb-1">{experience.description}</p>
+                                            {new Date(experience.startDate).toLocaleString("default", { month: "long" }) + " " + new Date(experience.startDate).getFullYear()}
+                                            {experience.stopDate ? new Date(experience.startDate).getFullYear() : " - Current"}
                                         </div>
                                     </div>
                                     <div>
@@ -89,7 +83,7 @@ class ExperienceEducation extends React.Component {
                         show={this.state.addModalShow}
                         post={this.props.crud.experiences.post}
                         id={async () => {
-                            await this.state.experiences[0]._id
+                            await this.props.exp[0]._id
                         }}
                         hide={() => {
                             this.setState({ addModalShow: false })
@@ -101,7 +95,7 @@ class ExperienceEducation extends React.Component {
                         show={this.state.updateModalShow}
                         put={this.props.crud.experiences.put}
                         id={async () => {
-                            await this.state.experiences[0]._id
+                            await this.props.exp[0]._id
                         }}
                         hide={() => {
                             this.setState({ updateModalShow: false })

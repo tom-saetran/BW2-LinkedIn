@@ -10,15 +10,25 @@ import SideLoaderOne from "./SideLoaderOne"
 import { withRouter } from "react-router"
 
 class Profile extends React.Component {
+    state = {
+        data: null,
+        exp: null
+    }
+
+    componentDidUpdate = async (_previousProps, _previousState) => {
+        const id = this.props.match.params.id || (this.props.me && this.props.me._id)
+        if (id && !this.state.data) this.setState({ data: await this.props.crud.user.get(id) })
+        if (id && this.state.exp === null) this.setState({ exp: await this.props.crud.experiences.get(id) })
+    }
     render() {
         return (
             <Container className="pt-5">
                 <Row>
                     <Col md={{ span: 7, offset: 1 }}>
-                        <ProfileJumbotron crud={this.props.crud} me={this.props.me} />
-                        <Dashboard />
-                        <Activity />
-                        <ExperienceEducation crud={this.props.crud} exp={this.props.exp} me={this.props.me} />
+                        <ProfileJumbotron me={this.props.me} data={this.state.data} exp={this.state.exp} />
+                        <Dashboard data={this.state.data} />
+                        <Activity data={this.state.data} />
+                        <ExperienceEducation crud={this.props.crud} exp={this.state.exp} me={this.props.me} />
                         <Interests />
                     </Col>
                     <Col md={3}>

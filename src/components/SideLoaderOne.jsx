@@ -11,13 +11,15 @@ class SideLoaderOne extends React.Component {
     state = {
         me: null,
         all: null,
-        some: null
+        mayKnow: null,
+        alsoViewed: null
     }
 
     componentDidUpdate = (_previousProps, _previousState) => {
         if (this.props.me !== this.state.me) this.setState({ me: this.props.me })
         if (this.props.all !== this.state.all) this.setState({ all: this.props.all })
-        if (this.state.some === null && this.state.all !== null) this.setState({ some: this.some() })
+        if (this.state.mayKnow === null && this.state.all !== null) this.setState({ mayKnow: this.some() })
+        if (this.state.alsoViewed === null && this.state.all !== null) this.setState({ alsoViewed: this.some() })
     }
 
     //  const noInfo = []
@@ -73,8 +75,8 @@ class SideLoaderOne extends React.Component {
                                             <Card.Header id="side-card-title">
                                                 <div>People also viewed</div>
                                             </Card.Header>
-                                            {this.state.some !== null &&
-                                                this.state.all.map(person => {
+                                            {this.state.alsoViewed !== null &&
+                                                this.state.alsoViewed.map(person => {
                                                     return (
                                                         <Card.Body id="generated-card" key={person._id}>
                                                             <Row className="flex-row">
@@ -119,8 +121,8 @@ class SideLoaderOne extends React.Component {
                                             <Card.Header id="side-card-title">
                                                 <div>People you may know</div>
                                             </Card.Header>
-                                            {this.state.some !== null &&
-                                                this.state.some.map(person => {
+                                            {this.state.mayKnow !== null &&
+                                                this.state.mayKnow.map(person => {
                                                     return (
                                                         <Card.Body id="generated-card" key={person._id}>
                                                             <Row className="flex-row">
@@ -177,10 +179,9 @@ class SideLoaderOne extends React.Component {
                             </ListGroup.Item>
                             <ListGroup.Item id="youtube-card">
                                 <Container id="youtube-card">
-                                    <Row >
+                                    <Row>
                                         <Col xs="4" id="youtube-image" className="d-flex">
                                             <img alt="" id="pickme" src="/img/cacsi.jpg" />
-
                                         </Col>
                                         <Col xs="8" id="youtube-text" className="d-flex">
                                             <h6 id="yt-text-title">Communicating Culturally Sesitive Issues</h6>
@@ -207,7 +208,7 @@ class SideLoaderOne extends React.Component {
                             </ListGroup.Item>
                         </ListGroup>
                     </div>
-                </Col >
+                </Col>
             )
         )
     }
