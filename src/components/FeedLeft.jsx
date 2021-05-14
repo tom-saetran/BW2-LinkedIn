@@ -13,7 +13,7 @@ class FeedLeft extends React.Component {
                     </div>
                     <div className="inner-small-items d-flex flex-column align-items-center">
                         <span>Welcome, Kaiwan!</span>
-                        <a className="">Add a photo</a>
+                        <a style={{textDecoration: "none"}} className="">Add a photo</a>
                     </div>
                     <hr className="m-0" ></hr>
                     <div className="inner-small-items">

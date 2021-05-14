@@ -10,10 +10,11 @@ class Feed extends React.Component {
         return (
             <Container className="pt-5">
                 <Row>
-                    <Col md={3}>
+                    <Col md={1}></Col>
+                    <Col md={2}>
                         <FeedLeft />
                     </Col>
-                    <Col md={6}>
+                    <Col md={5}>
                         <Row className="g-0">
                             <AddPost crud={this.props.crud} />
 
@@ -33,6 +34,7 @@ class Feed extends React.Component {
                     <Col md={3}>
                         <FeedRight me={this.props.me} all={this.props.all} crud={this.props.crud} />
                     </Col>
+                    <Col md={1}></Col>
                 </Row>
             </Container>
         )

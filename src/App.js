@@ -8,6 +8,7 @@ import Profile from "./components/Profile"
 import NavBar from "./components/NavBar"
 import Feed from "./components/Feed"
 import Footer from "./components/Footer"
+import { Form } from "react-bootstrap"
 
 class App extends React.Component {
     state = {
@@ -645,23 +646,58 @@ class App extends React.Component {
                 }
                 return await results
             },
-            post: async data => {
+            post: async (content, image) => {
                 let results
+                console.log(content)
+                console.log(image)
                 try {
-                    if (typeof data !== "object") throw new Error("data must be an object")
+                    // if (typeof data !== "object") throw new Error("data must be an object")
+                    let data = {
+                        text: content
+                    }
                     results = await fetch(this.state.post_endpoint, {
+                        method: "POST",
                         headers: {
-                            Authorization: this.state.authtoken
+                            Authorization: this.state.authtoken,
+                            "Content-Type": "application/json"
                         },
                         body: JSON.stringify(data)
                     })
+                    console.log(results)
                     if (!results.ok) throw new Error("got data in return but the ok flag is not true! response: " + results)
                     results = await results.json()
+                    console.log(results)
+                    let id = await results._id
+                    console.log(id)
+
+                    if (image) {
+
+                        let formData = new FormData()
+                        formData.append("post", image) // the file input
+
+                        console.log(formData)
+                        results = await fetch(this.state.post_endpoint + id ,
+                            {
+                                method: "POST",
+                                headers: {
+                                    Authorization: this.state.authtoken,
+                                    // "Content-Type": "multipart/form-data"
+                                },
+                                body: formData,
+                                redirect: 'follow'
+
+                            })
+
+                        console.log(results)
+                        console.log(await results.json())
+
+                    }
+
                 } catch (error) {
                     console.error(error)
                     return null
                 }
-                return await results
+                // return await results
             },
             put: async (postID, data) => {
                 let results
