@@ -127,7 +127,14 @@ code {
     border-radius: 15px;
     display: flex;
     justify-content: center;
+}
 
+#feed-table-right-sub-title:hover{
+    opacity: 1;
+    transition: 0.3s;
+    cursor: pointer;
+    transform: scale(1.05);
+    background: none
 }
 
 #feed-table-right-title-item{
@@ -162,7 +169,6 @@ code {
     cursor: pointer;
     transform: scale(1.15);
     
-    color: black;
 }
 
 #yt-text-title:hover{
@@ -172,16 +178,22 @@ code {
     transform: scale(1.15);
 }
 
+.navbar-nav {
 
+  
+    margin-left: auto;
+   
+}
 
 #feed-table-right-sub-string{
     padding-left: 22px;
-    font-size: 13px;
+    font-size: 11px;
+    color: grey
 }
 
 #feed-table-right-sub-title{
     font-weight:600;
-    color: rgba(36, 36, 36, 0.678);
+    color: rgba(36, 36, 36, 0.829);
     margin: 0;
 }
 
@@ -279,7 +291,13 @@ html {
 
 #question-mark-icon {
     color: black;
-    
+}
+
+#question-mark-icon:hover {
+opacity: 1;
+    transition: 0.3s;
+    cursor: pointer;
+    transform: scale(1.15);
 }
 
 #question-mark-div {
@@ -359,8 +377,7 @@ html {
     display: flex;
     justify-content: flex-start;
     position: relative;
-    padding-left: 5px;
-    padding-right: 5px;
+    
 }
 
 #sl-one-drop {
@@ -373,11 +390,13 @@ html {
     font-weight: bold;
 }
 
-#sl-one-drop:hover{
+#side-nav-item-b:hover{
     color: rgb(77, 77, 77);
 }
 
-
+.doggo:hover{
+    color: rgb(77, 77, 77);
+}
 
 #side-nav-a:hover {
     color: rgb(77, 77, 77);
@@ -412,7 +431,7 @@ html {
     
     padding-top: 8px;
     padding-bottom: 8px;
-    margin-right: auto;
+    margin-right: 0;
     font-size: 14px;
     margin-left: 0px;
     padding-left: 8px;
@@ -467,9 +486,16 @@ html {
     font-weight: 600;
     font-size: 14px;
 }
+#top-two-text:hover {
+opacity: 1;
+    transition: 0.3s;
+    cursor: pointer;
+    
+    color: black;}
 
 #youtube-card {
-    padding-left: 8px;
+    padding-left: 15px;
+    padding-right: 50px;
     border: none;
     display: inline;
     padding-bottom: 8px;

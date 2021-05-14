@@ -39,7 +39,7 @@ export default class NavBar extends Component {
 
                         <Navbar.Toggle aria-controls="basic-navbar-nav" />
 
-                        <Navbar.Collapse id="basic-navbar-nav" className="ml-auto me-md-5">
+                        <Navbar.Collapse id="basic-navbar-nav" className="ml-auto">
                             <Nav>
                                 <Nav.Link href="#home" className="d-md-flex flex-md-column ">
                                     <svg className="mx-auto" id="global-nav-icon--mercado__home--active" height="24" width="24">
@@ -77,22 +77,19 @@ export default class NavBar extends Component {
                                 </Nav.Link>
 
                                 <div className="d-flex flex-md-column align-items-center">
-                                    <img style={{ borderRadius: "50%" }} width="24" src="https://media-exp1.licdn.com/dms/image/C4D03AQEmFglnfuuwIA/profile-displayphoto-shrink_100_100/0/1611490819975?e=1626307200&amp;v=beta&amp;t=w9AyTKktD9nM_YOIbxdofqnBn-EkVTEd3wNs4z7JxRU" height="24" alt="Carl Dawkins" id="ember34" className="mx-auto global-nav__me-photo ember-view" />
+                                    <img style={{ borderRadius: "50%" }} width="24" src="https://media.giphy.com/media/TdMVH60kJvTMI/source.gif" height="24" alt="Carl Dawkins" id="ember34" className="mx-auto global-nav__me-photo ember-view" />
                                     <NavDropdown id="Me" title="Me" className="">
                                         <NavDropdown.Item as={"div"}>
                                             <div className="d-flex flex-row w-100">
-                                                <div className="col-3 ">
-                                                    {" "}
-                                                    <img style={{ borderRadius: "50%" }} src="https://media-exp1.licdn.com/dms/image/C4D03AQEmFglnfuuwIA/profile-displayphoto-shrink_100_100/0/1611490819975?e=1626307200&amp;v=beta&amp;t=w9AyTKktD9nM_YOIbxdofqnBn-EkVTEd3wNs4z7JxRU" height="40px" width="40px" alt="Carl Dawkins" id="ember34" className="ms-auto global-nav__me-photo ember-view" />
-                                                </div>
-                                                <div className="col-9 ">
+
+                                                <div>
                                                     <div>
                                                         <h6 className="mb-0">Carl Dawkins</h6>
                                                         <p>Web Developer</p>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <a className="col-12 btn bg-white" href="/profile" style={{ border: "solid 3px #0a66c2" }}>
+                                            <a className="col-12 btn bg-white" href="/profile" >
                                                 View Profile
                                             </a>
                                         </NavDropdown.Item>

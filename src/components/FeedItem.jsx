@@ -84,7 +84,7 @@ class FeedItem extends React.Component {
                 </div>
 
                 <div className="d-flex px-3 pb-3 align-items-center">
-                    <img alt="" className="me-2" style={{ borderRadius: "50%", width: "48px", height: "48px" }} src="https://www.dailymoss.com/wp-content/uploads/2019/08/funny-profile-pic59.jpg"></img>
+                    <img alt="" className="me-2" style={{ borderRadius: "50%", width: "48px", height: "48px" }} src="https://media.giphy.com/media/TdMVH60kJvTMI/source.gif"></img>
                     <Form className="flex-grow-1" inline>
                         <FormControl style={{ width: "100%", height: "48px", borderRadius: "35px" }} type="text" placeholder="Add a comment..." className="flex-grow-1 mr-sm-2" />
                     </Form>
