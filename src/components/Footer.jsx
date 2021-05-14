@@ -5,7 +5,7 @@ class Footer extends React.Component {
     render() {
         return (
             <>
-            <Container>
+            <Container className="mt-3 mt-md-auto">
                 <Container className="p-0 mb-2">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="#0a66c2" viewBox="0 0 84 21" data-supported-dps="84x21"  width="84" height="21" focusable="false">
                     <g>
@@ -17,55 +17,55 @@ class Footer extends React.Component {
                 <Row>
                     <Col xs={12} md={2}>
                         <ul className="d-flex flex-column flex-start footer-list p-0">
-                            <li className="list-item">About</li>
-                            <li className="list-item">Community Guidelines</li>
-                            <li className="list-item">Privacy &amp; Terms </li>
-                            <li className="list-item">Sales Solutions</li>
-                            <li className="list-item">Safety Center</li>
+                            <li className="list-item" style={{color:"#687888"}}><a>About</a></li>
+                            <li className="list-item" style={{color:"#687888"}}><a>Community Guidelines</a></li>
+                            <li className="list-item" style={{color:"#687888"}}><a>Privacy &amp; Terms</a> </li>
+                            <li className="list-item" style={{color:"#687888"}}><a>Sales Solutions</a></li>
+                            <li className="list-item" style={{color:"#687888"}}>Safety Center</li>
                         </ul>
                     </Col>
                     <Col xs={12}  md={2}>
                         <ul className="d-flex flex-column flex-start footer-list p-0">
-                            <li className="list-item">Accessibilty </li>
-                            <li className="list-item">Careers</li>
-                            <li className="list-item">Ad Choices</li>
-                            <li className="list-item">Mobile</li>
+                            <li className="list-item" style={{color:"#687888"}}><a>Accessibilty</a> </li>
+                            <li className="list-item" style={{color:"#687888"}}><a>Careers</a></li>
+                            <li className="list-item" style={{color:"#687888"}}><a>Ad Choices</a></li>
+                            <li className="list-item" style={{color:"#687888"}}><a>Mobile</a></li>
                         </ul>
                     </Col>
                     <Col xs={12}  md={2}>
                         <ul className="d-flex flex-column flex-start footer-list p-0">
-                            <li className="list-item">Talent Solution</li>
-                            <li className="list-item">Marketing Solutions</li>
-                            <li className="list-item">Advertising</li>
-                            <li className="list-item">Small Business</li>
+                            <li className="list-item" style={{color:"#687888"}}><a>Talent Solution</a></li>
+                            <li className="list-item" style={{color:"#687888"}}><a>Marketing Solutions</a></li>
+                            <li className="list-item" style={{color:"#687888"}}><a>Advertising</a></li>
+                            <li className="list-item" style={{color:"#687888"}}><a>Small Business</a></li>
                         </ul>
                     </Col>
                     <Col xs={12}  md={3}>
                     <div className="d-flex flex-column footer-list p-0">
                         <div className="d-flex list-item">
-                            <div >
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" data-supported-dps="24x24" fill="currentColor" class="mercado-match" width="24" height="24" focusable="false">
+                            <div class="me-3">
+                                <svg style={{color:"#616160"}} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" data-supported-dps="24x24" fill="currentColor" class="mercado-match" width="24" height="24" focusable="false">
                                 <path d="M12 2a10 10 0 1010 10A10 10 0 0012 2zm0 16.25A1.25 1.25 0 1113.25 17 1.25 1.25 0 0112 18.25zm1.41-5.46L13 13v1h-2v-2.21l1.49-.79C13.82 10.34 14 9.77 14 9.3c0-.78-.92-1.3-2.3-1.3A7.12 7.12 0 008 9.24V7a8 8 0 013.7-1c3 0 4.3 1.55 4.3 3.3a3.91 3.91 0 01-2.59 3.49z"></path>
                                 </svg>
                             </div>
 
                             <div>
-                            <h6 className="mb-0">Questions?</h6>
-                            <span>Visit our help center</span>
+                            <h6 style={{color:"#56687a",fontSize:".85rem"}} className="mb-0">Questions?</h6>
+                            <span><a style={{fontWeight:"normal"}}>Visit our help center</a></span>
                             </div>
 
                         </div> 
 
                         <div className="d-flex list-item">
-                            <div >
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" data-supported-dps="24x24" fill="currentColor" class="mercado-match" width="24" height="24" focusable="false">
+                            <div className="me-3">
+                                <svg  style={{color:"#616160"}} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" data-supported-dps="24x24" fill="currentColor" class="mercado-match" width="24" height="24" focusable="false">
                                 <path d="M9.18 2l-4.3 2.52L6.22 8l-.52.91-3.7.55v5l3.64.54.54.93-1.34 3.53L9.14 22l2.29-2.9h1.09l2.3 2.9 4.32-2.52L17.79 16l.53-.93 3.68-.53v-5L18.32 9l-.51-.9 1.36-3.51L14.86 2l-2.33 3h-1zM12 9a3 3 0 11-3 3 3 3 0 013-3z"></path>
                                 </svg>
                             </div>
 
-                            <div>
-                            <h6 className="mb-0">Manage your account and privacy</h6>
-                            <p>Visit our help center</p>
+                            <div >
+                            <h6  style={{color:"#56687a",fontSize:".85rem"}} className="mb-0 w-100">Manage your account and privacy</h6>
+                            <p><a style={{fontWeight:"normal"}}>Visit our help center</a></p>
                             </div>
                         </div> 
 
@@ -75,10 +75,10 @@ class Footer extends React.Component {
                     <Col xs={12}  md={3}>
                     <div className="d-flex flex-column flex-center footer-list p-0">
                         <div className="list-item">
-                            <p>Select Language</p>
+                            <p className="mb-1" style={{color:"#687888"}}> Select Language</p>
                            
                             <Dropdown  className="d-flex"style={{borderRadius:"15px", }}>
-                                <Dropdown.Toggle  className="w-100 flex-start"  style={{color:"lightgrey",background:"#f3f2ef",borderColor:"grey",textAlign:"left"}} variant="light" id="dropdown-basic">
+                                <Dropdown.Toggle  className="w-100 flex-start"  style={{color:"#6f6e6d",background:"#f3f2ef",borderColor:"grey",textAlign:"left"}} variant="light" id="dropdown-basic">
                                     English (English)
                                 </Dropdown.Toggle>
 
@@ -95,6 +95,9 @@ class Footer extends React.Component {
                         </div>      
                     </Col>  
                 </Row>
+                <Container className="p-0 mb-1">
+                    <p style={{color:"#616160", fontSize:".8rem"}}>LinkedIn Corporation © 2021</p>
+                </Container>
             </Container>
             </>
         )

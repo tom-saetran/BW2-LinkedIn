@@ -478,16 +478,30 @@ html {
     width: 0; /* Remove scrollbar space */
     background: transparent; /* Optional: just make scrollbar invisible */
 }
+.nav-links{
+    font-size:small;
+}
+
+.dropdown-menu .show{
+    padding-top:0px;
+
+}
 
 .footer-list .list-item {
     list-style: none;
     margin-bottom:1.2em;
-    font-size:.9rem;
+    font-size:.75rem;
+    font-weight:bold;
     width:100%;
 }
+.footer-list .list-item:hover{
+    color:#004182;
+}
+
 
 #youtube-card-container{
     display: flex;
     justify-content: center;
     align-items: center;
 }
+
