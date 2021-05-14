@@ -119,7 +119,7 @@ class FeedRight extends React.Component {
                     <div id="snc">
                         <ListGroup id="feed-table-right-two" className="d-flex-block">
                             <ListGroup.Item id="feed-table-right-title-item">
-                                <h6 id="feed-table-right-title">Most viewed courses</h6>
+                                <h6 id="feed-table-right-title">Today's most viewed courses</h6>
                             </ListGroup.Item>
                             <ListGroup.Item id="feed-table-right-two-item">
                                 <h6 id="feed-table-right-sub-title">1. The Six Morning Habits of High Performers</h6>
@@ -133,9 +133,9 @@ class FeedRight extends React.Component {
                                 <h6 id="feed-table-right-sub-title">3. Unconscious Bias</h6>
                                 <div id="feed-table-right-sub-string">Stacey Gordon</div>
                             </ListGroup.Item>
-                            <Button className="no-shadow" variant="secondary-outline" id="sl-one-drop">
-                                More on LinkedIn Learning
-                            </Button>
+                            <div id="divider-two"></div>
+                            <Button className="no-shadow" variant="secondary-outline" id="sl-one-drop">Show More on LinkedIn Learning...</Button>
+
                         </ListGroup>
                     </div>
                     <div id="side-nav-main">
@@ -201,7 +201,8 @@ class FeedRight extends React.Component {
                                 <div>Linked</div>
                             </div>
                             <FontAwesomeIcon size="2x" id="footer-title-icon-feed" icon={["fab", "linkedin"]} />
-                            <div id="feed-foot-two">Company © 2021</div>
+                            <div id="feed-foot-two">
+                                Corporation © 2021</div>
                         </Container>
                     </div>
                 </Col>
