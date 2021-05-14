@@ -706,8 +706,10 @@ class App extends React.Component {
                     if (typeof data !== "object") throw new Error("data must be an object")
                     if (!this.crud.validators.id(postID)) throw new Error("post id is incorrect")
                     results = await fetch(this.state.post_endpoint + postID, {
+                        method: "PUT",
                         headers: {
-                            Authorization: this.state.authtoken
+                            Authorization: this.state.authtoken,
+                            "Content-Type": "application/json"
                         },
                         body: JSON.stringify(data)
                     })
@@ -725,6 +727,7 @@ class App extends React.Component {
                     if (postID === "" || postID === undefined || postID === null) throw new Error("post id must be present")
                     if (!this.crud.validators.id(postID)) throw new Error("post id is incorrect")
                     results = await fetch(this.state.post_endpoint + postID, {
+                        method: "DELETE",
                         headers: {
                             Authorization: this.state.authtoken
                         }
