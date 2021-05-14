@@ -1,5 +1,5 @@
 import React from "react"
-import { Button, Card, Col, Dropdown, DropdownButton, Nav, Navbar, NavDropdown, ListGroup, Row } from "react-bootstrap"
+import { Button, Card, Col, Container, Dropdown, DropdownButton, Nav, Navbar, NavDropdown, ListGroup, Row } from "react-bootstrap"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { library } from "@fortawesome/fontawesome-svg-core"
 import { faHome, faPlayCircle, faQuestionCircle } from "@fortawesome/free-solid-svg-icons"
@@ -37,10 +37,10 @@ class FeedRight extends React.Component {
                         <div id="SideLoaderOne">
                             <div id="SideLoaderOneImage">
                                 <ListGroup id="SideLoaderOneGroup">
-                                    <div id="top-two">
-                                        <h6 id="top-two-text" className="top-two-text-divider-two">
+                                    <div id="top-one">
+                                        <h6 id="top-one-text" className="top-two-text-divider-two">
                                             <div className="d-flex" id="side-banner-two">
-                                                <div>Edit public profile &amp; URL </div>
+                                                <div> Add to your feed </div>
                                                 <div id="question-mark-div" className="d-flex">
                                                     <FontAwesomeIcon id="question-mark-icon" icon="question-circle" />
                                                 </div>
@@ -138,7 +138,7 @@ class FeedRight extends React.Component {
                     <div id="snc">
                         <ListGroup id="feed-table-right-two" className="d-flex-block">
                             <ListGroup.Item id="feed-table-right-title-item">
-                                <h5 id="feed-table-right-title">Today's most viewed courses</h5>
+                                <h6 id="feed-table-right-title">Most viewed courses</h6>
                             </ListGroup.Item>
                             <ListGroup.Item id="feed-table-right-two-item">
                                 <h6 id="feed-table-right-sub-title">1. The Six Morning Habits of High Performers</h6>
@@ -163,41 +163,50 @@ class FeedRight extends React.Component {
                                 <a id="side-nav-a" href="">About</a>
                             </ListGroup.Item>
                             <ListGroup.Item id="side-nav-item">
-                                Help Center
+                                <a id="side-nav-a" href="">Help Center</a>
                             </ListGroup.Item>
                             <ListGroup.Item id="side-nav-item">
-                                <DropdownButton id="side-nav-item" className="no-shadow" variant="secondary-outline" title="Privacy + Terms">
-                                    <Dropdown.ItemText>
-                                        Dropdown item text
+                                <a id="side-nav-a" href="">
+                                    <DropdownButton id="side-nav-item" className="no-shadow" variant="secondary-outline" title="Privacy + Terms">
+                                        <Dropdown.ItemText>
+                                            Dropdown item text
                                 </Dropdown.ItemText>
-                                    <Dropdown.Item as="button">
-                                        Action
+                                        <Dropdown.Item as="button">
+                                            Action
                                     </Dropdown.Item>
-                                    <Dropdown.Item as="button">
-                                        Another action
+                                        <Dropdown.Item as="button">
+                                            Another action
                                     </Dropdown.Item>
-                                    <Dropdown.Item as="button">
-                                        Something else
+                                        <Dropdown.Item as="button">
+                                            Something else
                                     </Dropdown.Item>
-                                </DropdownButton>
+                                    </DropdownButton></a>
                             </ListGroup.Item>
-                            <ListGroup.Item id="side-nav-item">Accessibility</ListGroup.Item>
-                            <ListGroup.Item id="side-nav-item">Ad Choices</ListGroup.Item>
-                            <ListGroup.Item id="side-nav-item">Advertising</ListGroup.Item>
+                            <ListGroup.Item id="side-nav-item"><a id="side-nav-a" href="">Accessibility</a></ListGroup.Item>
+                            <ListGroup.Item id="side-nav-item"><a id="side-nav-a" href="">Ad Choices</a></ListGroup.Item>
+                            <ListGroup.Item id="side-nav-item"><a id="side-nav-a" href="">Advertising</a></ListGroup.Item>
                             <ListGroup.Item id="side-nav-item">
-                                <DropdownButton id="side-nav-item" className="no-shadow" variant="secondary-outline" title="Business Services">
-                                    <Dropdown.ItemText>Dropdown item text</Dropdown.ItemText>
-                                    <Dropdown.Item as="button">Action</Dropdown.Item>
-                                    <Dropdown.Item as="button">Another action</Dropdown.Item>
-                                    <Dropdown.Item as="button">Something else</Dropdown.Item>
-                                </DropdownButton></ListGroup.Item>
-                            <ListGroup.Item id="side-nav-item">Get LinkedIn App</ListGroup.Item>
-                            <ListGroup.Item id="side-nav-item">More</ListGroup.Item>
+                                <a id="side-nav-a" href="">
+                                    <DropdownButton id="side-nav-item" className="no-shadow" variant="secondary-outline" title="Business Services">
+                                        <Dropdown.ItemText>Dropdown item text</Dropdown.ItemText>
+                                        <Dropdown.Item as="button">Action</Dropdown.Item>
+                                        <Dropdown.Item as="button">Another action</Dropdown.Item>
+                                        <Dropdown.Item as="button">Something else</Dropdown.Item>
+                                    </DropdownButton>
+                                </a>
+                            </ListGroup.Item>
+                            <ListGroup.Item id="side-nav-item"><a id="side-nav-a" href="">Get LinkedIn App</a></ListGroup.Item>
+                            <ListGroup.Item id="side-nav-item"><a id="side-nav-a" href="">More</a></ListGroup.Item>
 
 
 
                         </ListGroup>
-                        <div id="side-nav-footer">LinkedIn Corporation C 2021</div>
+                        <Container id="footer-feed-container" className="d-flex">
+                            <div id="feed-foot-one"><div>Linked</div></div>
+                            <FontAwesomeIcon size="2x" id="footer-title-icon-feed" icon={["fab", "linkedin"]} />
+                            <div id="feed-foot-two">
+                                Company © 2021</div>
+                        </Container>
                     </div>
                 </Col>
             </Row>

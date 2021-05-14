@@ -102,9 +102,17 @@ code {
     width: 100%;
 }
 
+#feed-foot-one{
+    color: blue;
+    font-weight: bold;
+}
+
 #feed-table-right-two{
     border: 1px rgb(206, 206, 206) solid;
     border-radius: 15px;
+    display: flex;
+    justify-content: center;
+
 }
 
 #feed-table-right-title-item{
@@ -113,7 +121,11 @@ code {
     padding-bottom: 0;
 }
 
-
+#feed-foot-two{
+    font-weight: 550;
+    color: rgb(65, 65, 65);
+    
+}
 
 #feed-table-right-two-item{
     border: none;
@@ -123,8 +135,17 @@ code {
 
 }
 
+#feed-table-right-two-item:hover{
+    opacity: 1;
+    transition: 0.3s;
+    cursor: pointer;
+    background-color: rgb(206, 206, 206);
+    color: black;
+}
+
 #feed-table-right-sub-string{
     padding-left: 22px;
+    font-size: 13px;
 }
 
 #feed-table-right-sub-title{
@@ -160,6 +181,18 @@ code {
 #footer-title-icon {
     color: blue;
     margin-right: 10px;
+}
+
+#footer-title-icon-feed {
+    color: blue;
+    margin-right: 5px;
+}
+
+#footer-feed-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 10px;
 }
 
 #generated-card {
@@ -233,6 +266,10 @@ html {
     padding: 0;
     border-bottom: none !important;
     background: transparent;
+}
+
+#SideLoaderOneItem{
+    border: none;
 }
 
 #side-card-title > div {
@@ -329,6 +366,22 @@ html {
 
     padding-bottom: 20px;
 }
+#top-one {
+    display: block;
+    justify-content: center;
+    align-items: center;
+    padding-top: 10px;
+    border: none;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#top-one-text {
+    font-weight: 600;
+    color: rgba(36, 36, 36, 0.678);
+    padding: 0;
+    
+}
 
 #top-two {
     display: block;
@@ -377,4 +430,10 @@ html {
 
 .footer-list li {
     list-style: none;
+}
+
+#youtube-card-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
