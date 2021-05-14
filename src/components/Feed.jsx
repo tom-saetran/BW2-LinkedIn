@@ -6,14 +6,22 @@ import FeedLeft from "./FeedLeft"
 import FeedRight from "./FeedRight"
 
 class Feed extends React.Component {
+    state = {
+        feed: null
+    }
+
+    componentDidMount = async () => {
+        this.setState({ feed: await this.props.crud.posts.getAll() })
+    }
+
     render() {
         return (
             <Container className="pt-5">
                 <Row>
                     <Col md={3}>
-                        <FeedLeft />
+                        <FeedLeft me={this.props.me} />
                     </Col>
-                    <Col md={6}>
+                    <Col md={5}>
                         <Row className="g-0">
                             <AddPost crud={this.props.crud} />
 
@@ -26,13 +34,17 @@ class Feed extends React.Component {
                                     </div>
                                 </div>
                             </Col>
-                            <FeedItem crud={this.props.crud} />
-                            <FeedItem />
+                            {this.state.feed &&
+                                this.state.feed
+                                    .slice(0)
+                                    .reverse()
+                                    .map((feed, index) => <FeedItem key={index} me={this.props.me} post={feed} />)}
                         </Row>
                     </Col>
                     <Col md={3}>
                         <FeedRight me={this.props.me} all={this.props.all} crud={this.props.crud} />
                     </Col>
+                    <Col md={1}></Col>
                 </Row>
             </Container>
         )
