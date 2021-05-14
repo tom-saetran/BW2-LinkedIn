@@ -17,6 +17,13 @@
     height: 32px;
     width: 32px;
 }
+.img-overlay3{
+    border-radius: 50%;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -50%;
+}
 
 .overlay-2-bg {
     background-color: white;
@@ -40,6 +47,10 @@
     background-color: #0a66c2;
 }
 
+.xs-logo {
+    height: 16px !important;
+    width: 16px !important
+}
 .small-logo {
     width: 32px;
     height: 32px;
@@ -74,4 +85,8 @@
 .dropdown-arrow {
     color: black;
     padding: 6px 3px 3px 6px;
+}
+
+.inner-small-items {
+    padding: 12px;
 }
