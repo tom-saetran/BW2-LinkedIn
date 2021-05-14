@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { library } from "@fortawesome/fontawesome-svg-core"
 import { faHome, faPlayCircle, faQuestionCircle } from "@fortawesome/free-solid-svg-icons"
 import { faLinkedin } from "@fortawesome/free-brands-svg-icons"
+import { Link, NavLink, withRouter } from "react-router-dom"
 
 library.add(faHome, faQuestionCircle, faLinkedin, faPlayCircle)
 
@@ -79,21 +80,23 @@ class SideLoaderOne extends React.Component {
                                                 this.state.alsoViewed.map(person => {
                                                     return (
                                                         <Card.Body id="generated-card" key={person._id}>
-                                                            <Row className="flex-row">
-                                                                <Col xs={4} id="card-img-column">
-                                                                    <Card.Img id="card-img" src={person.image} />
-                                                                </Col>
-                                                                <Col xs={8} id="card-column">
-                                                                    <Card.Title id="card-name" className="d-flex">
-                                                                        <div id="card-description-title-one">{person.name}</div>
-                                                                        <div id="third">3rd+</div>
-                                                                    </Card.Title>
-                                                                    <Card.Text id="card-description-container">
-                                                                        <span id="card-description">{person.title}</span>
-                                                                    </Card.Text>
-                                                                    <Button id="card-button">Connect</Button>
-                                                                </Col>
-                                                            </Row>
+                                                            <NavLink className="no-underline link-dim" to={"/profile/" + person._id}>
+                                                                <Row className="flex-row">
+                                                                    <Col xs={4} id="card-img-column">
+                                                                        <Card.Img id="card-img" src={person.image} />
+                                                                    </Col>
+                                                                    <Col xs={8} id="card-column">
+                                                                        <Card.Title id="card-name" className="d-flex">
+                                                                            <div id="card-description-title-one">{person.name}</div>
+                                                                            <div id="third">3rd+</div>
+                                                                        </Card.Title>
+                                                                        <Card.Text id="card-description-container">
+                                                                            <span id="card-description">{person.title}</span>
+                                                                        </Card.Text>
+                                                                        <Button id="card-button">Connect</Button>
+                                                                    </Col>
+                                                                </Row>
+                                                            </NavLink>
                                                         </Card.Body>
                                                     )
                                                 })}
@@ -211,4 +214,4 @@ class SideLoaderOne extends React.Component {
     }
 }
 
-export default SideLoaderOne
+export default withRouter(SideLoaderOne)
