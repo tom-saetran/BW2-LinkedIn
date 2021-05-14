@@ -12,7 +12,7 @@ class FeedLeft extends React.Component {
                         <img className="img-fluid img-overlay3" width="85px" src="https://media.giphy.com/media/TdMVH60kJvTMI/source.gif"></img>
                     </div>
                     <div className="inner-small-items d-flex flex-column align-items-center">
-                        <span>Welcome, Kaiwan!</span>
+                        <span>Welcome, Tom!</span>
                         <a className="">Add a photo</a>
                     </div>
                     <hr className="m-0" ></hr>
