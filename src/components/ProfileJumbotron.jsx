@@ -37,7 +37,7 @@ class ProfileJumbotron extends React.Component {
                                         <span>{this.props.data.title}</span>
                                         {this.props.me._id === this.props.data._id && (
                                             <span className="ms-2">
-                                                <a href="www.google.com">Contact info</a>
+                                                <a style={{textDecoration: "none"}} href="www.google.com">Contact info</a>
                                             </span>
                                         )}
                                     </div>
@@ -72,8 +72,8 @@ class ProfileJumbotron extends React.Component {
                             <Row>
                                 <Col md={6}>
                                     <div style={{ position: "relative", borderRadius: "10px", padding: "12px 30px 12px 12px", border: "2px dashed rgb(220,230,241)" }} className=" my-2">
-                                        <a href="www.google.com">Show recruiters you are open to work - you control who sees this.</a>
-                                        <h6>Get Started</h6>
+                                        <h6 href="www.google.com">Show recruiters you are open to work - you control who sees this.</h6>
+                                        <a style={{textDecoration: "none"}} href="/">Get Started</a>
                                         <svg style={{ position: "absolute", top: "10%", right: "2%" }} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" data-supported-dps="16x16" fill="currentColor" className="mercado-match" width="16" height="16" focusable="false">
                                             <path d="M14 3.41L9.41 8 14 12.59 12.59 14 8 9.41 3.41 14 2 12.59 6.59 8 2 3.41 3.41 2 8 6.59 12.59 2z"></path>
                                         </svg>
@@ -81,8 +81,8 @@ class ProfileJumbotron extends React.Component {
                                 </Col>
                                 <Col md={6}>
                                     <div style={{ position: "relative", borderRadius: "10px", padding: "12px 30px 12px 12px", border: "2px dashed rgb(220,230,241)" }} className="my-2">
-                                        <a href="www.google.com">Show recruiters you are open to work - you control who sees this.</a>
-                                        <h6>Get Started</h6>
+                                        <h6 href="www.google.com">Show recruiters you are open to work - you control who sees this.</h6>
+                                        <a style={{textDecoration: "none"}} href="/">Get Started</a>
                                         <svg style={{ position: "absolute", top: "10%", right: "2%" }} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" data-supported-dps="16x16" fill="currentColor" className="mercado-match" width="16" height="16" focusable="false">
                                             <path d="M14 3.41L9.41 8 14 12.59 12.59 14 8 9.41 3.41 14 2 12.59 6.59 8 2 3.41 3.41 2 8 6.59 12.59 2z"></path>
                                         </svg>
