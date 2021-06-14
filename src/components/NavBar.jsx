@@ -15,7 +15,7 @@ export default class NavBar extends Component {
     render() {
         return this.state.isMe ? (
             /* <= if you are at the users profile */
-            <div>
+            <div style={{position: "sticky"}}>
                 <Navbar bg="white" expand="lg" className="pt-1 px-0 pl-0 pb-0">
                     <Container>
                         <div className="d-flex">

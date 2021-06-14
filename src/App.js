@@ -18,7 +18,7 @@ class App extends React.Component {
         exp: null,
         endpoint: "https://striveschool-api.herokuapp.com/api/profile/",
         post_endpoint: "https://striveschool-api.herokuapp.com/api/posts/",
-        authtoken: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDk4ZWJlMDYxOWU1ZDAwMTUxZjhmN2IiLCJpYXQiOjE2MjA2MzQ1OTMsImV4cCI6MTYyMTg0NDE5M30.m8Z_6EwSxdhgdmOtupcNuhyf9wv2VNmMt9PuzYmgTV8"
+        authtoken: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGM3MDYwMzI5MTkzMDAwMTU2MGFiOTIiLCJpYXQiOjE2MjM2NTU5MzksImV4cCI6MTYyNDg2NTUzOX0.EDhAt-Kg9toNC0cxxxkPVdVeVF6ZJ7CzNe4ha6924mM"
     }
 
     componentDidMount = async () => {
