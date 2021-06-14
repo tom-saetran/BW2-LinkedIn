@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { library } from "@fortawesome/fontawesome-svg-core"
 import { faHome, faPlayCircle, faQuestionCircle } from "@fortawesome/free-solid-svg-icons"
 import { faLinkedin } from "@fortawesome/free-brands-svg-icons"
-import { Link, NavLink, withRouter } from "react-router-dom"
+import { NavLink, withRouter } from "react-router-dom"
 
 library.add(faHome, faQuestionCircle, faLinkedin, faPlayCircle)
 

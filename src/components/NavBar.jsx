@@ -20,20 +20,46 @@ export default class NavBar extends Component {
                     <Container>
                         <div className="d-flex">
                             <Navbar.Brand href="#home">
-                                <svg fill="currentColor" style={{ color: "#0a66c2" }} xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 34 34" className="global-nav__logo">
+                                <svg
+                                    fill="currentColor"
+                                    style={{ color: "#0a66c2" }}
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="34"
+                                    height="34"
+                                    viewBox="0 0 34 34"
+                                    className="global-nav__logo"
+                                >
                                     <title>LinkedIn</title>
                                     <g>
-                                        <path d="M34,2.5v29A2.5,2.5,0,0,1,31.5,34H2.5A2.5,2.5,0,0,1,0,31.5V2.5A2.5,2.5,0,0,1,2.5,0h29A2.5,2.5,0,0,1,34,2.5ZM10,13H5V29h5Zm.45-5.5A2.88,2.88,0,0,0,7.59,4.6H7.5a2.9,2.9,0,0,0,0,5.8h0a2.88,2.88,0,0,0,2.95-2.81ZM29,19.28c0-4.81-3.06-6.68-6.1-6.68a5.7,5.7,0,0,0-5.06,2.58H17.7V13H13V29h5V20.49a3.32,3.32,0,0,1,3-3.58h.19c1.59,0,2.77,1,2.77,3.52V29h5Z" fill="currentColor"></path>
+                                        <path
+                                            d="M34,2.5v29A2.5,2.5,0,0,1,31.5,34H2.5A2.5,2.5,0,0,1,0,31.5V2.5A2.5,2.5,0,0,1,2.5,0h29A2.5,2.5,0,0,1,34,2.5ZM10,13H5V29h5Zm.45-5.5A2.88,2.88,0,0,0,7.59,4.6H7.5a2.9,2.9,0,0,0,0,5.8h0a2.88,2.88,0,0,0,2.95-2.81ZM29,19.28c0-4.81-3.06-6.68-6.1-6.68a5.7,5.7,0,0,0-5.06,2.58H17.7V13H13V29h5V20.49a3.32,3.32,0,0,1,3-3.58h.19c1.59,0,2.77,1,2.77,3.52V29h5Z"
+                                            fill="currentColor"
+                                        ></path>
                                     </g>
                                 </svg>
                             </Navbar.Brand>
                             <Form inline className="d-flex h-50 my-auto" style={{ backgroundColor: "#eef3f8" }}>
                                 <Button type="submit" className=" me-auto input-group-append" variant="outline-none">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" data-supported-dps="16x16" fill="background-color:#0a66c2" className="mercado-match" width="16" height="16" focusable="false">
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 16 16"
+                                        data-supported-dps="16x16"
+                                        fill="background-color:#0a66c2"
+                                        className="mercado-match"
+                                        width="16"
+                                        height="16"
+                                        focusable="false"
+                                    >
                                         <path d="M14.56 12.44L11.3 9.18a5.51 5.51 0 10-2.12 2.12l3.26 3.26a1.5 1.5 0 102.12-2.12zM3 6.5A3.5 3.5 0 116.5 10 3.5 3.5 0 013 6.5z"></path>
                                     </svg>
                                 </Button>
-                                <FormControl type="text" size="100" placeholder="Search" className="mr-sm-2" style={{ backgroundColor: "#eef3f8", border: 0 }} />
+                                <FormControl
+                                    type="text"
+                                    size="100"
+                                    placeholder="Search"
+                                    className="mr-sm-2"
+                                    style={{ backgroundColor: "#eef3f8", border: 0 }}
+                                />
                             </Form>
                         </div>
 
@@ -77,11 +103,18 @@ export default class NavBar extends Component {
                                 </Nav.Link>
 
                                 <div className="d-flex flex-md-column align-items-center">
-                                    <img style={{ borderRadius: "50%" }} width="24" src="https://media.giphy.com/media/TdMVH60kJvTMI/source.gif" height="24" alt="Carl Dawkins" id="ember34" className="mx-auto global-nav__me-photo ember-view" />
+                                    <img
+                                        style={{ borderRadius: "50%" }}
+                                        width="24"
+                                        src="https://media.giphy.com/media/TdMVH60kJvTMI/source.gif"
+                                        height="24"
+                                        alt="Carl Dawkins"
+                                        id="ember34"
+                                        className="mx-auto global-nav__me-photo ember-view"
+                                    />
                                     <NavDropdown id="Me" title="Me" className="">
                                         <NavDropdown.Item as={"div"}>
                                             <div className="d-flex flex-row w-100">
-
                                                 <div>
                                                     <div>
                                                         <h6 className="mb-0">Carl Dawkins</h6>
@@ -89,7 +122,7 @@ export default class NavBar extends Component {
                                                     </div>
                                                 </div>
                                             </div>
-                                            <a className="col-12 btn bg-white" href="/profile" >
+                                            <a className="col-12 btn bg-white" href="/profile">
                                                 View Profile
                                             </a>
                                         </NavDropdown.Item>
@@ -117,10 +150,9 @@ export default class NavBar extends Component {
                                         <NavDropdown.Item>
                                             <p>Posts & Activity</p>
                                         </NavDropdown.Item>
-                                          <NavDropdown.Item>
+                                        <NavDropdown.Item>
                                             <p>Job Posting Account</p>
                                         </NavDropdown.Item>
-
 
                                         <NavDropdown.Divider />
                                         <NavDropdown.Item>
@@ -133,7 +165,7 @@ export default class NavBar extends Component {
                                     <svg className="justify-content-right p-0 mb-0" id="global-nav-icon--classic__work" height="24" width="24">
                                         <path d="M10 10h4v4h-4v-4zm0 11h4v-4h-4v4zm-7-7h4v-4H3v4zm0 7h4v-4H3v4zM3 7h4V3H3v4zm14 7h4v-4h-4v4zm0-11v4h4V3h-4zm-7 4h4V3h-4v4zm7 14h4v-4h-4v4z"></path>
                                     </svg>
-                                    <NavDropdown title="Work" id="basic-nav-dropdown" title="Work" className="nav-links " >
+                                    <NavDropdown title="Work" id="basic-nav-dropdown" className="nav-links ">
                                         <NavDropdown.Item>Action</NavDropdown.Item>
                                         <NavDropdown.Item>Another action</NavDropdown.Item>
                                         <NavDropdown.Item>Something</NavDropdown.Item>

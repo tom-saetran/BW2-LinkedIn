@@ -8,7 +8,6 @@ import Profile from "./components/Profile"
 import NavBar from "./components/NavBar"
 import Feed from "./components/Feed"
 import Footer from "./components/Footer"
-import { Form } from "react-bootstrap"
 
 class App extends React.Component {
     state = {
@@ -18,7 +17,8 @@ class App extends React.Component {
         exp: null,
         endpoint: "https://striveschool-api.herokuapp.com/api/profile/",
         post_endpoint: "https://striveschool-api.herokuapp.com/api/posts/",
-        authtoken: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDk4ZWJlMDYxOWU1ZDAwMTUxZjhmN2IiLCJpYXQiOjE2MjA2MzQ1OTMsImV4cCI6MTYyMTg0NDE5M30.m8Z_6EwSxdhgdmOtupcNuhyf9wv2VNmMt9PuzYmgTV8"
+        authtoken:
+            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDk4ZWJlMDYxOWU1ZDAwMTUxZjhmN2IiLCJpYXQiOjE2MjA2MzQ1OTMsImV4cCI6MTYyMTg0NDE5M30.m8Z_6EwSxdhgdmOtupcNuhyf9wv2VNmMt9PuzYmgTV8"
     }
 
     componentDidMount = async () => {
@@ -37,7 +37,8 @@ class App extends React.Component {
             number: "100",
             type: "Informational Response",
             name: "Continue",
-            description: "This interim response indicates that everything so far is OK and that the client should continue the request, or ignore the response if the request is already finished."
+            description:
+                "This interim response indicates that everything so far is OK and that the client should continue the request, or ignore the response if the request is already finished."
         },
         101: {
             number: "101",
@@ -56,7 +57,8 @@ class App extends React.Component {
             number: "103",
             type: "Informational Response",
             name: "Early Hints",
-            description: "This status code is primarily intended to be used with the Link header, letting the user agent start preloading resources while the server prepares a response."
+            description:
+                "This status code is primarily intended to be used with the Link header, letting the user agent start preloading resources while the server prepares a response."
         },
 
         // 2xx - 10 Entries
@@ -77,25 +79,29 @@ class App extends React.Component {
             number: "201",
             type: "Successful Response",
             name: "Created",
-            description: "The request has succeeded and a new resource has been created as a result. This is typically the response sent after POST requests, or some PUT requests."
+            description:
+                "The request has succeeded and a new resource has been created as a result. This is typically the response sent after POST requests, or some PUT requests."
         },
         202: {
             number: "202",
             type: "Successful Response",
             name: "Accepted",
-            description: "The request has been received but not yet acted upon. It is noncommittal, since there is no way in HTTP to later send an asynchronous response indicating the outcome of the request. It is intended for cases where another process or server handles the request, or for batch processing."
+            description:
+                "The request has been received but not yet acted upon. It is noncommittal, since there is no way in HTTP to later send an asynchronous response indicating the outcome of the request. It is intended for cases where another process or server handles the request, or for batch processing."
         },
         203: {
             number: "203",
             type: "Successful Response",
             name: "Non-Authoritative Information",
-            description: "This response code means the returned meta-information is not exactly the same as is available from the origin server, but is collected from a local or a third-party copy. This is mostly used for mirrors or backups of another resource. Except for that specific case, the 200 OK response is preferred to this status."
+            description:
+                "This response code means the returned meta-information is not exactly the same as is available from the origin server, but is collected from a local or a third-party copy. This is mostly used for mirrors or backups of another resource. Except for that specific case, the 200 OK response is preferred to this status."
         },
         204: {
             number: "204",
             type: "Successful Response",
             name: "No Content",
-            description: "There is no content to send for this request, but the headers may be useful. The user-agent may update its cached headers for this resource with the new ones."
+            description:
+                "There is no content to send for this request, but the headers may be useful. The user-agent may update its cached headers for this resource with the new ones."
         },
         205: {
             number: "205",
@@ -120,14 +126,16 @@ class App extends React.Component {
             number: "208",
             type: "Successful Response",
             name: "Already Reported",
-            description: "Used inside a <dav:propstat> response element to avoid repeatedly enumerating the internal members of multiple bindings to the same collection.",
+            description:
+                "Used inside a <dav:propstat> response element to avoid repeatedly enumerating the internal members of multiple bindings to the same collection.",
             note: "WebDAV"
         },
         226: {
             number: "226",
             type: "Successful Response",
             name: "IM Used",
-            description: "The server has fulfilled a GET request for the resource, and the response is a representation of the result of one or more instance-manipulations applied to the current instance.",
+            description:
+                "The server has fulfilled a GET request for the resource, and the response is a representation of the result of one or more instance-manipulations applied to the current instance.",
             note: "HTTP Delta encoding"
         },
 
@@ -136,7 +144,8 @@ class App extends React.Component {
             number: "300",
             type: "Redirection message",
             name: "Multiple Choice",
-            description: "The request has more than one possible response. The user-agent or user should choose one of them. (There is no standardized way of choosing one of the responses, but HTML links to the possibilities are recommended so the user can pick.)"
+            description:
+                "The request has more than one possible response. The user-agent or user should choose one of them. (There is no standardized way of choosing one of the responses, but HTML links to the possibilities are recommended so the user can pick.)"
         },
         301: {
             number: "301",
@@ -148,7 +157,8 @@ class App extends React.Component {
             number: "302",
             type: "Redirection message",
             name: "Found",
-            description: "This response code means that the URI of requested resource has been changed temporarily. Further changes in the URI might be made in the future. Therefore, this same URI should be used by the client in future requests."
+            description:
+                "This response code means that the URI of requested resource has been changed temporarily. Further changes in the URI might be made in the future. Therefore, this same URI should be used by the client in future requests."
         },
         303: {
             number: "303",
@@ -160,13 +170,15 @@ class App extends React.Component {
             number: "304",
             type: "Redirection message",
             name: "Not Modified",
-            description: "This is used for caching purposes. It tells the client that the response has not been modified, so the client can continue to use the same cached version of the response."
+            description:
+                "This is used for caching purposes. It tells the client that the response has not been modified, so the client can continue to use the same cached version of the response."
         },
         305: {
             number: "305",
             type: "Redirection message",
             name: "Use Proxy",
-            description: "Defined in a previous version of the HTTP specification to indicate that a requested response must be accessed by a proxy. It has been deprecated due to security concerns regarding in-band configuration of a proxy.",
+            description:
+                "Defined in a previous version of the HTTP specification to indicate that a requested response must be accessed by a proxy. It has been deprecated due to security concerns regarding in-band configuration of a proxy.",
             note: "DO NOT USE - Deprecated!"
         },
         306: {
@@ -180,13 +192,15 @@ class App extends React.Component {
             number: "307",
             type: "Redirection message",
             name: "Temporary Redirect",
-            description: "The server sends this response to direct the client to get the requested resource at another URI with same method that was used in the prior request. This has the same semantics as the 302 Found HTTP response code, with the exception that the user agent must not change the HTTP method used: If a POST was used in the first request, a POST must be used in the second request."
+            description:
+                "The server sends this response to direct the client to get the requested resource at another URI with same method that was used in the prior request. This has the same semantics as the 302 Found HTTP response code, with the exception that the user agent must not change the HTTP method used: If a POST was used in the first request, a POST must be used in the second request."
         },
         308: {
             number: "308",
             type: "Redirection message",
             name: "Permanent Redirect",
-            description: "This means that the resource is now permanently located at another URI, specified by the Location: HTTP Response header. This has the same semantics as the 301 Moved Permanently HTTP response code, with the exception that the user agent must not change the HTTP method used: If a POST was used in the first request, a POST must be used in the second request."
+            description:
+                "This means that the resource is now permanently located at another URI, specified by the Location: HTTP Response header. This has the same semantics as the 301 Moved Permanently HTTP response code, with the exception that the user agent must not change the HTTP method used: If a POST was used in the first request, a POST must be used in the second request."
         },
 
         // 4xx - 29 Entries
@@ -200,38 +214,44 @@ class App extends React.Component {
             number: "401",
             type: "Client Error Response",
             name: "Unauthorized",
-            description: "Although the HTTP standard specifies unauthorized, semantically this response means unauthenticated. That is, the client must authenticate itself to get the requested response."
+            description:
+                "Although the HTTP standard specifies unauthorized, semantically this response means unauthenticated. That is, the client must authenticate itself to get the requested response."
         },
         402: {
             number: "402",
             type: "Client Error Response",
             name: "Payment Required",
-            description: "This response code is reserved for future use. The initial aim for creating this code was using it for digital payment systems, however this status code is used very rarely and no standard convention exists.",
+            description:
+                "This response code is reserved for future use. The initial aim for creating this code was using it for digital payment systems, however this status code is used very rarely and no standard convention exists.",
             note: "Experimental API!"
         },
         403: {
             number: "403",
             type: "Client Error Response",
             name: "Forbidden",
-            description: "The client does not have access rights to the content; that is, it is unauthorized, so the server is refusing to give the requested resource. Unlike 401, the client's identity is known to the server."
+            description:
+                "The client does not have access rights to the content; that is, it is unauthorized, so the server is refusing to give the requested resource. Unlike 401, the client's identity is known to the server."
         },
         404: {
             number: "404",
             type: "Client Error Response",
             name: "Not Found",
-            description: "The server can not find the requested resource. In the browser, this means the URL is not recognized. In an API, this can also mean that the endpoint is valid but the resource itself does not exist. Servers may also send this response instead of 403 to hide the existence of a resource from an unauthorized client. This response code is probably the most famous one due to its frequent occurrence on the web."
+            description:
+                "The server can not find the requested resource. In the browser, this means the URL is not recognized. In an API, this can also mean that the endpoint is valid but the resource itself does not exist. Servers may also send this response instead of 403 to hide the existence of a resource from an unauthorized client. This response code is probably the most famous one due to its frequent occurrence on the web."
         },
         405: {
             number: "405",
             type: "Client Error Response",
             name: "Method Not Allowed",
-            description: "The request method is known by the server but has been disabled and cannot be used. For example, an API may forbid DELETE-ing a resource. The two mandatory methods, GET and HEAD, must never be disabled and should not return this error code."
+            description:
+                "The request method is known by the server but has been disabled and cannot be used. For example, an API may forbid DELETE-ing a resource. The two mandatory methods, GET and HEAD, must never be disabled and should not return this error code."
         },
         406: {
             number: "406",
             type: "Client Error Response",
             name: "Not Acceptable",
-            description: "This response is sent when the web server, after performing server-driven content negotiation, doesn't find any content that conforms to the criteria given by the user agent."
+            description:
+                "This response is sent when the web server, after performing server-driven content negotiation, doesn't find any content that conforms to the criteria given by the user agent."
         },
         407: {
             number: "407",
@@ -243,7 +263,8 @@ class App extends React.Component {
             number: "408",
             type: "Client Error Response",
             name: "Request Timeout",
-            description: "This response is sent on an idle connection by some servers, even without any previous request by the client. It means that the server would like to shut down this unused connection. This response is used much more since some browsers, like Chrome, Firefox 27+, or IE9, use HTTP pre-connection mechanisms to speed up surfing. Also note that some servers merely shut down the connection without sending this message."
+            description:
+                "This response is sent on an idle connection by some servers, even without any previous request by the client. It means that the server would like to shut down this unused connection. This response is used much more since some browsers, like Chrome, Firefox 27+, or IE9, use HTTP pre-connection mechanisms to speed up surfing. Also note that some servers merely shut down the connection without sending this message."
         },
         409: {
             number: "409",
@@ -255,7 +276,8 @@ class App extends React.Component {
             number: "410",
             type: "Client Error Response",
             name: "Gone",
-            description: "This response is sent when the requested content has been permanently deleted from server, with no forwarding address. Clients are expected to remove their caches and links to the resource. The HTTP specification intends this status code to be used for limited-time, promotional services. APIs should not feel compelled to indicate resources that have been deleted with this status code."
+            description:
+                "This response is sent when the requested content has been permanently deleted from server, with no forwarding address. Clients are expected to remove their caches and links to the resource. The HTTP specification intends this status code to be used for limited-time, promotional services. APIs should not feel compelled to indicate resources that have been deleted with this status code."
         },
         411: {
             number: "411",
@@ -291,7 +313,8 @@ class App extends React.Component {
             number: "416",
             type: "Client Error Response",
             name: "Range Not Satisfiable",
-            description: "The range specified by the Range header field in the request can't be fulfilled; it's possible that the range is outside the size of the target URI's data."
+            description:
+                "The range specified by the Range header field in the request can't be fulfilled; it's possible that the range is outside the size of the target URI's data."
         },
         417: {
             number: "417",
@@ -310,7 +333,8 @@ class App extends React.Component {
             number: "421",
             type: "Client Error Response",
             name: "Misdirected Request",
-            description: "The request was directed at a server that is not able to produce a response. This can be sent by a server that is not configured to produce responses for the combination of scheme and authority that are included in the request URI."
+            description:
+                "The request was directed at a server that is not able to produce a response. This can be sent by a server that is not configured to produce responses for the combination of scheme and authority that are included in the request URI."
         },
         422: {
             number: "422",
@@ -344,13 +368,15 @@ class App extends React.Component {
             number: "426",
             type: "Client Error Response",
             name: "Upgrade Required",
-            description: "The server refuses to perform the request using the current protocol but might be willing to do so after the client upgrades to a different protocol. The server sends an Upgrade header in a 426 response to indicate the required protocol(s)."
+            description:
+                "The server refuses to perform the request using the current protocol but might be willing to do so after the client upgrades to a different protocol. The server sends an Upgrade header in a 426 response to indicate the required protocol(s)."
         },
         428: {
             number: "428",
             type: "Client Error Response",
             name: "Preconditions Required",
-            description: "The origin server requires the request to be conditional. This response is intended to prevent the 'lost update' problem, where a client GETs a resource's state, modifies it, and PUTs it back to the server, when meanwhile a third party has modified the state on the server, leading to a conflict."
+            description:
+                "The origin server requires the request to be conditional. This response is intended to prevent the 'lost update' problem, where a client GETs a resource's state, modifies it, and PUTs it back to the server, when meanwhile a third party has modified the state on the server, leading to a conflict."
         },
         429: {
             number: "429",
@@ -362,7 +388,8 @@ class App extends React.Component {
             number: "431",
             type: "Client Error Response",
             name: "Request Header Fields Too Large",
-            description: "The server is unwilling to process the request because its header fields are too large. The request may be resubmitted after reducing the size of the request header fields."
+            description:
+                "The server is unwilling to process the request because its header fields are too large. The request may be resubmitted after reducing the size of the request header fields."
         },
         451: {
             number: "451",
@@ -382,19 +409,22 @@ class App extends React.Component {
             number: "501",
             type: "Server Error Response",
             name: "Not Implemented",
-            description: "The request method is not supported by the server and cannot be handled. The only methods that servers are required to support (and therefore that must not return this code) are GET and HEAD."
+            description:
+                "The request method is not supported by the server and cannot be handled. The only methods that servers are required to support (and therefore that must not return this code) are GET and HEAD."
         },
         502: {
             number: "502",
             type: "Server Error Response",
             name: "Bad Gateway",
-            description: "This error response means that the server, while working as a gateway to get a response needed to handle the request, got an invalid response."
+            description:
+                "This error response means that the server, while working as a gateway to get a response needed to handle the request, got an invalid response."
         },
         503: {
             number: "503",
             type: "Server Error Response",
             name: "Service Unavailable",
-            description: "The server is not ready to handle the request. Common causes are a server that is down for maintenance or that is overloaded. Note that together with this response, a user-friendly page explaining the problem should be sent. This responses should be used for temporary conditions and the Retry-After: HTTP header should, if possible, contain the estimated time before the recovery of the service. The webmaster must also take care about the caching-related headers that are sent along with this response, as these temporary condition responses should usually not be cached."
+            description:
+                "The server is not ready to handle the request. Common causes are a server that is down for maintenance or that is overloaded. Note that together with this response, a user-friendly page explaining the problem should be sent. This responses should be used for temporary conditions and the Retry-After: HTTP header should, if possible, contain the estimated time before the recovery of the service. The webmaster must also take care about the caching-related headers that are sent along with this response, as these temporary condition responses should usually not be cached."
         },
         504: {
             number: "504",
@@ -412,13 +442,15 @@ class App extends React.Component {
             number: "506",
             type: "Server Error Response",
             name: "Variant Also Negotiates",
-            description: "The server has an internal configuration error: the chosen variant resource is configured to engage in transparent content negotiation itself, and is therefore not a proper end point in the negotiation process."
+            description:
+                "The server has an internal configuration error: the chosen variant resource is configured to engage in transparent content negotiation itself, and is therefore not a proper end point in the negotiation process."
         },
         507: {
             number: "507",
             type: "Server Error Response",
             name: "Insufficient Storage",
-            description: "The method could not be performed on the resource because the server is unable to store the representation needed to successfully complete the request.",
+            description:
+                "The method could not be performed on the resource because the server is unable to store the representation needed to successfully complete the request.",
             note: "WebDAV"
         },
         508: {
@@ -671,28 +703,23 @@ class App extends React.Component {
                     console.log(id)
 
                     if (image) {
-
                         let formData = new FormData()
                         formData.append("post", image) // the file input
 
                         console.log(formData)
-                        results = await fetch(this.state.post_endpoint + id ,
-                            {
-                                method: "POST",
-                                headers: {
-                                    Authorization: this.state.authtoken,
-                                    // "Content-Type": "multipart/form-data"
-                                },
-                                body: formData,
-                                redirect: 'follow'
-
-                            })
+                        results = await fetch(this.state.post_endpoint + id, {
+                            method: "POST",
+                            headers: {
+                                Authorization: this.state.authtoken
+                                // "Content-Type": "multipart/form-data"
+                            },
+                            body: formData,
+                            redirect: "follow"
+                        })
 
                         console.log(results)
                         console.log(await results.json())
-
                     }
-
                 } catch (error) {
                     console.error(error)
                     return null
@@ -765,7 +792,11 @@ class App extends React.Component {
             <Router>
                 <Route render={routeProps => <NavBar {...routeProps} crud={this.crud} me={this.state.me} all={this.state.all} />} />
                 <Switch>
-                    <Route render={routeProps => <Profile {...routeProps} crud={this.crud} exp={this.state.experience} me={this.state.me} all={this.state.all} />} exact path={["/profile/:id", "/profile"]} />
+                    <Route
+                        render={routeProps => <Profile {...routeProps} crud={this.crud} exp={this.state.experience} me={this.state.me} all={this.state.all} />}
+                        exact
+                        path={["/profile/:id", "/profile"]}
+                    />
 
                     <Route render={routeProps => <Feed {...routeProps} crud={this.crud} me={this.state.me} all={this.state.all} />} exact path="/feed" />
                     <Route render={routeProps => <HTTP501 {...routeProps} />} exact path="/" />
