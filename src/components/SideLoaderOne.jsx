@@ -17,10 +17,10 @@ class SideLoaderOne extends React.Component {
     }
 
     componentDidUpdate = (_previousProps, _previousState) => {
-        if (this.props.me !== this.state.me) this.setState({ me: this.props.me })
-        if (this.props.all !== this.state.all) this.setState({ all: this.props.all })
-        if (this.state.mayKnow === null && this.state.all !== null) this.setState({ mayKnow: this.some() })
-        if (this.state.alsoViewed === null && this.state.all !== null) this.setState({ alsoViewed: this.some() })
+        //if (this.props.me !== this.state.me) this.setState({ me: this.props.me })
+        //if (this.props.all !== this.state.all) this.setState({ all: this.props.all })
+        //if (this.state.mayKnow === null && this.state.all !== null) this.setState({ mayKnow: this.some() })
+        //if (this.state.alsoViewed === null && this.state.all !== null) this.setState({ alsoViewed: this.some() })
     }
 
     //  const noInfo = []

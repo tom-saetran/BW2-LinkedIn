@@ -77,14 +77,14 @@ class Footer extends React.Component {
                         <Col xs={12} md={3}>
                             <div className="d-flex flex-column footer-list p-0">
                                 <div className="d-flex list-item">
-                                    <div class="me-3">
+                                    <div className="me-3">
                                         <svg
                                             style={{ color: "#616160" }}
                                             xmlns="http://www.w3.org/2000/svg"
                                             viewBox="0 0 24 24"
                                             data-supported-dps="24x24"
                                             fill="currentColor"
-                                            class="mercado-match"
+                                            className="mercado-match"
                                             width="24"
                                             height="24"
                                             focusable="false"
@@ -113,7 +113,7 @@ class Footer extends React.Component {
                                             viewBox="0 0 24 24"
                                             data-supported-dps="24x24"
                                             fill="currentColor"
-                                            class="mercado-match"
+                                            className="mercado-match"
                                             width="24"
                                             height="24"
                                             focusable="false"
