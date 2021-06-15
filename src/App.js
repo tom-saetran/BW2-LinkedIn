@@ -34,7 +34,7 @@ class App extends React.Component {
             getAll: async () => {
                 let result
                 try {
-                    result = await fetch(this.state.endpoint + "/profile", {
+                    result = await fetch(this.crud.endpoint + "/profile", {
                         headers: {
                             // Authorization: this.state.authtoken
                         }
@@ -57,7 +57,7 @@ class App extends React.Component {
                     if (userID === "" || userID === undefined || userID === null) throw new Error("user id must be present")
                     if (!this.crud.validators.id(userID)) throw new Error("user id is incorrect")
 
-                    results = await fetch(this.state.endpoint + "/profile/" + userID, {
+                    results = await fetch(this.crud.endpoint + "/profile/" + userID, {
                         headers: {
                             // Authorization: this.state.authtoken
                         }
@@ -79,7 +79,7 @@ class App extends React.Component {
                     if (!this.crud.validators.id(userID)) throw new Error("user id is incorrect")
                     if (typeof data !== "object") throw new Error("data must be an object")
 
-                    results = await fetch(this.state.endpoint + "/profile/" + userID, {
+                    results = await fetch(this.crud.endpoint + "/profile/" + userID, {
                         method: "PUT",
                         headers: {
                             // Authorization: this.state.authtoken,
@@ -102,7 +102,7 @@ class App extends React.Component {
                 try {
                     if (typeof data !== "object") throw new Error("data must be an object")
 
-                    results = await fetch(this.state.endpoint + "/profile", {
+                    results = await fetch(this.crud.endpoint + "/profile", {
                         method: "POST",
                         headers: {
                             // Authorization: this.state.authtoken,
@@ -126,7 +126,7 @@ class App extends React.Component {
                     if (userID === "" || userID === undefined || userID === null) throw new Error("user id must be present")
                     if (!this.crud.validators.id(userID)) throw new Error("user id is incorrect")
 
-                    results = await fetch(this.state.endpoint + "/profile/" + userID, {
+                    results = await fetch(this.crud.endpoint + "/profile/" + userID, {
                         method: "DELETE",
                         headers: {
                             // Authorization: this.state.authtoken,
@@ -173,7 +173,7 @@ class App extends React.Component {
                 try {
                     if (userID === "" || userID === undefined || userID === null) throw new Error("user id must be present")
                     if (!this.crud.validators.id(userID)) throw new Error("user id is incorrect")
-                    results = await fetch(this.state.endpoint + "/profile/" + userID + "/CV", {
+                    results = await fetch(this.crud.endpoint + "/profile/" + userID + "/CV", {
                         headers: {
                             // Authorization: this.state.authtoken
                         }
@@ -195,7 +195,7 @@ class App extends React.Component {
                     if (userID === "" || userID === undefined || userID === null) throw new Error("user id must be present")
                     if (!this.crud.validators.id(userID)) throw new Error("user id is incorrect")
 
-                    results = await fetch(this.state.endpoint + "/profile/" + userID + "/experiences", {
+                    results = await fetch(this.crud.endpoint + "/profile/" + userID + "/experiences", {
                         headers: {
                             // Authorization: this.state.authtoken
                         }
@@ -218,7 +218,7 @@ class App extends React.Component {
                     if (!this.crud.validators.id(userID)) throw new Error("user id is incorrect")
                     if (!this.crud.validators.id(expID)) throw new Error("experience id is incorrect")
 
-                    results = await fetch(this.state.endpoint + "/profile/" + userID + "/experiences/" + expID, {
+                    results = await fetch(this.crud.endpoint + "/profile/" + userID + "/experiences/" + expID, {
                         headers: {
                             // Authorization: this.state.authtoken
                         }
@@ -240,7 +240,7 @@ class App extends React.Component {
                     if (!this.crud.validators.id(userID)) throw new Error("user id is incorrect")
                     if (typeof data !== "object") throw new Error("data must be an object")
 
-                    results = await fetch(this.state.endpoint + "/profile/" + userID + "/experiences", {
+                    results = await fetch(this.crud.endpoint + "/profile/" + userID + "/experiences", {
                         method: "POST",
                         headers: {
                             // Authorization: this.state.authtoken,
@@ -267,7 +267,7 @@ class App extends React.Component {
                     if (!this.crud.validators.id(expID)) throw new Error("experience id is incorrect")
                     if (typeof data !== "object") throw new Error("data must be an object")
 
-                    results = await fetch(this.state.endpoint + "/profile/" + userID + "/experiences/" + expID, {
+                    results = await fetch(this.crud.endpoint + "/profile/" + userID + "/experiences/" + expID, {
                         method: "PUT",
                         headers: {
                             // Authorization: this.state.authtoken,
@@ -293,7 +293,7 @@ class App extends React.Component {
                     if (!this.crud.validators.id(userID)) throw new Error("user id is incorrect")
                     if (!this.crud.validators.id(expID)) throw new Error("experience id is incorrect")
 
-                    results = await fetch(this.state.endpoint + "/profile/" + userID + "/experiences/" + expID, {
+                    results = await fetch(this.crud.endpoint + "/profile/" + userID + "/experiences/" + expID, {
                         method: "DELETE",
                         headers: {
                             //Authorization: this.state.authtoken
@@ -344,7 +344,7 @@ class App extends React.Component {
                     if (!this.crud.validators.id(userID)) throw new Error("user id is incorrect")
                     if (!this.crud.validators.id(expID)) throw new Error("experience id is incorrect")
 
-                    results = await fetch(this.state.endpoint + "/profile/" + userID + "/experiences" + expID + "CSV", {
+                    results = await fetch(this.crud.endpoint + "/profile/" + userID + "/experiences" + expID + "CSV", {
                         headers: {
                             // Authorization: this.state.authtoken
                         }
