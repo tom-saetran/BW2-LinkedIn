@@ -31,19 +31,21 @@ class ExperienceEducation extends React.Component {
                 <Col className="mt-4 mb-4 section-outer section-inner">
                     <div className="d-flex mb-2 justify-content-between">
                         <h6>Experience</h6>
-                        <svg
-                            onClick={this.handleShow}
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 24 24"
-                            data-supported-dps="24x24"
-                            fill="currentColor"
-                            className="mercado-match"
-                            width="24"
-                            height="24"
-                            focusable="false"
-                        >
-                            <path d="M21 13h-8v8h-2v-8H3v-2h8V3h2v8h8z"></path>
-                        </svg>
+                        <span title="Add New Experience" className="cursor-pointer">
+                            <svg
+                                onClick={this.handleShow}
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 24 24"
+                                data-supported-dps="24x24"
+                                fill="currentColor"
+                                className="mercado-match"
+                                width="24"
+                                height="24"
+                                focusable="false"
+                            >
+                                <path d="M21 13h-8v8h-2v-8H3v-2h8V3h2v8h8z"></path>
+                            </svg>
+                        </span>
                     </div>
 
                     {this.state.experiences !== null &&
@@ -67,19 +69,21 @@ class ExperienceEducation extends React.Component {
                                         </div>
                                     </div>
                                     <div>
-                                        <svg
-                                            onClick={this.handleUpdateShow}
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            viewBox="0 0 24 24"
-                                            data-supported-dps="24x24"
-                                            fill="currentColor"
-                                            className="mercado-match"
-                                            width="24"
-                                            height="24"
-                                            focusable="false"
-                                        >
-                                            <path d="M21.13 2.86a3 3 0 00-4.17 0l-13 13L2 22l6.19-2L21.13 7a3 3 0 000-4.16zM6.77 18.57l-1.35-1.34L16.64 6 18 7.35z"></path>
-                                        </svg>
+                                        <span title="Edit this experience" className="cursor-pointer">
+                                            <svg
+                                                onClick={this.handleUpdateShow}
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                viewBox="0 0 24 24"
+                                                data-supported-dps="24x24"
+                                                fill="currentColor"
+                                                className="mercado-match"
+                                                width="24"
+                                                height="24"
+                                                focusable="false"
+                                            >
+                                                <path d="M21.13 2.86a3 3 0 00-4.17 0l-13 13L2 22l6.19-2L21.13 7a3 3 0 000-4.16zM6.77 18.57l-1.35-1.34L16.64 6 18 7.35z"></path>
+                                            </svg>
+                                        </span>
                                     </div>
                                 </div>
                             )
