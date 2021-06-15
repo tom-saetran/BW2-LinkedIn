@@ -6,8 +6,12 @@ import HTTP501 from "./components/HTTP501"
 import HTTP404 from "./components/HTTP404"
 import Profile from "./components/Profile"
 import NavBar from "./components/NavBar"
-import Feed from "./components/Feed"
+import Blogs from "./components/Blogs"
 import Footer from "./components/Footer"
+
+import TimeAgo from "javascript-time-ago"
+import en from "javascript-time-ago/locale/en"
+TimeAgo.addLocale(en)
 
 class App extends React.Component {
     state = {
@@ -41,9 +45,7 @@ class App extends React.Component {
                     })
 
                     if (!result.ok) throw new Error("Got data in return but status.ok is false!")
-                    console.log(result)
                     result = await result.json()
-                    console.log(result)
                 } catch (error) {
                     console.error(error)
                     return null
@@ -135,7 +137,6 @@ class App extends React.Component {
                     })
 
                     if (!results.ok) throw new Error("Got data in return but status.ok is false!")
-                    results = await results.json()
                 } catch (error) {
                     console.error(error)
                     return null
@@ -301,7 +302,6 @@ class App extends React.Component {
                     })
 
                     if (!results.ok) throw new Error("Got data in return but status.ok is false!")
-                    results = await results.json()
                 } catch (error) {
                     console.error(error)
                     return null
@@ -364,7 +364,7 @@ class App extends React.Component {
             getAll: async () => {
                 let results
                 try {
-                    results = await fetch(this.state.post_endpoint + "/posts", {
+                    results = await fetch(this.crud.endpoint + "/posts", {
                         headers: {
                             // Authorization: this.state.authtoken
                         }
@@ -385,7 +385,7 @@ class App extends React.Component {
                     if (postID === "" || postID === undefined || postID === null) throw new Error("post id must be present")
                     if (!this.crud.validators.id(postID)) throw new Error("post id is incorrect")
 
-                    results = await fetch(this.state.post_endpoint + "/posts/" + postID, {
+                    results = await fetch(this.crud.endpoint + "/posts/" + postID, {
                         headers: {
                             // Authorization: this.state.authtoken
                         }
@@ -405,7 +405,7 @@ class App extends React.Component {
                 try {
                     if (typeof data !== "object") throw new Error("data must be an object")
 
-                    results = await fetch(this.state.post_endpoint + "/posts", {
+                    results = await fetch(this.crud.endpoint + "/posts", {
                         method: "POST",
                         headers: {
                             // Authorization: this.state.authtoken,
@@ -430,7 +430,7 @@ class App extends React.Component {
                     if (typeof data !== "object") throw new Error("data must be an object")
                     if (!this.crud.validators.id(postID)) throw new Error("post id is incorrect")
 
-                    results = await fetch(this.state.post_endpoint + "/posts/" + postID, {
+                    results = await fetch(this.crud.endpoint + "/posts/" + postID, {
                         method: "PUT",
                         headers: {
                             // Authorization: this.state.authtoken,
@@ -454,7 +454,7 @@ class App extends React.Component {
                     if (postID === "" || postID === undefined || postID === null) throw new Error("post id must be present")
                     if (!this.crud.validators.id(postID)) throw new Error("post id is incorrect")
 
-                    results = await fetch(this.state.post_endpoint + "/posts/" + postID, {
+                    results = await fetch(this.crud.endpoint + "/posts/" + postID, {
                         method: "DELETE",
                         headers: {
                             Authorization: this.state.authtoken
@@ -462,7 +462,6 @@ class App extends React.Component {
                     })
 
                     if (!results.ok) throw new Error("Got data in return but status.ok is false!")
-                    results = await results.json()
                 } catch (error) {
                     console.error(error)
                     return null
@@ -502,7 +501,7 @@ class App extends React.Component {
                     if (!this.crud.validators.id(postID)) throw new Error("post id is incorrect")
                     if (typeof data !== "object") throw new Error("data must be an object")
 
-                    results = await fetch(this.state.post_endpoint + "/posts" + postID + "/like", {
+                    results = await fetch(this.crud.endpoint + "/posts/" + postID + "/like", {
                         method: "POST",
                         headers: {
                             // Authorization: this.state.authtoken,
@@ -527,7 +526,7 @@ class App extends React.Component {
                     if (!this.crud.validators.id(postID)) throw new Error("post id is incorrect")
                     if (typeof data !== "object") throw new Error("data must be an object")
 
-                    results = await fetch(this.state.post_endpoint + "/posts" + postID + "/like", {
+                    results = await fetch(this.crud.endpoint + "/posts/" + postID + "/like", {
                         method: "DELETE",
                         headers: {
                             // Authorization: this.state.authtoken,
@@ -537,7 +536,6 @@ class App extends React.Component {
                     })
 
                     if (!results.ok) throw new Error("Got data in return but status.ok is false!")
-                    results = await results.json()
                 } catch (error) {
                     console.error(error)
                     return null
@@ -553,7 +551,7 @@ class App extends React.Component {
                     if (postID === "" || postID === undefined || postID === null) throw new Error("id must be present")
                     if (!this.crud.validators.id(postID)) throw new Error("post id is incorrect")
 
-                    results = await fetch(this.state.post_endpoint + "/posts" + postID + "/comment", {
+                    results = await fetch(this.crud.endpoint + "/posts/" + postID + "/comment", {
                         headers: {
                             // Authorization: this.state.authtoken
                         }
@@ -576,7 +574,7 @@ class App extends React.Component {
                     if (!this.crud.validators.id(postID)) throw new Error("post id is incorrect")
                     if (!this.crud.validators.id(commentID)) throw new Error("comment id is incorrect")
 
-                    results = await fetch(this.state.post_endpoint + "/posts/" + postID + "/comment/" + commentID, {
+                    results = await fetch(this.crud.endpoint + "/posts/" + postID + "/comment/" + commentID, {
                         headers: {
                             // Authorization: this.state.authtoken
                         }
@@ -598,7 +596,7 @@ class App extends React.Component {
                     if (!this.crud.validators.id(postID)) throw new Error("post id is incorrect")
                     if (typeof data !== "object") throw new Error("data must be an object")
 
-                    results = await fetch(this.state.post_endpoint + "/posts" + postID + "/comment", {
+                    results = await fetch(this.crud.endpoint + "/posts/" + postID + "/comment", {
                         method: "POST",
                         headers: {
                             // Authorization: this.state.authtoken,
@@ -625,7 +623,7 @@ class App extends React.Component {
                     if (!this.crud.validators.id(commentID)) throw new Error("comment id is incorrect")
                     if (typeof data !== "object") throw new Error("data must be an object")
 
-                    results = await fetch(this.state.post_endpoint + "/posts/" + postID + "/comment/" + commentID, {
+                    results = await fetch(this.crud.endpoint + "/posts/" + postID + "/comment/" + commentID, {
                         method: "PUT",
                         headers: {
                             // Authorization: this.state.authtoken,
@@ -651,7 +649,7 @@ class App extends React.Component {
                     if (!this.crud.validators.id(postID)) throw new Error("post id is incorrect")
                     if (!this.crud.validators.id(commentID)) throw new Error("comment id is incorrect")
 
-                    results = await fetch(this.state.post_endpoint + "/posts/" + postID + "/comment/" + commentID, {
+                    results = await fetch(this.crud.endpoint + "/posts/" + postID + "/comment/" + commentID, {
                         method: "DELETE",
                         headers: {
                             // Authorization: this.state.authtoken
@@ -659,7 +657,6 @@ class App extends React.Component {
                     })
 
                     if (!results.ok) throw new Error("Got data in return but status.ok is false!")
-                    results = await results.json()
                 } catch (error) {
                     console.error(error)
                     return null
@@ -674,14 +671,12 @@ class App extends React.Component {
                 return regex.test(id.toLowerCase()) || id === "me"
             },
             image: async results => {
-                console.log(results)
                 let image = new Image()
                 let ok = false
                 image.onload = async () => (ok = (await this.width) > 0 ? true : false)
                 image.onerror = () => (ok = false)
                 image.src = results.image
                 if (!ok) results.image = "https://via.placeholder.com/200x200?text=Profile+picture"
-                console.log(image)
                 return await results
             }
         }
@@ -693,7 +688,7 @@ class App extends React.Component {
                 <Route render={routeProps => <NavBar {...routeProps} crud={this.crud} me={this.state.me} />} />
                 <Switch>
                     <Route render={routeProps => <Profile {...routeProps} crud={this.crud} me={this.state.me} />} exact path={["/profile/:id", "/profile"]} />
-                    <Route render={routeProps => <Feed {...routeProps} crud={this.crud} me={this.state.me} />} exact path="/feed" />
+                    <Route render={routeProps => <Blogs {...routeProps} crud={this.crud} user={this.state.me} />} exact path="/feed" />
                     <Route render={routeProps => <HTTP501 {...routeProps} />} exact path="/" />
                     <Route render={routeProps => <HTTP404 {...routeProps} />} />
                 </Switch>

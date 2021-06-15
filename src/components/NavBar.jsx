@@ -8,7 +8,7 @@ export default class NavBar extends Component {
     }
 
     componentDidUpdate = async (_previousProps, _previousState) => {
-        if (this.props.match.params.id === undefined && this.state.isMe === false) this.setState({ isMe: true })
+        // if (this.props.match.params.id === undefined && this.state.isMe === false) this.setState({ isMe: true })
     }
 
     // hi carl! do you copy?
@@ -119,13 +119,13 @@ export default class NavBar extends Component {
                                                 <div>
                                                     <div>
                                                         <h6 className="mb-0">
-                                                            {this.props.me.name} {this.props.me.surname}
+                                                            {this.props.me && this.props.me.name} {this.props.me && this.props.me.surname}
                                                         </h6>
-                                                        <p>{this.props.me.title}</p>
+                                                        <p>{this.props.me && this.props.me.title}</p>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <Link className="col-12 btn bg-white" to={"/profile/" + this.props.me._id}>
+                                            <Link className="col-12 btn bg-white" to={"/profile/" + (this.props.me && this.props.me._id)}>
                                                 View Profile
                                             </Link>
                                         </NavDropdown.Item>
