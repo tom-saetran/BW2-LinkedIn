@@ -1,7 +1,7 @@
 import "bootstrap/dist/css/bootstrap.min.css"
 import "../src/assets/toms-bootstrap-extensions.css"
 import React from "react"
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom/"
+import { BrowserRouter as Router, Redirect, Route, Switch } from "react-router-dom/"
 import HTTP501 from "./components/HTTP501"
 import HTTP404 from "./components/HTTP404"
 import Profile from "./components/Profile"
@@ -689,7 +689,7 @@ class App extends React.Component {
                 <Switch>
                     <Route render={routeProps => <Profile {...routeProps} crud={this.crud} me={this.state.me} />} exact path={["/profile/:id", "/profile"]} />
                     <Route render={routeProps => <Blogs {...routeProps} crud={this.crud} user={this.state.me} />} exact path="/feed" />
-                    <Route render={routeProps => <HTTP501 {...routeProps} />} exact path="/" />
+                    <Redirect from="/" to="/feed" />
                     <Route render={routeProps => <HTTP404 {...routeProps} />} />
                 </Switch>
                 <Route render={routeProps => <Footer {...routeProps} crud={this.crud} />} />
