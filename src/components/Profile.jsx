@@ -16,7 +16,8 @@ class Profile extends React.Component {
     }
 
     componentDidMount = async () => {
-        this.setState({ user: await this.props.crud.profile.get(this.props.match.params.id) })
+        if (this.props.match.params.id) this.setState({ user: await this.props.crud.profile.get(this.props.match.params.id) })
+        else this.setState({ user: await this.props.crud.profile.get(this.props.me._id) })
     }
 
     componentDidUpdate = async (_previousProps, _previousState) => {
@@ -28,17 +29,16 @@ class Profile extends React.Component {
         return (
             <Container className="pt-5">
                 <Row>
-                    <Col md={{ span: 7, offset: 1 }}>
+                    <Col md={{ span: 8, offset: 0 }}>
                         <ProfileJumbotron user={this.state.user} />
                         <Dashboard data={this.state.user} />
                         <Activity data={this.state.user} />
                         <ExperienceEducation crud={this.props.crud} user={this.state.user} />
                         <Interests />
                     </Col>
-                    <Col md={3}>
+                    <Col md={4}>
                         <SideLoaderOne me={this.props.me} crud={this.props.crud} />
                     </Col>
-                    <Col md={1}></Col>
                 </Row>
             </Container>
         )

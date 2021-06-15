@@ -1,6 +1,7 @@
 body {
     margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+        sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
@@ -58,12 +59,12 @@ code {
     margin: 0;
 }
 
-#side-loader-youtube > div:nth-child(2){
+#side-loader-youtube > div:nth-child(2) {
     border: none;
     padding-bottom: none;
 }
 
-#sl-youtube-sub-title{
+#sl-youtube-sub-title {
     margin-bottom: 0;
 }
 
@@ -93,9 +94,8 @@ code {
     align-items: center;
 }
 
-#divider-two{
-   
-    border-bottom:rgba(161, 126, 74, 0.35) 1px solid;
+#divider-two {
+    border-bottom: rgba(161, 126, 74, 0.35) 1px solid;
 }
 
 #divider {
@@ -117,61 +117,58 @@ code {
     width: 100%;
 }
 
-#feed-foot-one{
+#feed-foot-one {
     color: blue;
     font-weight: bold;
 }
 
-#feed-table-right-two{
+#feed-table-right-two {
     border: 1px rgb(206, 206, 206) solid;
     border-radius: 15px;
     display: flex;
     justify-content: center;
 }
 
-#feed-table-right-sub-title:hover{
+#feed-table-right-sub-title:hover {
     opacity: 1;
     transition: 0.3s;
     cursor: pointer;
     transform: scale(1.05);
-    background: none
+    background: none;
 }
 
-#feed-table-right-title-item{
+#feed-table-right-title-item {
     display: flex;
-    border: none; 
+    border: none;
     padding-bottom: 0;
 }
-.img-overlay2:hover{
+.img-overlay2:hover {
     opacity: 1;
     transition: 0.3s;
     cursor: pointer;
     transform: scale(1.15);
 }
-#feed-foot-two{
+#feed-foot-two {
     font-weight: 550;
-    color: rgba(36, 36, 36, 0.678);;
+    color: rgba(36, 36, 36, 0.678);
     font-weight: 600;
-    
 }
 
-#feed-table-right-two-item{
+#feed-table-right-two-item {
     border: none;
     display: block;
     padding-top: 2;
     padding-bottom: 2;
-
 }
 
-#youtube-image:hover{
+#youtube-image:hover {
     opacity: 1;
     transition: 0.3s;
     cursor: pointer;
     transform: scale(1.15);
-    
 }
 
-#yt-text-title:hover{
+#yt-text-title:hover {
     opacity: 1;
     transition: 0.3s;
     cursor: pointer;
@@ -179,31 +176,27 @@ code {
 }
 
 .navbar-nav {
-
-  
     margin-left: auto;
-   
 }
 
-#feed-table-right-sub-string{
+#feed-table-right-sub-string {
     padding-left: 22px;
     font-size: 11px;
-    color: grey
+    color: grey;
 }
 
-#feed-table-right-sub-title{
-    font-weight:600;
+#feed-table-right-sub-title {
+    font-weight: 600;
     color: rgba(36, 36, 36, 0.829);
     margin: 0;
 }
 
-#feed-table-right-title{
+#feed-table-right-title {
     font-weight: bold;
     justify-content: center;
     align-items: center;
     display: flex;
     color: rgba(36, 36, 36, 0.678);
- 
 }
 
 .dropdown-menu {
@@ -216,7 +209,6 @@ code {
     padding-top: 0;
 }
 
-
 #footer-title {
     letter-spacing: 2px;
     border: none;
@@ -226,9 +218,7 @@ code {
     padding-top: 10px;
     padding-bottom: 2px;
     font-weight: 600;
-    
 }
-
 
 #footer-title-icon {
     color: blue;
@@ -240,7 +230,7 @@ code {
     margin-right: 5px;
 }
 
-#footer-feed-container{
+#footer-feed-container {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -294,7 +284,7 @@ html {
 }
 
 #question-mark-icon:hover {
-opacity: 1;
+    opacity: 1;
     transition: 0.3s;
     cursor: pointer;
     transform: scale(1.15);
@@ -314,15 +304,15 @@ opacity: 1;
     display: flex;
     align-items: center;
     justify-content: center;
-    border: none
+    border: none;
 }
 
 #side-card {
     border: none;
 }
 
-#side-card-title > div{
-     color: #212529;
+#side-card-title > div {
+    color: #212529;
     font-weight: 650;
     font-size: 18px;
 }
@@ -332,10 +322,9 @@ opacity: 1;
     padding: 0;
     border-bottom: none !important;
     background: transparent;
-   
 }
 
-#SideLoaderOneItem{
+#SideLoaderOneItem {
     border: none;
 }
 
@@ -377,7 +366,6 @@ opacity: 1;
     display: flex;
     justify-content: flex-start;
     position: relative;
-    
 }
 
 #sl-one-drop {
@@ -390,11 +378,11 @@ opacity: 1;
     font-weight: bold;
 }
 
-#side-nav-item-b:hover{
+#side-nav-item-b:hover {
     color: rgb(77, 77, 77);
 }
 
-.doggo:hover{
+.doggo:hover {
     color: rgb(77, 77, 77);
 }
 
@@ -405,12 +393,12 @@ opacity: 1;
     text-decoration: none;
     color: rgb(153, 153, 153);
 }
-#side-nav-footer{
+#side-nav-footer {
     text-align: center;
     padding-top: 10px;
 }
 
-#side-nav-item{
+#side-nav-item {
     padding: 5px;
     color: rgb(153, 153, 153);
     font-weight: bold;
@@ -418,28 +406,25 @@ opacity: 1;
     background: none;
 }
 
-#side-nav-main{
+#side-nav-main {
     border: 1px rgb(206, 206, 206) solid;
     border-radius: 15px;
 }
-#sl-youtube-sub-title{
+#sl-youtube-sub-title {
     border: none;
-    padding: none
+    padding: none;
 }
 
-#sl-youtube-sub-title-container{
-    
+#sl-youtube-sub-title-container {
     padding-top: 8px;
     padding-bottom: 8px;
     margin-right: 0;
     font-size: 14px;
     margin-left: 0px;
     padding-left: 8px;
-    
-
 }
 
-#side-nav-container{
+#side-nav-container {
     display: flex;
     padding-top: 10px;
     padding-bottom: 10px;
@@ -447,11 +432,9 @@ opacity: 1;
     align-items: center;
     flex-direction: row;
     flex-wrap: wrap;
-
 }
 
-#snc{
-
+#snc {
     padding-bottom: 20px;
 }
 #top-one {
@@ -471,7 +454,6 @@ opacity: 1;
     padding-left: 5px;
     padding-right: 5px;
     margin-bottom: 0px;
-    
 }
 
 #top-two {
@@ -487,11 +469,12 @@ opacity: 1;
     font-size: 14px;
 }
 #top-two-text:hover {
-opacity: 1;
+    opacity: 1;
     transition: 0.3s;
     cursor: pointer;
-    
-    color: black;}
+
+    color: black;
+}
 
 #youtube-card {
     padding-left: 15px;
@@ -513,7 +496,7 @@ opacity: 1;
 
 #youtube-text {
     padding: 0;
-    padding-left: 10px
+    padding-left: 10px;
 }
 
 #yt-view-count {
@@ -529,30 +512,27 @@ opacity: 1;
     width: 0; /* Remove scrollbar space */
     background: transparent; /* Optional: just make scrollbar invisible */
 }
-.nav-links{
-    font-size:small;
+.nav-links {
+    font-size: small;
 }
 
-.dropdown-menu .show{
-    padding-top:0px;
-
+.dropdown-menu .show {
+    padding-top: 0px;
 }
 
 .footer-list .list-item {
     list-style: none;
-    margin-bottom:1.2em;
-    font-size:.75rem;
-    font-weight:bold;
-    width:100%;
+    margin-bottom: 1.2em;
+    font-size: 0.75rem;
+    font-weight: bold;
+    width: 100%;
 }
-.footer-list .list-item:hover{
-    color:#004182;
+.footer-list .list-item:hover {
+    color: #004182;
 }
 
-
-#youtube-card-container{
+#youtube-card-container {
     display: flex;
     justify-content: center;
     align-items: center;
 }
-

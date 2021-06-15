@@ -169,55 +169,6 @@ class SideLoaderOne extends React.Component {
                             </div>
                         </div>
                     </div>
-
-                    <div id="SLYT">
-                        <ListGroup id="side-loader-youtube">
-                            <ListGroup.Item id="footer-title">
-                                <FontAwesomeIcon size="2x" id="footer-title-icon" icon={["fab", "linkedin"]} />
-                                <span>LEARNING</span>
-                            </ListGroup.Item>
-                            <ListGroup.Item id="sl-youtube-sub-title-container">
-                                <p id="sl-youtube-sub-title"> Add new skills with these courses</p>
-                            </ListGroup.Item>
-                            <ListGroup.Item id="youtube-card">
-                                <Row>
-                                    <Col xs="4" id="youtube-image">
-                                        <img alt="" id="pickme" src="/img/cfe.jpg"></img>
-                                    </Col>
-                                    <Col xs="8" id="youtube-text">
-                                        <h6 id="yt-text-title">Cybersecurity for Executives</h6>
-                                        <span id="yt-view-count">22,331 views</span>
-                                    </Col>
-                                </Row>
-                            </ListGroup.Item>
-                            <ListGroup.Item id="youtube-card">
-                                <Row>
-                                    <Col xs="4" id="youtube-image">
-                                        <img alt="" id="pickme" src="/img/cacsi.jpg"></img>
-                                    </Col>
-                                    <Col xs="8" id="youtube-text">
-                                        <h6 id="yt-text-title">Communicating about Culturally Sensitive Issues</h6>
-                                        <span id="yt-view-count">247,691 views</span>
-                                    </Col>
-                                </Row>
-                            </ListGroup.Item>
-                            <ListGroup.Item id="youtube-card">
-                                <Row>
-                                    <Col xs="4" id="youtube-image">
-                                        <img alt="" id="pickme" src="/img/eet.jpg"></img>
-                                    </Col>
-                                    <Col xs="8" id="youtube-text">
-                                        <h6 id="yt-text-title">Excel Essential Training (Office 365/Microsoft 365)</h6>
-                                        <span id="yt-view-count">745,856 views</span>
-                                    </Col>
-                                </Row>
-                            </ListGroup.Item>
-
-                            <ListGroup.Item id="side-loader-footer">
-                                <span href="">Show more on LinkedIn Learning</span>
-                            </ListGroup.Item>
-                        </ListGroup>
-                    </div>
                 </Col>
             )
         )

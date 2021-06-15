@@ -17,7 +17,7 @@ export default class NavBar extends Component {
         return this.state.isMe ? (
             /* <= if you are at the users profile */
             <div>
-                <Navbar bg="white" expand="lg" className="pt-1 px-0 pl-0 pb-0">
+                <Navbar bg="white" expand="lg" className="border-bottom pt-1 px-0 pl-0 pb-0">
                     <Container>
                         <div className="d-flex">
                             <Navbar.Brand href="#home">
@@ -107,7 +107,7 @@ export default class NavBar extends Component {
                                     <img
                                         style={{ borderRadius: "50%" }}
                                         width="24"
-                                        src={this.props.me.image}
+                                        src={this.props.me && this.props.me.image}
                                         height="24"
                                         alt=""
                                         id="ember34"

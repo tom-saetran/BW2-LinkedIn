@@ -134,8 +134,9 @@ class FeedRight extends React.Component {
                                 <div id="feed-table-right-sub-string">Stacey Gordon</div>
                             </ListGroup.Item>
                             <div id="divider-two"></div>
-                            <Button className="no-shadow" variant="secondary-outline" id="sl-one-drop">Show More on LinkedIn Learning...</Button>
-
+                            <Button className="no-shadow" variant="secondary-outline" id="sl-one-drop">
+                                Show More on LinkedIn Learning...
+                            </Button>
                         </ListGroup>
                     </div>
                     <div id="side-nav-main">
@@ -151,14 +152,12 @@ class FeedRight extends React.Component {
                                 </a>
                             </ListGroup.Item>
                             <ListGroup.Item id="side-nav-item">
-
                                 <DropdownButton id="side-nav-item" className="no-shadow" variant="secondary-outline" title="Privacy &amp; Terms">
                                     <Dropdown.ItemText>Dropdown item text</Dropdown.ItemText>
                                     <Dropdown.Item as="button">Action</Dropdown.Item>
                                     <Dropdown.Item as="button">Another action</Dropdown.Item>
                                     <Dropdown.Item as="button">Something else</Dropdown.Item>
                                 </DropdownButton>
-
                             </ListGroup.Item>
                             <ListGroup.Item id="side-nav-item">
                                 <a id="side-nav-a" href="/">
@@ -176,14 +175,12 @@ class FeedRight extends React.Component {
                                 </a>
                             </ListGroup.Item>
                             <ListGroup.Item id="side-nav-item">
-
                                 <DropdownButton id="side-nav-item" className="no-shadow" variant="secondary-outline" title="Business Services">
                                     <Dropdown.ItemText>Dropdown item text</Dropdown.ItemText>
                                     <Dropdown.Item as="button">Action</Dropdown.Item>
                                     <Dropdown.Item as="button">Another action</Dropdown.Item>
                                     <Dropdown.Item as="button">Something else</Dropdown.Item>
                                 </DropdownButton>
-
                             </ListGroup.Item>
                             <ListGroup.Item id="side-nav-item">
                                 <a id="side-nav-a" href="/">
@@ -201,8 +198,7 @@ class FeedRight extends React.Component {
                                 <div>Linked</div>
                             </div>
                             <FontAwesomeIcon size="2x" id="footer-title-icon-feed" icon={["fab", "linkedin"]} />
-                            <div id="feed-foot-two">
-                                Corporation © 2021</div>
+                            <div id="feed-foot-two">Corporation © 2021</div>
                         </Container>
                     </div>
                 </Col>

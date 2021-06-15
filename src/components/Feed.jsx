@@ -30,7 +30,14 @@ class Feed extends React.Component {
                                     <hr className="flex-grow-1 m-auto me-2" style={{ color: "grey" }}></hr>
                                     <div className="d-flex align-items-center">
                                         <span>Sort by: </span> <strong className="ps-2"> Top</strong>
-                                        <span className="dropdown-arrow dropdown-toggle nav-link" role="button" aria-haspopup="true" aria-expanded="false" id="basic-nav-dropdown" href="/"></span>
+                                        <span
+                                            className="dropdown-arrow dropdown-toggle nav-link"
+                                            role="button"
+                                            aria-haspopup="true"
+                                            aria-expanded="false"
+                                            id="basic-nav-dropdown"
+                                            href="/"
+                                        ></span>
                                     </div>
                                 </div>
                             </Col>

@@ -4,7 +4,7 @@ import { Container, Row, Col, Dropdown } from "react-bootstrap"
 class Footer extends React.Component {
     render() {
         return (
-            <>
+            <div className="border-top">
                 <Container className="mt-3 mt-md-auto">
                     <Container className="p-0 mb-2">
                         <svg
@@ -169,7 +169,7 @@ class Footer extends React.Component {
                         <p style={{ color: "#616160", fontSize: ".8rem" }}>LinkedIn Corporation © 2021</p>
                     </Container>
                 </Container>
-            </>
+            </div>
         )
     }
 }

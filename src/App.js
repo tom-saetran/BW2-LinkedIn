@@ -693,7 +693,6 @@ class App extends React.Component {
                 <Route render={routeProps => <NavBar {...routeProps} crud={this.crud} me={this.state.me} />} />
                 <Switch>
                     <Route render={routeProps => <Profile {...routeProps} crud={this.crud} me={this.state.me} />} exact path={["/profile/:id", "/profile"]} />
-
                     <Route render={routeProps => <Feed {...routeProps} crud={this.crud} me={this.state.me} />} exact path="/feed" />
                     <Route render={routeProps => <HTTP501 {...routeProps} />} exact path="/" />
                     <Route render={routeProps => <HTTP404 {...routeProps} />} />
