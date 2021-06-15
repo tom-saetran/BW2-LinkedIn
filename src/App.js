@@ -24,7 +24,7 @@ class App extends React.Component {
     }
 
     componentDidUpdate = async (_previousProps, _previousState) => {
-        if (this.state.me._id !== undefined && this.state.exp === null) this.setState({ exp: await this.crud.profile.get(this.state.me._id) })
+        //if (this.state.me._id !== undefined && this.state.exp === null) this.setState({ exp: await this.crud.profile.get(this.state.me._id) })
     }
 
     crud = {
@@ -32,21 +32,23 @@ class App extends React.Component {
 
         profile: {
             getAll: async () => {
-                let results
+                let result
                 try {
-                    results = await fetch(this.state.endpoint + "/profile", {
+                    result = await fetch(this.state.endpoint + "/profile", {
                         headers: {
                             // Authorization: this.state.authtoken
                         }
                     })
 
-                    if (!results.ok) throw new Error("Got data in return but status.ok is false!")
-                    //results = await results.json()
+                    if (!result.ok) throw new Error("Got data in return but status.ok is false!")
+                    console.log(result)
+                    result = await result.json()
+                    console.log(result)
                 } catch (error) {
                     console.error(error)
                     return null
                 }
-                return await results
+                return await result
             },
 
             get: async userID => {
