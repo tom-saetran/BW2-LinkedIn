@@ -1,4 +1,5 @@
 import React, { Component } from "react"
+import { Link } from "react-router-dom"
 import { Container, Nav, Navbar, NavDropdown, Button, Form, FormControl } from "react-bootstrap"
 
 export default class NavBar extends Component {
@@ -106,9 +107,9 @@ export default class NavBar extends Component {
                                     <img
                                         style={{ borderRadius: "50%" }}
                                         width="24"
-                                        src="https://media.giphy.com/media/TdMVH60kJvTMI/source.gif"
+                                        src={this.props.me.image}
                                         height="24"
-                                        alt="Carl Dawkins"
+                                        alt=""
                                         id="ember34"
                                         className="mx-auto global-nav__me-photo ember-view"
                                     />
@@ -117,14 +118,16 @@ export default class NavBar extends Component {
                                             <div className="d-flex flex-row w-100">
                                                 <div>
                                                     <div>
-                                                        <h6 className="mb-0">Carl Dawkins</h6>
-                                                        <p>Web Developer</p>
+                                                        <h6 className="mb-0">
+                                                            {this.props.me.name} {this.props.me.surname}
+                                                        </h6>
+                                                        <p>{this.props.me.title}</p>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <a className="col-12 btn bg-white" href="/profile">
+                                            <Link className="col-12 btn bg-white" to={"/profile/" + this.props.me._id}>
                                                 View Profile
-                                            </a>
+                                            </Link>
                                         </NavDropdown.Item>
                                         <NavDropdown.Divider />
                                         <NavDropdown.Item>

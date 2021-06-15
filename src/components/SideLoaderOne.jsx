@@ -16,11 +16,15 @@ class SideLoaderOne extends React.Component {
         alsoViewed: null
     }
 
+    componentDidMount = async () => {
+        this.setState({ all: await this.props.crud.profile.getAll() })
+    }
+
     componentDidUpdate = (_previousProps, _previousState) => {
-        //if (this.props.me !== this.state.me) this.setState({ me: this.props.me })
-        //if (this.props.all !== this.state.all) this.setState({ all: this.props.all })
-        //if (this.state.mayKnow === null && this.state.all !== null) this.setState({ mayKnow: this.some() })
-        //if (this.state.alsoViewed === null && this.state.all !== null) this.setState({ alsoViewed: this.some() })
+        if (this.props.me !== this.state.me) this.setState({ me: this.props.me })
+        if (this.state.mayKnow === null && this.state.all !== null) this.setState({ mayKnow: this.some() })
+        if (this.state.alsoViewed === null && this.state.all !== null) this.setState({ alsoViewed: this.some() })
+        if (_previousProps.match.params.id !== this.props.match.params.id) this.setState({ mayKnow: this.some(), alsoViewed: this.some() })
     }
 
     //  const noInfo = []
@@ -32,7 +36,7 @@ class SideLoaderOne extends React.Component {
     //
 
     some = () =>
-        this.state.all
+        this.state.all.result
             .map(a => [a, Math.random()])
             .sort((a, b) => {
                 return a[1] < b[1] ? -1 : 1
@@ -77,29 +81,31 @@ class SideLoaderOne extends React.Component {
                                                 <div>People also viewed</div>
                                             </Card.Header>
                                             {this.state.alsoViewed !== null &&
-                                                this.state.alsoViewed.map(person => {
-                                                    return (
-                                                        <Card.Body id="generated-card" key={person._id}>
-                                                            <NavLink className="no-underline link-dim" to={"/profile/" + person._id}>
-                                                                <Row className="flex-row">
-                                                                    <Col xs={4} id="card-img-column">
-                                                                        <Card.Img id="card-img" src={person.image} />
-                                                                    </Col>
-                                                                    <Col xs={8} id="card-column">
-                                                                        <Card.Title id="card-name" className="d-flex">
-                                                                            <div id="card-description-title-one">{person.name}</div>
-                                                                            <div id="third">3rd+</div>
-                                                                        </Card.Title>
-                                                                        <Card.Text id="card-description-container">
-                                                                            <span id="card-description">{person.title}</span>
-                                                                        </Card.Text>
-                                                                        <Button id="card-button">Connect</Button>
-                                                                    </Col>
-                                                                </Row>
-                                                            </NavLink>
-                                                        </Card.Body>
-                                                    )
-                                                })}
+                                                this.state.alsoViewed
+                                                    .filter(user => user._id !== this.props.me._id && user._id !== this.props.match.params.id)
+                                                    .map(person => {
+                                                        return (
+                                                            <Card.Body id="generated-card" key={person._id}>
+                                                                <NavLink className="no-underline link-dim" to={"/profile/" + person._id}>
+                                                                    <Row className="flex-row">
+                                                                        <Col xs={4} id="card-img-column">
+                                                                            <Card.Img id="card-img" src={person.image} />
+                                                                        </Col>
+                                                                        <Col xs={8} id="card-column">
+                                                                            <Card.Title id="card-name" className="d-flex">
+                                                                                <div id="card-description-title-one">{person.name}</div>
+                                                                                <div id="third">3rd+</div>
+                                                                            </Card.Title>
+                                                                            <Card.Text id="card-description-container">
+                                                                                <span id="card-description">{person.title}</span>
+                                                                            </Card.Text>
+                                                                            <Button id="card-button">Connect</Button>
+                                                                        </Col>
+                                                                    </Row>
+                                                                </NavLink>
+                                                            </Card.Body>
+                                                        )
+                                                    })}
                                         </Card>
                                     </ListGroup.Item>
                                     <div id="div-drop-one">
@@ -125,26 +131,30 @@ class SideLoaderOne extends React.Component {
                                                 <div>People you may know</div>
                                             </Card.Header>
                                             {this.state.mayKnow !== null &&
-                                                this.state.mayKnow.map(person => {
-                                                    return (
-                                                        <Card.Body id="generated-card" key={person._id}>
-                                                            <Row className="flex-row">
-                                                                <Col xs={4} id="card-img-column">
-                                                                    <Card.Img id="card-img" src={person.image} />
-                                                                </Col>
-                                                                <Col xs={8} id="card-column">
-                                                                    <Card.Title id="card-name">
-                                                                        <span id="card-description-title">{person.name}</span>
-                                                                    </Card.Title>
-                                                                    <Card.Text id="card-description-container">
-                                                                        <span id="card-description">{person.title}</span>
-                                                                    </Card.Text>
-                                                                    <Button id="card-button">Connect</Button>
-                                                                </Col>
-                                                            </Row>
-                                                        </Card.Body>
-                                                    )
-                                                })}
+                                                this.state.mayKnow
+                                                    .filter(user => user._id !== this.props.me._id && user._id !== this.props.match.params.id)
+                                                    .map(person => {
+                                                        return (
+                                                            <Card.Body id="generated-card" key={person._id}>
+                                                                <NavLink className="no-underline link-dim" to={"/profile/" + person._id}>
+                                                                    <Row className="flex-row">
+                                                                        <Col xs={4} id="card-img-column">
+                                                                            <Card.Img id="card-img" src={person.image} />
+                                                                        </Col>
+                                                                        <Col xs={8} id="card-column">
+                                                                            <Card.Title id="card-name">
+                                                                                <span id="card-description-title">{person.name}</span>
+                                                                            </Card.Title>
+                                                                            <Card.Text id="card-description-container">
+                                                                                <span id="card-description">{person.title}</span>
+                                                                            </Card.Text>
+                                                                            <Button id="card-button">Connect</Button>
+                                                                        </Col>
+                                                                    </Row>
+                                                                </NavLink>
+                                                            </Card.Body>
+                                                        )
+                                                    })}
                                         </Card>
                                     </ListGroup.Item>
                                     <div id="div-drop-one">

@@ -2,14 +2,20 @@ import React from "react"
 import { Col, Modal, Button, Form } from "react-bootstrap"
 import { withRouter } from "react-router-dom"
 
-// kai token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDlhOGQxZGRmY2NjNTAwMTVhNmJiY2QiLCJpYXQiOjE2MjA3NDE0MDYsImV4cCI6MTYyMTk1MTAwNn0.QNqO9fHDHOKv1VoPJfJInf1UQF10jMz6AZtfBnSi8Os
-// 609a8d1ddfccc50015a6bbcd
-
 class ExperienceEducation extends React.Component {
     state = {
         addModalShow: false,
         updateModalshow: false,
         experiences: null
+    }
+
+    componentDidMount = async () => {
+        this.setState({ experiences: await this.props.crud.experiences.getAll(this.props.match.params.id) })
+    }
+
+    componentDidUpdate = async (_previousProps, _previousState) => {
+        if (_previousProps.match.params.id !== this.props.match.params.id)
+            this.setState({ experiences: await this.props.crud.experiences.getAll(this.props.match.params.id) })
     }
 
     handleShow = () => {
@@ -25,27 +31,53 @@ class ExperienceEducation extends React.Component {
                 <Col className="mt-4 mb-4 section-outer section-inner">
                     <div className="d-flex mb-2 justify-content-between">
                         <h6>Experience</h6>
-                        <svg onClick={this.handleShow} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" data-supported-dps="24x24" fill="currentColor" className="mercado-match" width="24" height="24" focusable="false">
+                        <svg
+                            onClick={this.handleShow}
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            data-supported-dps="24x24"
+                            fill="currentColor"
+                            className="mercado-match"
+                            width="24"
+                            height="24"
+                            focusable="false"
+                        >
                             <path d="M21 13h-8v8h-2v-8H3v-2h8V3h2v8h8z"></path>
                         </svg>
                     </div>
 
-                    {this.props.exp !== null &&
-                        this.props.exp.length > 0 &&
-                        this.props.exp.map((experience, index) => {
+                    {this.state.experiences !== null &&
+                        this.state.experiences.length > 0 &&
+                        this.state.experiences.map((experience, index) => {
                             return (
                                 <div key={"experience" + index} className="d-flex mb-3 justify-content-between">
                                     <div className="d-flex justify-content-between">
-                                        <img className="medium-logo" src={experience.image ? experience.image : "https://via.placeholder.com/200x200?text=Profile+Picture"} alt="" />
+                                        <img
+                                            className="medium-logo"
+                                            src={experience.image ? experience.image : "https://via.placeholder.com/200x200?text=Profile+Picture"}
+                                            alt=""
+                                        />
                                         <div className="ms-3">
                                             <h6>{experience.role + " at " + experience.company}</h6>
                                             <p className="mb-1">{experience.description}</p>
-                                            {new Date(experience.startDate).toLocaleString("default", { month: "long" }) + " " + new Date(experience.startDate).getFullYear()}
+                                            {new Date(experience.startDate).toLocaleString("default", { month: "long" }) +
+                                                " " +
+                                                new Date(experience.startDate).getFullYear()}
                                             {experience.stopDate ? new Date(experience.startDate).getFullYear() : " - Current"}
                                         </div>
                                     </div>
                                     <div>
-                                        <svg onClick={this.handleUpdateShow} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" data-supported-dps="24x24" fill="currentColor" className="mercado-match" width="24" height="24" focusable="false">
+                                        <svg
+                                            onClick={this.handleUpdateShow}
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            viewBox="0 0 24 24"
+                                            data-supported-dps="24x24"
+                                            fill="currentColor"
+                                            className="mercado-match"
+                                            width="24"
+                                            height="24"
+                                            focusable="false"
+                                        >
                                             <path d="M21.13 2.86a3 3 0 00-4.17 0l-13 13L2 22l6.19-2L21.13 7a3 3 0 000-4.16zM6.77 18.57l-1.35-1.34L16.64 6 18 7.35z"></path>
                                         </svg>
                                     </div>
@@ -57,13 +89,26 @@ class ExperienceEducation extends React.Component {
 
                     <div className="d-flex mb-2 justify-content-between">
                         <h6>Education</h6>
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" data-supported-dps="24x24" fill="currentColor" className="mercado-match" width="24" height="24" focusable="false">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            data-supported-dps="24x24"
+                            fill="currentColor"
+                            className="mercado-match"
+                            width="24"
+                            height="24"
+                            focusable="false"
+                        >
                             <path d="M21 13h-8v8h-2v-8H3v-2h8V3h2v8h8z"></path>
                         </svg>
                     </div>
                     <div className="d-flex justify-content-between">
                         <div className="d-flex">
-                            <img className="medium-logo" src="https://media-exp1.licdn.com/dms/image/C4E0BAQF5t62bcL0e9g/company-logo_100_100/0/1519855919126?e=1628726400&v=beta&t=MJ7aXvNHbhY_WijBVVZztYsa9YUDftiM3CU5ObSMYtk" alt="" />
+                            <img
+                                className="medium-logo"
+                                src="https://media-exp1.licdn.com/dms/image/C4E0BAQF5t62bcL0e9g/company-logo_100_100/0/1519855919126?e=1628726400&v=beta&t=MJ7aXvNHbhY_WijBVVZztYsa9YUDftiM3CU5ObSMYtk"
+                                alt=""
+                            />
                             <div className="ms-3">
                                 <h6>Harvard University</h6>
                                 <p>CS50: Introduction to Computer Science, Computer Science</p>
@@ -71,7 +116,16 @@ class ExperienceEducation extends React.Component {
                             </div>
                         </div>
                         <div>
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" data-supported-dps="24x24" fill="currentColor" className="mercado-match" width="24" height="24" focusable="false">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 24 24"
+                                data-supported-dps="24x24"
+                                fill="currentColor"
+                                className="mercado-match"
+                                width="24"
+                                height="24"
+                                focusable="false"
+                            >
                                 <path d="M21.13 2.86a3 3 0 00-4.17 0l-13 13L2 22l6.19-2L21.13 7a3 3 0 000-4.16zM6.77 18.57l-1.35-1.34L16.64 6 18 7.35z"></path>
                             </svg>
                         </div>
@@ -83,7 +137,7 @@ class ExperienceEducation extends React.Component {
                         show={this.state.addModalShow}
                         post={this.props.crud.experiences.post}
                         id={async () => {
-                            await this.props.exp[0]._id
+                            await this.state.experiences[0]._id
                         }}
                         hide={() => {
                             this.setState({ addModalShow: false })
@@ -95,7 +149,7 @@ class ExperienceEducation extends React.Component {
                         show={this.state.updateModalShow}
                         put={this.props.crud.experiences.put}
                         id={async () => {
-                            await this.props.exp[0]._id
+                            await this.state.experiences[0]._id
                         }}
                         hide={() => {
                             this.setState({ updateModalShow: false })
@@ -127,15 +181,30 @@ class AddExperienceModal extends React.Component {
                     <Form>
                         <Form.Group controlId="formBasicTitle">
                             <Form.Label>Title *</Form.Label>
-                            <Form.Control value={this.state.role} onChange={e => this.setState({ role: e.target.value })} type="text" placeholder="Ex: Retail Sales Manager" />
+                            <Form.Control
+                                value={this.state.role}
+                                onChange={e => this.setState({ role: e.target.value })}
+                                type="text"
+                                placeholder="Ex: Retail Sales Manager"
+                            />
                         </Form.Group>
                         <Form.Group controlId="formBasicCompany">
                             <Form.Label>Company *</Form.Label>
-                            <Form.Control value={this.state.company} onChange={e => this.setState({ company: e.target.value })} type="text" placeholder="Ex: Microsoft" />
+                            <Form.Control
+                                value={this.state.company}
+                                onChange={e => this.setState({ company: e.target.value })}
+                                type="text"
+                                placeholder="Ex: Microsoft"
+                            />
                         </Form.Group>
                         <Form.Group controlId="formBasicLocation">
                             <Form.Label>Location</Form.Label>
-                            <Form.Control value={this.state.area} onChange={e => this.setState({ area: e.target.value })} type="text" placeholder="Ex: London, United Kingdom" />
+                            <Form.Control
+                                value={this.state.area}
+                                onChange={e => this.setState({ area: e.target.value })}
+                                type="text"
+                                placeholder="Ex: London, United Kingdom"
+                            />
                         </Form.Group>
                         <Form.Group controlId="formBasicDescription">
                             <Form.Label>Description</Form.Label>
@@ -185,15 +254,30 @@ class UpdateExperienceModal extends React.Component {
                     <Form>
                         <Form.Group controlId="formBasicTitle">
                             <Form.Label>Title *</Form.Label>
-                            <Form.Control value={this.state.role} onChange={e => this.setState({ role: e.target.value })} type="text" placeholder="Ex: Retail Sales Manager" />
+                            <Form.Control
+                                value={this.state.role}
+                                onChange={e => this.setState({ role: e.target.value })}
+                                type="text"
+                                placeholder="Ex: Retail Sales Manager"
+                            />
                         </Form.Group>
                         <Form.Group controlId="formBasicCompany">
                             <Form.Label>Company *</Form.Label>
-                            <Form.Control value={this.state.company} onChange={e => this.setState({ company: e.target.value })} type="text" placeholder="Ex: Microsoft" />
+                            <Form.Control
+                                value={this.state.company}
+                                onChange={e => this.setState({ company: e.target.value })}
+                                type="text"
+                                placeholder="Ex: Microsoft"
+                            />
                         </Form.Group>
                         <Form.Group controlId="formBasicLocation">
                             <Form.Label>Location</Form.Label>
-                            <Form.Control value={this.state.area} onChange={e => this.setState({ area: e.target.value })} type="text" placeholder="Ex: London, United Kingdom" />
+                            <Form.Control
+                                value={this.state.area}
+                                onChange={e => this.setState({ area: e.target.value })}
+                                type="text"
+                                placeholder="Ex: London, United Kingdom"
+                            />
                         </Form.Group>
                         <Form.Group controlId="formBasicDescription">
                             <Form.Label>Description</Form.Label>

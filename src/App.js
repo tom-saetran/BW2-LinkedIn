@@ -19,8 +19,8 @@ class App extends React.Component {
 
     componentDidMount = async () => {
         this.setState({ all: await this.crud.profile.getAll() })
-        // this.setState({ me: await this.crud.profile.get("me") })
-        // this.setState({ withID: await this.crud.profile.get("5fc4ae95b708c200175de88d") })
+        this.setState({ me: await this.crud.profile.get("60c76bd0f043d95e98ab6de3") })
+        this.setState({ withID: await this.crud.profile.get("60c76bd0f043d95e98ab6de3") })
     }
 
     componentDidUpdate = async (_previousProps, _previousState) => {
@@ -690,15 +690,11 @@ class App extends React.Component {
     render() {
         return (
             <Router>
-                <Route render={routeProps => <NavBar {...routeProps} crud={this.crud} me={this.state.me} all={this.state.all} />} />
+                <Route render={routeProps => <NavBar {...routeProps} crud={this.crud} me={this.state.me} />} />
                 <Switch>
-                    <Route
-                        render={routeProps => <Profile {...routeProps} crud={this.crud} exp={this.state.experience} me={this.state.me} all={this.state.all} />}
-                        exact
-                        path={["/profile/:id", "/profile"]}
-                    />
+                    <Route render={routeProps => <Profile {...routeProps} crud={this.crud} me={this.state.me} />} exact path={["/profile/:id", "/profile"]} />
 
-                    <Route render={routeProps => <Feed {...routeProps} crud={this.crud} me={this.state.me} all={this.state.all} />} exact path="/feed" />
+                    <Route render={routeProps => <Feed {...routeProps} crud={this.crud} me={this.state.me} />} exact path="/feed" />
                     <Route render={routeProps => <HTTP501 {...routeProps} />} exact path="/" />
                     <Route render={routeProps => <HTTP404 {...routeProps} />} />
                 </Switch>
