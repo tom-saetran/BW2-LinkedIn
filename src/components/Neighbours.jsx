@@ -10,7 +10,7 @@ class Neighbourhood extends React.Component {
     }
 
     componentDidMount = async () => {
-        this.setState({ users: await this.props.crud.users.getAll() })
+        this.setState({ users: await this.props.crud.profile.getAll() })
     }
 
     componentDidUpdate = async (_previousProps, _previousState) => {
@@ -38,15 +38,15 @@ class Neighbourhood extends React.Component {
                             return (
                                 <div key={user._id}>
                                     <Card.Title as={"h6"}>
-                                        <Link className="link" to={"/users/" + user._id}>
-                                            <Card.Img className="friend-avatar mr-2" alt="" src={user.avatar} />
+                                        <Link className="link" to={"/profile/" + user._id}>
+                                            <Card.Img className="friend-avatar mr-2" alt="" src={user.image} />
                                         </Link>
-                                        <Link className="link" to={"/users/" + user._id}>
+                                        <Link className="link" to={"/profile/" + user._id}>
                                             {user.name} {user.surname}
                                         </Link>
                                     </Card.Title>
                                     <Card.Text className="text-truncate">
-                                        <span title={user.description}>{user.description}</span>
+                                        <span title={user.bio}>{user.bio}</span>
                                     </Card.Text>
                                 </div>
                             )
