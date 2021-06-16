@@ -183,3 +183,12 @@ html {
 #userNav {
     padding: 0;
 }
+
+.blog-avatar-query {
+    border: 1px solid lightgray;
+    border-radius: 50% !important;
+    object-fit: cover;
+    height: 2rem !important;
+    width: 3rem !important;
+    transition: transform 0.6s;
+}

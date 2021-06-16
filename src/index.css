@@ -551,8 +551,9 @@ html {
 }
 
 .querySearch-list-item {
-    max-height: 40px;
+    min-height: 40px;
     border: 1px solid #cecece;
+    cursor: pointer;
 }
 
 #querySearchImage {
@@ -568,4 +569,6 @@ html {
 
 .queryButton {
     border: 0px solid red !important;
+    max-height: 80%;
+    padding: 0% !important;
 }

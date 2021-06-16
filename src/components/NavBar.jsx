@@ -85,15 +85,15 @@ export default class NavBar extends Component {
                                     <ul className="list-group">
                                         {this.state.queryResult !== null ? (
                                             this.state.queryResult.map((person) => (
-                                                <li className="d-flex flex-row querySearch-list-item" onMouseDown={() => this.props.history.push("/profile/" + person._id)}>
-                                                    <div>
-                                                        <img className="blog-avatar" id="querySearchImage" src={person.image} alt="Headshot"></img>
+                                                <div className="d-flex flex-row querySearch-list-item align-items-center px-3" onMouseDown={() => this.props.history.push("/profile/" + person._id)}>
+                                                    <div className="w-15 px-3">
+                                                        <img className="blog-avatar-query" id="querySearchImage" src={person.image} alt="Headshot"></img>
                                                     </div>
 
                                                     <button type="button" className="list-group-item list-group-item-action queryButton" id={person._id} key={person._id} aria-current="true">
                                                         {`${person.name} ${person.surname}`}
                                                     </button>
-                                                </li>
+                                                </div>
                                             ))
                                         ) : (
                                             <></>
