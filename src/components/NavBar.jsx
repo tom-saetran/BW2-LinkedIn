@@ -4,15 +4,37 @@ import { Container, Nav, Navbar, NavDropdown, Button, Form, FormControl } from "
 
 export default class NavBar extends Component {
     state = {
-        isMe: true
+        isMe: true,
+        query: "",
+        queryResult: null,
+        showQuery: false
     }
 
     componentDidUpdate = async (_previousProps, _previousState) => {
-        // if (this.props.match.params.id === undefined && this.state.isMe === false) this.setState({ isMe: true })
+        if (this.props.match.params.id === undefined && this.state.isMe === false) this.setState({ isMe: true })
     }
 
-    // hi carl! do you copy?
-    // another one!
+    async handleSearch(e) {
+        this.setState({ query: e.target.value })
+        console.log(this.state.query)
+        let response = await this.props.crud.profile.getAll(`?name=${e.target.value}`)
+        if (response.result.length > 0 && e.target.value !== "") this.setState({ queryResult: response.result, showQuery: true })
+        else this.setState({ queryResult: null })
+    }
+
+    handleQueryDisplay(e) {
+        this.setState({ showQuery: false })
+    }
+
+    handleNewProfile(e) {
+        console.log("This is working")
+    }
+
+    async componentDidUpdate(prevProps, prevState) {
+        if (prevState.query !== this.state.query) {
+        }
+    }
+
     render() {
         return this.state.isMe ? (
             /* <= if you are at the users profile */
@@ -57,20 +79,32 @@ export default class NavBar extends Component {
                                 <FormControl
                                     type="text"
                                     size="100"
+                                    value={this.state.query}
                                     placeholder="Search"
-                                    className="mr-sm-2"
-                                    style={{ backgroundColor: "#eef3f8", border: 0 }}
+                                    onChange={e => this.handleSearch(e)}
+                                    onBlur={e => this.handleQueryDisplay(e)}
+                                    className="mr-sm-2 querySearch"
+                                    style={{ backgroundColor: "#eef3f8", border: "0px" }}
                                 />
                                 <div id="searchList" style={{ display: this.state.showQuery ? "block" : "none" }}>
                                     <ul className="list-group">
                                         {this.state.queryResult !== null ? (
-                                            this.state.queryResult.map((person) => (
-                                                <div className="d-flex flex-row querySearch-list-item align-items-center px-3" onMouseDown={() => this.props.history.push("/profile/" + person._id)}>
+                                            this.state.queryResult.map(person => (
+                                                <div
+                                                    className="d-flex flex-row querySearch-list-item align-items-center px-3"
+                                                    onMouseDown={() => this.props.history.push("/profile/" + person._id)}
+                                                >
                                                     <div className="w-15 px-3">
                                                         <img className="blog-avatar-query" id="querySearchImage" src={person.image} alt="Headshot"></img>
                                                     </div>
 
-                                                    <button type="button" className="list-group-item list-group-item-action queryButton" id={person._id} key={person._id} aria-current="true">
+                                                    <button
+                                                        type="button"
+                                                        className="list-group-item list-group-item-action queryButton"
+                                                        id={person._id}
+                                                        key={person._id}
+                                                        aria-current="true"
+                                                    >
                                                         {`${person.name} ${person.surname}`}
                                                     </button>
                                                 </div>
@@ -138,13 +172,13 @@ export default class NavBar extends Component {
                                                 <div>
                                                     <div>
                                                         <h6 className="mb-0">
-                                                            {this.props.me && this.props.me.name} {this.props.me && this.props.me.surname}
+                                                            {this.props.me.name} {this.props.me.surname}
                                                         </h6>
-                                                        <p>{this.props.me && this.props.me.title}</p>
+                                                        <p>{this.props.me.title}</p>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <Link className="col-12 btn bg-white" to={"/profile/" + (this.props.me && this.props.me._id)}>
+                                            <Link className="col-12 btn bg-white" to={"/profile/" + this.props.me._id}>
                                                 View Profile
                                             </Link>
                                         </NavDropdown.Item>
