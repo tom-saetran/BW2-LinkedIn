@@ -14,9 +14,6 @@ export default class NavBar extends Component {
         if (this.props.match.params.id === undefined && this.state.isMe === false) this.setState({ isMe: true });
     };
 
-    // hi carl! do you copy?
-    // another one!
-
     async handleSearch(e) {
         this.setState({ query: e.target.value });
         console.log(this.state.query);
