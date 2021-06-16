@@ -35,8 +35,8 @@ class App extends React.Component {
         endpoint: process.env.REACT_APP_ENDPOINT,
 
         profile: {
-            getAll: async (query) => {
-                let getQuery = query ? `/profile${query}` : '/profile'
+            getAll: async query => {
+                let getQuery = query ? `/profile${query}` : "/profile"
                 let result
                 try {
                     result = await fetch(this.crud.endpoint + getQuery, {
