@@ -80,13 +80,12 @@ export default class NavBar extends Component {
                                 <div id="searchList" style={{ display: this.state.showQuery ? "block" : "none" }}>
                                     <ul className="list-group">
                                         {this.state.queryResult !== null ? (
-                                            this.state.queryResult.map((item) => (
-                                                <li className="d-flex flex-row querySearch-list-item">
-                                                    <div>
-                                                        <img class=" center-profile-image img-fluid rounded-circle" id="querySearchImage" src={item.image} alt="Headshot"></img>
-                                                    </div>
-                                                    <button type="button" className="list-group-item list-group-item-action queryButton" id={item._id} key={item._id} aria-current="true">
-                                                        {`${item.name} ${item.surname}`}
+                                            this.state.queryResult.map((person) => (
+                                                <li className="d-flex flex-row querySearch-list-item" onMouseDown={() => this.props.history.push("/profile/" + person._id)}>
+                                                    <img className="blog-avatar" id="querySearchImage" src={person.image} alt="Headshot"></img>
+
+                                                    <button type="button" className="list-group-item list-group-item-action queryButton" id={person._id} key={person._id} aria-current="true">
+                                                        {`${person.name} ${person.surname}`}
                                                     </button>
                                                 </li>
                                             ))
