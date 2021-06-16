@@ -1,5 +1,5 @@
 import React from "react"
-import { Col, Modal, Button, Form, Card, ButtonToolbar, ButtonGroup, OverlayTrigger, Popover, InputGroup } from "react-bootstrap"
+import { Col, Modal, Button, Form, Card, ButtonToolbar, ButtonGroup, OverlayTrigger, Popover, InputGroup, Spinner } from "react-bootstrap"
 import * as Icon from "react-bootstrap-icons"
 import { withRouter } from "react-router-dom"
 import uniqid from "uniqid"
@@ -302,7 +302,7 @@ const AddExperienceModal = props => {
                             </ButtonGroup>
                             <ButtonGroup>
                                 <Button className="card-border rounded text-dim no-active-outline" variant="white" type="submit">
-                                    Send
+                                    {sending ? <Spinner className="spinner" animation="border" /> : "Send"}
                                 </Button>
                             </ButtonGroup>
                         </ButtonToolbar>
