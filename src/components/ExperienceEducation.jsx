@@ -66,6 +66,14 @@ class ExperienceEducation extends React.Component {
                                                     experience={experience}
                                                 />
                                             </span>
+                                            <span title="Remove this experience" className="cursor-pointer">
+                                                <RemoveExperienceModal
+                                                    onUpdate={this.onUpdate}
+                                                    user={this.props.user}
+                                                    crud={this.props.crud}
+                                                    experience={experience}
+                                                />
+                                            </span>
                                         </div>
                                     </div>
                                 </div>
@@ -505,7 +513,7 @@ const UpdateExperienceModal = props => {
     )
 }
 
-const RemoveBlogModal = props => {
+const RemoveExperienceModal = props => {
     const [show, setShow] = React.useState(false)
     const [sending, setSending] = React.useState(false)
 
@@ -524,17 +532,7 @@ const RemoveBlogModal = props => {
 
     return (
         <>
-            <Button
-                className={
-                    props.admin
-                        ? "text-danger pb-2 bg-pink border-left-danger no-active-outline"
-                        : props.moderator
-                        ? "text-danger pb-2 bg-yellow border-left-warning no-active-outline"
-                        : "text-danger pb-2 card-border-left no-active-outline"
-                }
-                variant="white"
-                onClick={() => handleShow}
-            >
+            <Button variant="white" onClick={() => setShow(true)}>
                 <Icon.Trash className="mb-1" />
             </Button>
 
