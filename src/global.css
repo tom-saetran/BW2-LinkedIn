@@ -1,0 +1,185 @@
+html {
+    overflow: scroll;
+    overflow-x: hidden;
+}
+::-webkit-scrollbar {
+    width: 0; /* Remove scrollbar space */
+    background: transparent; /* Optional: just make scrollbar invisible */
+}
+
+/* NAVBAR */
+.dropdown-toggle::after {
+    display: none !important; /* Removes Caret */
+}
+
+.navbar-avatar {
+    border: 1px solid lightgray;
+    border-radius: 50% !important;
+    object-fit: cover;
+    height: 3rem;
+    width: 3rem !important;
+    transition: transform 0.6s;
+}
+
+.navbar-avatar:hover {
+    transform: scale(1.15);
+}
+
+.card-avatar {
+    border: 1px solid lightgray;
+    border-radius: 50% !important;
+    object-fit: cover;
+    height: 8rem;
+    width: 8rem !important;
+    transition: transform 0.6s;
+}
+
+.card-avatar:hover {
+    transform: scale(1.06);
+}
+
+.blog-avatar {
+    border: 1px solid lightgray;
+    border-radius: 50% !important;
+    object-fit: cover;
+    height: 1.35rem;
+    width: 1.35rem !important;
+    transition: transform 0.6s;
+}
+
+.card-body {
+    padding: 1rem;
+}
+
+.card-border,
+.card-border:focus {
+    border: 1px solid rgba(0, 0, 0, 0.125) !important;
+}
+
+.card-border-bottom,
+.card-border-bottom:focus {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.125) !important;
+}
+
+.card-border-top,
+.card-border-top:focus {
+    border-top: 1px solid rgba(0, 0, 0, 0.125) !important;
+}
+
+.card-border-left,
+.card-border-left:focus {
+    border-left: 1px solid rgba(0, 0, 0, 0.125) !important;
+}
+
+.card-border-right,
+.card-border-right:focus {
+    border-right: 1px solid rgba(0, 0, 0, 0.125) !important;
+}
+
+.home-avatar {
+    border: 1px solid lightgray;
+    border-radius: 50% !important;
+    object-fit: cover;
+    height: 16rem;
+    width: 16rem !important;
+}
+
+.friend-avatar {
+    border: 1px solid lightgray;
+    border-radius: 50% !important;
+    object-fit: cover;
+    height: 3rem;
+    width: 3rem !important;
+    transition: transform 0.6s;
+}
+
+.friend-avatar:hover {
+    transform: scale(1.15);
+}
+
+.bg-dim {
+    background-color: lightgrey;
+}
+
+.bg-pink {
+    background-color: #ffeeee;
+}
+
+.bg-yellow {
+    background-color: #ffeecc;
+}
+
+.text-end {
+    text-align: end !important;
+}
+
+.text-dim,
+.text-dim:hover {
+    color: dimgray;
+    cursor: default;
+}
+
+.cursor-text,
+.cursor-text:hover {
+    cursor: text;
+}
+
+.cursor-pointer,
+.cursor-pointer:hover {
+    cursor: pointer !important;
+}
+
+.border-left-danger {
+    border-left: 1px solid #dc3545 !important;
+}
+
+.border-right-danger {
+    border-right: 1px solid #dc3545 !important;
+}
+
+.border-left-warning {
+    border-left: 1px solid #ffc107 !important;
+}
+
+.border-right-warning {
+    border-right: 1px solid #ffc107 !important;
+}
+
+.spinner {
+    border-width: 1px;
+}
+
+.no-active-outline,
+.no-active-outline:focus,
+.no-active-outline:hover {
+    box-shadow: none !important;
+}
+
+.no-border,
+.no-border:hover,
+.no-border:focus {
+    border: none !important;
+}
+
+/* FOOTER */
+.link {
+    text-decoration: none;
+    color: dimgray;
+}
+
+.link:hover {
+    text-decoration: none;
+    color: darkgray;
+}
+
+.center {
+    position: relative;
+    left: 50%;
+    top: 100%;
+    -webkit-transform: translate(-50%, 22.5%);
+    transform: translate(-50%, 22.5%);
+}
+
+#userNav {
+    padding: 0;
+}

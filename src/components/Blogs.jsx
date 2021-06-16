@@ -32,12 +32,12 @@ class Blogs extends React.Component {
     }
 
     componentDidMount = async () => {
-        this.setState({ posts: await this.props.crud.blogs.getAll() })
+        this.setState({ posts: await this.props.crud.posts.getAll() })
     }
 
     componentDidUpdate = async (_previousProps, _previousState) => {
         if (this.state.loading && this.state.posts && !this.state.update) this.setState({ loading: false })
-        if (this.state.loading && this.state.update) this.setState({ posts: await this.props.crud.blogs.getAll(), update: false })
+        if (this.state.loading && this.state.update) this.setState({ posts: await this.props.crud.posts.getAll(), update: false })
 
         if (this.state.update !== _previousState.update)
             this.setState(async state => {
@@ -81,8 +81,7 @@ class Blogs extends React.Component {
 const AddBlogModal = props => {
     const [show, setShow] = React.useState(false)
     const [title, setTitle] = React.useState("")
-    const [content, setContent] = React.useState("")
-    const [category, setCategory] = React.useState("")
+    const [text, setContent] = React.useState("")
     const [validated, setValidated] = React.useState(false)
     const [sending, setSending] = React.useState(false)
 
@@ -120,7 +119,6 @@ const AddBlogModal = props => {
         setTitle("")
         setContent("")
         props.setContent("")
-        setCategory("")
         stageImage(null)
         props.stageImage(null)
     }
@@ -128,6 +126,7 @@ const AddBlogModal = props => {
     useEffect(() => {
         setContent(props.content)
     }, [props.content])
+
     useEffect(() => {
         stageImage(props.image)
     }, [props.image])
@@ -135,18 +134,18 @@ const AddBlogModal = props => {
     const handleSend = async () => {
         const data = {
             title,
-            content,
-            category,
-            author: props.user._id
+            text,
+            user: props.user._id,
+            username: props.user.username
         }
 
         if (!sending) {
             setSending(true)
-            const result = await props.crud.blogs.post(data)
+            const result = await props.crud.posts.post(data)
             if (result && image) {
                 let formData = new FormData()
-                formData.append("cover", image)
-                await props.crud.blogs.cover(result, formData)
+                formData.append("image", image)
+                await props.crud.posts.upload(result, formData)
             }
             setSending(false)
         }
@@ -183,9 +182,9 @@ const AddBlogModal = props => {
                             <Form.Control
                                 className="card-border text-dim cursor-text no-active-outline"
                                 as="textarea"
-                                rows={2}
+                                rows={3}
                                 required
-                                value={content}
+                                value={text}
                                 onChange={e => setContent(e.target.value)}
                             />
                             <Form.Control.Feedback className="pl-1 text-dim" type="invalid">
@@ -193,22 +192,6 @@ const AddBlogModal = props => {
                             </Form.Control.Feedback>
                             <Form.Control.Feedback className="pl-1 text-dim" type="valid">
                                 Thats some quality content!
-                            </Form.Control.Feedback>
-                        </Form.Group>
-                        <Form.Group controlId="formCategory">
-                            <Form.Text className="pl-1 text-dim">Category</Form.Text>
-                            <Form.Control
-                                className="card-border text-dim cursor-text no-active-outline"
-                                type="text"
-                                required
-                                value={category}
-                                onChange={e => setCategory(e.target.value)}
-                            />
-                            <Form.Control.Feedback className="pl-1 text-dim" type="invalid">
-                                Category is required.
-                            </Form.Control.Feedback>
-                            <Form.Control.Feedback className="pl-1 text-dim" type="valid">
-                                Thats a nice category!
                             </Form.Control.Feedback>
                         </Form.Group>
                     </Modal.Body>
@@ -238,8 +221,7 @@ const AddBlogModal = props => {
 const EditBlogModal = props => {
     const [show, setShow] = React.useState(false)
     const [title, setTitle] = React.useState("")
-    const [content, setContent] = React.useState("")
-    const [category, setCategory] = React.useState("")
+    const [text, setContent] = React.useState("")
     const [validated, setValidated] = React.useState(false)
     const [sending, setSending] = React.useState(false)
 
@@ -272,31 +254,27 @@ const EditBlogModal = props => {
     }
 
     useEffect(() => {
-        setContent(props.post.content)
-    }, [props.post.content])
+        setContent(props.post.text)
+    }, [props.post.text])
 
     useEffect(() => {
         setTitle(props.post.title)
     }, [props.post.title])
 
-    useEffect(() => {
-        setCategory(props.post.category)
-    }, [props.post.category])
-
     const handleSend = async () => {
         const data = {
             title,
-            content,
-            category,
-            author: props.post.author
+            text,
+            user: props.post.user._id,
+            username: props.post.user.username
         }
         if (!sending) {
             setSending(true)
-            const result = await props.crud.blogs.put(props.post._id, data)
+            const result = await props.crud.posts.put(props.post._id, data)
             if (result && image) {
                 let formData = new FormData()
-                formData.append("cover", image)
-                await props.crud.blogs.cover(result._id, formData)
+                formData.append("image", image)
+                await props.crud.posts.upload(result._id, formData)
             }
             setSending(false)
         }
@@ -339,18 +317,8 @@ const EditBlogModal = props => {
                                 as="textarea"
                                 rows={2}
                                 required
-                                value={content}
+                                value={text}
                                 onChange={e => setContent(e.target.value)}
-                            />
-                        </Form.Group>
-                        <Form.Group controlId="formCategory">
-                            <Form.Text className="pl-1 text-dim">Category</Form.Text>
-                            <Form.Control
-                                className="card-border text-dim cursor-text no-active-outline"
-                                type="text"
-                                required
-                                value={category}
-                                onChange={e => setCategory(e.target.value)}
                             />
                         </Form.Group>
                     </Modal.Body>
@@ -388,7 +356,7 @@ const RemoveBlogModal = props => {
     const handleDelete = async () => {
         if (!sending) {
             setSending(true)
-            await props.crud.blogs.delete(props.post._id)
+            await props.crud.posts.delete(props.post._id)
             setShow(false)
             props.onUpdate()
             setSending(false)
@@ -460,12 +428,12 @@ const AddComment = props => {
         const id = props.post._id
         const data = {
             comment,
-            author: props.user._id
+            user: props.user._id
         }
 
         if (!sending) {
             setSending(true)
-            await props.crud.blogs.comments.post(id, data)
+            await props.crud.comments.post(id, data)
             setSending(false)
         }
     }
@@ -533,10 +501,10 @@ const EditCommentModal = props => {
     const handleSend = async () => {
         const data = {
             comment,
-            author: props.comment.author
+            user: props.comment.user
         }
 
-        await props.crud.blogs.comments.put(props.post._id, data, props.comment._id)
+        await props.crud.comments.put(props.post._id, data, props.comment._id)
     }
 
     return (
@@ -592,7 +560,7 @@ const RemoveCommentModal = props => {
     const handleDelete = async () => {
         if (!sending) {
             setSending(true)
-            await props.crud.blogs.comments.delete(props.post._id, props.comment._id)
+            await props.crud.comments.delete(props.post._id, props.comment._id)
             setShow(false)
             props.onUpdate()
             setSending(false)
@@ -635,18 +603,19 @@ const User = props => {
         <Card className="text-dim">
             <Card.Header className="text-center py-1 bg-white">{props.user.name}</Card.Header>
             <Card.Body>
-                <Link className="link" to={"users/" + props.user._id}>
+                <Link className="link" to={"profile/" + props.user._id}>
                     <Row className="justify-content-center pb-3">
-                        <Card.Img className="card-avatar" alt="" src={props.user.avatar} />
+                        <Card.Img className="card-avatar" alt="" src={props.user.image} />
                     </Row>
                 </Link>
-                <Link className="link" to={"users/" + props.user._id}>
+                <Link className="link" to={"profile/" + props.user._id}>
                     <Card.Title as={"h6"} className="text-center">
                         {props.user.name} {props.user.surname}
                     </Card.Title>
                 </Link>
+                <Card.Text>{props.user.title}</Card.Text>
                 <hr />
-                <Card.Text>{props.user.description}</Card.Text>
+                <Card.Text>{props.user.bio}</Card.Text>
             </Card.Body>
         </Card>
     ) : (
@@ -751,6 +720,8 @@ const Posts = props => {
         <Card className="text-dim">
             <Card.Body>
                 {props.posts.result
+                    .slice(0)
+                    .reverse()
                     .map(post => {
                         return (
                             <Accordion key={post._id}>
@@ -760,15 +731,9 @@ const Posts = props => {
                                             <Card.Title className="pr-1 mb-0 text-truncate" as={"h6"}>
                                                 {post.title}
                                             </Card.Title>
-
-                                            <div className="ml-auto">
-                                                <Badge pill className="text-dim bg-white card-border">
-                                                    {post.category}
-                                                </Badge>
-                                            </div>
                                         </div>
 
-                                        {post.cover && (
+                                        {post.image && (
                                             <div className="d-flex justify-content-center">
                                                 <Card.Img
                                                     style={{
@@ -781,19 +746,19 @@ const Posts = props => {
                                                     }}
                                                     className="my-3"
                                                     alt="Cover Image"
-                                                    src={post.cover}
+                                                    src={post.image}
                                                 />
                                             </div>
                                         )}
-                                        <Card.Text>{post.content}</Card.Text>
+                                        <Card.Text>{post.text}</Card.Text>
 
                                         <div className="d-flex justify-content-between">
                                             <Col className="d-flex p-0">
                                                 <Form.Text>
                                                     <span className="d-flex">
-                                                        <Link className="link" to={"users/" + post.author._id}>
-                                                            <Card.Img className="card-border blog-avatar mb-1 mr-2" alt="" src={post.author.avatar} />
-                                                            {post.author.name} {post.author.surname}
+                                                        <Link className="link" to={"profile/" + post.user._id}>
+                                                            <Card.Img className="card-border blog-avatar mb-1 mr-2" alt="" src={post.user.image} />
+                                                            {post.user.name} {post.user.surname}
                                                         </Link>
                                                     </span>
                                                 </Form.Text>
@@ -805,7 +770,7 @@ const Posts = props => {
                                                             style={{ height: "1.35rem" }}
                                                             className="card-border rounded cursor-pointer"
                                                             onClick={async e => {
-                                                                await props.crud.blogs.unlike(post._id, {
+                                                                await props.crud.posts.unlike(post._id, {
                                                                     id: props.user._id
                                                                 })
 
@@ -822,7 +787,7 @@ const Posts = props => {
                                                             style={{ height: "1.35rem" }}
                                                             className="card-border rounded cursor-pointer"
                                                             onClick={async () => {
-                                                                await props.crud.blogs.like(post._id, {
+                                                                await props.crud.posts.like(post._id, {
                                                                     id: props.user._id
                                                                 })
 
@@ -864,7 +829,7 @@ const Posts = props => {
                                         </div>
                                     </div>
 
-                                    {props.user && props.user._id === post.author._id && (
+                                    {props.user && props.user._id === post.user._id && (
                                         <div className="pt-3">
                                             <ButtonGroup className="card-border rounded">
                                                 <EditBlogModal onUpdate={props.onUpdate} post={post} crud={props.crud} />
@@ -873,7 +838,7 @@ const Posts = props => {
                                         </div>
                                     )}
 
-                                    {props.user && props.user._id !== post.author._id && props.user.roles && props.user.roles.isAdministrator && (
+                                    {props.user && props.user._id !== post.user._id && props.user.roles && props.user.roles.isAdministrator && (
                                         <div className="pt-3">
                                             <ButtonGroup className="border border-danger rounded">
                                                 <EditBlogModal admin={true} onUpdate={props.onUpdate} post={post} crud={props.crud} />
@@ -883,7 +848,7 @@ const Posts = props => {
                                     )}
 
                                     {props.user &&
-                                        props.user._id !== post.author._id &&
+                                        props.user._id !== post.user._id &&
                                         props.user.roles &&
                                         props.user.roles.isModerator &&
                                         !props.user.roles.isAdministrator && (
@@ -927,14 +892,14 @@ const Comments = props => {
         .reverse()
         .map((comment, index) => {
             return (
-                <div key={comment._id}>
+                <div key={uniqid()}>
                     <Card.Text className="mb-2">{comment.comment}</Card.Text>
                     <div className="d-flex justify-content-between">
                         <Form.Text>
                             <span className="d-flex">
-                                <Link className="link" to={"users/" + comment.author._id}>
-                                    <Card.Img className="card-border blog-avatar mb-1 mr-2" alt="" src={comment.author.avatar} />
-                                    {comment.author.name} {comment.author.surname}
+                                <Link className="link" to={"profile/" + comment.user}>
+                                    <Card.Img className="card-border blog-avatar mb-1 mr-2" alt="" src={comment.user.image} />
+                                    {comment.user.name} {comment.user.surname}
                                 </Link>
                             </span>
                         </Form.Text>
@@ -949,7 +914,7 @@ const Comments = props => {
                             </Form.Text>
                         )}
                     </div>
-                    {props.user && props.user._id === comment.author._id && (
+                    {props.user && props.user._id === comment.user._id && (
                         <div className="pt-2">
                             <ButtonGroup className="card-border rounded">
                                 <EditCommentModal comment={comment} crud={props.crud} post={props.post} onUpdate={props.onUpdate} />
@@ -958,7 +923,7 @@ const Comments = props => {
                         </div>
                     )}
 
-                    {props.user && props.user._id !== comment.author._id && props.user.roles && props.user.roles.isAdministrator && (
+                    {props.user && props.user._id !== comment.user._id && props.user.roles && props.user.roles.isAdministrator && (
                         <div className="pt-3">
                             <ButtonGroup className="border border-danger rounded">
                                 <EditCommentModal admin={true} comment={comment} crud={props.crud} post={props.post} onUpdate={props.onUpdate} />
@@ -968,7 +933,7 @@ const Comments = props => {
                     )}
 
                     {props.user &&
-                        props.user._id !== comment.author._id &&
+                        props.user._id !== comment.user._id &&
                         props.user.roles &&
                         props.user.roles.isModerator &&
                         !props.user.roles.isAdministrator && (
