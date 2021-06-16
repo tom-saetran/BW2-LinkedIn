@@ -518,7 +518,6 @@ const RemoveExperienceModal = props => {
     const [sending, setSending] = React.useState(false)
 
     const handleClose = () => setShow(false)
-    const handleShow = () => setShow(true)
 
     const handleDelete = async () => {
         if (!sending) {
