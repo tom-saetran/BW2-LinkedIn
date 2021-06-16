@@ -86,13 +86,9 @@ export default class NavBar extends Component {
                                         {this.state.queryResult !== null ? (
                                             this.state.queryResult.map((person) => (
                                                 <li className="d-flex flex-row querySearch-list-item" onMouseDown={() => this.props.history.push("/profile/" + person._id)}>
-<<<<<<< Updated upstream
-                                                    <img className="blog-avatar" id="querySearchImage" src={person.image} alt="Headshot"></img>
-=======
                                                     <div>
                                                         <img className="blog-avatar" id="querySearchImage" src={person.image} alt="Headshot"></img>
                                                     </div>
->>>>>>> Stashed changes
 
                                                     <button type="button" className="list-group-item list-group-item-action queryButton" id={person._id} key={person._id} aria-current="true">
                                                         {`${person.name} ${person.surname}`}
