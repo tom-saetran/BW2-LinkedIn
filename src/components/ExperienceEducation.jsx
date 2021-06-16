@@ -1,11 +1,11 @@
 import React from "react"
-import { Col, Modal, Button, Form } from "react-bootstrap"
+import { Col, Modal, Button, Form, Card, ButtonToolbar, ButtonGroup, OverlayTrigger, Popover, InputGroup } from "react-bootstrap"
+import * as Icon from "react-bootstrap-icons"
 import { withRouter } from "react-router-dom"
+import uniqid from "uniqid"
 
 class ExperienceEducation extends React.Component {
     state = {
-        addModalShow: false,
-        updateModalshow: false,
         experiences: null
     }
 
@@ -18,11 +18,8 @@ class ExperienceEducation extends React.Component {
             this.setState({ experiences: await this.props.crud.experiences.getAll(this.props.match.params.id) })
     }
 
-    handleShow = () => {
-        this.setState({ addModalShow: !this.state.addModalShow })
-    }
-    handleUpdateShow = () => {
-        this.setState({ updateModalShow: !this.state.updateModalShow })
+    onUpdate = async () => {
+        this.setState({ experiences: await this.props.crud.experiences.getAll(this.props.match.params.id) })
     }
 
     render() {
@@ -32,19 +29,7 @@ class ExperienceEducation extends React.Component {
                     <div className="d-flex mb-2 justify-content-between">
                         <h6>Experience</h6>
                         <span title="Add New Experience" className="cursor-pointer">
-                            <svg
-                                onClick={this.handleShow}
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 24 24"
-                                data-supported-dps="24x24"
-                                fill="currentColor"
-                                className="mercado-match"
-                                width="24"
-                                height="24"
-                                focusable="false"
-                            >
-                                <path d="M21 13h-8v8h-2v-8H3v-2h8V3h2v8h8z"></path>
-                            </svg>
+                            <AddExperienceModal onUpdate={this.onUpdate} user={this.props.user} crud={this.props.crud} />
                         </span>
                     </div>
 
@@ -52,44 +37,43 @@ class ExperienceEducation extends React.Component {
                         this.state.experiences.length > 0 &&
                         this.state.experiences.map((experience, index) => {
                             return (
-                                <div key={"experience" + index} className="d-flex mb-3 justify-content-between">
-                                    <div className="d-flex justify-content-between">
+                                <div key={"experience" + index} className="mb-3">
+                                    <div className="d-flex">
                                         <img
-                                            className="medium-logo"
-                                            src={experience.image ? experience.image : "https://via.placeholder.com/200x200?text=Profile+Picture"}
+                                            className="medium-logo mt-2 mr-2"
+                                            src={experience.image ? experience.image : "https://via.placeholder.com/200x200?text=Experience"}
                                             alt=""
                                         />
-                                        <div className="ms-3">
-                                            <h6>{experience.role + " at " + experience.company}</h6>
+                                        <div>
+                                            <div>{experience.role + " at " + experience.company}</div>
                                             <p className="mb-1">{experience.description}</p>
                                             {new Date(experience.startDate).toLocaleString("default", { month: "long" }) +
                                                 " " +
                                                 new Date(experience.startDate).getFullYear()}
-                                            {experience.stopDate ? new Date(experience.startDate).getFullYear() : " - Current"}
+                                            {experience.endDate
+                                                ? " - " +
+                                                  new Date(experience.endDate).toLocaleString("default", { month: "long" }) +
+                                                  " " +
+                                                  new Date(experience.endDate).getFullYear()
+                                                : " - Current"}
                                         </div>
-                                    </div>
-                                    <div>
-                                        <span title="Edit this experience" className="cursor-pointer">
-                                            <svg
-                                                onClick={this.handleUpdateShow}
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                viewBox="0 0 24 24"
-                                                data-supported-dps="24x24"
-                                                fill="currentColor"
-                                                className="mercado-match"
-                                                width="24"
-                                                height="24"
-                                                focusable="false"
-                                            >
-                                                <path d="M21.13 2.86a3 3 0 00-4.17 0l-13 13L2 22l6.19-2L21.13 7a3 3 0 000-4.16zM6.77 18.57l-1.35-1.34L16.64 6 18 7.35z"></path>
-                                            </svg>
-                                        </span>
+                                        <div className="ml-auto">
+                                            <span title="Edit this experience" className="cursor-pointer">
+                                                <UpdateExperienceModal
+                                                    onUpdate={this.onUpdate}
+                                                    user={this.props.user}
+                                                    crud={this.props.crud}
+                                                    experience={experience}
+                                                />
+                                            </span>
+                                        </div>
                                     </div>
                                 </div>
                             )
                         })}
 
-                    <hr></hr>
+                    {/*
+                    <hr />
 
                     <div className="d-flex mb-2 justify-content-between">
                         <h6>Education</h6>
@@ -133,182 +117,478 @@ class ExperienceEducation extends React.Component {
                                 <path d="M21.13 2.86a3 3 0 00-4.17 0l-13 13L2 22l6.19-2L21.13 7a3 3 0 000-4.16zM6.77 18.57l-1.35-1.34L16.64 6 18 7.35z"></path>
                             </svg>
                         </div>
-                    </div>
+                    </div>*/}
                 </Col>
-
-                {this.state.addModalShow && (
-                    <AddExperienceModal
-                        show={this.state.addModalShow}
-                        post={this.props.crud.experiences.post}
-                        id={async () => {
-                            await this.state.experiences[0]._id
-                        }}
-                        hide={() => {
-                            this.setState({ addModalShow: false })
-                        }}
-                    />
-                )}
-                {this.state.updateModalShow && (
-                    <UpdateExperienceModal
-                        show={this.state.updateModalShow}
-                        put={this.props.crud.experiences.put}
-                        id={async () => {
-                            await this.state.experiences[0]._id
-                        }}
-                        hide={() => {
-                            this.setState({ updateModalShow: false })
-                        }}
-                    />
-                )}
             </>
         )
     }
 }
 
-class AddExperienceModal extends React.Component {
-    state = {
-        role: "CTO",
-        company: "Strive School",
-        startDate: "2019-06-16",
-        endDate: "2019-06-16", //could be null
-        description: "Doing stuff here and there",
-        area: "Berlin"
+const AddExperienceModal = props => {
+    const [show, setShow] = React.useState(false)
+
+    const [role, setRole] = React.useState("")
+    const [company, setCompany] = React.useState("")
+    const [description, setDescription] = React.useState("")
+    const [area, setArea] = React.useState("")
+    const [startDate, setStartDate] = React.useState("")
+    const [endDate, setEndDate] = React.useState("")
+
+    const [validated, setValidated] = React.useState(false)
+    const [sending, setSending] = React.useState(false)
+
+    const [image, stageImage] = React.useState("")
+
+    const inputRef = React.useRef(null)
+    const selectImage = () => inputRef.current.click()
+    const setImage = event => {
+        event.preventDefault()
+        event.stopPropagation()
+
+        const image = event.target.files[0]
+        stageImage(image)
     }
 
-    render() {
-        return (
-            <Modal show={this.props.show} onHide={this.props.hide} backdrop="static" keyboard={false}>
-                <Modal.Header closeButton>
-                    <Modal.Title>Add experience</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    <Form>
-                        <Form.Group controlId="formBasicTitle">
-                            <Form.Label>Title *</Form.Label>
-                            <Form.Control
-                                value={this.state.role}
-                                onChange={e => this.setState({ role: e.target.value })}
-                                type="text"
-                                placeholder="Ex: Retail Sales Manager"
-                            />
-                        </Form.Group>
-                        <Form.Group controlId="formBasicCompany">
-                            <Form.Label>Company *</Form.Label>
-                            <Form.Control
-                                value={this.state.company}
-                                onChange={e => this.setState({ company: e.target.value })}
-                                type="text"
-                                placeholder="Ex: Microsoft"
-                            />
-                        </Form.Group>
-                        <Form.Group controlId="formBasicLocation">
-                            <Form.Label>Location</Form.Label>
-                            <Form.Control
-                                value={this.state.area}
-                                onChange={e => this.setState({ area: e.target.value })}
-                                type="text"
-                                placeholder="Ex: London, United Kingdom"
-                            />
-                        </Form.Group>
-                        <Form.Group controlId="formBasicDescription">
-                            <Form.Label>Description</Form.Label>
-                            <Form.Control value={this.state.description} onChange={e => this.setState({ description: e.target.value })} type="text-area" />
-                        </Form.Group>
-                        <Form.Group controlId="formBasicDate">
-                            <Form.Label>Start Date</Form.Label>
-                            <Form.Control type="date" />
-                        </Form.Group>
-                        <Form.Group controlId="formBasicDate">
-                            <Form.Label>End Date</Form.Label>
-                            <Form.Control type="date" />
-                            <Form.Text>If you still work here leave date blank</Form.Text>
-                        </Form.Group>
-                    </Form>
-                </Modal.Body>
-                <Modal.Footer>
-                    <Button variant="secondary" onClick={this.props.hide}>
-                        Close
-                    </Button>
-                    <Button variant="primary" onClick={async () => this.props.post(await this.props.id, this.state)}>
-                        Save
-                    </Button>
-                </Modal.Footer>
-            </Modal>
-        )
+    const handleClose = () => setShow(false)
+
+    const handleSubmit = async e => {
+        const form = e.currentTarget
+        if (form.checkValidity() === false) {
+            e.preventDefault()
+            e.stopPropagation()
+        } else {
+            e.preventDefault()
+            await handleSend()
+            setShow(false)
+            props.onUpdate()
+            reset()
+        }
+        setValidated(true)
     }
+
+    const reset = () => {
+        setRole("")
+        setCompany("")
+        setDescription("")
+        setArea("")
+        setStartDate("")
+        setEndDate("")
+        stageImage(undefined)
+    }
+
+    const handleSend = async () => {
+        const data = {
+            role,
+            company,
+            description,
+            area,
+            startDate,
+            endDate,
+            user: props.user._id,
+            username: props.user.username
+        }
+
+        if (!sending) {
+            setSending(true)
+            const result = await props.crud.experiences.post(props.user._id, data)
+            if (result && image) {
+                let formData = new FormData()
+                formData.append("image", image)
+                await props.crud.experiences.upload(props.user._id, formData, result._id)
+            }
+            setSending(false)
+        }
+    }
+
+    return (
+        <>
+            <Button variant="white" onClick={() => setShow(true)}>
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    data-supported-dps="24x24"
+                    fill="currentColor"
+                    className="mercado-match"
+                    width="24"
+                    height="24"
+                    focusable="false"
+                >
+                    <path d="M21 13h-8v8h-2v-8H3v-2h8V3h2v8h8z"></path>
+                </svg>
+            </Button>
+
+            <Modal show={show} onHide={handleClose}>
+                <Form noValidate validated={validated} onSubmit={e => handleSubmit(e)}>
+                    <Card.Header className="text-center text-dim py-2 bg-white">Add New</Card.Header>
+                    <Modal.Body>
+                        <Form.Group controlId="formRole">
+                            <Form.Text className="pl-1 text-dim">Role</Form.Text>
+                            <Form.Control
+                                className="card-border text-dim cursor-text no-active-outline"
+                                type="text"
+                                required
+                                value={role}
+                                onChange={e => setRole(e.target.value)}
+                            />
+                        </Form.Group>
+                        <Form.Group controlId="formCompany">
+                            <Form.Text className="pl-1 text-dim">Company</Form.Text>
+                            <Form.Control
+                                className="card-border text-dim cursor-text no-active-outline"
+                                type="text"
+                                required
+                                value={company}
+                                onChange={e => setCompany(e.target.value)}
+                            />
+                        </Form.Group>
+                        <Form.Group controlId="formDescription">
+                            <Form.Text className="pl-1 text-dim">Description</Form.Text>
+                            <Form.Control
+                                className="card-border text-dim cursor-text no-active-outline"
+                                as="textarea"
+                                rows={3}
+                                required
+                                value={description}
+                                onChange={e => setDescription(e.target.value)}
+                            />
+                        </Form.Group>
+                        <Form.Group controlId="formArea">
+                            <Form.Text className="pl-1 text-dim">Area</Form.Text>
+                            <Form.Control
+                                className="card-border text-dim cursor-text no-active-outline"
+                                type="text"
+                                required
+                                value={area}
+                                onChange={e => setArea(e.target.value)}
+                            />
+                        </Form.Group>
+                        <Form.Group controlId="formStartDate">
+                            <Form.Text className="pl-1 text-dim">Start Date</Form.Text>
+                            <Form.Control
+                                className="card-border text-dim cursor-text no-active-outline"
+                                type="date"
+                                required
+                                value={startDate}
+                                onChange={e => setStartDate(e.target.value)}
+                            />
+                        </Form.Group>
+                        <Form.Group controlId="formEndDate">
+                            <Form.Text className="pl-1 text-dim">End Date (if applicable)</Form.Text>
+                            <Form.Control
+                                className="card-border text-dim cursor-text no-active-outline"
+                                type="date"
+                                value={endDate}
+                                onChange={e => setEndDate(e.target.value)}
+                            />
+                        </Form.Group>
+                    </Modal.Body>
+                    <div className="d-flex justify-content-between pb-3 pr-3">
+                        <div>{image && <div className="pt-2 pl-3">Selected: {image.name}</div>}</div>
+                        <ButtonToolbar>
+                            <ButtonGroup className="mr-2 card-border rounded">
+                                <Button className="pb-2 text-dim card-border-right no-active-outline" variant="white" onClick={selectImage}>
+                                    <Icon.Image fill="dimgrey" />
+                                    <input onChange={setImage.bind(this)} type="file" id="file" ref={inputRef} style={{ display: "none" }} />
+                                </Button>
+                                <EmojiPopOver />
+                            </ButtonGroup>
+                            <ButtonGroup>
+                                <Button className="card-border rounded text-dim no-active-outline" variant="white" type="submit">
+                                    Send
+                                </Button>
+                            </ButtonGroup>
+                        </ButtonToolbar>
+                    </div>
+                </Form>
+            </Modal>
+        </>
+    )
 }
 
-class UpdateExperienceModal extends React.Component {
-    state = {
-        role: "CTO",
-        company: "Strive School",
-        startDate: "2019-06-16",
-        endDate: "2019-06-16", //could be null
-        description: "Doing stuff here and there",
-        area: "Berlin"
+const UpdateExperienceModal = props => {
+    const [show, setShow] = React.useState(false)
+
+    const [role, setRole] = React.useState(props.experience.role)
+    const [company, setCompany] = React.useState(props.experience.company)
+    const [description, setDescription] = React.useState(props.experience.description)
+    const [area, setArea] = React.useState(props.experience.area)
+    const [startDate, setStartDate] = React.useState(new Date(props.experience.startDate).toISOString().substring(0, 10))
+    const [endDate, setEndDate] = React.useState(props.experience.endDate ? new Date(props.experience.endDate).toISOString().substring(0, 10) : "")
+
+    const [validated, setValidated] = React.useState(false)
+    const [sending, setSending] = React.useState(false)
+
+    const [image, stageImage] = React.useState("")
+
+    React.useEffect(() => {
+        setRole(props.experience.role)
+    }, [props.experience.role])
+
+    React.useEffect(() => {
+        setCompany(props.experience.company)
+    }, [props.experience.company])
+
+    React.useEffect(() => {
+        setDescription(props.experience.description)
+    }, [props.experience.description])
+
+    React.useEffect(() => {
+        setArea(props.experience.area)
+    }, [props.experience.area])
+
+    React.useEffect(() => {
+        setStartDate(props.experience.startDate ? new Date(props.experience.startDate).toISOString().substring(0, 10) : undefined)
+    }, [props.experience.startDate])
+
+    React.useEffect(() => {
+        setEndDate(props.experience.endDate ? new Date(props.experience.endDate).toISOString().substring(0, 10) : undefined)
+    }, [props.experience.endDate])
+
+    const inputRef = React.useRef(null)
+    const selectImage = () => inputRef.current.click()
+    const setImage = event => {
+        event.preventDefault()
+        event.stopPropagation()
+
+        const image = event.target.files[0]
+        stageImage(image)
     }
 
-    render() {
-        return (
-            <Modal show={this.props.show} onHide={this.props.hide} backdrop="static" keyboard={false}>
-                <Modal.Header closeButton>
-                    <Modal.Title>Update experience</Modal.Title>
-                </Modal.Header>
+    const handleClose = () => setShow(false)
+    const handleSubmit = async e => {
+        const form = e.currentTarget
+        if (form.checkValidity() === false) {
+            e.preventDefault()
+            e.stopPropagation()
+        } else {
+            e.preventDefault()
+            await handleSend()
+            setShow(false)
+            props.onUpdate()
+            reset()
+        }
+        setValidated(true)
+    }
+
+    const reset = () => {
+        stageImage(undefined)
+    }
+
+    const handleSend = async () => {
+        const data = {
+            role,
+            company,
+            description,
+            area,
+            startDate,
+            endDate,
+            image: props.experience.image,
+            user: props.user._id,
+            username: props.user.username
+        }
+
+        if (!sending) {
+            setSending(true)
+            const result = await props.crud.experiences.put(props.user._id, data, props.experience._id)
+            if (result && image) {
+                let formData = new FormData()
+                formData.append("image", image)
+                await props.crud.experiences.upload(props.user._id, formData, props.experience._id)
+            }
+            setSending(false)
+        }
+    }
+
+    return (
+        <>
+            <Button variant="white" onClick={() => setShow(true)}>
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    data-supported-dps="24x24"
+                    fill="currentColor"
+                    className="mercado-match"
+                    width="24"
+                    height="24"
+                    focusable="false"
+                >
+                    <path d="M21.13 2.86a3 3 0 00-4.17 0l-13 13L2 22l6.19-2L21.13 7a3 3 0 000-4.16zM6.77 18.57l-1.35-1.34L16.64 6 18 7.35z"></path>
+                </svg>
+            </Button>
+
+            <Modal show={show} onHide={handleClose}>
+                <Form noValidate validated={validated} onSubmit={e => handleSubmit(e)}>
+                    <Card.Header className="text-center text-dim py-2 bg-white">Edit {props.experience.role}</Card.Header>
+                    <Modal.Body>
+                        <Form.Group controlId="formRole">
+                            <Form.Text className="pl-1 text-dim">Role</Form.Text>
+                            <Form.Control
+                                className="card-border text-dim cursor-text no-active-outline"
+                                type="text"
+                                required
+                                value={role}
+                                onChange={e => setRole(e.target.value)}
+                            />
+                        </Form.Group>
+                        <Form.Group controlId="formCompany">
+                            <Form.Text className="pl-1 text-dim">Company</Form.Text>
+                            <Form.Control
+                                className="card-border text-dim cursor-text no-active-outline"
+                                as="textarea"
+                                rows={2}
+                                required
+                                value={company}
+                                onChange={e => setCompany(e.target.value)}
+                            />
+                        </Form.Group>
+                        <Form.Group controlId="formDescription">
+                            <Form.Text className="pl-1 text-dim">Description</Form.Text>
+                            <Form.Control
+                                className="card-border text-dim cursor-text no-active-outline"
+                                type="text"
+                                required
+                                value={description}
+                                onChange={e => setDescription(e.target.value)}
+                            />
+                        </Form.Group>
+                        <Form.Group controlId="formArea">
+                            <Form.Text className="pl-1 text-dim">Area</Form.Text>
+                            <Form.Control
+                                className="card-border text-dim cursor-text no-active-outline"
+                                type="text"
+                                required
+                                value={area}
+                                onChange={e => setArea(e.target.value)}
+                            />
+                        </Form.Group>
+                        <Form.Group controlId="formDescription">
+                            <Form.Text className="pl-1 text-dim">Start Date</Form.Text>
+                            <Form.Control
+                                className="card-border text-dim cursor-text no-active-outline"
+                                type="date"
+                                required
+                                value={startDate}
+                                onChange={e => setStartDate(e.target.value)}
+                            />
+                        </Form.Group>
+                        <Form.Group controlId="formDescription">
+                            <Form.Text className="pl-1 text-dim">End Date (if applicable)</Form.Text>
+                            <Form.Control
+                                className="card-border text-dim cursor-text no-active-outline"
+                                type="date"
+                                value={endDate}
+                                onChange={e => setEndDate(e.target.value)}
+                            />
+                        </Form.Group>
+                    </Modal.Body>
+
+                    <div className="d-flex justify-content-between pb-3 pr-3">
+                        <div>{image && <div className="pt-2 pl-3">Selected: {image.name}</div>}</div>
+                        <ButtonToolbar>
+                            <ButtonGroup className="mr-2 card-border rounded">
+                                <Button className="pb-2 text-dim card-border-right no-active-outline" variant="white" onClick={selectImage}>
+                                    <Icon.Image fill="dimgrey" />
+                                    <input onChange={setImage.bind(this)} type="file" id="file" ref={inputRef} style={{ display: "none" }} />
+                                </Button>
+                                <EmojiPopOver />
+                            </ButtonGroup>
+                            <ButtonGroup>
+                                <Button className="card-border rounded text-dim no-active-outline" variant="white" type="submit">
+                                    Send
+                                </Button>
+                            </ButtonGroup>
+                        </ButtonToolbar>
+                    </div>
+                </Form>
+            </Modal>
+        </>
+    )
+}
+
+const RemoveBlogModal = props => {
+    const [show, setShow] = React.useState(false)
+    const [sending, setSending] = React.useState(false)
+
+    const handleClose = () => setShow(false)
+    const handleShow = () => setShow(true)
+
+    const handleDelete = async () => {
+        if (!sending) {
+            setSending(true)
+            await props.crud.experiences.delete(props.user._id, props.experience._id)
+            setShow(false)
+            props.onUpdate()
+            setSending(false)
+        }
+    }
+
+    return (
+        <>
+            <Button
+                className={
+                    props.admin
+                        ? "text-danger pb-2 bg-pink border-left-danger no-active-outline"
+                        : props.moderator
+                        ? "text-danger pb-2 bg-yellow border-left-warning no-active-outline"
+                        : "text-danger pb-2 card-border-left no-active-outline"
+                }
+                variant="white"
+                onClick={() => handleShow}
+            >
+                <Icon.Trash className="mb-1" />
+            </Button>
+
+            <Modal show={show} onHide={handleClose}>
+                <Modal.Header className="justify-content-center py-2 text-dim">This will remove the experience permanently!</Modal.Header>
                 <Modal.Body>
-                    <Form>
-                        <Form.Group controlId="formBasicTitle">
-                            <Form.Label>Title *</Form.Label>
-                            <Form.Control
-                                value={this.state.role}
-                                onChange={e => this.setState({ role: e.target.value })}
-                                type="text"
-                                placeholder="Ex: Retail Sales Manager"
-                            />
-                        </Form.Group>
-                        <Form.Group controlId="formBasicCompany">
-                            <Form.Label>Company *</Form.Label>
-                            <Form.Control
-                                value={this.state.company}
-                                onChange={e => this.setState({ company: e.target.value })}
-                                type="text"
-                                placeholder="Ex: Microsoft"
-                            />
-                        </Form.Group>
-                        <Form.Group controlId="formBasicLocation">
-                            <Form.Label>Location</Form.Label>
-                            <Form.Control
-                                value={this.state.area}
-                                onChange={e => this.setState({ area: e.target.value })}
-                                type="text"
-                                placeholder="Ex: London, United Kingdom"
-                            />
-                        </Form.Group>
-                        <Form.Group controlId="formBasicDescription">
-                            <Form.Label>Description</Form.Label>
-                            <Form.Control value={this.state.description} onChange={e => this.setState({ description: e.target.value })} type="text-area" />
-                        </Form.Group>
-                        <Form.Group controlId="formBasicDate">
-                            <Form.Label>Start Date</Form.Label>
-                            <Form.Control type="date" />
-                        </Form.Group>
-                        <Form.Group controlId="formBasicDate">
-                            <Form.Label>End Date</Form.Label>
-                            <Form.Control type="date" />
-                            <Form.Text>If you still work here leave date blank</Form.Text>
-                        </Form.Group>
-                    </Form>
+                    <div className="d-flex">
+                        <Card.Title as={"h6"}>{props.experience.role}</Card.Title>
+                    </div>
+                    <Card.Text>{props.experience.description}</Card.Text>
                 </Modal.Body>
-                <Modal.Footer>
-                    <Button variant="secondary" onClick={this.props.hide}>
-                        Close
+                <Modal.Footer className="justify-content-center align-items-end">
+                    <Button className="card-border text-dim no-active-outline" variant="white" onClick={handleClose}>
+                        Cancel
                     </Button>
-                    <Button variant="primary" onClick={async () => this.props.put(await this.props.id, await this.state)}>
-                        Save
+                    <Button className="card-border text-danger no-active-outline" variant="white" onClick={handleDelete}>
+                        Delete
                     </Button>
                 </Modal.Footer>
             </Modal>
-        )
-    }
+        </>
+    )
+}
+
+const EmojiPopOver = props => {
+    return (
+        <OverlayTrigger
+            rootClose
+            trigger="click"
+            key={uniqid()}
+            placement={"bottom"}
+            overlay={
+                <Popover id={"emojiPop_"}>
+                    <Popover.Title className="bg-white" as="h3">
+                        {"Emoji Panel"}
+                    </Popover.Title>
+                    <Popover.Content>
+                        Add clickable emojis here. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iusto nulla sapiente voluptatem voluptas dolorum
+                        porro explicabo aspernatur pariatur sed eveniet placeat amet vero, ipsam expedita quidem odit adipisci quis facilis!
+                    </Popover.Content>
+                </Popover>
+            }
+        >
+            {props.append ? (
+                <InputGroup.Text as={Button} variant="white" className="bg-white card-border text-dim no-active-outline">
+                    <Icon.EmojiLaughing />
+                </InputGroup.Text>
+            ) : (
+                <Button className="pb-2 no-active-outline" variant="white">
+                    <Icon.EmojiLaughing fill="dimgrey" />
+                </Button>
+            )}
+        </OverlayTrigger>
+    )
 }
 
 export default withRouter(ExperienceEducation)

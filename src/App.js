@@ -318,7 +318,7 @@ class App extends React.Component {
                     if (!this.crud.validators.id(userID)) throw new Error("user id is incorrect")
                     if (!this.crud.validators.id(expID)) throw new Error("experience id is incorrect")
 
-                    results = await fetch(this.crud.endpoint + "/profile/" + userID + "/experiences/" + expID, {
+                    results = await fetch(this.crud.endpoint + "/profile/" + userID + "/experiences/" + expID + "/picture", {
                         method: "POST",
                         headers: {
                             // Authorization: this.state.authtoken
