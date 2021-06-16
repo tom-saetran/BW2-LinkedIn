@@ -1,43 +1,18 @@
-import React, { Component } from "react";
-import { Link, NavLink } from "react-router-dom";
-import { Container, Nav, Navbar, NavDropdown, Button, Form, FormControl } from "react-bootstrap";
+import React, { Component } from "react"
+import { Link } from "react-router-dom"
+import { Container, Nav, Navbar, NavDropdown, Button, Form, FormControl } from "react-bootstrap"
 
 export default class NavBar extends Component {
     state = {
-        isMe: true,
-        query: "",
-        queryResult: null,
-        showQuery: false
-    };
+        isMe: true
+    }
 
     componentDidUpdate = async (_previousProps, _previousState) => {
-        if (this.props.match.params.id === undefined && this.state.isMe === false) this.setState({ isMe: true });
-    };
+        // if (this.props.match.params.id === undefined && this.state.isMe === false) this.setState({ isMe: true })
+    }
 
     // hi carl! do you copy?
     // another one!
-
-    async handleSearch(e) {
-        this.setState({ query: e.target.value });
-        console.log(this.state.query);
-        let response = await this.props.crud.profile.getAll(`?name=${e.target.value}`);
-        if (response.result.length > 0 && e.target.value !== "") this.setState({ queryResult: response.result, showQuery: true });
-        else this.setState({ queryResult: null });
-    }
-
-    handleQueryDisplay(e) {
-        this.setState({ showQuery: false });
-    }
-
-    handleNewProfile(e) {
-        console.log("This is working");
-    }
-
-    async componentDidUpdate(prevProps, prevState) {
-        if (prevState.query !== this.state.query) {
-        }
-    }
-
     render() {
         return this.state.isMe ? (
             /* <= if you are at the users profile */
@@ -46,7 +21,15 @@ export default class NavBar extends Component {
                     <Container>
                         <div className="d-flex">
                             <Navbar.Brand href="#home">
-                                <svg fill="currentColor" style={{ color: "#0a66c2" }} xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 34 34" className="global-nav__logo">
+                                <svg
+                                    fill="currentColor"
+                                    style={{ color: "#0a66c2" }}
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="34"
+                                    height="34"
+                                    viewBox="0 0 34 34"
+                                    className="global-nav__logo"
+                                >
                                     <title>LinkedIn</title>
                                     <g>
                                         <path
@@ -74,36 +57,10 @@ export default class NavBar extends Component {
                                 <FormControl
                                     type="text"
                                     size="100"
-                                    value={this.state.query}
                                     placeholder="Search"
-                                    onChange={(e) => this.handleSearch(e)}
-                                    onBlur={(e) => this.handleQueryDisplay(e)}
-                                    className="mr-sm-2 querySearch"
-                                    style={{ backgroundColor: "#eef3f8", border: "0px" }}
+                                    className="mr-sm-2"
+                                    style={{ backgroundColor: "#eef3f8", border: 0 }}
                                 />
-                                <div id="searchList" style={{ display: this.state.showQuery ? "block" : "none" }}>
-                                    <ul className="list-group">
-                                        {this.state.queryResult !== null ? (
-                                            this.state.queryResult.map((person) => (
-                                                <li className="d-flex flex-row querySearch-list-item" onMouseDown={() => this.props.history.push("/profile/" + person._id)}>
-<<<<<<< Updated upstream
-                                                    <img className="blog-avatar" id="querySearchImage" src={person.image} alt="Headshot"></img>
-=======
-                                                    <div>
-                                                        <img className="blog-avatar" id="querySearchImage" src={person.image} alt="Headshot"></img>
-                                                    </div>
->>>>>>> Stashed changes
-
-                                                    <button type="button" className="list-group-item list-group-item-action queryButton" id={person._id} key={person._id} aria-current="true">
-                                                        {`${person.name} ${person.surname}`}
-                                                    </button>
-                                                </li>
-                                            ))
-                                        ) : (
-                                            <></>
-                                        )}
-                                    </ul>
-                                </div>
                             </Form>
                         </div>
 
@@ -162,13 +119,13 @@ export default class NavBar extends Component {
                                                 <div>
                                                     <div>
                                                         <h6 className="mb-0">
-                                                            {this.props.me.name} {this.props.me.surname}
+                                                            {this.props.me && this.props.me.name} {this.props.me && this.props.me.surname}
                                                         </h6>
-                                                        <p>{this.props.me.title}</p>
+                                                        <p>{this.props.me && this.props.me.title}</p>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <Link className="col-12 btn bg-white" to={"/profile/" + this.props.me._id}>
+                                            <Link className="col-12 btn bg-white" to={"/profile/" + (this.props.me && this.props.me._id)}>
                                                 View Profile
                                             </Link>
                                         </NavDropdown.Item>
@@ -227,6 +184,6 @@ export default class NavBar extends Component {
         ) : (
             /* <= if you are at another users profile */
             <div>NYI</div>
-        );
+        )
     }
 }
