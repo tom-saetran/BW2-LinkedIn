@@ -1,18 +1,39 @@
-import React, { Component } from "react"
-import { Link } from "react-router-dom"
-import { Container, Nav, Navbar, NavDropdown, Button, Form, FormControl } from "react-bootstrap"
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import { Container, Nav, Navbar, NavDropdown, Button, Form, FormControl } from "react-bootstrap";
 
 export default class NavBar extends Component {
     state = {
-        isMe: true
-    }
+        isMe: true,
+        query: "",
+        queryResult: null,
+        showQuery: false
+    };
 
     componentDidUpdate = async (_previousProps, _previousState) => {
-        if (this.props.match.params.id === undefined && this.state.isMe === false) this.setState({ isMe: true })
-    }
+        if (this.props.match.params.id === undefined && this.state.isMe === false) this.setState({ isMe: true });
+    };
 
     // hi carl! do you copy?
     // another one!
+
+    async handleSearch(e) {
+        this.setState({ query: e.target.value });
+        console.log(this.state.query);
+        let response = await this.props.crud.profile.getAll(`?name=${e.target.value}`);
+        if (response.result.length > 0 && e.target.value !== "") this.setState({ queryResult: response.result, showQuery: true });
+        else this.setState({ queryResult: null });
+    }
+
+    handleQueryDisplay(e) {
+        this.setState({ showQuery: false });
+    }
+
+    async componentDidUpdate(prevProps, prevState) {
+        if (prevState.query !== this.state.query) {
+        }
+    }
+
     render() {
         return this.state.isMe ? (
             /* <= if you are at the users profile */
@@ -21,15 +42,7 @@ export default class NavBar extends Component {
                     <Container>
                         <div className="d-flex">
                             <Navbar.Brand href="#home">
-                                <svg
-                                    fill="currentColor"
-                                    style={{ color: "#0a66c2" }}
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    width="34"
-                                    height="34"
-                                    viewBox="0 0 34 34"
-                                    className="global-nav__logo"
-                                >
+                                <svg fill="currentColor" style={{ color: "#0a66c2" }} xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 34 34" className="global-nav__logo">
                                     <title>LinkedIn</title>
                                     <g>
                                         <path
@@ -57,10 +70,31 @@ export default class NavBar extends Component {
                                 <FormControl
                                     type="text"
                                     size="100"
+                                    value={this.state.query}
                                     placeholder="Search"
-                                    className="mr-sm-2"
-                                    style={{ backgroundColor: "#eef3f8", border: 0 }}
+                                    onChange={(e) => this.handleSearch(e)}
+                                    onBlur={(e) => this.handleQueryDisplay(e)}
+                                    className="mr-sm-2 querySearch"
+                                    style={{ backgroundColor: "#eef3f8", border: "0px" }}
                                 />
+                                <div id="searchList" style={{ display: this.state.showQuery ? "block" : "none" }}>
+                                    <ul className="list-group">
+                                        {this.state.queryResult !== null ? (
+                                            this.state.queryResult.map((item) => (
+                                                <li className="d-flex flex-row querySearch-list-item">
+                                                    <div>
+                                                        <img class=" center-profile-image img-fluid rounded-circle" id="querySearchImage" src={item.image} alt="Headshot"></img>
+                                                    </div>
+                                                    <button type="button" className="list-group-item list-group-item-action queryButton" id={item._id} key={item._id} aria-current="true">
+                                                        {`${item.name} ${item.surname}`}
+                                                    </button>
+                                                </li>
+                                            ))
+                                        ) : (
+                                            <></>
+                                        )}
+                                    </ul>
+                                </div>
                             </Form>
                         </div>
 
@@ -184,6 +218,6 @@ export default class NavBar extends Component {
         ) : (
             /* <= if you are at another users profile */
             <div>NYI</div>
-        )
+        );
     }
 }
