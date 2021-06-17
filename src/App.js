@@ -180,12 +180,11 @@ class App extends React.Component {
                         }
                     })
                     if (!results.ok) throw new Error("Got data in return but status.ok is false!")
-                    results = await results.json()
                 } catch (error) {
                     console.error(error)
                     return null
                 }
-                return await results
+                return results
             }
         },
 

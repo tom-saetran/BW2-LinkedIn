@@ -1,6 +1,6 @@
-import React, { Component } from "react"
-import { Link } from "react-router-dom"
-import { Container, Nav, Navbar, NavDropdown, Button, Form, FormControl } from "react-bootstrap"
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import { Container, Nav, Navbar, NavDropdown, Button, Form, FormControl } from "react-bootstrap";
 
 export default class NavBar extends Component {
     state = {
@@ -8,26 +8,27 @@ export default class NavBar extends Component {
         query: "",
         queryResult: null,
         showQuery: false
-    }
+    };
 
     componentDidUpdate = async (_previousProps, _previousState) => {
-        if (this.props.match.params.id === undefined && this.state.isMe === false) this.setState({ isMe: true })
-    }
+        if (this.props.match.params.id === undefined && this.state.isMe === false) this.setState({ isMe: true });
+    };
 
     async handleSearch(e) {
-        this.setState({ query: e.target.value })
-        console.log(this.state.query)
-        let response = await this.props.crud.profile.getAll(`?name=${e.target.value}`)
-        if (response.result.length > 0 && e.target.value !== "") this.setState({ queryResult: response.result, showQuery: true })
-        else this.setState({ queryResult: null })
+        this.setState({ query: e.target.value });
+        console.log(this.state.query);
+        let response = await this.props.crud.profile.getAll(`?name=${e.target.value}`);
+        if (response.result.length > 0) this.setState({ queryResult: response.result, showQuery: true });
+        else this.setState({ queryResult: null });
+        console.log(queryResult, query);
     }
 
     handleQueryDisplay(e) {
-        this.setState({ showQuery: false })
+        this.setState({ showQuery: false });
     }
 
     handleNewProfile(e) {
-        console.log("This is working")
+        console.log("This is working");
     }
 
     async componentDidUpdate(prevProps, prevState) {
@@ -43,15 +44,7 @@ export default class NavBar extends Component {
                     <Container>
                         <div className="d-flex">
                             <Navbar.Brand href="#home">
-                                <svg
-                                    fill="currentColor"
-                                    style={{ color: "#0a66c2" }}
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    width="34"
-                                    height="34"
-                                    viewBox="0 0 34 34"
-                                    className="global-nav__logo"
-                                >
+                                <svg fill="currentColor" style={{ color: "#0a66c2" }} xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 34 34" className="global-nav__logo">
                                     <title>LinkedIn</title>
                                     <g>
                                         <path
@@ -81,30 +74,21 @@ export default class NavBar extends Component {
                                     size="100"
                                     value={this.state.query}
                                     placeholder="Search"
-                                    onChange={e => this.handleSearch(e)}
-                                    onBlur={e => this.handleQueryDisplay(e)}
+                                    onChange={(e) => this.handleSearch(e)}
+                                    onBlur={(e) => this.handleQueryDisplay(e)}
                                     className="mr-sm-2 querySearch"
                                     style={{ backgroundColor: "#eef3f8", border: "0px" }}
                                 />
                                 <div id="searchList" style={{ display: this.state.showQuery ? "block" : "none" }}>
                                     <ul className="list-group">
                                         {this.state.queryResult !== null ? (
-                                            this.state.queryResult.map(person => (
-                                                <div
-                                                    className="d-flex flex-row querySearch-list-item align-items-center px-3"
-                                                    onMouseDown={() => this.props.history.push("/profile/" + person._id)}
-                                                >
+                                            this.state.queryResult.map((person) => (
+                                                <div className="d-flex flex-row querySearch-list-item align-items-center px-3" onMouseDown={() => this.props.history.push("/profile/" + person._id)}>
                                                     <div className="w-15 px-3">
                                                         <img className="blog-avatar-query" id="querySearchImage" src={person.image} alt="Headshot"></img>
                                                     </div>
 
-                                                    <button
-                                                        type="button"
-                                                        className="list-group-item list-group-item-action queryButton"
-                                                        id={person._id}
-                                                        key={person._id}
-                                                        aria-current="true"
-                                                    >
+                                                    <button type="button" className="list-group-item list-group-item-action queryButton" id={person._id} key={person._id} aria-current="true">
                                                         {`${person.name} ${person.surname}`}
                                                     </button>
                                                 </div>
@@ -237,6 +221,6 @@ export default class NavBar extends Component {
         ) : (
             /* <= if you are at another users profile */
             <div>NYI</div>
-        )
+        );
     }
 }

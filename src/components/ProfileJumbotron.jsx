@@ -20,6 +20,11 @@ class ProfileJumbotron extends React.Component {
         } */
     }
 
+    getAsPDF = async () => {
+        const result = this.props.crud.profile.getAsPDF(this.state.user._id);
+        console.log(await result);
+    };
+
     render() {
         return (
             <>
@@ -45,19 +50,35 @@ class ProfileJumbotron extends React.Component {
                     {this.state.user ? (
                         <Col className=" section-inner">
                             <Row>
-                                <Col className="d-flex mb-3 justify-content-end" onClick={() => this.setState({ showProfileModal: true })}>
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        viewBox="0 0 24 24"
-                                        data-supported-dps="24x24"
-                                        fill="currentColor"
-                                        className="mercado-match"
-                                        width="24"
-                                        height="24"
-                                        focusable="false"
-                                    >
-                                        <path d="M21.13 2.86a3 3 0 00-4.17 0l-13 13L2 22l6.19-2L21.13 7a3 3 0 000-4.16zM6.77 18.57l-1.35-1.34L16.64 6 18 7.35z"></path>
-                                    </svg>
+                                <Col className="d-flex mb-3 justify-content-end">
+                                    <div onClick={this.getAsPDF}>
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            viewBox="0 0 24 24"
+                                            data-supported-dps="24x24"
+                                            fill="red"
+                                            className="mercado-match"
+                                            width="24"
+                                            height="24"
+                                            focusable="false"
+                                        >
+                                            <path d="M21.13 2.86a3 3 0 00-4.17 0l-13 13L2 22l6.19-2L21.13 7a3 3 0 000-4.16zM6.77 18.57l-1.35-1.34L16.64 6 18 7.35z"></path>
+                                        </svg>
+                                    </div>
+                                    <div onClick={() => this.setState({ showProfileModal: true })}>
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            viewBox="0 0 24 24"
+                                            data-supported-dps="24x24"
+                                            fill="currentColor"
+                                            className="mercado-match"
+                                            width="24"
+                                            height="24"
+                                            focusable="false"
+                                        >
+                                            <path d="M21.13 2.86a3 3 0 00-4.17 0l-13 13L2 22l6.19-2L21.13 7a3 3 0 000-4.16zM6.77 18.57l-1.35-1.34L16.64 6 18 7.35z"></path>
+                                        </svg>
+                                    </div>
                                 </Col>
                             </Row>
                             <Row>
@@ -167,7 +188,7 @@ class ProfileJumbotron extends React.Component {
                     )}
                 </Col>
                 <EditProfile
-                    user={this.props.user}
+                    user={this.state.user}
                     update={async () => this.setState({ user: await this.props.crud.profile.get(this.state.user._id) })}
                     crud={this.props.crud}
                     closeModal={() => this.setState({ showProfileModal: false })}
@@ -189,9 +210,10 @@ export class EditProfile extends Component {
         validated: false
     };
 
-    componentDidUpdate(prevProps, prevState) {
-        if (this.props.showModal !== prevProps.showModal /* || (this.props.showModal !== prevProps.showModal && prevProps.user) */)
-            this.setState({ user: this.props.user, showModal: this.state.showModal });
+    componentDidMount() {}
+
+    componentDidUpdate(_prevProps, _prevState) {
+        if (_prevProps.user !== this.props.user) this.setState({ user: this.props.user });
     }
 
     handleProfileChange(e) {
@@ -228,6 +250,7 @@ export class EditProfile extends Component {
 
     reset = () => {
         this.setState({ profileImage: null });
+        this.setState({ user: null });
     };
 
     handleSend = async () => {
@@ -280,7 +303,7 @@ export class EditProfile extends Component {
                                 className="card-border text-dim cursor-text no-active-outline"
                                 type="text"
                                 required
-                                value={user.title}
+                                value={user.username}
                                 onChange={(e) => this.handleProfileChange(e)}
                             />
                         </Form.Group>
