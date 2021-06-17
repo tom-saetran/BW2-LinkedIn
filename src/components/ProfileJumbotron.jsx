@@ -48,11 +48,15 @@ class ProfileJumbotron extends React.Component {
                             <Row>
                                 <Col className="d-flex mb-3 justify-content-end">
                                     {this.state.cv && (
-                                        <a className="mr-2" href={this.state.cv.url}>
+                                        <a title={`Download ${this.props.user.name}'s profile as PDF`} className="mr-2" href={this.state.cv.url}>
                                             <Icon.Download />
                                         </a>
                                     )}
-                                    <div onClick={() => this.setState({ showProfileModal: true })}>
+                                    <span
+                                        title={`Edit ${this.props.user.name}'s profile`}
+                                        className="cursor-pointer"
+                                        onClick={() => this.setState({ showProfileModal: true })}
+                                    >
                                         <svg
                                             xmlns="http://www.w3.org/2000/svg"
                                             viewBox="0 0 24 24"
@@ -65,7 +69,7 @@ class ProfileJumbotron extends React.Component {
                                         >
                                             <path d="M21.13 2.86a3 3 0 00-4.17 0l-13 13L2 22l6.19-2L21.13 7a3 3 0 000-4.16zM6.77 18.57l-1.35-1.34L16.64 6 18 7.35z"></path>
                                         </svg>
-                                    </div>
+                                    </span>
                                 </Col>
                             </Row>
                             <Row>
@@ -364,7 +368,7 @@ export class EditProfile extends Component {
                         <ButtonToolbar>
                             <ButtonGroup>
                                 <Button className="card-border rounded text-dim no-active-outline" variant="white" type="submit">
-                                    Send
+                                    {!this.state.sending ? "Send" : <Spinner className="spinner" animation="border" />}
                                 </Button>
                             </ButtonGroup>
                         </ButtonToolbar>

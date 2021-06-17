@@ -39,7 +39,7 @@ class Neighbourhood extends React.Component {
                                 <div key={user._id}>
                                     <Card.Title as={"h6"}>
                                         <Link className="link" to={"/profile/" + user._id}>
-                                            <Card.Img className="friend-avatar mr-2" alt="" src={user.image} />
+                                            <Card.Img className="friend-avatar" alt="" src={user.image} />
                                         </Link>
                                         <Link className="link" to={"/profile/" + user._id}>
                                             {user.name} {user.surname}

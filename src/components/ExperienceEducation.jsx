@@ -33,13 +33,17 @@ class ExperienceEducation extends React.Component {
                 <Col className="mt-4 mb-4 section-outer section-inner">
                     <div className="d-flex mb-2 justify-content-between">
                         <h6>Experience</h6>
-                        <span title="Add New Experience" className="cursor-pointer">
-                            {this.state.csv && (
-                                <a href={this.state.csv.url}>
-                                    <Icon.Download />
-                                </a>
-                            )}
-                            <AddExperienceModal onUpdate={this.onUpdate} user={this.props.user} crud={this.props.crud} />
+                        <span>
+                            <span title={`Download ${this.props.user.name}'s experience(s) as CSV`} className="cursor-pointer">
+                                {this.state.csv && (
+                                    <a href={this.state.csv.url}>
+                                        <Icon.Download />
+                                    </a>
+                                )}
+                            </span>
+                            <span className="cursor-pointer" title={`Add an experience to ${this.props.user.name}'s profile`}>
+                                <AddExperienceModal onUpdate={this.onUpdate} user={this.props.user} crud={this.props.crud} />
+                            </span>
                         </span>
                     </div>
 
