@@ -250,7 +250,7 @@ export class EditProfile extends Component {
             this.props.update()
             this.reset()
         }
-        /*  setValidated(true); */
+        this.setState({ validated: true })
     }
 
     reset = () => {
