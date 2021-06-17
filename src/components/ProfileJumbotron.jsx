@@ -368,7 +368,7 @@ export class EditProfile extends Component {
                         <ButtonToolbar>
                             <ButtonGroup>
                                 <Button className="card-border rounded text-dim no-active-outline" variant="white" type="submit">
-                                    Send
+                                    {!this.state.sending ? "Send" : <Spinner className="spinner" animation="border" />}
                                 </Button>
                             </ButtonGroup>
                         </ButtonToolbar>

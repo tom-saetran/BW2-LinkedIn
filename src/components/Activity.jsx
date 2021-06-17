@@ -18,9 +18,11 @@ class Activity extends React.Component {
                             <div className="my-2">
                                 <p>Posts {this.props.data.name} created, shared, or commented on in the last 90 days are displayed here.</p>
                             </div>
-                            <div>
+                            <div className="text-center">
                                 <hr />
-                                <h6 className="text-center">See all acitivity</h6>
+                                <a className="link-dim no-underline" href="/">
+                                    See all acitivity
+                                </a>
                             </div>
                         </>
                     ) : (
