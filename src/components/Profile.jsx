@@ -1,28 +1,29 @@
-import React from "react";
-import { Container, Row, Col, Spinner } from "react-bootstrap";
-import Dashboard from "./Dashboard";
-import ProfileJumbotron from "./ProfileJumbotron";
-import Activity from "./Activity";
-import ExperienceEducation from "./ExperienceEducation";
-import Interests from "./Interests";
-import "../assets/kai.css";
-import SideLoaderOne from "./SideLoaderOne";
-import { withRouter } from "react-router";
+import React from "react"
+import { Container, Row, Col, Spinner } from "react-bootstrap"
+import Dashboard from "./Dashboard"
+import ProfileJumbotron from "./ProfileJumbotron"
+import Activity from "./Activity"
+import ExperienceEducation from "./ExperienceEducation"
+import Interests from "./Interests"
+import "../assets/kai.css"
+import SideLoaderOne from "./SideLoaderOne"
+import { withRouter } from "react-router"
 
 class Profile extends React.Component {
     state = {
         user: null,
         exp: null
-    };
+    }
 
     componentDidMount = async () => {
-        if (this.props.match.params.id) this.setState({ user: await this.props.crud.profile.get(this.props.match.params.id) });
-        else this.setState({ user: await this.props.crud.profile.get(this.props.me._id) });
-    };
+        if (this.props.match.params.id) this.setState({ user: await this.props.crud.profile.get(this.props.match.params.id) })
+        else this.setState({ user: await this.props.crud.profile.get(this.props.me._id) })
+    }
 
     componentDidUpdate = async (_previousProps, _previousState) => {
-        if (_previousProps.match.params.id !== this.props.match.params.id) this.setState({ user: await this.props.crud.profile.get(this.props.match.params.id) });
-    };
+        if (_previousProps.match.params.id !== this.props.match.params.id)
+            this.setState({ user: await this.props.crud.profile.get(this.props.match.params.id) })
+    }
 
     render() {
         return (
@@ -48,8 +49,8 @@ class Profile extends React.Component {
                     )}
                 </Row>
             </Container>
-        );
+        )
     }
 }
 
-export default withRouter(Profile);
+export default withRouter(Profile)
