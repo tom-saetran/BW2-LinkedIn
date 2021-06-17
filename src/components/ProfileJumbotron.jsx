@@ -1,29 +1,22 @@
-import React, { Component } from "react";
-import { Button, Row, Col, DropdownButton, Dropdown, ButtonGroup, Spinner, Form, Modal, Card, ButtonToolbar } from "react-bootstrap";
-import { withRouter } from "react-router";
+import React, { Component } from "react"
+import { Button, Row, Col, DropdownButton, Dropdown, ButtonGroup, Spinner, Form, Modal, Card, ButtonToolbar } from "react-bootstrap"
+import { withRouter } from "react-router"
 
 class ProfileJumbotron extends React.Component {
     state = {
         showProfileModal: false,
-        user: ""
-    };
+        user: null,
+        cv: null
+    }
     componentDidMount() {
-        this.setState({ user: this.props.user });
+        this.setState({ user: this.props.user })
     }
 
-    async componentDidUpdate(prevProps, prevState) {
-        if (this.props.user._id !== prevProps.user._id) {
-            console.log("I am not here");
-            this.setState({ user: this.props.user });
-        }
-        /* if (prevState.showProfileModal !== this.state.closeModal) {
-        } */
+    componentDidUpdate = async (_prevProps, _prevState) => {
+        if (this.props.user._id !== _prevProps.user._id) this.setState({ user: this.props.user })
+        if (!this.state.cv && this.state.user) this.setState({ cv: await this.props.crud.profile.getAsPDF(this.state.user._id) })
+        if (_prevState.user !== this.state.user) this.setState({ cv: await this.props.crud.profile.getAsPDF(this.state.user._id) })
     }
-
-    getAsPDF = async () => {
-        const result = this.props.crud.profile.getAsPDF(this.state.user._id);
-        console.log(await result);
-    };
 
     render() {
         return (
@@ -31,7 +24,9 @@ class ProfileJumbotron extends React.Component {
                 <Col style={{ overflow: "hidden" }} className="section-outer px-0">
                     <Col md={12} className="banner-parent">
                         <img className="img-fluid" src="https://thingscareerrelated.files.wordpress.com/2018/03/lake2b.jpg" alt="banner"></img>
-                        {this.state.user && <img className="img-overlay center-profile-image img-fluid rounded-circle" src={this.state.user.image || ""} alt="Headshot"></img>}
+                        {this.state.user && (
+                            <img className="img-overlay center-profile-image img-fluid rounded-circle" src={this.state.user.image || ""} alt="Headshot"></img>
+                        )}
                         <div className="d-flex justify-content-center align-items-center img-overlay2 overlay-2-bg" id="profile-icon">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
@@ -51,20 +46,22 @@ class ProfileJumbotron extends React.Component {
                         <Col className=" section-inner">
                             <Row>
                                 <Col className="d-flex mb-3 justify-content-end">
-                                    <div onClick={this.getAsPDF}>
-                                        <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            viewBox="0 0 24 24"
-                                            data-supported-dps="24x24"
-                                            fill="red"
-                                            className="mercado-match"
-                                            width="24"
-                                            height="24"
-                                            focusable="false"
-                                        >
-                                            <path d="M21.13 2.86a3 3 0 00-4.17 0l-13 13L2 22l6.19-2L21.13 7a3 3 0 000-4.16zM6.77 18.57l-1.35-1.34L16.64 6 18 7.35z"></path>
-                                        </svg>
-                                    </div>
+                                    {this.state.cv && (
+                                        <a href={this.state.cv.url}>
+                                            <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                viewBox="0 0 24 24"
+                                                data-supported-dps="24x24"
+                                                fill="red"
+                                                className="mercado-match"
+                                                width="24"
+                                                height="24"
+                                                focusable="false"
+                                            >
+                                                <path d="M21.13 2.86a3 3 0 00-4.17 0l-13 13L2 22l6.19-2L21.13 7a3 3 0 000-4.16zM6.77 18.57l-1.35-1.34L16.64 6 18 7.35z"></path>
+                                            </svg>
+                                        </a>
+                                    )}
                                     <div onClick={() => this.setState({ showProfileModal: true })}>
                                         <svg
                                             xmlns="http://www.w3.org/2000/svg"
@@ -94,11 +91,25 @@ class ProfileJumbotron extends React.Component {
                                     </div>
 
                                     <div className="">
-                                        <DropdownButton className="my-2 btn-1 button-border" size="sm" variant="primary" as={ButtonGroup} title="Open to" id="bg-nested-dropdown">
+                                        <DropdownButton
+                                            className="my-2 btn-1 button-border"
+                                            size="sm"
+                                            variant="primary"
+                                            as={ButtonGroup}
+                                            title="Open to"
+                                            id="bg-nested-dropdown"
+                                        >
                                             <Dropdown.Item eventKey="1">Finding a new job</Dropdown.Item>
                                             <Dropdown.Item eventKey="2">Hiring</Dropdown.Item>
                                         </DropdownButton>
-                                        <DropdownButton className="my-2 ms-2 button-border" size="sm" as={ButtonGroup} variant="outline-dark" title="Add profile section" id="bg-nested-dropdown">
+                                        <DropdownButton
+                                            className="my-2 ms-2 button-border"
+                                            size="sm"
+                                            as={ButtonGroup}
+                                            variant="outline-dark"
+                                            title="Add profile section"
+                                            id="bg-nested-dropdown"
+                                        >
                                             <Dropdown.Item eventKey="1">Dropdown link</Dropdown.Item>
                                             <Dropdown.Item eventKey="2">Dropdown link</Dropdown.Item>
                                         </DropdownButton>
@@ -111,9 +122,13 @@ class ProfileJumbotron extends React.Component {
                                 {this.state.user && (
                                     <Col md={4}>
                                         {this.props.exp &&
-                                            this.props.exp.slice(0, 2).map((experience) => (
+                                            this.props.exp.slice(0, 2).map(experience => (
                                                 <div key={experience._id} className="d-flex">
-                                                    <img className="small-logo" src={experience.image ? experience.image : "https://via.placeholder.com/200x200?text=EXP"} alt="company-logo"></img>
+                                                    <img
+                                                        className="small-logo"
+                                                        src={experience.image ? experience.image : "https://via.placeholder.com/200x200?text=EXP"}
+                                                        alt="company-logo"
+                                                    ></img>
                                                     <span className="ms-2 text-truncate">{experience.company}</span>
                                                 </div>
                                             ))}
@@ -195,11 +210,11 @@ class ProfileJumbotron extends React.Component {
                     showModal={this.state.showProfileModal}
                 />
             </>
-        );
+        )
     }
 }
 
-export default withRouter(ProfileJumbotron);
+export default withRouter(ProfileJumbotron)
 
 export class EditProfile extends Component {
     state = {
@@ -208,21 +223,21 @@ export class EditProfile extends Component {
         profileImage: null,
         sending: false,
         validated: false
-    };
+    }
 
     componentDidMount() {}
 
     componentDidUpdate(_prevProps, _prevState) {
-        if (_prevProps.user !== this.props.user) this.setState({ user: this.props.user });
+        if (_prevProps.user !== this.props.user) this.setState({ user: this.props.user })
     }
 
     handleProfileChange(e) {
-        this.setState({ user: { ...this.state.user, [e.target.id]: e.target.value } });
+        this.setState({ user: { ...this.state.user, [e.target.id]: e.target.value } })
     }
 
     handleProfileImage(e) {
-        const files = e.target.files[0];
-        this.setState({ profileImage: files });
+        const files = e.target.files[0]
+        this.setState({ profileImage: files })
     }
 
     /*   async handleProfileSubmit() {
@@ -233,45 +248,45 @@ export class EditProfile extends Component {
         else alert("Data not posted");
     } */
 
-    handleSubmit = async (e) => {
-        const form = e.currentTarget;
+    handleSubmit = async e => {
+        const form = e.currentTarget
         if (form.checkValidity() === false) {
-            e.preventDefault();
-            e.stopPropagation();
+            e.preventDefault()
+            e.stopPropagation()
         } else {
-            e.preventDefault();
-            await this.handleSend();
-            this.props.closeModal();
-            this.props.update();
-            this.reset();
+            e.preventDefault()
+            await this.handleSend()
+            this.props.closeModal()
+            this.props.update()
+            this.reset()
         }
         /*  setValidated(true); */
-    };
+    }
 
     reset = () => {
-        this.setState({ profileImage: null });
-        this.setState({ user: null });
-    };
+        this.setState({ profileImage: null })
+        this.setState({ user: null })
+    }
 
     handleSend = async () => {
         if (!this.state.sending) {
-            this.setState({ sending: true });
-            const result = await this.props.crud.profile.put(this.state.user._id, this.state.user);
+            this.setState({ sending: true })
+            const result = await this.props.crud.profile.put(this.state.user._id, this.state.user)
             if (result && this.state.profileImage) {
-                let formData = new FormData();
-                formData.append("image", this.state.profileImage);
-                await this.props.crud.profile.upload(this.state.user._id, formData);
+                let formData = new FormData()
+                formData.append("image", this.state.profileImage)
+                await this.props.crud.profile.upload(this.state.user._id, formData)
             }
-            this.setState({ sending: false });
+            this.setState({ sending: false })
         }
-    };
+    }
 
     render() {
-        const user = this.state.user;
+        const user = this.state.user
 
         return user ? (
             <Modal show={this.props.showModal} onHide={this.props.closeModal}>
-                <Form noValidate validated={this.state.validated} onSubmit={(e) => this.handleSubmit(e)}>
+                <Form noValidate validated={this.state.validated} onSubmit={e => this.handleSubmit(e)}>
                     <Card.Header className="text-center text-dim py-2 bg-white">Edit </Card.Header>
                     <Modal.Body>
                         <Form.Group>
@@ -282,7 +297,7 @@ export class EditProfile extends Component {
                                 type="text"
                                 required
                                 value={user.name}
-                                onChange={(e) => this.handleProfileChange(e)}
+                                onChange={e => this.handleProfileChange(e)}
                             />
                         </Form.Group>
                         <Form.Group>
@@ -293,7 +308,7 @@ export class EditProfile extends Component {
                                 type="text"
                                 required
                                 value={user.surname}
-                                onChange={(e) => this.handleProfileChange(e)}
+                                onChange={e => this.handleProfileChange(e)}
                             />
                         </Form.Group>
                         <Form.Group>
@@ -304,7 +319,7 @@ export class EditProfile extends Component {
                                 type="text"
                                 required
                                 value={user.username}
-                                onChange={(e) => this.handleProfileChange(e)}
+                                onChange={e => this.handleProfileChange(e)}
                             />
                         </Form.Group>
                         <Form.Group>
@@ -315,7 +330,7 @@ export class EditProfile extends Component {
                                 type="text"
                                 required
                                 value={user.title}
-                                onChange={(e) => this.handleProfileChange(e)}
+                                onChange={e => this.handleProfileChange(e)}
                             />
                         </Form.Group>
                         <Form.Group>
@@ -326,7 +341,7 @@ export class EditProfile extends Component {
                                 type="text"
                                 required
                                 value={user.bio}
-                                onChange={(e) => this.handleProfileChange(e)}
+                                onChange={e => this.handleProfileChange(e)}
                             />
                         </Form.Group>
                         <Form.Group>
@@ -337,7 +352,7 @@ export class EditProfile extends Component {
                                 type="text"
                                 required
                                 value={user.email}
-                                onChange={(e) => this.handleProfileChange(e)}
+                                onChange={e => this.handleProfileChange(e)}
                             />
                         </Form.Group>
                         <Form.Group>
@@ -348,11 +363,11 @@ export class EditProfile extends Component {
                                 type="text"
                                 required
                                 value={user.area}
-                                onChange={(e) => this.handleProfileChange(e)}
+                                onChange={e => this.handleProfileChange(e)}
                             />
                         </Form.Group>
                         <Form.Group>
-                            <Form.File id="image" onChange={(e) => this.handleProfileImage(e)} files={this.state.blogPostCover} label="Profile Image" />
+                            <Form.File id="image" onChange={e => this.handleProfileImage(e)} files={this.state.blogPostCover} label="Profile Image" />
                         </Form.Group>
                     </Modal.Body>
                     <div className="d-flex justify-content-end pb-3 pr-3">
@@ -368,6 +383,6 @@ export class EditProfile extends Component {
             </Modal>
         ) : (
             <></>
-        );
+        )
     }
 }
