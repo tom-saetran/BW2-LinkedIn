@@ -166,7 +166,7 @@ class Footer extends React.Component {
                         </Col>
                     </Row>
                     <Container className="p-0 mb-1">
-                        <p style={{ color: "#616160", fontSize: ".8rem" }}>LinkedIn Corporation © 2021</p>
+                        <p style={{ color: "#616160", fontSize: ".8rem" }}>LinkedIn Corporation &copy; 2021</p>
                     </Container>
                 </Container>
             </div>
