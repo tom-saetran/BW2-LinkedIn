@@ -452,8 +452,7 @@ const UpdateExperienceModal = props => {
                             <Form.Text className="pl-1 text-dim">Company</Form.Text>
                             <Form.Control
                                 className="card-border text-dim cursor-text no-active-outline"
-                                as="textarea"
-                                rows={2}
+                                type="text"
                                 required
                                 value={company}
                                 onChange={e => setCompany(e.target.value)}
@@ -463,7 +462,8 @@ const UpdateExperienceModal = props => {
                             <Form.Text className="pl-1 text-dim">Description</Form.Text>
                             <Form.Control
                                 className="card-border text-dim cursor-text no-active-outline"
-                                type="text"
+                                as="textarea"
+                                rows={3}
                                 required
                                 value={description}
                                 onChange={e => setDescription(e.target.value)}
