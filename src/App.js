@@ -35,10 +35,11 @@ class App extends React.Component {
         endpoint: process.env.REACT_APP_ENDPOINT,
 
         profile: {
-            getAll: async () => {
+            getAll: async (query) => {
+                let getQuery = query ? `/profile${query}` : '/profile'
                 let result
                 try {
-                    result = await fetch(this.crud.endpoint + "/profile", {
+                    result = await fetch(this.crud.endpoint + getQuery, {
                         headers: {
                             // Authorization: this.state.authtoken
                         }
@@ -180,12 +181,11 @@ class App extends React.Component {
                         }
                     })
                     if (!results.ok) throw new Error("Got data in return but status.ok is false!")
-                    results = await results.json()
                 } catch (error) {
                     console.error(error)
                     return null
                 }
-                return await results
+                return results
             }
         },
 
