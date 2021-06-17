@@ -20,7 +20,7 @@ export default class NavBar extends Component {
         let response = await this.props.crud.profile.getAll(`?name=${e.target.value}`);
         if (response.result.length > 0) this.setState({ queryResult: response.result, showQuery: true });
         else this.setState({ queryResult: null });
-        console.log(queryResult, query);
+        console.log(this.state.queryResult, this.state.query);
     }
 
     handleQueryDisplay(e) {
