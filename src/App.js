@@ -35,8 +35,8 @@ class App extends React.Component {
         endpoint: process.env.REACT_APP_ENDPOINT,
 
         profile: {
-            getAll: async (query) => {
-                let getQuery = query ? `/profile${query}` : '/profile'
+            getAll: async query => {
+                let getQuery = query ? `/profile${query}` : "/profile"
                 let result
                 try {
                     result = await fetch(this.crud.endpoint + getQuery, {
@@ -336,22 +336,19 @@ class App extends React.Component {
                 return await results
             },
 
-            getAsCSV: async (userID, expID) => {
+            getAsCSV: async userID => {
                 let results
                 try {
                     if (userID === "" || userID === undefined || userID === null) throw new Error("user id must be present")
-                    if (expID === "" || expID === undefined || expID === null) throw new Error("experience id must be present")
                     if (!this.crud.validators.id(userID)) throw new Error("user id is incorrect")
-                    if (!this.crud.validators.id(expID)) throw new Error("experience id is incorrect")
 
-                    results = await fetch(this.crud.endpoint + "/profile/" + userID + "/experiences" + expID + "CSV", {
+                    results = await fetch(this.crud.endpoint + "/profile/" + userID + "/experiences/CSV", {
                         headers: {
                             // Authorization: this.state.authtoken
                         }
                     })
 
                     if (!results.ok) throw new Error("Got data in return but status.ok is false!")
-                    results = await results.json()
                 } catch (error) {
                     console.error(error)
                     return null

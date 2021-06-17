@@ -6,7 +6,8 @@ import uniqid from "uniqid"
 
 class ExperienceEducation extends React.Component {
     state = {
-        experiences: null
+        experiences: null,
+        csv: null
     }
 
     componentDidMount = async () => {
@@ -15,7 +16,11 @@ class ExperienceEducation extends React.Component {
 
     componentDidUpdate = async (_previousProps, _previousState) => {
         if (_previousProps.match.params.id !== this.props.match.params.id)
-            this.setState({ experiences: await this.props.crud.experiences.getAll(this.props.match.params.id) })
+            this.setState({
+                experiences: await this.props.crud.experiences.getAll(this.props.match.params.id),
+                csv: await this.props.crud.experiences.getAsCSV(this.props.match.params.id)
+            })
+        if (this.state.experiences && !this.state.csv) this.setState({ csv: await this.props.crud.experiences.getAsCSV(this.props.user._id) })
     }
 
     onUpdate = async () => {
@@ -451,8 +456,7 @@ const UpdateExperienceModal = props => {
                             <Form.Text className="pl-1 text-dim">Company</Form.Text>
                             <Form.Control
                                 className="card-border text-dim cursor-text no-active-outline"
-                                as="textarea"
-                                rows={2}
+                                type="text"
                                 required
                                 value={company}
                                 onChange={e => setCompany(e.target.value)}
@@ -462,7 +466,8 @@ const UpdateExperienceModal = props => {
                             <Form.Text className="pl-1 text-dim">Description</Form.Text>
                             <Form.Control
                                 className="card-border text-dim cursor-text no-active-outline"
-                                type="text"
+                                as="textarea"
+                                rows={3}
                                 required
                                 value={description}
                                 onChange={e => setDescription(e.target.value)}
