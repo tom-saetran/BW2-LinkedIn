@@ -16,11 +16,9 @@ export default class NavBar extends Component {
 
     async handleSearch(e) {
         this.setState({ query: e.target.value });
-        console.log(this.state.query);
         let response = await this.props.crud.profile.getAll(`?name=${e.target.value}`);
         if (response.result.length > 0) this.setState({ queryResult: response.result, showQuery: true });
         else this.setState({ queryResult: null });
-        console.log(this.state.queryResult, this.state.query);
     }
 
     handleQueryDisplay(e) {
@@ -81,7 +79,7 @@ export default class NavBar extends Component {
                                 />
                                 <div id="searchList" style={{ display: this.state.showQuery ? "block" : "none" }}>
                                     <ul className="list-group">
-                                        {this.state.queryResult !== null ? (
+                                        {this.state.queryResult !== null && this.state.query !== "" ? (
                                             this.state.queryResult.map((person) => (
                                                 <div className="d-flex flex-row querySearch-list-item align-items-center px-3" onMouseDown={() => this.props.history.push("/profile/" + person._id)}>
                                                     <div className="w-15 px-3">
